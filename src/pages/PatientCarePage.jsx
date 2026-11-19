@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -16,7 +17,7 @@ import {
 import SectionTitle from "../components/SectionTitle";
 
 import ContentVideoCarousel from "../components/ContentVideoCarousel";
-import { doctors } from "../data/doctorsData";
+import { getPublicStories } from "../api/storiesApi";
 
 import patientCareImage from "../assets/home/patientCare.jpg";
 import diagnosisImage from "../assets/home/diagnosis.jpg";
@@ -198,7 +199,6 @@ const oncologistQuestions = [
   "What happens after treatment?",
 ];
 
-const approvedPatientStories = [];
 
 function Breadcrumbs() {
   return (
@@ -276,30 +276,77 @@ function getYouTubeId(url = "") {
 }
 
 export default function PatientCarePage() {
-  const patientTestimonialItems = [
-  ...new Map(
-    doctors.flatMap((doctor) =>
-      (doctor.testimonialVideos || []).map((video) => {
-        const videoId = getYouTubeId(video.youtubeUrl);
+  const [patientTestimonialItems, setPatientTestimonialItems] = useState([]);
 
-        if (!videoId) return null;
+  // FETCH ALL PATIENT STORIES FROM BACKEND
+  useEffect(() => {
+    let isActive = true;
 
-        return [
-          videoId,
-          {
-            id: `patient-story-${videoId}`,
-            title: video.title || "Patient Testimonial",
-            category: doctor.speciality,
-            href: video.youtubeUrl,
-            thumbnail:
-              video.thumbnail ||
-              `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-          },
+    const fetchPatientStories = async () => {
+      try {
+        const stories = await getPublicStories();
+
+        const formattedStories = (Array.isArray(stories) ? stories : [])
+          .map((story) => {
+            const videoUrl =
+              story.href ||
+              story.video_url ||
+              story.youtube_url ||
+              "";
+
+            const videoId =
+              story.youtubeId || getYouTubeId(videoUrl);
+
+            if (!videoId) return null;
+
+            return {
+              id: story.id || `patient-story-${videoId}`,
+              youtubeId: videoId,
+              title:
+                story.title ||
+                story.patientName ||
+                story.patient_name ||
+                "Patient Testimonial",
+              category:
+                story.specialityName ||
+                story.speciality_name ||
+                "Patient Story",
+              href: videoUrl || `https://www.youtube.com/watch?v=${videoId}`,
+              thumbnail:
+                story.thumbnail ||
+                `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+            };
+          })
+          .filter(Boolean);
+
+        // Avoid displaying duplicate videos
+        const uniqueStories = [
+          ...new Map(
+            formattedStories.map((story) => [
+              story.youtubeId,
+              story,
+            ])
+          ).values(),
         ];
-      }).filter(Boolean)
-    )
-  ).values(),
-];
+
+        if (isActive) {
+          setPatientTestimonialItems(uniqueStories);
+        }
+      } catch (error) {
+        console.error("Patient stories API error:", error);
+
+        if (isActive) {
+          setPatientTestimonialItems([]);
+        }
+      }
+    };
+
+    fetchPatientStories();
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
 
   return (

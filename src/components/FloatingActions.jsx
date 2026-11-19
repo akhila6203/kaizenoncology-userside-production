@@ -1,19 +1,26 @@
-// import { MapPin, CalendarDays, Stethoscope } from "lucide-react";
+
+import { useEffect, useState } from "react";
 import { MapPin, CalendarDays, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { hospital } from "../data/siteData";
+import { getSettingsApi } from "../api/settingsApi";
 
 const actions = [
   {
     label: "Call Now",
-    path: hospital.phoneHref,
     Icon: Phone,
     isCall: true,
   },
-  { label: "Appointment", path: "/appointments", Icon: CalendarDays },
-  { label: "Location", path: "/contact#locations", Icon: MapPin },
-  // { label: "Appointment", path: "/appointments", Icon: CalendarDays },
-  // { label: "Find a Doctor", path: "/our-team", Icon: Stethoscope },
+  {
+    label: "Appointment",
+    path: "/appointments",
+    Icon: CalendarDays,
+  },
+  {
+    label: "Location",
+    path: "/contact#locations",
+    Icon: MapPin,
+  },
 ];
 
 function WhatsAppIcon() {
@@ -28,60 +35,95 @@ function WhatsAppIcon() {
 }
 
 export default function FloatingActions() {
-  const whatsappHref = `https://wa.me/${hospital.whatsappNumber}?text=${encodeURIComponent(
-    "Hello, I would like information about appointments."
-  )}`;
+  const [settings, setSettings] = useState({});
+
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const response = await getSettingsApi();
+        const data = response?.data?.data || response?.data || {};
+
+        setSettings(data);
+      } catch (error) {
+        console.error(
+          "Floating actions settings error:",
+          error.response?.data || error
+        );
+      }
+    };
+
+    loadSettings();
+  }, []);
+
+  // First mobile number only
+  const phoneNumber =
+    settings.phone || hospital.phoneHref?.replace(/^tel:/, "");
+
+  // Call Now
+  const callHref = phoneNumber ? `tel:${phoneNumber}` : "#";
+
+  // WhatsApp - same first mobile number
+  const whatsappNumber = phoneNumber?.replace(/\D/g, "");
+
+  const whatsappHref = whatsappNumber
+    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        "Hello, I would like information about appointments."
+      )}`
+    : "#";
 
  return (
   <>
     {/* MOBILE AND TABLET: Keep the original bottom navigation */}
     <div className="fixed bottom-0 left-0 right-0 z-40 grid grid-cols-3 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_25px_rgba(20,38,74,0.08)] backdrop-blur lg:hidden">
-      {/* {actions.map(({ label, path, Icon }) => (
-        <Link
-          key={label}
-          to={path}
-          className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy hover:bg-ice"
-        >
-          <Icon size={22} />
-          <span className="text-[15px] font-semibold">{label}</span>
-        </Link>
-      ))} */}
-      {actions.map(({ label, path, Icon, isCall }) => (
-  <Link
-    key={label}
-    to={path}
-    className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy transition hover:bg-ice"
-  >
-    <Icon size={22} />
-    <span className="text-[15px] font-semibold">{label}</span>
-  </Link>
-))}
+      {actions.map(({ label, path, Icon, isCall }) =>
+  isCall ? (
+    <a
+      key={label}
+      href={callHref}
+      className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy transition hover:bg-ice"
+    >
+      <Icon size={22} />
+      <span className="text-[15px] font-semibold">{label}</span>
+    </a>
+  ) : (
+    <Link
+      key={label}
+      to={path}
+      className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy transition hover:bg-ice"
+    >
+      <Icon size={22} />
+      <span className="text-[15px] font-semibold">{label}</span>
+    </Link>
+  )
+)}
     </div>
 
     {/* WINDOWS / DESKTOP: Three icons vertically above WhatsApp */}
     <div className="fixed bottom-[88px] right-6 z-40 hidden flex-col gap-3 lg:flex">
-      {/* {actions.map(({ label, path, Icon }) => (
-        <Link
-          key={label}
-          to={path}
-          title={label}
-          aria-label={label}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep"
-        >
-          <Icon size={20} />
-        </Link>
-      ))} */}
-      {actions.map(({ label, path, Icon, isCall }) => (
-  <Link
-    key={label}
-    to={path}
-    title={label}
-    aria-label={label}
-    className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep"
-  >
-    <Icon size={20} />
-  </Link>
-))}
+      
+      {actions.map(({ label, path, Icon, isCall }) =>
+  isCall ? (
+    <a
+      key={label}
+      href={callHref}
+      title={label}
+      aria-label={label}
+      className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep"
+    >
+      <Icon size={20} />
+    </a>
+  ) : (
+    <Link
+      key={label}
+      to={path}
+      title={label}
+      aria-label={label}
+      className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep"
+    >
+      <Icon size={20} />
+    </Link>
+  )
+)}
     </div>
 
     {/* WHATSAPP: Original position on desktop and above mobile navigation */}
@@ -104,14 +146,30 @@ export default function FloatingActions() {
 
 
 
+
+
+
+
+
+
+
+
 // import { MapPin, CalendarDays, Stethoscope } from "lucide-react";
+// import { MapPin, CalendarDays, Phone } from "lucide-react";
 // import { Link } from "react-router-dom";
 // import { hospital } from "../data/siteData";
 
 // const actions = [
-//   { label: "Location", path: "/contact#locations", Icon: MapPin },
+//   {
+//     label: "Call Now",
+//     path: hospital.phoneHref,
+//     Icon: Phone,
+//     isCall: true,
+//   },
 //   { label: "Appointment", path: "/appointments", Icon: CalendarDays },
-//   { label: "Find a Doctor", path: "/our-team", Icon: Stethoscope },
+//   { label: "Location", path: "/contact#locations", Icon: MapPin },
+//   // { label: "Appointment", path: "/appointments", Icon: CalendarDays },
+//   // { label: "Find a Doctor", path: "/our-team", Icon: Stethoscope },
 // ];
 
 // function WhatsAppIcon() {
@@ -127,48 +185,53 @@ export default function FloatingActions() {
 
 // export default function FloatingActions() {
 //   const whatsappHref = `https://wa.me/${hospital.whatsappNumber}?text=${encodeURIComponent(
-//     "Hello, I would like information about appointments.",
+//     "Hello, I would like information about appointments."
 //   )}`;
 
-//   return (
-//     <>
-//       <div className="fixed bottom-0 left-0 right-0 z-40 grid grid-cols-3 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_25px_rgba(20,38,74,0.08)] backdrop-blur lg:hidden">
-//         {actions.map(({ label, path, Icon }) => (
-//           <Link
-//             key={label}
-//             to={path}
-//             className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy hover:bg-ice"
-//           >
-//             <Icon size={22} />
-//             <span className="text-[15px] font-semibold">{label}</span>
-//           </Link>
-//         ))}
-//       </div>
+//  return (
+//   <>
+//     {/* MOBILE AND TABLET: Keep the original bottom navigation */}
+//     <div className="fixed bottom-0 left-0 right-0 z-40 grid grid-cols-3 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_25px_rgba(20,38,74,0.08)] backdrop-blur lg:hidden">
+//       {actions.map(({ label, path, Icon, isCall }) => (
+//         <Link
+//           key={label}
+//           to={path}
+//           className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy transition hover:bg-ice"
+//         >
+//           <Icon size={22} />
+//           <span className="text-[15px] font-semibold">{label}</span>
+//         </Link>
+//       ))}
+//     </div>
 
-//       <div className="fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
-//         {actions.map(({ label, path, Icon }) => (
-//           <Link
-//             key={label}
-//             to={path}
-//             title={label}
-//             aria-label={label}
-//             className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep"
-//           >
-//             <Icon size={20} />
-//           </Link>
-//         ))}
-//       </div>
+//     {/* WINDOWS / DESKTOP: Three icons vertically above WhatsApp */}
+//     <div className="fixed bottom-[88px] right-6 z-40 hidden flex-col gap-3 lg:flex">
+      
+//       {actions.map(({ label, path, Icon, isCall }) => (
+//         <Link
+//           key={label}
+//           to={path}
+//           title={label}
+//           aria-label={label}
+//           className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep"
+//         >
+//           <Icon size={20} />
+//         </Link>
+//       ))}
+//     </div>
 
-//       <a
-//         href={whatsappHref}
-//         target="_blank"
-//         rel="noreferrer"
-//         aria-label="Chat with us on WhatsApp"
-//         title="WhatsApp"
-//         className="fixed bottom-[calc(82px+env(safe-area-inset-bottom))] right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:scale-105 lg:bottom-6 lg:right-6"
-//       >
-//         <WhatsAppIcon />
-//       </a>
-//     </>
-//   );
+//     {/* WHATSAPP: Original position on desktop and above mobile navigation */}
+//     <a
+//       href={whatsappHref}
+//       target="_blank"
+//       rel="noreferrer"
+//       aria-label="Chat with us on WhatsApp"
+//       title="WhatsApp"
+//       className="fixed bottom-[calc(82px+env(safe-area-inset-bottom))] right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105 lg:bottom-6 lg:right-6"
+//     >
+//       <WhatsAppIcon />
+//     </a>
+//   </>
+// );
 // }
+

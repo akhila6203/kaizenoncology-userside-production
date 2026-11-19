@@ -1,5 +1,6 @@
 
 import { Link, Navigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -12,7 +13,9 @@ import {
 import appointmentsWave from "../assets/appointments-wave.jpg";
 
 import { allTechnologyItems } from "../data/technologyData";
-import { specialities } from "../data/specialitiesData";
+
+import * as LucideIcons from "lucide-react";
+import { getSpecialities } from "../api/specialitiesApi";
 
 /* --------------------------------------------------
    HELPERS
@@ -25,11 +28,10 @@ function normalizeText(value = "") {
     .replace(/[^a-z0-9]/g, "");
 }
 
-function findRelatedSpeciality(name) {
+function findRelatedSpeciality(name, specialitiesList = []) {
   const normalizedName = normalizeText(name);
-
-  return specialities.find((item) => {
-    const title = normalizeText(item.title);
+  return specialitiesList.find((item) => {
+    const title = normalizeText(item.name);
     const slug = normalizeText(item.slug);
 
     return (
@@ -39,6 +41,23 @@ function findRelatedSpeciality(name) {
       normalizedName.includes(title)
     );
   });
+}
+/* DYNAMIC SPECIALITY ICON */
+function getSpecialityIcon(iconName) {
+  if (!iconName || typeof iconName !== "string") {
+    return LucideIcons.Stethoscope;
+  }
+  const formattedName = iconName
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map(
+      (word) =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join("");
+  return LucideIcons[formattedName] || LucideIcons.Stethoscope;
 }
 
 /* --------------------------------------------------
@@ -206,15 +225,17 @@ function TechnologySection({ section, index }) {
 /* --------------------------------------------------
    RELATED SPECIALITIES
 -------------------------------------------------- */
-
-
-function RelatedSpecialities({ names = [] }) {
+function RelatedSpecialities({
+  names = [],
+  specialitiesList = [],
+}) {
   const relatedSpecialities = names
-    .map((name) => findRelatedSpeciality(name))
+    .map((name) =>
+      findRelatedSpeciality(name, specialitiesList)
+    )
     .filter(Boolean);
 
   if (!relatedSpecialities.length) return null;
-
   return (
     <section className="py-14 md:py-16">
       <div className="page-container">
@@ -226,7 +247,7 @@ function RelatedSpecialities({ names = [] }) {
 
         <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2">
           {relatedSpecialities.map((speciality) => {
-            const Icon = speciality.icon || Stethoscope;
+            const Icon = getSpecialityIcon(speciality.icon_name);
 
             return (
               <Link
@@ -239,7 +260,8 @@ function RelatedSpecialities({ names = [] }) {
                 </span>
 
                 <h3 className="text-base font-semibold leading-snug text-[#304b3c] md:text-lg">
-                  {speciality.title}
+                  {/* {speciality.title} */}
+                  {speciality.name}
                 </h3>
 
                 <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#e87744]">
@@ -350,9 +372,60 @@ function ContactActions() {
 /* --------------------------------------------------
    MAIN TECHNOLOGY DETAIL PAGE
 -------------------------------------------------- */
-
 export default function TechnologyDetailPage() {
   const { slug } = useParams();
+
+  // BACKEND SPECIALITIES
+  const [specialitiesList, setSpecialitiesList] = useState([]);
+
+  useEffect(() => {
+    let active = true;
+
+    const fetchSpecialities = async () => {
+      try {
+        const data = await getSpecialities({
+          limit: 100,
+          is_active: 1,
+        });
+
+        const rows = Array.isArray(data)
+          ? data
+          : Array.isArray(data?.rows)
+            ? data.rows
+            : [];
+
+        const activeSpecialities = rows.filter(
+          (item) =>
+            item.slug &&
+            item.name &&
+            (
+              item.is_active === 1 ||
+              item.is_active === true ||
+              item.is_active === "1"
+            )
+        );
+
+        if (active) {
+          setSpecialitiesList(activeSpecialities);
+        }
+      } catch (error) {
+        console.error(
+          "Technology detail specialities API error:",
+          error
+        );
+
+        if (active) {
+          setSpecialitiesList([]);
+        }
+      }
+    };
+
+    fetchSpecialities();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const technology = allTechnologyItems.find(
     (item) => item.slug === slug
@@ -446,15 +519,15 @@ export default function TechnologyDetailPage() {
         )}
 
         {/* RELATED SPECIALITIES */}
-
-        <RelatedSpecialities names={technology.specialities} />
+        <RelatedSpecialities
+          names={technology.specialities}
+          specialitiesList={specialitiesList}
+        />
 
         {/* FAQ */}
-
         <FrequentlyAskedQuestions faqs={technology.faqs} />
 
       {/* <ContactActions /> */}
-
         <ContactActions />
       
 

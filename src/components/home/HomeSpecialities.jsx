@@ -1,16 +1,80 @@
 
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
-import { specialities } from "../../data/specialitiesData";
+import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { getSpecialities } from "../../api/specialitiesApi";
+import * as LucideIcons from "lucide-react";
+
+
+const getSpecialityIcon = (iconName) => {
+  if (!iconName || typeof iconName !== "string") {
+    return LucideIcons.Stethoscope;
+  }
+
+  const formattedName = iconName
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map(
+      (word) =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join("");
+
+  return LucideIcons[formattedName] || LucideIcons.Stethoscope;
+};
 
 export default function HomeSpecialities() {
   const reduceMotion = useReducedMotion();
 
-  const homeSpecialities = specialities.slice(0, 4);
+  const [homeSpecialities, setHomeSpecialities] = useState([]);
 
-  return (
+  useEffect(() => {
+    let active = true;
+
+    const fetchSpecialities = async () => {
+      try {
+        const data = await getSpecialities({ limit: 100 });
+
+      const rows = Array.isArray(data)
+  ? data
+  : Array.isArray(data?.rows)
+    ? data.rows
+    : Array.isArray(data?.data)
+      ? data.data
+      : [];
+
+const mappedSpecialities = rows.map((item) => ({
+  ...item,
+  title: item.name || "",
+  Icon: getSpecialityIcon(item.icon_name),
+}));
+
+        if (active) {
+          setHomeSpecialities(mappedSpecialities.slice(0, 4));
+        }
+      } catch (error) {
+        console.error("Home specialities API error:", error);
+
+        if (active) {
+          setHomeSpecialities([]);
+        }
+      }
+    };
+
+    fetchSpecialities();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+
+    return (
+    homeSpecialities.length > 0 && (
     <section className="section-padding overflow-hidden bg-white">
       <div className="page-container px-4 sm:px-6 lg:px-8">
 
@@ -156,5 +220,6 @@ export default function HomeSpecialities() {
 
       </div>
     </section>
+     )
   );
 }

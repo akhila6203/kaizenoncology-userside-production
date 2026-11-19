@@ -1,5 +1,5 @@
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -16,7 +16,8 @@ import {
 
 import appointmentsWave from "../assets/appointments-wave.jpg";
 
-import { specialities } from "../data/specialitiesData";
+import * as LucideIcons from "lucide-react";
+import { getSpecialities } from "../api/specialitiesApi";
 
 // Editable display metadata.
 // Replace sample dates and views with actual CMS/analytics values later.
@@ -62,6 +63,25 @@ const technologyMeta = {
     views: 1320,
   },
 };
+
+
+const getSpecialityIcon = (iconName) => {
+  if (!iconName || typeof iconName !== "string") {
+    return LucideIcons.Stethoscope;
+  }
+  const formattedName = iconName
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map(
+      (word) =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join("");
+  return LucideIcons[formattedName] || LucideIcons.Stethoscope;
+};
+
 
 function Breadcrumb() {
   return (
@@ -149,87 +169,69 @@ function TechnologyCard({ item, index }) {
   );
 }
 
-// Speciality cards - same icon and name style as SpecialitiesPage
-function SpecialityCard({ item, index }) {
-  const Icon = item.Icon;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{
-        duration: 0.4,
-        delay: (index % 5) * 0.05,
-      }}
-    >
-      <Link
-        to={`/specialities/${item.slug}`}
-        className="
-          group relative flex h-[185px] flex-col items-center justify-center
-          overflow-hidden rounded-xl border border-[#E5EAE2]
-          bg-white px-3 py-5 text-center
-          shadow-[0_2px_10px_rgba(52,70,56,0.05)]
-          transition-all duration-300
-          hover:-translate-y-1 hover:border-[#4F7359]
-          hover:shadow-[0_8px_20px_rgba(52,70,56,0.11)]
-          sm:h-[200px] sm:px-4 sm:py-6
-        "
-      >
-        <span
-          className="
-            relative z-10 mb-4 grid h-20 w-20 place-items-center
-            rounded-xl bg-[#EDF4EC] text-[#E87744]
-            transition-all duration-300
-            group-hover:-translate-y-1 group-hover:bg-[#FFF1E9]
-          "
-        >
-          {Icon && (
-            <Icon
-              size={48}
-              strokeWidth={1.6}
-              className="text-[#E87744] transition-colors duration-300 group-hover:text-[#4F7359]"
-            />
-          )}
-        </span>
-
-        <h3
-          className="
-            relative z-10 max-w-full font-display
-            text-base font-semibold leading-6 text-[#344638]
-            transition-colors duration-300
-            group-hover:text-[#4F7359]
-            sm:text-lg
-          "
-        >
-          {item.title}
-        </h3>
-
-        <span
-          className="
-            relative z-10 mt-2 flex h-7 items-center gap-2
-            text-sm font-semibold text-[#E87744]
-            translate-y-1 opacity-0
-            transition-all duration-300
-            group-hover:translate-y-0 group-hover:opacity-100
-          "
-        >
-          Explore Speciality
-          <ArrowRight
-            size={16}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
-        </span>
-      </Link>
-    </motion.div>
-  );
-}
 
 export default function TechnologyPage() {
   const allItems = useMemo(
     () => [...technologyItems, mammographyTechnology],
     []
   );
+
+    const [specialityItems, setSpecialityItems] = useState([]);
+
+  useEffect(() => {
+    let active = true;
+
+    const fetchSpecialities = async () => {
+      try {
+        const data = await getSpecialities({
+          limit: 100,
+          is_active: 1,
+        });
+
+        const rows = Array.isArray(data)
+          ? data
+          : Array.isArray(data?.rows)
+            ? data.rows
+            : [];
+
+        const mappedSpecialities = rows
+          .filter(
+            (item) =>
+              item.slug &&
+              item.name &&
+              (
+                item.is_active === 1 ||
+                item.is_active === true ||
+                item.is_active === "1"
+              )
+          )
+          .map((item) => ({
+            ...item,
+            title: item.name,
+            Icon: getSpecialityIcon(item.icon_name),
+          }));
+
+        if (active) {
+          setSpecialityItems(mappedSpecialities);
+        }
+      } catch (error) {
+        console.error(
+          "Technology page specialities API error:",
+          error
+        );
+
+        if (active) {
+          setSpecialityItems([]);
+        }
+      }
+    };
+
+    fetchSpecialities();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSpeciality, setSelectedSpeciality] = useState("all");
@@ -642,7 +644,8 @@ export default function TechnologyPage() {
 
       {/* OUR SPECIALITIES - ICON AND NAME CARDS */}
       
-{/* Explore Our Specialities */}
+{/* OUR SPECIALITIES - BACKEND API DATA */}
+
 <section className="bg-[#f4f7f2] py-14 md:py-16">
   <div className="page-container">
     <div className="mb-8 text-center">
@@ -659,14 +662,15 @@ export default function TechnologyPage() {
       </p>
     </div>
 
-    {/* Exactly 4 Specialities in One Row */}
+    {/* Backend Specialities - Exactly Same Card Design */}
+
     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5 md:gap-5">
-      {specialities.slice(0, 5).map((item) => {
+      {specialityItems.slice(0, 5).map((item) => {
         const Icon = item.Icon;
 
         return (
           <Link
-            key={item.slug}
+            key={item.id || item.slug}
             to={`/specialities/${item.slug}`}
             className="group flex flex-col items-center rounded-2xl border border-[#e1e9df] bg-white px-4 py-7 text-center transition duration-300 hover:-translate-y-1 hover:border-[#e87744] hover:shadow-lg md:px-5"
           >
@@ -688,6 +692,7 @@ export default function TechnologyPage() {
     </div>
 
     {/* Know More Button */}
+
     <div className="mt-7 text-center">
       <Link
         to="/specialities"
@@ -699,6 +704,7 @@ export default function TechnologyPage() {
     </div>
   </div>
 </section>
+
 
 
       {/* DISCLAIMER */}

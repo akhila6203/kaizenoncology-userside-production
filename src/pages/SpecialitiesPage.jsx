@@ -11,12 +11,88 @@ import {
 import appointmentsWave from "../assets/appointments-wave.jpg";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { specialities } from "../data/specialitiesData";
+
+// import { specialities as specialityMeta } from "../data/specialitiesData";
+import { getSpecialities } from "../api/specialitiesApi";
+import * as LucideIcons from "lucide-react";
+
+
+const getSpecialityIcon = (iconName) => {
+  if (!iconName || typeof iconName !== "string") {
+    return LucideIcons.Stethoscope;
+  }
+
+  const formattedName = iconName
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map(
+      (word) =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join("");
+
+  return LucideIcons[formattedName] || LucideIcons.Stethoscope;
+};
 
 export default function SpecialitiesPage() {
-    const reduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion();
+
+  const [specialities, setSpecialities] = useState([]);
+
   const [columns, setColumns] = useState(5);
   const [visibleCount, setVisibleCount] = useState(20);
+
+  useEffect(() => {
+    let active = true;
+
+    const fetchSpecialities = async () => {
+      try {
+        const data = await getSpecialities({ limit: 100 });
+
+      const rows = Array.isArray(data)
+  ? data
+  : Array.isArray(data?.data)
+    ? data.data
+    : [];
+
+console.log(
+  "Speciality icon values:",
+  rows.map((item) => ({
+    name: item.name,
+    icon_name: item.icon_name,
+    icon: item.icon,
+    iconName: item.iconName,
+  }))
+);
+
+const mappedSpecialities = rows.map((item) => ({
+  ...item,
+  title: item.name || "",
+  Icon: getSpecialityIcon(
+    item.icon_name || item.icon || item.iconName
+  ),
+}));
+
+        if (active) {
+          setSpecialities(mappedSpecialities);
+        }
+      } catch (error) {
+        console.error("Specialities API error:", error);
+
+        if (active) {
+          setSpecialities([]);
+        }
+      }
+    };
+
+    fetchSpecialities();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
 
   // Responsive columns
@@ -159,17 +235,15 @@ export default function SpecialitiesPage() {
                     
                   "
                 >
-                  {Icon && (
-                    <Icon
-                      size={48}
-                      strokeWidth={1.6}
-                      className="
-                        text-[#e87744]
-                        transition-colors duration-300
-                        group-hover:text-[#4f7359]
-                      "
-                    />
-                  )}
+                 <Icon
+  size={48}
+  strokeWidth={1.6}
+  className="
+    text-[#e87744]
+    transition-colors duration-300
+    group-hover:text-[#4f7359]
+  "
+/>
                 </span>
 
                 {/* Speciality name */}

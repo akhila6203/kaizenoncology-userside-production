@@ -1,7 +1,6 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   CheckCircle2,
@@ -15,89 +14,99 @@ import {
 import CardSlider from "../components/CardSlider";
 import { allTechnologyItems } from "../data/technologyData";
 
-import { getSpecialityBySlug } from "../data/specialitiesData";
+import {
+  getSpecialityBySlug as getLocalSpecialityBySlug,
+} from "../data/specialitiesData";
 
-import { doctors } from "../data/doctorsData";
+import {
+  getSpecialityBySlug,
+  mediaUrl,
+} from "../api/specialitiesApi";
+import { getPublicStories } from "../api/storiesApi";
+
+import { getDoctors } from "../api/doctorsApi";
+import { getSpecialityFaqs } from "../api/faqsApi";
+
 import ContentVideoCarousel from "../components/ContentVideoCarousel";
 
 import appointmentsWave from "../assets/appointments-wave.jpg";
 // Existing local project images
-import assessmentImage from "../assets/home/assessment.jpg";
-import breastCareOneImage from "../assets/home/breastCare1.jpg";
-import breastCareTwoImage from "../assets/home/breastCare2.jpg";
-import breastScreeningImage from "../assets/home/breast-screening.jpg";
-import diagnosisImage from "../assets/home/diagnosis.jpg";
-import diagnosticImagingImage from "../assets/home/diagnostic-imaging.jpg";
-import medicalOncologyImage from "../assets/home/medical-oncology.jpg";
-import patientCareImage from "../assets/home/patientCare.jpg";
-import patientSupportImage from "../assets/home/patient-support.jpg";
-import radiationOncologyImage from "../assets/home/radiation-oncology.jpg";
-import surgicalOncologyImage from "../assets/home/surgical-oncology.jpg";
-import treatmentImage from "../assets/home/treatment.jpg";
+// import assessmentImage from "../assets/home/assessment.jpg";
+// import breastCareOneImage from "../assets/home/breastCare1.jpg";
+// import breastCareTwoImage from "../assets/home/breastCare2.jpg";
+// import breastScreeningImage from "../assets/home/breast-screening.jpg";
+// import diagnosisImage from "../assets/home/diagnosis.jpg";
+// import diagnosticImagingImage from "../assets/home/diagnostic-imaging.jpg";
+// import medicalOncologyImage from "../assets/home/medical-oncology.jpg";
+// import patientCareImage from "../assets/home/patientCare.jpg";
+// import patientSupportImage from "../assets/home/patient-support.jpg";
+// import radiationOncologyImage from "../assets/home/radiation-oncology.jpg";
+// import surgicalOncologyImage from "../assets/home/surgical-oncology.jpg";
+// import treatmentImage from "../assets/home/treatment.jpg";
 
 // Three relevant images per speciality
-const specialityImages = {
-  "medical-oncology": [
-    medicalOncologyImage,
-    treatmentImage,
-    patientCareImage,
-  ],
-  "surgical-oncology": [
-    surgicalOncologyImage,
-    diagnosisImage,
-    treatmentImage,
-  ],
-  "radiation-oncology": [
-    radiationOncologyImage,
-    diagnosticImagingImage,
-    treatmentImage,
-  ],
-  "haemato-oncology": [
-    medicalOncologyImage,
-    patientCareImage,
-    assessmentImage,
-  ],
-  "gynaecological-oncology": [
-    breastCareTwoImage,
-    breastScreeningImage,
-    treatmentImage,
-  ],
-  "paediatric-oncology": [
-    patientCareImage,
-    patientSupportImage,
-    assessmentImage,
-  ],
-  "neuro-oncology": [
-    diagnosisImage,
-    diagnosticImagingImage,
-    radiationOncologyImage,
-  ],
-  "onco-radiology": [
-    diagnosticImagingImage,
-    diagnosisImage,
-    assessmentImage,
-  ],
-  "nuclear-medicine-theranostics": [
-    diagnosticImagingImage,
-    radiationOncologyImage,
-    treatmentImage,
-  ],
-  "interventional-oncology": [
-    diagnosisImage,
-    treatmentImage,
-    surgicalOncologyImage,
-  ],
-  "preventive-oncology": [
-    breastScreeningImage,
-    breastCareOneImage,
-    assessmentImage,
-  ],
-  "palliative-supportive-care": [
-    patientSupportImage,
-    patientCareImage,
-    breastCareTwoImage,
-  ],
-};
+// const specialityImages = {
+//   "medical-oncology": [
+//     medicalOncologyImage,
+//     treatmentImage,
+//     patientCareImage,
+//   ],
+//   "surgical-oncology": [
+//     surgicalOncologyImage,
+//     diagnosisImage,
+//     treatmentImage,
+//   ],
+//   "radiation-oncology": [
+//     radiationOncologyImage,
+//     diagnosticImagingImage,
+//     treatmentImage,
+//   ],
+//   "haemato-oncology": [
+//     medicalOncologyImage,
+//     patientCareImage,
+//     assessmentImage,
+//   ],
+//   "gynaecological-oncology": [
+//     breastCareTwoImage,
+//     breastScreeningImage,
+//     treatmentImage,
+//   ],
+//   "paediatric-oncology": [
+//     patientCareImage,
+//     patientSupportImage,
+//     assessmentImage,
+//   ],
+//   "neuro-oncology": [
+//     diagnosisImage,
+//     diagnosticImagingImage,
+//     radiationOncologyImage,
+//   ],
+//   "onco-radiology": [
+//     diagnosticImagingImage,
+//     diagnosisImage,
+//     assessmentImage,
+//   ],
+//   "nuclear-medicine-theranostics": [
+//     diagnosticImagingImage,
+//     radiationOncologyImage,
+//     treatmentImage,
+//   ],
+//   "interventional-oncology": [
+//     diagnosisImage,
+//     treatmentImage,
+//     surgicalOncologyImage,
+//   ],
+//   "preventive-oncology": [
+//     breastScreeningImage,
+//     breastCareOneImage,
+//     assessmentImage,
+//   ],
+//   "palliative-supportive-care": [
+//     patientSupportImage,
+//     patientCareImage,
+//     breastCareTwoImage,
+//   ],
+// };
 
 function getYouTubeId(url = "") {
   try {
@@ -128,19 +137,275 @@ function getYouTubeId(url = "") {
 
 export default function SpecialityDetailPage() {
   const { slug } = useParams();
+
   const reduceMotion = useReducedMotion();
-  const speciality = getSpecialityBySlug(slug);
 
-   const [openFAQIndex, setOpenFAQIndex] = useState(0)
+  const localSpeciality = getLocalSpecialityBySlug(slug);
 
-  if (!speciality) {
-    return <Navigate to="/specialities" replace />;
+  const [apiSpeciality, setApiSpeciality] = useState(null);
+  const [specialityLoading, setSpecialityLoading] = useState(true);
+
+  const [doctors, setDoctors] = useState([]);
+const [doctorsLoading, setDoctorsLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+
+    const fetchSpeciality = async () => {
+      try {
+        setSpecialityLoading(true);
+
+        const data = await getSpecialityBySlug(slug);
+
+        if (active) {
+          setApiSpeciality(data);
+        }
+      } catch (error) {
+        console.error("Speciality detail API error:", error);
+
+        if (active) {
+          setApiSpeciality(null);
+        }
+      } finally {
+        if (active) {
+          setSpecialityLoading(false);
+        }
+      }
+    };
+
+    fetchSpeciality();
+
+    return () => {
+      active = false;
+    };
+  }, [slug]);
+
+  // FETCH DOCTORS FROM BACKEND API
+useEffect(() => {
+  let isActive = true;
+
+  const fetchDoctors = async () => {
+    try {
+      setDoctorsLoading(true);
+
+      const rows = await getDoctors({ limit: 100 });
+
+      const formattedDoctors = rows.map((doctor) => {
+        const specialityNames = Array.isArray(doctor.speciality_names)
+          ? doctor.speciality_names
+          : typeof doctor.speciality_names === "string"
+            ? doctor.speciality_names
+                .split(",")
+                .map((name) => name.trim())
+                .filter(Boolean)
+            : doctor.speciality_name
+              ? [doctor.speciality_name]
+              : [];
+
+        return {
+          ...doctor,
+          specialityNames,
+          speciality: specialityNames.join(", ") ||
+            doctor.speciality_name ||
+            "Oncology",
+          image: mediaUrl(doctor.photo),
+          experience: doctor.experience_years ?? 0,
+          location: doctor.hospital_location || "",
+        };
+      });
+
+      if (isActive) {
+        setDoctors(formattedDoctors);
+      }
+    } catch (error) {
+      console.error("Failed to load speciality doctors:", error);
+
+      if (isActive) {
+        setDoctors([]);
+      }
+    } finally {
+      if (isActive) {
+        setDoctorsLoading(false);
+      }
+    }
+  };
+
+  fetchDoctors();
+
+  return () => {
+    isActive = false;
+  };
+}, []);
+
+  const speciality = apiSpeciality
+  ? {
+      ...localSpeciality,
+      ...apiSpeciality,
+
+      // Backend speciality name
+      title: apiSpeciality.name || localSpeciality?.title,
+
+      // Backend About content
+      description: apiSpeciality.about_content || "",
+
+      // Backend When to Consult
+      whenToConsult: apiSpeciality.when_to_consult || "",
+
+      // Backend About image
+      aboutImage: mediaUrl(apiSpeciality.about_image),
+
+      // Backend Care & Treatment Areas
+      // careAreas: Array.isArray(apiSpeciality.highlights)
+      //   ? apiSpeciality.highlights
+      //   : [],
+      careAreas: Array.isArray(apiSpeciality.highlights)
+  ? apiSpeciality.highlights.filter(
+      (item) => typeof item === "string" && item.trim()
+    )
+  : [],
+
+      // Backend Sub-specialities
+      subSpecialties: Array.isArray(apiSpeciality.subspecialities)
+        ? apiSpeciality.subspecialities.map((item) =>
+            typeof item === "string" ? item : item.name
+          )
+        : [],
+
+      // Backend Gallery Images
+      galleryImages: Array.isArray(apiSpeciality.gallery_images)
+  ? apiSpeciality.gallery_images
+      .map((image) => ({
+        ...image,
+        imageUrl: mediaUrl(image.image_path),
+      }))
+      .filter((image) => image.imageUrl)
+  : [],
+    }
+  : localSpeciality;
+
+  const [openFAQIndex, setOpenFAQIndex] = useState(0);
+const [specialityFaqs, setSpecialityFaqs] = useState([]);
+const [faqsLoading, setFaqsLoading] = useState(true);
+
+const [patientStories, setPatientStories] = useState([]);
+
+
+// FETCH FAQs FOR THE CURRENT SPECIALITY FROM BACKEND
+useEffect(() => {
+  let isActive = true;
+
+  const fetchSpecialityFaqs = async () => {
+    try {
+      setFaqsLoading(true);
+      setSpecialityFaqs([]);
+      setOpenFAQIndex(0);
+
+      // Use the speciality ID received from the backend
+      const specialityId = apiSpeciality?.id;
+
+      if (!specialityId) {
+        if (isActive) {
+          setSpecialityFaqs([]);
+          setFaqsLoading(false);
+        }
+        return;
+      }
+
+      const rows = await getSpecialityFaqs(specialityId);
+
+      if (isActive) {
+        setSpecialityFaqs(
+          Array.isArray(rows) ? rows : []
+        );
+      }
+    } catch (error) {
+      console.error("Speciality FAQs API error:", error);
+
+      if (isActive) {
+        setSpecialityFaqs([]);
+      }
+    } finally {
+      if (isActive) {
+        setFaqsLoading(false);
+      }
+    }
+  };
+
+  fetchSpecialityFaqs();
+
+  return () => {
+    isActive = false;
+  };
+}, [apiSpeciality?.id, slug]);
+
+
+useEffect(() => {
+  let isActive = true;
+
+  const fetchPatientStories = async () => {
+    try {
+      const stories = await getPublicStories();
+
+      // Match backend speciality name with current page speciality
+      const normalizeName = (value = "") =>
+        value.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+      const filteredStories = stories.filter((story) => {
+        return (
+          normalizeName(story.specialityName) ===
+          normalizeName(speciality?.title)
+        );
+      });
+
+      if (isActive) {
+        setPatientStories(filteredStories);
+      }
+    } catch (error) {
+      console.error("Patient stories API error:", error);
+
+      if (isActive) {
+        setPatientStories([]);
+      }
+    }
+  };
+
+  if (speciality?.title) {
+    fetchPatientStories();
   }
 
+  return () => {
+    isActive = false;
+  };
+}, [speciality?.title]);
+
+
+  if (specialityLoading) {
+  return null;
+}
+
+if (!speciality) {
+  return <Navigate to="/specialities" replace />;
+}
+
   // Only show doctors whose speciality exactly matches this page.
-  const specialityDoctors = doctors.filter(
-    (doctor) => doctor.speciality === speciality.title
+  // NORMALIZE SPECIALITY NAMES
+const normalizeSpeciality = (value = "") =>
+  String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+
+// CURRENT SPECIALITY NAME
+const currentSpeciality = normalizeSpeciality(speciality.title);
+
+// FILTER BACKEND DOCTORS BY SPECIALITY
+const specialityDoctors = doctors.filter((doctor) => {
+  const doctorSpecialities = doctor.specialityNames || [];
+
+  return doctorSpecialities.some(
+    (name) => normalizeSpeciality(name) === currentSpeciality
   );
+});
 
   // Display only technologies related to the current speciality.
 const specialityTechnologies = allTechnologyItems.filter((technology) =>
@@ -186,31 +451,49 @@ const renderTechnologyCard = (technology) => (
     </div>
   </Link>
 );
+
+const testimonialVideos = patientStories.map((story) => ({
+  id: story.id,
+  title: story.title || "Patient Story",
+  specialityName: story.specialityName || speciality.title,
+  category: story.specialityName || speciality.title,
+  youtubeId: story.youtubeId,
+  video_url: story.video_url,
+  href: story.href,
+  thumbnail: story.thumbnail,
+}));
+// const testimonialVideos = patientStories.map((story) => ({
+//   id: story.id,
+//   title: story.title || story.patientName || "Patient Story",
+//   category: story.specialityName || speciality.title,
+//   href: story.href,
+//   thumbnail: story.thumbnail,
+// }));
+
   // Only show YouTube testimonial videos belonging to matching doctors.
-  const testimonialVideos = specialityDoctors.flatMap((doctor) =>
-    (doctor.testimonialVideos || [])
-      .map((video, index) => {
-        const videoId = getYouTubeId(video.youtubeUrl || "");
-        if (!videoId) return null;
+// Patient stories fetched from backend for the current speciality.
+// const testimonialVideos = patientStories
+//   .map((story) => {
+//     const videoUrl = story.video_url || story.youtube_url || "";
+//     const videoId = getYouTubeId(videoUrl);
 
-        return {
-          id: `${doctor.id}-testimonial-${index}`,
-          title: video.title || `${doctor.name} – Patient Story`,
-          category: speciality.title,
-          href: video.youtubeUrl,
-          thumbnail:
-            video.thumbnail ||
-            `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-        };
-      })
-      .filter(Boolean)
-  );
+//     if (!videoId) return null;
 
-  const images = specialityImages[speciality.slug] || [
-    assessmentImage,
-    patientCareImage,
-    treatmentImage,
-  ];
+//     return {
+//       id: story.id,
+//       title:
+//         story.patient_name ||
+//         story.title ||
+//         "Patient Story",
+//       category: speciality.title,
+//       href: videoUrl,
+//       thumbnail:
+//         story.thumbnail ||
+//         `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+//     };
+//   })
+//   .filter(Boolean);
+
 
   const doctorGridClass =
     specialityDoctors.length === 1
@@ -220,9 +503,9 @@ const renderTechnologyCard = (technology) => (
         : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#fffdf9] text-ink">
+    // <main className="min-h-screen overflow-hidden bg-[#fffdf9] text-ink">
+    <main className="flex min-h-screen flex-col overflow-hidden bg-[#fffdf9] text-ink">
 
-      {/* Breadcrumb */}
       {/* BREADCRUMB */}
 <nav
   aria-label="Breadcrumb"
@@ -271,8 +554,14 @@ const renderTechnologyCard = (technology) => (
 
 
       {/* About speciality */}
-      <section className="w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-
+      {/* <section className="w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20"> */}
+      {/* About speciality - show only when content exists */}
+{(
+  speciality.description?.trim() ||
+  speciality.aboutImage ||
+  speciality.whenToConsult?.trim()
+) && (
+<section className="w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
         {/* Center heading - no repeated heading on the left */}
         <motion.div
           initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }}
@@ -348,11 +637,13 @@ const renderTechnologyCard = (technology) => (
               transition={{ duration: 0.35 }}
               className="overflow-hidden rounded-[2rem] border border-line bg-white p-2 shadow-[0_18px_45px_rgba(38,59,80,0.13)]"
             >
-              <img
-                src={images[0]}
-                alt={`${speciality.title} care`}
-                className="h-[280px] w-full rounded-[1.5rem] object-cover sm:h-[380px] lg:h-[460px]"
-              />
+              {speciality.aboutImage && (
+  <img
+    src={speciality.aboutImage}
+    alt={`${speciality.title} care`}
+    className="h-[280px] w-full rounded-[1.5rem] object-cover sm:h-[380px] lg:h-[460px]"
+  />
+)}
             </motion.div>
 
             <div className="absolute -bottom-5 -left-5 -z-10 h-28 w-28 rounded-[2rem] bg-[#e8f0ea] sm:h-36 sm:w-36" />
@@ -360,6 +651,7 @@ const renderTechnologyCard = (technology) => (
           </motion.div>
         </div>
       </section>
+    )}
 
       {/* Sub-specialities */}
       {speciality.subSpecialties?.length > 0 && (
@@ -409,8 +701,21 @@ const renderTechnologyCard = (technology) => (
       )}
 
       {/* Care & Treatment Areas */}
-      <section className="w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-        <div className="mx-auto grid max-w-[1500px] items-center gap-10 lg:grid-cols-[1fr_0.95fr] lg:gap-14">
+      {/* <section className="w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20"> */}
+      {/* Care & Treatment Areas - show only when data exists */}
+{(
+  (speciality.careAreas?.length > 0) ||
+  (speciality.galleryImages?.length > 0)
+) && (
+<section className="w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+        <div
+  className={`mx-auto max-w-[1500px] items-center gap-10 lg:gap-14 ${
+    speciality.galleryImages?.length > 0
+      ? "grid lg:grid-cols-[1fr_0.95fr]"
+      : "grid grid-cols-1"
+  }`}
+>
+        {/* <div className="mx-auto grid max-w-[1500px] items-center gap-10 lg:grid-cols-[1fr_0.95fr] lg:gap-14"> */}
 
           {/* Treatment points */}
           <motion.div
@@ -428,7 +733,10 @@ const renderTechnologyCard = (technology) => (
             </h2>
 
             <ul className="mt-8 grid gap-x-6 gap-y-4 sm:grid-cols-2">
-              {speciality.careAreas.map((area, index) => (
+              {/* {speciality.careAreas.map((area, index) => ( */}
+              {(speciality.careAreas || [])
+                .filter((area) => area?.trim())
+                .map((area, index) => (
                 <motion.li
                   key={area}
                   initial={{
@@ -460,48 +768,57 @@ const renderTechnologyCard = (technology) => (
           </motion.div>
 
           {/* Treatment images */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-5">
-            <motion.div
-              whileHover={reduceMotion ? {} : { y: -7, scale: 1.01 }}
-              transition={{ duration: 0.3 }}
-              className="row-span-2 overflow-hidden rounded-[1.5rem] border border-line bg-white p-1.5 shadow-md"
-            >
-              <img
-                src={images[0]}
-                alt={`${speciality.title} clinical care`}
-                loading="lazy"
-                className="h-full min-h-[300px] w-full rounded-[1.1rem] object-cover sm:min-h-[410px]"
-              />
-            </motion.div>
+          
+{/* Treatment Gallery Images - Backend */}
+{speciality.galleryImages?.length > 0 && (
+  <div
+    className={`grid gap-4 sm:gap-5 ${
+      speciality.galleryImages.length === 1
+        ? "grid-cols-1"
+        : "grid-cols-2"
+    }`}
+  >
+    {speciality.galleryImages.map((image, index) => {
+      const totalImages = speciality.galleryImages.length;
 
-            <motion.div
-              whileHover={reduceMotion ? {} : { y: -7, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden rounded-[1.5rem] border border-line bg-white p-1.5 shadow-md"
-            >
-              <img
-                src={images[1]}
-                alt={`${speciality.title} treatment`}
-                loading="lazy"
-                className="h-[140px] w-full rounded-[1.1rem] object-cover sm:h-[195px]"
-              />
-            </motion.div>
+      const isLargeImage = totalImages === 3 && index === 0;
 
-            <motion.div
-              whileHover={reduceMotion ? {} : { y: -7, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden rounded-[1.5rem] border border-line bg-white p-1.5 shadow-md"
-            >
-              <img
-                src={images[2]}
-                alt={`${speciality.title} patient care`}
-                loading="lazy"
-                className="h-[140px] w-full rounded-[1.1rem] object-cover sm:h-[195px]"
-              />
-            </motion.div>
+      return (
+        <motion.div
+          key={image.id || image.image_path}
+          whileHover={reduceMotion ? {} : { y: -7, scale: 1.01 }}
+          transition={{ duration: 0.3 }}
+          className={`overflow-hidden rounded-[1.5rem] border border-line bg-white p-1.5 shadow-md ${
+            isLargeImage ? "row-span-2" : ""
+          }`}
+        >
+          <img
+            src={image.imageUrl}
+            alt={
+              image.alt_text ||
+              `${speciality.title} clinical care ${index + 1}`
+            }
+            loading="lazy"
+            className={`w-full rounded-[1.1rem] object-cover ${
+              totalImages === 1
+                ? "h-[300px] sm:h-[410px]"
+                : totalImages === 2
+                  ? "h-[220px] sm:h-[300px]"
+                  : isLargeImage
+                    ? "h-full min-h-[300px] sm:min-h-[410px]"
+                    : totalImages === 3
+                      ? "h-[140px] sm:h-[195px]"
+                      : "h-[160px] sm:h-[210px]"
+                    }`}
+                  />
+                </motion.div>
+              );
+            })}
           </div>
+        )}
         </div>
       </section>
+    )}
 
 
      {/* SPECIALITY RELATED TECHNOLOGIES */}
@@ -560,7 +877,8 @@ const renderTechnologyCard = (technology) => (
 )}
 
       {/* Full-width Contact / Appointment CTA */}
-      <section className="w-full ">
+      {/* <section className="w-full "> */}
+      <section className="flex w-full flex-1 items-center">
         <motion.div
           initial={{
             opacity: 0,
@@ -570,12 +888,10 @@ const renderTechnologyCard = (technology) => (
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: reduceMotion ? 0 : 0.65 }}
           whileHover={reduceMotion ? {} : { y: -3 }}
-          className="relative w-full overflow-hidden border border-[#b8d2bd] bg-gradient-to-r from-[#0f3013] via-[#162b17] to-[#052601] px-6 py-9 shadow-[0_12px_35px_rgba(48,91,58,0.12)] sm:px-12 sm:py-13 lg:px-24 lg:py-14"
+          className="relative my-6 w-full overflow-hidden border border-[#b8d2bd] bg-gradient-to-r from-[#0f3013] via-[#162b17] to-[#052601] px-6 py-9 shadow-[0_12px_35px_rgba(48,91,58,0.12)] sm:my-8 sm:px-12 sm:py-12 lg:px-24 lg:py-14"
+          // className="relative w-full overflow-hidden border border-[#b8d2bd] bg-gradient-to-r from-[#0f3013] via-[#162b17] to-[#052601] px-6 py-9 shadow-[0_12px_35px_rgba(48,91,58,0.12)] sm:px-12 sm:py-13 lg:px-24 lg:py-14"
         >
-          {/* Decorative background circles */}
-          {/* <div className="pointer-events-none absolute -right-12 -top-16 h-48 w-48 rounded-full bg-[#c9dfcb]/60" /> */}
-          {/* <div className="pointer-events-none absolute -bottom-20 right-[28%] h-48 w-48 rounded-full bg-white/40" /> */}
-
+         
           <div className="relative z-10 flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
 
             <div className="max-w-1xl">
@@ -617,7 +933,8 @@ const renderTechnologyCard = (technology) => (
       </section>
 
       {/* Matching speciality doctors only */}
-      {specialityDoctors.length > 0 && (
+      {/* {specialityDoctors.length > 0 && ( */}
+      {!doctorsLoading && specialityDoctors.length > 0 && (
         <section className="bg-[#f6f9f6] px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
           <div className="mx-auto max-w-[1500px]">
 
@@ -739,7 +1056,8 @@ const renderTechnologyCard = (technology) => (
 
 
       {/* SPECIALITY FAQs */}
-      {speciality.faqs?.length > 0 && (
+      {/* {speciality.faqs?.length > 0 && ( */}
+      {!faqsLoading && specialityFaqs.length > 0 && (
         <section className="bg-mist px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
           <div className="mx-auto max-w-5xl">
 
@@ -759,12 +1077,14 @@ const renderTechnologyCard = (technology) => (
             </div>
 
             <div className="space-y-3">
-              {speciality.faqs.map((faq, index) => {
+              {/* {speciality.faqs.map((faq, index) => { */}
+              {specialityFaqs.map((faq, index) => {
                 const isOpen = openFAQIndex === index;
 
                 return (
                   <div
-                    key={index}
+                    // key={index}
+                    key={faq.id || index}
                     className={`overflow-hidden rounded-xl border bg-white transition-all duration-300 ${
                       isOpen
                         ? "border-royal shadow-sm"
@@ -812,9 +1132,9 @@ const renderTechnologyCard = (technology) => (
           </div>
         </section>
       )}
-
-
     </main>
   );
 }
+
+
 

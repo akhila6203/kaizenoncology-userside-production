@@ -2,9 +2,30 @@
 import { Link } from "react-router-dom";
 import SectionTitle from "../SectionTitle";
 import BlogCard from "../health-library/BlogCard";
-import { healthBlogs } from "../../data/healthLibraryData";
+
+import { useEffect, useState } from "react";
+import { getBlogs } from "../../api/blogsApi";
 
 export default function HomeBlogs() {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const data = await getBlogs({
+          page: 1,
+          limit: 4,
+        });
+
+        setBlogs(data);
+      } catch (error) {
+        console.error("Failed to fetch home blogs:", error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
   return (
     <section className="section-padding bg-mist">
       <div className="page-container">
@@ -15,7 +36,7 @@ export default function HomeBlogs() {
         />
 
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {healthBlogs.slice(0, 4).map((blog) => (
+          {blogs.slice(0, 4).map((blog) => (
             <BlogCard key={blog.id || blog.slug} blog={blog} />
           ))}
         </div>

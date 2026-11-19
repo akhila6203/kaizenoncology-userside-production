@@ -6,6 +6,42 @@ import {
   useState,
 } from "react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import VideoPlayerModal from "./VideoPlayerModal";
+
+const getYouTubeVideoId = (value = "") => {
+  if (!value) return "";
+
+  const input = String(value).trim();
+
+  if (/^[a-zA-Z0-9_-]{11}$/.test(input)) {
+    return input;
+  }
+
+  try {
+    const url = new URL(input);
+    const host = url.hostname.replace(/^www\./, "");
+
+    if (host === "youtu.be") {
+      return url.pathname.split("/").filter(Boolean)[0] || "";
+    }
+
+    if (
+      host === "youtube.com" ||
+      host === "m.youtube.com" ||
+      host === "youtube-nocookie.com"
+    ) {
+      return (
+        url.searchParams.get("v") ||
+        url.pathname.match(/\/(?:embed|shorts)\/([^/?]+)/)?.[1] ||
+        ""
+      );
+    }
+  } catch {
+    return "";
+  }
+
+  return "";
+};
 
 export default function ContentVideoCarousel({
   eyebrow = "WATCH & LEARN",
@@ -21,6 +57,7 @@ export default function ContentVideoCarousel({
   const [visible, setVisible] = useState(4);
   const [position, setPosition] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   // Prevent multiple arrow clicks from moving beyond the loop boundary.
   const isAnimating = useRef(false);
@@ -220,7 +257,14 @@ export default function ContentVideoCarousel({
                   className="box-border min-w-0 shrink-0 p-2"
                   style={{ flex: `0 0 ${cardWidth}` }}
                 >
-                  <a
+                  <button
+                    type="button"
+                    onClick={() => setSelectedVideo(item)}
+                    aria-label={`Watch ${item.title || "video"}`}
+                    className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-line bg-white text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium"
+                  >
+
+                  {/* <a
                     href={item.href || "#"}
                     target={item.href ? "_blank" : undefined}
                     rel={item.href ? "noopener noreferrer" : undefined}
@@ -231,7 +275,8 @@ export default function ContentVideoCarousel({
                     }
                     aria-label={`Watch ${item.title || "video"}`}
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium"
-                  >
+                  > */}
+
                     {/* Thumbnail */}
                     <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-ice">
                       {item.thumbnail ? (
@@ -254,6 +299,25 @@ export default function ContentVideoCarousel({
 
                     {/* Card content */}
                     <div className="flex flex-1 flex-col p-3 sm:p-4">
+  {(item.specialityName || item.category) && (
+    <span className="text-xs font-bold uppercase tracking-wider text-sky">
+      {item.specialityName || item.category}
+    </span>
+  )}
+
+  {item.title && (
+    <h3 className="mt-2 line-clamp-3 text-sm font-bold leading-6 text-navy sm:text-base">
+      {item.title}
+    </h3>
+  )}
+
+  {item.description && (
+    <p className="mt-2 text-sm leading-6 text-[#647368]">
+      {item.description}
+    </p>
+  )}
+</div>
+                    {/* <div className="flex flex-1 flex-col p-3 sm:p-4">
                       {item.category && (
                         <span className="text-xs font-bold uppercase tracking-wider text-sky">
                           {item.category}
@@ -271,14 +335,22 @@ export default function ContentVideoCarousel({
                           {item.description}
                         </p>
                       )}
-                    </div>
-                  </a>
+                    </div> */}
+                    </button>
+                  {/* </a> */}
                 </article>
               ))}
             </div>
           </div>
         </div>
       </div>
+      
+
+      <VideoPlayerModal
+  video={selectedVideo}
+  onClose={() => setSelectedVideo(null)}
+/>
+
     </section>
   );
 }

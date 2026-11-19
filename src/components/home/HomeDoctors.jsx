@@ -2,13 +2,83 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, BriefcaseMedical, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import { doctors } from "../../data/doctorsData";
+import { useEffect, useState } from "react";
+
+import { getDoctors } from "../../api/doctorsApi";
+import { mediaUrl } from "../../api/specialitiesApi";
+
 
 export default function HomeDoctors() {
   const reduceMotion = useReducedMotion();
 
-  // Home page lo first 4 doctors matrame display avutharu
+  const [doctors, setDoctors] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // FETCH ACTIVE DOCTORS FROM BACKEND
+  useEffect(() => {
+    let isActive = true;
+
+    const fetchDoctors = async () => {
+      try {
+        setLoading(true);
+
+        const rows = await getDoctors({ limit: 100 });
+
+        const formattedDoctors = rows.map((doctor) => {
+          const specialityNames = Array.isArray(doctor.speciality_names)
+            ? doctor.speciality_names
+            : typeof doctor.speciality_names === "string"
+              ? doctor.speciality_names
+                  .split(",")
+                  .map((name) => name.trim())
+                  .filter(Boolean)
+              : doctor.speciality_name
+                ? [doctor.speciality_name]
+                : [];
+
+          return {
+            ...doctor,
+            specialityNames,
+            speciality:
+              specialityNames.join(", ") ||
+              doctor.speciality_name ||
+              "Oncology",
+            image: mediaUrl(doctor.photo),
+            experience: doctor.experience_years ?? 0,
+            location: doctor.hospital_location || "",
+          };
+        });
+
+        if (isActive) {
+          setDoctors(formattedDoctors);
+        }
+      } catch (error) {
+        console.error("Home doctors API error:", error);
+
+        if (isActive) {
+          setDoctors([]);
+        }
+      } finally {
+        if (isActive) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchDoctors();
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
+
+  // Homepage lo first 4 backend doctors matrame display
   const homeDoctors = doctors.slice(0, 4);
+
+  // Avoid showing an empty doctors section while loading
+  if (loading || homeDoctors.length === 0) {
+    return null;
+  }
 
   return (
     <section className="section-padding bg-mist">
@@ -133,61 +203,3 @@ export default function HomeDoctors() {
   );
 }
 
-
-
-// import { motion, useReducedMotion } from "framer-motion";
-// import { ArrowUpRight } from "lucide-react";
-// import { Link } from "react-router-dom";
-// import SectionTitle from "../SectionTitle";
-// import { doctors } from "../../data/siteData";
-
-// export default function HomeDoctors() {
-//   const reduceMotion = useReducedMotion();
-
-//   return (
-//     <section className="section-padding bg-mist">
-//       <div className="page-container">
-//         <SectionTitle
-//           eyebrow="MEET THE TEAM"
-//           title="Guidance from people who care"
-//           description="Specialist profiles shown here come from the website data. Confirm names, qualifications and clinic times with the hospital before publishing."
-//         />
-//         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-//           {doctors.map((doctor, index) => (
-//             <motion.article
-//               key={doctor.name}
-//               initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               viewport={{ once: true }}
-//               transition={{ delay: reduceMotion ? 0 : index * 0.1 }}
-//               whileHover={reduceMotion ? {} : { y: -6 }}
-//               className="overflow-hidden rounded-3xl bg-white shadow-premium"
-//             >
-//               <img
-//                 src={doctor.image}
-//                 alt={`${doctor.name}, ${doctor.role}`}
-//                 loading="lazy"
-//                 className="h-[260px] w-full object-cover object-top sm:h-[300px]"
-//               />
-//               <div className="p-6">
-//                 <h3 className="display-font text-xl font-semibold text-heading">{doctor.name}</h3>
-//                 <p className="mt-2 text-[16px] text-ink">{doctor.role}</p>
-//                 <Link
-//                   to="/appointments"
-//                   className="mt-5 inline-flex items-center gap-2 text-[16px] font-bold text-royal"
-//                 >
-//                   Request an appointment <ArrowUpRight size={16} />
-//                 </Link>
-//               </div>
-//             </motion.article>
-//           ))}
-//         </div>
-//         <div className="mt-8 text-center">
-//           <Link to="/our-team" className="btn-secondary">
-//             View our team <ArrowUpRight size={16} />
-//           </Link>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }

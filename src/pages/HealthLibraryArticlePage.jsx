@@ -1,18 +1,73 @@
-
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   ArrowLeft,
   Clock3,
   BookOpen,
+  CalendarDays,
 } from "lucide-react";
 
-import { healthBlogs } from "../data/healthLibraryData";
+import { getBlogBySlug } from "../api/blogsApi";
 import appointmentsWave from "../assets/appointments-wave.jpg";
+
+
+const formatAddedDate = (date) => {
+  if (!date) return "";
+
+  const parsedDate = new Date(date);
+
+  if (Number.isNaN(parsedDate.getTime())) return "";
+
+  return parsedDate.toLocaleString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+};
 
 export default function HealthLibraryArticlePage() {
   const { slug } = useParams();
 
-  const blog = healthBlogs.find((item) => item.slug === slug);
+  const [blog, setBlog] = useState(null);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  let active = true;
+
+  const loadBlog = async () => {
+    try {
+      const data = await getBlogBySlug(slug);
+
+      if (active) setBlog(data);
+    } catch (error) {
+      console.error("Unable to load article:", error);
+
+      if (active) setBlog(null);
+    } finally {
+      if (active) setLoading(false);
+    }
+  };
+
+  loadBlog();
+
+  return () => {
+    active = false;
+  };
+}, [slug]);
+
+
+if (loading) {
+  return (
+    <main className="flex min-h-[65vh] items-center justify-center bg-white">
+      <p className="font-semibold text-[#4F7359]">
+        Loading article...
+      </p>
+    </main>
+  );
+}
 
   if (!blog) {
     return (
@@ -162,8 +217,36 @@ export default function HealthLibraryArticlePage() {
         {/* CENTERED ARTICLE HEADING */}
         <header className="mx-auto mb-12 max-w-5xl text-center">
 
-          {/* CATEGORY AND READ TIME */}
-          <div className="mb-7 flex flex-wrap items-center justify-center gap-4">
+          
+{/* CATEGORY, SPECIALITY, READ TIME & ADDED DATE */}
+<div className="mb-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
+
+  {/* SPECIALITY */}
+  {blog.specialityName && (
+    <span className="inline-flex items-center rounded-full bg-[#E8F0EA] px-5 py-2 text-sm font-bold uppercase tracking-wider text-[#4F7359]">
+      {blog.specialityName}
+    </span>
+  )}
+
+  {/* READ TIME */}
+  {blog.readTime && (
+    <span className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-semibold text-[#3D4A40]">
+      <Clock3 size={17} className="shrink-0 text-[#E87744]" />
+      {blog.readTime}
+    </span>
+  )}
+
+  {/* ARTICLE ADDED DATE & TIME */}
+  {blog.createdAt && (
+    <span className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-medium text-[#68766B]">
+      <CalendarDays size={17} className="shrink-0 text-[#E87744]" />
+      Added on {formatAddedDate(blog.createdAt)}
+    </span>
+  )}
+
+</div>
+
+          {/* <div className="mb-7 flex flex-wrap items-center justify-center gap-4">
 
             <span className="rounded-full bg-[#E8F0EA] px-5 py-2 text-sm font-bold uppercase tracking-wider text-[#4F7359]">
               {blog.category}
@@ -177,7 +260,7 @@ export default function HealthLibraryArticlePage() {
               {blog.readTime}
             </span>
 
-          </div>
+          </div> */}
 
           {/* TITLE */}
           <h1 className="display-font text-3xl font-extrabold leading-tight text-[#243528] sm:text-4xl lg:text-5xl xl:text-[52px]">
@@ -211,7 +294,7 @@ export default function HealthLibraryArticlePage() {
         {/* ARTICLE BODY */}
         <div className="mx-auto max-w-5xl">
 
-          <div className="space-y-8">
+          {/* <div className="space-y-8">
 
             {blog.content?.map((paragraph, index) => (
               <p
@@ -222,7 +305,26 @@ export default function HealthLibraryArticlePage() {
               </p>
             ))}
 
-          </div>
+          </div> */}
+       
+<div
+  className="
+    text-lg leading-7 text-[#3D4A40]
+    [&_p]:mb-3 [&_p]:leading-7
+    [&_h2]:mb-2 [&_h2]:mt-6 [&_h2]:text-2xl
+    [&_h2]:leading-tight [&_h2]:font-extrabold [&_h2]:text-[#243528]
+    [&_h3]:mb-2 [&_h3]:mt-5 [&_h3]:text-xl
+    [&_h3]:leading-tight [&_h3]:font-bold [&_h3]:text-[#4F7359]
+    [&_strong]:font-bold
+    [&_ul]:mb-3 [&_ul]:mt-2 [&_ul]:list-disc [&_ul]:pl-7
+    [&_ol]:mb-3 [&_ol]:mt-2 [&_ol]:list-decimal [&_ol]:pl-7
+    [&_li]:mb-1 [&_li]:leading-7
+    [&_img]:my-4 [&_img]:max-w-full [&_img]:rounded-xl
+  "
+  dangerouslySetInnerHTML={{
+    __html: blog.content || "",
+  }}
+/>
 
           {/* MEDICAL DISCLAIMER */}
           <div className="mt-16 rounded-2xl border-l-4 border-[#E87744] bg-[#F6F9F6] p-6 sm:p-9">

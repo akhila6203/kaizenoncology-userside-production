@@ -1,5 +1,5 @@
 
-import { useMemo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Search,
@@ -9,10 +9,9 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 
-import {
-  healthBlogs,
-  healthCategories,
-} from "../data/healthLibraryData";
+
+import { getBlogs } from "../api/blogsApi";
+import { getSpecialities } from "../api/specialitiesApi";
 
 import BlogCard from "../components/health-library/BlogCard";
 
@@ -23,46 +22,113 @@ const LOAD_MORE_COUNT = 8;
 
 export default function HealthLibraryBlogsPage() {
   const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [visibleBlogs, setVisibleBlogs] = useState(INITIAL_BLOGS);
+const [selectedSpeciality, setSelectedSpeciality] = useState("all");
+const [visibleBlogs, setVisibleBlogs] = useState(INITIAL_BLOGS);
 
-  const filteredBlogs = useMemo(() => {
-    const searchTerm = search.trim().toLowerCase();
+const [blogs, setBlogs] = useState([]);
+const [loading, setLoading] = useState(true);
+const [specialities, setSpecialities] = useState([]);
+  
 
-    return healthBlogs.filter((blog) => {
-      const matchesSearch =
-        (blog.title || "").toLowerCase().includes(searchTerm) ||
-        (blog.excerpt || "").toLowerCase().includes(searchTerm) ||
-        (blog.category || "").toLowerCase().includes(searchTerm);
+useEffect(() => {
+  let active = true;
 
-      const matchesCategory =
-        selectedCategory === "all" ||
-        blog.categorySlug === selectedCategory;
+  const loadSpecialities = async () => {
+    try {
+      const response = await getSpecialities({
+        is_active: 1,
+        limit: 100,
+      });
 
-      return matchesSearch && matchesCategory;
-    });
-  }, [search, selectedCategory]);
+      const rows = Array.isArray(response)
+        ? response
+        : response?.rows ||
+          response?.data?.rows ||
+          response?.data ||
+          [];
 
-  useEffect(() => {
-    setVisibleBlogs(INITIAL_BLOGS);
-  }, [search, selectedCategory]);
+      if (active) {
+        setSpecialities(
+          rows.map((item) => ({
+            id: item.id,
+            name: item.name,
+          }))
+        );
+      }
+    } catch (error) {
+      console.error("Unable to load specialities:", error);
 
-  const displayedBlogs = filteredBlogs.slice(0, visibleBlogs);
+      if (active) {
+        setSpecialities([]);
+      }
+    }
+  };
+
+  loadSpecialities();
+
+  return () => {
+    active = false;
+  };
+}, []);
+
+
+useEffect(() => {
+  let active = true;
+
+  const loadBlogs = async () => {
+    try {
+      setLoading(true);
+
+      const data = await getBlogs({
+        search: search.trim(),
+        speciality_id:
+          selectedSpeciality === "all"
+            ? ""
+            : selectedSpeciality,
+      });
+
+      if (active) {
+        setBlogs(data);
+      }
+    } catch (error) {
+      console.error("Unable to load blogs:", error);
+
+      if (active) {
+        setBlogs([]);
+      }
+    } finally {
+      if (active) {
+        setLoading(false);
+      }
+    }
+  };
+
+  loadBlogs();
+
+  return () => {
+    active = false;
+  };
+}, [search, selectedSpeciality]);
+
+ useEffect(() => {
+  setVisibleBlogs(INITIAL_BLOGS);
+}, [search, selectedSpeciality]);
+
+const displayedBlogs = blogs.slice(0, visibleBlogs);
 
   const handleLoadMore = () => {
     setVisibleBlogs((previous) => previous + LOAD_MORE_COUNT);
   };
 
-  const clearFilters = () => {
-    setSearch("");
-    setSelectedCategory("all");
-    setVisibleBlogs(INITIAL_BLOGS);
-  };
+ const clearFilters = () => {
+  setSearch("");
+  setSelectedSpeciality("all");
+  setVisibleBlogs(INITIAL_BLOGS);
+};
 
   return (
     <main className="min-h-screen bg-white">
 
-      {/* BREADCRUMB */}
       {/* BREADCRUMB */}
 <nav
   aria-label="Breadcrumb"
@@ -159,7 +225,7 @@ export default function HealthLibraryBlogsPage() {
             Health & Wellness Blogs
           </h1>
 
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#3D4A40] sm:text-lg">
+          <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-[#3D4A40] sm:text-lg">
             Discover reliable information and helpful insights about
             cancer awareness, symptoms, diagnosis, treatments,
             prevention and survivorship.
@@ -172,7 +238,9 @@ export default function HealthLibraryBlogsPage() {
         <div className="mx-auto mb-10 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
 
           {/* SEARCH */}
-          <div className="flex min-h-[56px] items-center gap-3 rounded-xl border border-[#D4E0D6] bg-white px-5 shadow-sm transition focus-within:border-[#4F7359] focus-within:ring-2 focus-within:ring-[#4F7359]/10">
+          <div
+           className="flex min-h-[46px] items-center gap-3 rounded-xl border border-[#D4E0D6] bg-white px-5 shadow-sm transition focus-within:border-[#4F7359] focus-within:ring-2 focus-within:ring-[#4F7359]/10"
+           >
 
             <Search
               size={21}
@@ -185,12 +253,15 @@ export default function HealthLibraryBlogsPage() {
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Search blogs and health articles..."
               aria-label="Search blogs"
-              className="w-full bg-transparent text-base text-[#3D4A40] outline-none placeholder:text-slate-400"
+              className="w-full bg-transparent text-base text-[#3D4A40] outline-none ring-0 focus:outline-none focus:ring-0 focus-visible:outline-none placeholder:text-slate-400"
+              // className="w-full bg-transparent text-base text-[#3D4A40] outline-none placeholder:text-slate-400"
             />
           </div>
 
           {/* CATEGORY FILTER */}
-          <div className="relative flex min-h-[56px] items-center rounded-xl border border-[#D4E0D6] bg-white px-5 shadow-sm transition focus-within:border-[#4F7359]">
+          <div 
+          className="relative flex min-h-[46px] items-center rounded-xl border border-[#D4E0D6] bg-white px-5 shadow-sm transition focus-within:border-[#4F7359]"
+          >
 
             <SlidersHorizontal
               size={19}
@@ -198,24 +269,25 @@ export default function HealthLibraryBlogsPage() {
             />
 
             <select
-              value={selectedCategory}
-              onChange={(event) =>
-                setSelectedCategory(event.target.value)
-              }
-              aria-label="Filter blogs by category"
-              className="w-full appearance-none bg-transparent pr-7 text-base font-semibold text-[#3D4A40] outline-none"
-            >
-              <option value="all">All Categories</option>
+  value={selectedSpeciality}
+  onChange={(event) =>
+    setSelectedSpeciality(event.target.value)
+  }
+  aria-label="Filter blogs by speciality"
+  className="w-full appearance-none bg-transparent pr-7 text-base font-semibold text-[#3D4A40] outline-none ring-0 focus:outline-none focus:ring-0 focus-visible:outline-none"
+  // className="w-full appearance-none bg-transparent pr-7 text-base font-semibold text-[#3D4A40] outline-none"
+>
+  <option value="all">All Specialities</option>
 
-              {healthCategories.map((category) => (
-                <option
-                  key={category.slug}
-                  value={category.slug}
-                >
-                  {category.title}
-                </option>
-              ))}
-            </select>
+  {specialities.map((speciality) => (
+    <option
+      key={speciality.id}
+      value={speciality.id}
+    >
+      {speciality.name}
+    </option>
+  ))}
+</select>
 
             <ChevronDown
               size={18}
@@ -234,12 +306,13 @@ export default function HealthLibraryBlogsPage() {
             </span>{" "}
             of{" "}
             <span className="font-bold text-[#4F7359]">
-              {filteredBlogs.length}
+              {/* {filteredBlogs.length} */}
+              {blogs.length}
             </span>{" "}
             articles
           </p>
 
-          {(search || selectedCategory !== "all") && (
+            {(search || selectedSpeciality !== "all") && (
             <button
               type="button"
               onClick={clearFilters}
@@ -251,8 +324,12 @@ export default function HealthLibraryBlogsPage() {
         </div>
 
         {/* BLOG CARDS */}
-        {displayedBlogs.length > 0 ? (
-
+        {/* {displayedBlogs.length > 0 ? ( */}
+          {loading ? (
+            <p className="rounded-xl bg-[#F6F9F6] p-8 text-center text-[#4F7359]">
+              Loading blogs...
+            </p>
+          ) : displayedBlogs.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
             {displayedBlogs.map((blog) => (
@@ -294,8 +371,8 @@ export default function HealthLibraryBlogsPage() {
         )}
 
         {/* LOAD MORE */}
-        {displayedBlogs.length < filteredBlogs.length && (
-
+        {/* {displayedBlogs.length < filteredBlogs.length && ( */}
+        {displayedBlogs.length < blogs.length && (
           <div className="mt-14 text-center">
 
             <button
@@ -309,16 +386,16 @@ export default function HealthLibraryBlogsPage() {
             </button>
 
             <p className="mt-4 text-sm text-[#3D4A40]">
-              Showing {displayedBlogs.length} of {filteredBlogs.length} blogs
+              Showing {displayedBlogs.length} of {blogs.length} blogs
+              {/* Showing {displayedBlogs.length} of {filteredBlogs.length} blogs */}
             </p>
 
           </div>
         )}
 
         {/* ALL BLOGS VIEWED */}
-        {filteredBlogs.length > 0 &&
-          displayedBlogs.length === filteredBlogs.length && (
-
+        {blogs.length > 0 &&
+          displayedBlogs.length === blogs.length && (
             <p className="mt-12 text-center text-sm font-semibold text-[#4F7359]">
               You have viewed all available blogs.
             </p>

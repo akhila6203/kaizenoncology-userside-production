@@ -1,5 +1,8 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
+
+import SiteMeta from "./components/SiteMeta";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -67,8 +70,34 @@ function ScrollManager() {
 export default function App() {
   return (
     <>
-      <ScrollManager />
-      <Header />
+  <Toaster
+    position="top-center"
+    toastOptions={{
+      duration: 5000,
+      style: {
+        background: "#304b3c",
+        color: "#ffffff",
+        padding: "16px 22px",
+        borderRadius: "12px",
+        fontSize: "15px",
+        fontWeight: "600",
+        maxWidth: "500px",
+      },
+      success: {
+        iconTheme: {
+          primary: "#ffffff",
+          secondary: "#304b3c",
+        },
+      },
+    }}
+  />
+
+  <ScrollManager />
+
+    {/* Dynamic SEO Meta Tags */}
+    <SiteMeta />
+
+    <Header />
 
       <Routes>
         <Route path="/" element={<HomePage />} />

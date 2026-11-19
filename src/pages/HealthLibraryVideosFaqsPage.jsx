@@ -10,10 +10,10 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import {
-  healthVideos,
-  healthFaqs,
-} from "../data/healthLibraryData";
+
+import { getPublishedFaqs } from "../api/faqsApi";
+import { getPublicStories } from "../api/storiesApi";
+import VideoPlayerModal from "../components/VideoPlayerModal";
 
 import appointmentsWave from "../assets/appointments-wave.jpg";
 
@@ -26,33 +26,105 @@ const LOAD_MORE_FAQS = 5;
 export default function HealthLibraryVideosFaqsPage() {
   const [tab, setTab] = useState("videos");
 
-  const [visibleVideos, setVisibleVideos] = useState(INITIAL_VIDEOS);
-  const [visibleFaqs, setVisibleFaqs] = useState(INITIAL_FAQS);
+  // Backend videos
+  const [healthVideos, setHealthVideos] = useState([]);
 
-  const [openFaq, setOpenFaq] = useState(null);
-  const [selectedVideo, setSelectedVideo] = useState(null);
+const [visibleVideos, setVisibleVideos] = useState(INITIAL_VIDEOS);
+const [visibleFaqs, setVisibleFaqs] = useState(INITIAL_FAQS);
 
-  // Close video popup with Escape key
+const [openFaq, setOpenFaq] = useState(null);
+const [selectedVideo, setSelectedVideo] = useState(null);
+
+// Backend FAQs
+const [healthFaqsFromApi, setHealthFaqsFromApi] = useState([]);
+const [faqsLoading, setFaqsLoading] = useState(true);
+
+
+
+  // Fetch patient stories from backend API
   useEffect(() => {
-    if (!selectedVideo) return;
+    let active = true;
 
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        setSelectedVideo(null);
+    const loadVideos = async () => {
+      try {
+        const stories = await getPublicStories();
+
+        if (active) {
+          setHealthVideos(stories);
+        }
+      } catch (error) {
+        console.error(
+          "Failed to load patient stories:",
+          error
+        );
+
+        if (active) {
+          setHealthVideos([]);
+        }
       }
     };
 
-    document.addEventListener("keydown", handleEscape);
-    document.body.style.overflow = "hidden";
+    loadVideos();
 
     return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "";
+      active = false;
     };
-  }, [selectedVideo]);
+  }, []);
+
+  // FETCH ALL PUBLISHED FAQs FROM BACKEND
+useEffect(() => {
+  let active = true;
+
+  const loadFaqs = async () => {
+    try {
+      setFaqsLoading(true);
+
+      // Fetch all published speciality FAQs and Other FAQs
+      const rows = await getPublishedFaqs();
+
+      // Show:
+      // 1. All speciality FAQs
+      // 2. Other FAQs assigned to Health Library
+      const filteredFaqs = rows.filter((faq) => {
+        const isOther = faq.is_other === true;
+
+        const assignedPages = String(faq.display_pages || "")
+          .split(",")
+          .map((page) => page.trim().toLowerCase())
+          .filter(Boolean);
+
+        if (!isOther) {
+          return true;
+        }
+
+        return assignedPages.includes("health-library");
+      });
+
+      if (active) {
+        setHealthFaqsFromApi(filteredFaqs);
+      }
+    } catch (error) {
+      console.error("Failed to load Health Library FAQs:", error);
+
+      if (active) {
+        setHealthFaqsFromApi([]);
+      }
+    } finally {
+      if (active) {
+        setFaqsLoading(false);
+      }
+    }
+  };
+
+  loadFaqs();
+
+  return () => {
+    active = false;
+  };
+}, []);
 
   const displayedVideos = healthVideos.slice(0, visibleVideos);
-  const displayedFaqs = healthFaqs.slice(0, visibleFaqs);
+const displayedFaqs = healthFaqsFromApi.slice(0, visibleFaqs);
 
   const handleLoadMoreVideos = () => {
     setVisibleVideos((current) =>
@@ -62,13 +134,11 @@ export default function HealthLibraryVideosFaqsPage() {
 
   const handleLoadMoreFaqs = () => {
     setVisibleFaqs((current) =>
-      Math.min(current + LOAD_MORE_FAQS, healthFaqs.length)
+      Math.min(current + LOAD_MORE_FAQS, healthFaqsFromApi.length)
     );
   };
 
-  const closeVideo = () => {
-    setSelectedVideo(null);
-  };
+  
 
  // Extract YouTube video ID from either a full URL or an ID
 const getYouTubeVideoId = (value) => {
@@ -100,28 +170,22 @@ const getYouTubeVideoId = (value) => {
   }
 };
 
-// Generate YouTube thumbnail automatically
+
 const getVideoThumbnail = (video) => {
-  const videoId = getYouTubeVideoId(video?.youtubeId);
+  const videoId = getYouTubeVideoId(
+    video?.youtubeId || video?.video_url || video?.href
+  );
 
   if (!videoId) return "";
 
   return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 };
 
-// Generate YouTube embed URL
-const getVideoEmbedUrl = (video) => {
-  const videoId = getYouTubeVideoId(video?.youtubeId);
 
-  if (!videoId) return "";
-
-  return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
-};
 
   return (
     <main className="min-h-screen bg-white">
 
-      {/* BREADCRUMB STRIP */}
       {/* BREADCRUMB */}
 <nav
   aria-label="Breadcrumb"
@@ -252,7 +316,7 @@ const getVideoEmbedUrl = (video) => {
                     : "bg-[#E8F0EA] text-[#4F7359]"
                 }`}
               >
-                {healthFaqs.length}
+                {healthFaqsFromApi.length}
               </span>
             </button>
           </div>
@@ -329,30 +393,29 @@ const getVideoEmbedUrl = (video) => {
   </div>
 
   <span className="absolute bottom-3 left-3 rounded-full bg-[#243528]/75 px-3 py-1 text-xs font-semibold text-white">
-    {getYouTubeVideoId(video.youtubeId) ? "Watch Video" : "Coming Soon"}
+    {getYouTubeVideoId(
+  video.youtubeId || video.video_url || video.href
+)
+  ? "Watch Video"
+  : "Coming Soon"}
+    {/* {getYouTubeVideoId(video.youtubeId) ? "Watch Video" : "Coming Soon"} */}
   </span>
 
 </div>
 
                     {/* VIDEO TITLE */}
-                    <div className="flex flex-1 flex-col p-5">
+                    
+<div className="flex flex-1 flex-col p-5">
+  {video.specialityName && (
+    <p className="mt-1 text-sm font-semibold text-[#4F7359]">
+      {video.specialityName}
+    </p>
+  )}
+  <h2 className="line-clamp-3 text-base font-bold leading-7 text-[#243528] transition-colors group-hover:text-[#4F7359]">
+    {video.title}
+  </h2>
+</div>
 
-                      <h2 className="line-clamp-3 text-base font-bold leading-7 text-[#243528] transition-colors group-hover:text-[#4F7359]">
-                        {video.title}
-                      </h2>
-
-                      {/* <div className="mt-4 flex items-center justify-between border-t border-[#D4E0D6] pt-4">
-                        <span className="text-xs font-semibold text-[#4F7359]">
-                          Kaizen Oncology Health Library
-                        </span>
-
-                        <PlayCircle
-                          size={19}
-                          className="text-[#E87744] transition-transform group-hover:scale-110"
-                        />
-                      </div> */}
-
-                    </div>
                   </button>
                 ))}
 
@@ -437,14 +500,21 @@ const getVideoEmbedUrl = (video) => {
                 </span>{" "}
                 of{" "}
                 <span className="font-bold text-[#4F7359]">
-                  {healthFaqs.length}
+                  {healthFaqsFromApi.length}
                 </span>{" "}
                 questions
               </p>
             </div>
 
             {/* FAQ ACCORDION */}
-            {displayedFaqs.length > 0 ? (
+            {/* {displayedFaqs.length > 0 ? ( */}
+            {faqsLoading ? (
+                <div className="rounded-xl bg-[#F6F9F6] p-8 text-center">
+                  <p className="text-base text-[#3D4A40]">
+                    Loading FAQs...
+                  </p>
+                </div>
+              ) : displayedFaqs.length > 0 ? (
               <div className="divide-y divide-[#D4E0D6] overflow-hidden rounded-2xl border border-[#D4E0D6] bg-white">
 
                 {displayedFaqs.map((faq, index) => {
@@ -517,7 +587,7 @@ const getVideoEmbedUrl = (video) => {
             )}
 
             {/* LOAD MORE FAQS */}
-            {visibleFaqs < healthFaqs.length && (
+            {visibleFaqs < healthFaqsFromApi.length && (
               <div className="mt-10 text-center">
 
                 <button
@@ -530,7 +600,7 @@ const getVideoEmbedUrl = (video) => {
                 </button>
 
                 <p className="mt-4 text-sm text-[#3D4A40]">
-                  Showing {displayedFaqs.length} of {healthFaqs.length} questions
+                  Showing {displayedFaqs.length} of {healthFaqsFromApi.length} questions
                 </p>
 
               </div>
@@ -541,111 +611,14 @@ const getVideoEmbedUrl = (video) => {
 
       </section>
 
-      {/* ================= VIDEO POPUP MODAL ================= */}
-      {selectedVideo && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#14251D]/90 p-3 backdrop-blur-sm sm:p-6"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
-              closeVideo();
-            }
-          }}
-          role="presentation"
-        >
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label={selectedVideo.title}
-            className="relative w-full max-w-6xl overflow-hidden rounded-2xl bg-white shadow-2xl"
-          >
-
-            {/* MODAL HEADER */}
-            <div className="flex items-center justify-between gap-4 border-b border-[#D4E0D6] bg-[#F6F9F6] px-4 py-4 sm:px-6">
-
-              <div className="flex min-w-0 items-center gap-3">
-
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E8F0EA] text-[#4F7359]">
-                  <PlayCircle size={23} />
-                </span>
-
-                <h2 className="line-clamp-2 text-sm font-bold text-[#243528] sm:text-lg">
-                  {selectedVideo.title}
-                </h2>
-
-              </div>
-
-              <button
-                type="button"
-                onClick={closeVideo}
-                aria-label="Close video"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#4F7359] shadow-sm transition hover:bg-[#E87744] hover:text-white"
-              >
-                <X size={23} />
-              </button>
-
-            </div>
-
-            {/* VIDEO PLAYER */}
-            <div className="aspect-video w-full bg-black">
-
-              {selectedVideo.youtubeId ? (
-                <iframe
-                  key={selectedVideo.youtubeId}
-                  className="h-full w-full"
-                  src={getVideoEmbedUrl(selectedVideo)}
-                  title={selectedVideo.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="flex h-full flex-col items-center justify-center gap-4 bg-[#243528] px-5 text-center">
-
-                  <PlayCircle
-                    size={65}
-                    className="text-[#E87744]"
-                  />
-
-                  <h3 className="text-xl font-bold text-white sm:text-2xl">
-                    Video Coming Soon
-                  </h3>
-
-                  <p className="max-w-md text-sm leading-7 text-white/70">
-                    The video player will be available once the YouTube
-                    video ID is added to the Kaizen Oncology Health Library data.
-                  </p>
-
-                </div>
-              )}
-
-            </div>
-
-            {/* MODAL FOOTER */}
-            <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
-
-              <p className="text-xs font-semibold text-[#4F7359] sm:text-sm">
-                Kaizen Oncology Health Library
-              </p>
-
-              <button
-                type="button"
-                onClick={closeVideo}
-                className="inline-flex items-center gap-2 rounded-full bg-[#E87744] px-6 py-2.5 text-sm font-bold text-white transition hover:bg-[#4F7359]"
-              >
-                <X size={17} />
-                Close Video
-              </button>
-
-            </div>
-
-          </div>
-        </div>
-      )}
+      
+{/* COMMON VIDEO POPUP */}
+<VideoPlayerModal
+  video={selectedVideo}
+  onClose={() => setSelectedVideo(null)}
+/>
 
     </main>
   );
 }
-
-
-
 

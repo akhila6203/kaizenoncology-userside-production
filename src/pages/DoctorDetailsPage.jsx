@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import {
@@ -17,7 +16,11 @@ import {
   BadgeCheck,
 } from "lucide-react";
 
-import { doctors } from "../data/doctorsData";
+import { getPublicStories } from "../api/storiesApi";
+import { getDoctors, getDoctorById } from "../api/doctorsApi";
+import { mediaUrl } from "../api/specialitiesApi";
+import DOMPurify from "dompurify";
+
 import ContentVideoCarousel from "../components/ContentVideoCarousel";
 import appointmentsWave from "../assets/appointments-wave.jpg";
 
@@ -35,35 +38,132 @@ const tabs = [
 ];
 
 // Extract YouTube video ID correctly.
+function isValidYoutube(url) {
+  if (!url) return true;
+
+  try {
+    const parsedUrl = new URL(String(url).trim());
+
+    if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+      return false;
+    }
+
+    const hostname = parsedUrl.hostname
+      .toLowerCase()
+      .replace(/^www\./, '');
+
+    return (
+      hostname === 'youtube.com' ||
+      hostname === 'm.youtube.com' ||
+      hostname === 'youtu.be'
+    );
+  } catch {
+    return false;
+  }
+}
 
 function getYouTubeId(url = "") {
   try {
     const parsedUrl = new URL(url);
-    const host = parsedUrl.hostname.replace(/^www\./, "");
 
-    let videoId = "";
-
-    if (host === "youtu.be") {
-      videoId = parsedUrl.pathname.split("/").filter(Boolean)[0] || "";
-    } else if (
-      host === "youtube.com" ||
-      host === "m.youtube.com" ||
-      host === "youtube-nocookie.com"
-    ) {
-      videoId =
-        parsedUrl.searchParams.get("v") ||
-        parsedUrl.pathname.match(/\/(?:embed|shorts)\/([^/?]+)/)?.[1] ||
-        "";
+    if (parsedUrl.hostname.includes("youtu.be")) {
+      return parsedUrl.pathname.slice(1).split("/")[0];
     }
 
-    if (!videoId || videoId.startsWith("YOUR_VIDEO_ID")) {
-      return "";
+    if (parsedUrl.hostname.includes("youtube.com")) {
+      if (parsedUrl.pathname === "/watch") {
+        return parsedUrl.searchParams.get("v");
+      }
+
+      const parts = parsedUrl.pathname.split("/");
+
+      if (["embed", "shorts", "live"].includes(parts[1])) {
+        return parts[2];
+      }
     }
 
-    return videoId;
+    return null;
   } catch {
-    return "";
+    return null;
   }
+}
+
+function formatDoctorDetails(data = {}) {
+  const specialityNames = Array.isArray(data.speciality_names)
+    ? data.speciality_names
+    : typeof data.speciality_names === "string"
+      ? data.speciality_names.split(",").map((name) => name.trim()).filter(Boolean)
+      : data.speciality_name
+        ? [data.speciality_name]
+        : [];
+
+  const youtubeVideos = Array.isArray(data.youtube_videos)
+    ? data.youtube_videos
+    : data.youtube_url
+      ? [data.youtube_url]
+      : [];
+
+  const qualifications = Array.isArray(data.qualifications)
+    ? data.qualifications
+    : [];
+
+  const expertise = Array.isArray(data.expertise)
+    ? data.expertise
+    : [];
+
+  const formatVideos = youtubeVideos
+    .map((video, index) => ({
+      youtubeUrl:
+        typeof video === "string"
+          ? video
+          : video?.youtubeUrl || video?.url || video?.video_url || "",
+      title:
+        typeof video === "string"
+          ? `Health Talk ${index + 1}`
+          : video?.title || `Health Talk ${index + 1}`,
+      thumbnail:
+        typeof video === "object" && video !== null
+          ? video.thumbnail || ""
+          : "",
+    }))
+    .filter((video) => video.youtubeUrl);
+
+  const toList = (value) =>
+    Array.isArray(value)
+      ? value
+      : typeof value === "string" && value.trim()
+        ? [value.trim()]
+        : [];
+
+  return {
+    ...data,
+
+    specialityNames,
+    specialityIds: Array.isArray(data.speciality_ids)
+      ? data.speciality_ids
+      : [],
+
+    speciality: specialityNames.join(", ") || data.speciality_name || "Oncology",
+
+    image: mediaUrl(data.photo),
+    location: data.hospital_location || "",
+    experience: data.experience_years ?? 0,
+
+    qualifications,
+    education: qualifications,
+
+    professionalExperience: toList(data.professional_experience),
+    conferences: toList(data.conferences_workshops),
+    awards: toList(data.awards_recognition),
+    memberships: toList(data.fellowship_memberships),
+    expertise,
+    research: toList(data.research_publications),
+    procedures: toList(data.procedures_treatments),
+    languages: toList(data.languages),
+
+    cancerSpecialties: expertise,
+    healthTalk: formatVideos,
+  };
 }
 
 
@@ -71,25 +171,168 @@ export default function DoctorDetailsPage() {
   const { slug } = useParams();
 
   const [activeTab, setActiveTab] = useState("about");
+  const [patientStories, setPatientStories] = useState([]);
+  const [doctor, setDoctor] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const doctor = doctors.find((item) => item.slug === slug);
+  // FETCH DOCTOR BY SLUG, THEN FETCH FULL DETAILS BY ID
+  useEffect(() => {
+    let isActive = true;
 
-  if (!doctor) {
-    return (
-      <main className="page-container min-h-[60vh] px-5 py-20 text-center">
-        <h1 className="font-display text-2xl font-bold text-navy">
-          Doctor profile not found
-        </h1>
+    const loadDoctor = async () => {
+      try {
+        setLoading(true);
+        setDoctor(null);
 
-        <Link
-          to="/doctors"
-          className="mt-5 inline-flex rounded-full bg-royal px-6 py-3 font-semibold text-white hover:bg-royaldeep"
-        >
-          Back to Doctors
-        </Link>
-      </main>
-    );
-  }
+        const doctorsList = await getDoctors({ limit: 100 });
+
+        const selectedDoctor = doctorsList.find(
+          (item) => item.slug === slug
+        );
+
+        if (!selectedDoctor) {
+          if (isActive) setDoctor(null);
+          return;
+        }
+
+        const details = await getDoctorById(selectedDoctor.id);
+
+        if (isActive) {
+          setDoctor(formatDoctorDetails(details));
+        }
+      } catch (error) {
+        console.error("Failed to load doctor details:", error);
+
+        if (isActive) {
+          setDoctor(null);
+        }
+      } finally {
+        if (isActive) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadDoctor();
+
+    return () => {
+      isActive = false;
+    };
+  }, [slug]);
+
+  // FETCH PATIENT STORIES BASED ON DOCTOR SPECIALITY
+
+  // FETCH PATIENT STORIES BASED ON DOCTOR SPECIALITY
+  useEffect(() => {
+    let isActive = true;
+
+    const loadPatientStories = async () => {
+      try {
+        setPatientStories([]);
+
+        const stories = await getPublicStories();
+
+        const normalizeName = (value = "") =>
+          String(value)
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, "");
+
+        // Doctor may have more than one speciality.
+        const doctorSpecialityNames = (
+          doctor.specialityNames?.length
+            ? doctor.specialityNames
+            : [doctor.speciality_name || doctor.speciality]
+        ).map(normalizeName).filter(Boolean);
+
+        const doctorSpecialityIds = (
+          doctor.specialityIds || doctor.speciality_ids || []
+        ).map(Number);
+
+        const filteredStories = stories
+          .filter((story) => {
+            if (!story.youtubeId) return false;
+
+            const storySpecialityId = Number(story.speciality_id);
+
+            // First try matching speciality IDs.
+            const matchesById =
+              storySpecialityId > 0 &&
+              doctorSpecialityIds.includes(storySpecialityId);
+
+            // Fallback to speciality names.
+            const storySpecialityName = normalizeName(
+              story.specialityName || story.speciality_name
+            );
+
+            const matchesByName =
+              storySpecialityName &&
+              doctorSpecialityNames.includes(storySpecialityName);
+
+            return matchesById || matchesByName;
+          })
+          .map((story) => ({
+            id: story.id,
+            title: story.title || story.patientName || "Patient Story",
+            category: story.specialityName || "Patient Story",
+            youtubeId: story.youtubeId,
+            href:
+              story.href ||
+              story.video_url ||
+              `https://www.youtube.com/watch?v=${story.youtubeId}`,
+            thumbnail:
+              story.thumbnail ||
+              `https://img.youtube.com/vi/${story.youtubeId}/hqdefault.jpg`,
+          }));
+
+        if (isActive) {
+          setPatientStories(filteredStories);
+        }
+      } catch (error) {
+        console.error("Failed to load speciality patient stories:", error);
+
+        if (isActive) {
+          setPatientStories([]);
+        }
+      }
+    };
+
+    if (doctor?.id) {
+      loadPatientStories();
+    }
+
+    return () => {
+      isActive = false;
+    };
+  }, [doctor]);
+
+
+if (loading) {
+  return (
+    <main className="page-container min-h-[60vh] px-5 py-20 text-center">
+      <p className="text-base text-[#718075]">
+        Loading doctor profile...
+      </p>
+    </main>
+  );
+}
+
+if (!doctor) {
+  return (
+    <main className="page-container min-h-[60vh] px-5 py-20 text-center">
+      <h1 className="font-display text-2xl font-bold text-navy">
+        Doctor profile not found
+      </h1>
+
+      <Link
+        to="/doctors"
+        className="mt-5 inline-flex rounded-full bg-royal px-6 py-3 font-semibold text-white hover:bg-royaldeep"
+      >
+        Back to Doctors
+      </Link>
+    </main>
+  );
+}
 
   const active = tabs.find((tab) => tab.id === activeTab) || tabs[0];
 
@@ -97,6 +340,8 @@ export default function DoctorDetailsPage() {
 
   const list = active.field ? doctor[active.field] || [] : [];
 
+const aboutContent = doctor.about || doctor.short_bio || "";
+const safeAboutContent = DOMPurify.sanitize(aboutContent);
   // ---------------------------------------
   // HEALTH TALK VIDEO DATA
   // ---------------------------------------
@@ -125,29 +370,12 @@ export default function DoctorDetailsPage() {
     })
     .filter(Boolean);
 
-  // PATIENT TESTIMONIAL VIDEOS
-  const testimonialItems = (doctor.testimonialVideos || [])
-    .map((video) => {
-      const videoId = getYouTubeId(video.youtubeUrl);
-
-      if (!videoId) return null;
-
-      return {
-        title: video.title || "Patient Testimonial",
-        category: "Patient story",
-        href: video.youtubeUrl,
-        thumbnail:
-          video.thumbnail ||
-          `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-      };
-    })
-    .filter(Boolean);
+ 
 
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#fffdf9] text-ink">
 
-      {/* BREADCRUMB - ORIGINAL DESIGN */}
      {/* BREADCRUMB */}
 <nav
   aria-label="Breadcrumb"
@@ -351,36 +579,37 @@ export default function DoctorDetailsPage() {
           </div>
 
           {/* ABOUT DOCTOR */}
-          {activeTab === "about" ? (
+         
+{activeTab === "about" ? (
 
-            <div className="mt-5 space-y-4 text-base leading-8 text-[#526357]">
+  <div className="mt-5 space-y-5 text-base leading-8 text-[#526357]">
 
-              <p>
-                {doctor.about}
-              </p>
+    {safeAboutContent ? (
+      <div
+        className="text-base leading-8 text-[#526357] [&_p]:mb-3 [&_ul]:ml-6 [&_ul]:list-disc [&_ol]:ml-6 [&_ol]:list-decimal [&_strong]:font-bold [&_h2]:mb-2 [&_h2]:font-display [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-navy [&_h3]:mb-2 [&_h3]:font-display [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-navy"
+        dangerouslySetInnerHTML={{ __html: safeAboutContent }}
+      />
+    ) : (
+      <p>Doctor profile information will be updated soon.</p>
+    )}
 
-              <p>
-                {doctor.name} has {doctor.experience} years of sample
-                professional experience in {doctor.speciality.toLowerCase()}.
-                This profile contains demonstration content and must be
-                verified before publication.
-              </p>
+    {doctor.cancerSpecialties?.length > 0 && (
+      <div>
+        <h3 className="font-display text-lg font-bold text-navy">
+          Areas of Expertise
+        </h3>
 
-              <div>
+        <ul className="mt-2 ml-5 list-disc space-y-1">
+          {doctor.cancerSpecialties.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    )}
 
-                <h3 className="font-display text-lg font-bold text-navy">
-                  Cancer specialties
-                </h3>
+  </div>
 
-                <p className="mt-2">
-                  {(doctor.cancerSpecialties || []).join(" • ")}
-                </p>
-
-              </div>
-
-            </div>
-
-          ) : list.length ? (
+) : list.length ? (
 
             /* OTHER DETAILS */
             <ul className="mt-5 divide-y divide-[#edf1ed]">
@@ -428,26 +657,24 @@ export default function DoctorDetailsPage() {
         />
       )}
 
-      {/* ---------------------------------
-          PATIENT TESTIMONIALS
-      ---------------------------------- */}
-
-      {testimonialItems.length > 0 && (
-        <ContentVideoCarousel
-          eyebrow="PATIENT STORIES"
-          title="Patient Testimonials"
-          subtitle={`Patient experiences and stories related to ${doctor.name}.`}
-          items={testimonialItems}
-          slidesPerView={4}
-          autoPlay
-          interval={4500}
-          background="white"
-        />
-      )}
+      {/* PATIENT STORIES BASED ON DOCTOR SPECIALITY */}
+{patientStories.length > 0 && (
+  <ContentVideoCarousel
+    eyebrow="PATIENT STORIES"
+    title={`${doctor.speciality} – Patient Testimonials`}
+    subtitle={`Patient experiences and stories related to ${doctor.speciality}.`}
+    items={patientStories}
+    slidesPerView={4}
+    autoPlay
+    interval={4500}
+    background="white"
+  />
+)}
 
     </main>
   );
 }
+
 
 
 

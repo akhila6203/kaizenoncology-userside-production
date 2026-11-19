@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   BookOpen,
@@ -10,11 +10,11 @@ import {
   Maximize2,
 } from "lucide-react";
 
-import {
-  healthBlogs,
-  healthVideos,
-  healthFaqs,
-} from "../../data/healthLibraryData";
+
+import { getPageFaqs } from "../../api/faqsApi";
+import { getPublicStories } from "../../api/storiesApi";
+import { getBlogs } from "../../api/blogsApi";
+import VideoPlayerModal from "../VideoPlayerModal";
 
 import BlogCard from "./BlogCard";
 import FaqAccordion from "./FaqAccordion";
@@ -28,10 +28,110 @@ const RESOURCE_TABS = [
 export default function HealthLibraryTabs({ initialTab = "blogs" }) {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [healthVideosFromApi, setHealthVideosFromApi] = useState([]);
 
-  const visibleBlogs = healthBlogs.slice(0, 4);
-  const visibleVideos = healthVideos.slice(0, 4);
-  const visibleFaqs = healthFaqs.slice(0, 5);
+  const [blogsFromApi, setBlogsFromApi] = useState([]);
+const [blogsLoading, setBlogsLoading] = useState(true);
+
+const [faqsFromApi, setFaqsFromApi] = useState([]);
+const [faqsLoading, setFaqsLoading] = useState(true);
+
+useEffect(() => {
+  let active = true;
+
+  const loadBlogs = async () => {
+    try {
+      const blogs = await getBlogs();
+
+      if (active) {
+        setBlogsFromApi(blogs);
+      }
+    } catch (error) {
+      console.error("Unable to load blogs:", error);
+    } finally {
+      if (active) {
+        setBlogsLoading(false);
+      }
+    }
+  };
+
+  loadBlogs();
+
+  return () => {
+    active = false;
+  };
+}, []);
+
+
+  useEffect(() => {
+    let active = true;
+
+    const loadVideos = async () => {
+      try {
+        const stories = await getPublicStories();
+
+        if (!active) return;
+
+        const videos = stories
+          .filter((story) => story.youtubeId)
+          .map((story) => ({
+            ...story,
+            thumbnail:
+              story.thumbnail ||
+              `https://img.youtube.com/vi/${story.youtubeId}/hqdefault.jpg`,
+          }));
+
+        setHealthVideosFromApi(videos);
+      } catch (error) {
+        console.error("Unable to load Health Library videos:", error);
+      }
+    };
+
+    loadVideos();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  // FETCH HEALTH LIBRARY PAGE FAQs FROM BACKEND
+useEffect(() => {
+  let active = true;
+
+  const loadFaqs = async () => {
+    try {
+      setFaqsLoading(true);
+
+      // Fetch Other FAQs assigned to Health Library
+      const rows = await getPageFaqs("health-library");
+
+      if (active) {
+        setFaqsFromApi(Array.isArray(rows) ? rows : []);
+      }
+    } catch (error) {
+      console.error("Unable to load Health Library FAQs:", error);
+
+      if (active) {
+        setFaqsFromApi([]);
+      }
+    } finally {
+      if (active) {
+        setFaqsLoading(false);
+      }
+    }
+  };
+
+  loadFaqs();
+
+  return () => {
+    active = false;
+  };
+}, []);
+
+
+  const visibleBlogs = blogsFromApi.slice(0, 4);
+const visibleVideos = healthVideosFromApi.slice(0, 4);
+const visibleFaqs = faqsFromApi.slice(0, 5);
 
   return (
     <section>
@@ -82,7 +182,12 @@ export default function HealthLibraryTabs({ initialTab = "blogs" }) {
       {/* BLOGS */}
       {activeTab === "blogs" && (
         <div>
-          {visibleBlogs.length > 0 ? (
+          {/* {visibleBlogs.length > 0 ? ( */}
+          {blogsLoading ? (
+              <p className="rounded-xl bg-white p-8 text-center text-[#3D4A40]">
+                Loading blogs...
+              </p>
+            ) : visibleBlogs.length > 0 ? (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {visibleBlogs.map((blog) => (
                 <BlogCard key={blog.slug} blog={blog} />
@@ -158,14 +263,14 @@ export default function HealthLibraryTabs({ initialTab = "blogs" }) {
 
                   <div className="p-5">
                     <span className="text-xs font-bold uppercase tracking-wider text-[#4F7359]">
-                      {video.category || "Kaizen Oncology EDUCATION"}
+                      {video.category}
                     </span>
 
                     <h3 className="mt-2 line-clamp-2 text-base font-bold leading-6 text-[#243528]">
                       {video.title}
                     </h3>
 
-                    {video.youtubeId && (
+                    {/* {video.youtubeId && (
                       <button
                         type="button"
                         onClick={() => setSelectedVideo(video)}
@@ -174,7 +279,7 @@ export default function HealthLibraryTabs({ initialTab = "blogs" }) {
                         Watch Video
                         <Maximize2 size={15} />
                       </button>
-                    )}
+                    )} */}
                   </div>
                 </article>
               ))}
@@ -200,13 +305,17 @@ export default function HealthLibraryTabs({ initialTab = "blogs" }) {
       {/* FAQS */}
       {activeTab === "faqs" && (
         <div className="mx-auto max-w-4xl">
-          {visibleFaqs.length > 0 ? (
-            <FaqAccordion faqs={visibleFaqs} />
-          ) : (
-            <p className="rounded-xl bg-white p-8 text-center text-[#3D4A40]">
-              FAQs will be available soon.
-            </p>
-          )}
+          {faqsLoading ? (
+              <p className="rounded-xl bg-white p-8 text-center text-[#3D4A40]">
+                Loading FAQs...
+              </p>
+            ) : visibleFaqs.length > 0 ? (
+              <FaqAccordion faqs={visibleFaqs} />
+            ) : (
+              <p className="rounded-xl bg-white p-8 text-center text-[#3D4A40]">
+                FAQs will be available soon.
+              </p>
+            )}
 
           <div className="mt-9 text-center">
             <Link
@@ -220,59 +329,12 @@ export default function HealthLibraryTabs({ initialTab = "blogs" }) {
         </div>
       )}
 
-      {/* VIDEO POPUP */}
-      {selectedVideo && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 sm:p-8"
-          onClick={() => setSelectedVideo(null)}
-          role="presentation"
-        >
-          <div
-            className="relative w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-            aria-label={selectedVideo.title}
-          >
-            <div className="flex items-center justify-between gap-4 bg-[#4F7359] px-5 py-4 text-white">
-              <h3 className="line-clamp-2 text-base font-bold text-white sm:text-lg">
-                {selectedVideo.title}
-              </h3>
+     {/* COMMON VIDEO POPUP */}
+<VideoPlayerModal
+  video={selectedVideo}
+  onClose={() => setSelectedVideo(null)}
+/>
 
-              <button
-                type="button"
-                onClick={() => setSelectedVideo(null)}
-                aria-label="Close video"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 transition hover:bg-[#E87744]"
-              >
-                <X size={22} />
-              </button>
-            </div>
-
-            <div className="aspect-video w-full bg-black">
-              <iframe
-                className="h-full w-full"
-                src={`https://www.youtube-nocookie.com/embed/${selectedVideo.youtubeId}?autoplay=1`}
-                title={selectedVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-
-            <div className="flex justify-end p-4">
-              <button
-                type="button"
-                onClick={() => setSelectedVideo(null)}
-                className="inline-flex items-center gap-2 rounded-full bg-[#4F7359] px-6 py-2.5 text-sm font-bold text-white transition hover:bg-[#E87744]"
-              >
-                <X size={16} />
-                Close Video
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
