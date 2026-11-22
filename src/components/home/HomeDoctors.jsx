@@ -86,7 +86,7 @@ export default function HomeDoctors() {
 
         {/* Heading */}
         <div className="mx-auto mb-9 max-w-3xl text-center">
-          <span className="text-sm font-bold tracking-[0.18em] text-sky">
+          <span className="text-sm font-bold tracking-[0.18em] text-[#B94C1C]">
             OUR SPECIALISTS
           </span>
 
@@ -94,7 +94,7 @@ export default function HomeDoctors() {
             Meet the Experts Behind Your Care
           </h2>
 
-          <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-[#647368] sm:text-lg">
+          <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-[#494848] sm:text-lg">
             Meet our experienced oncology specialists, dedicated to
             providing personalised guidance and compassionate cancer care.
           </p>

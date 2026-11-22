@@ -10,7 +10,8 @@ export default function HomeServices() {
       <div className="page-container px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#E87744] sm:text-sm">
+          <p className="text-[13px] font-extrabold uppercase tracking-[0.18em] text-[#B94C1C] sm:text-sm">
+          {/* <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#E87744] sm:text-sm"> */}
             OUR SERVICES
           </p>
 
@@ -18,7 +19,7 @@ export default function HomeServices() {
            Find Care by Cancer Type
           </h2>
 
-          <p className="mt-4 text-[15px] leading-7 text-[#59695D] sm:text-[17px]">
+          <p className="mt-4 text-[15px] leading-7 text-[#343434] sm:text-[17px]">
             Learn about different cancer types, their symptoms, diagnosis and
             possible treatment approaches.
           </p>
@@ -55,7 +56,7 @@ export default function HomeServices() {
                   {cancer.title}
                 </h3>
 
-                <p className="mt-3 flex-1 text-[16px] leading-7 text-[#59695D] sm:text-[18px]">
+                <p className="mt-3 flex-1 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                   {cancer.cardDescription}
                 </p>
 
@@ -86,34 +87,4 @@ export default function HomeServices() {
   );
 }
 
-
-
-
-// import SectionTitle from "../SectionTitle";
-// import ServiceCard from "../ServiceCard";
-// import { services } from "../../data/siteData";
-
-// export default function HomeServices() {
-//   return (
-//     <section className="section-padding bg-mist">
-//       <div className="page-container">
-//         <SectionTitle
-//           eyebrow="OUR SERVICES"
-//           title="Care and guidance for every step"
-//           description="Screening, diagnosis, treatment information and patient support — explained clearly."
-//         />
-
-//         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-//           {services.map((service, index) => (
-//             <ServiceCard
-//               key={service.title}
-//               service={service}
-//               index={index}
-//             />
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
 

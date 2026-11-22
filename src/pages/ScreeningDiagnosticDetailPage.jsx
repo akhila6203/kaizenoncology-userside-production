@@ -138,10 +138,10 @@ export default function ScreeningDiagnosticDetailPage() {
             <h1 className="mt-5 text-center text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-left lg:text-[54px]">
               {service.title}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#536357] sm:text-[19px] lg:mx-0 lg:text-left">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#141414] sm:text-[19px] lg:mx-0 lg:text-left">
               {service.cardDescription}
             </p>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-[17px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-[17px] leading-8 text-[#141414] sm:text-[18px] lg:mx-0 lg:text-left">
               {service.intro}
             </p>
            <div className="mt-8 flex flex-nowrap items-center justify-center gap-2 lg:justify-start lg:gap-3">
@@ -209,7 +209,7 @@ export default function ScreeningDiagnosticDetailPage() {
             <h2 className="mt-2 text-3xl font-bold text-[#263C30] sm:text-4xl">
               Understanding {service.shortTitle}
             </h2>
-            <p className="mt-5 text-[17px] leading-8 text-[#536357]">
+            <p className="mt-5 text-[17px] leading-8 text-[#141414]">
               {service.overview}
             </p>
           </section>
@@ -232,7 +232,7 @@ export default function ScreeningDiagnosticDetailPage() {
                   {section.paragraphs?.map((paragraph, pIndex) => (
                     <p
                       key={pIndex}
-                      className="mt-4 text-[17px] leading-8 text-[#536357]"
+                      className="mt-4 text-[17px] leading-8 text-[#141414]"
                     >
                       {paragraph}
                     </p>
@@ -242,7 +242,7 @@ export default function ScreeningDiagnosticDetailPage() {
                       {section.points.map((point) => (
                         <li
                           key={point}
-                          className="flex items-start gap-3 rounded-xl bg-[#F4F7F2] p-4 text-[16px] leading-7 text-[#46584A]"
+                          className="flex items-start gap-3 rounded-xl bg-[#F4F7F2] p-4 text-[16px] leading-7 text-[#141414]"
                         >
                           <CheckCircle2
                             size={19}
@@ -286,7 +286,7 @@ export default function ScreeningDiagnosticDetailPage() {
                     />
                   </button>
                   {openFaq === index && (
-                    <p className="border-t border-[#E8EEE6] px-5 py-4 text-[16px] leading-7 text-[#536357]">
+                    <p className="border-t border-[#E8EEE6] px-5 py-4 text-[16px] leading-7 text-[#141414]">
                       {faq.answer}
                     </p>
                   )}
@@ -305,7 +305,7 @@ export default function ScreeningDiagnosticDetailPage() {
                 <h2 className="text-xl font-bold text-[#263C30]">
                   A note about your care
                 </h2>
-                <p className="mt-3 text-[16px] leading-7 text-[#536357]">
+                <p className="mt-3 text-[16px] leading-7 text-[#141414]">
                   {service.closing}
                 </p>
               </div>

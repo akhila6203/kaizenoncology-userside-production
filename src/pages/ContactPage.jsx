@@ -247,7 +247,7 @@ toast.success(
                     size={17}
                     className="mt-1 shrink-0 text-royal"
                   />
-                  <p className="text-[16px] leading-6 text-ink">
+                  <p className="text-[16px] leading-6 text-[#141414]">
                     {location.address}
                   </p>
                 </div>
@@ -255,7 +255,7 @@ toast.success(
                 {location.phone && (
   <a
     href={`tel:${location.phone.replace(/[^+\d]/g, "")}`}
-    className="mt-3 flex items-start gap-2 text-[16px] font-semibold text-royal transition-colors hover:text-[#f26322]"
+    className="mt-3 flex items-start gap-2 text-[16px] font-semibold text-[#141414] transition-colors hover:text-[#f26322]"
   >
     <Phone size={17} className="mt-0.5 shrink-0" />
     <span>{location.phone}</span>
@@ -264,7 +264,7 @@ toast.success(
                 {location.email && (
   <a
     href={`mailto:${location.email}`}
-    className="mt-2 flex items-start gap-2 break-all text-[16px] font-semibold text-royal transition-colors hover:text-[#f26322]"
+    className="mt-2 flex items-start gap-2 break-all text-[16px] font-semibold text-[#141414] transition-colors hover:text-[#f26322]"
   >
     <Mail size={17} className="mt-0.5 shrink-0" />
     <span>{location.email}</span>
@@ -284,14 +284,14 @@ toast.success(
               <h2 className="text-[16px] font-bold text-heading">
                 Opening hours
               </h2>
-              <p className="mt-1 text-[16px] leading-6 text-ink">
+              <p className="mt-1 text-[16px] leading-6 text-[#141414]">
                 {hospital.hours}
               </p>
-              <p className="mt-2 text-[16px] leading-6 text-ink">
+              <p className="mt-2 text-[16px] leading-6 text-[#141414]">
                 General email:{" "}
                 <a
                   href={`mailto:${settings.email || hospital.email}`}
-                  className="break-all font-semibold text-royal hover:text-[#f26322]"
+                  className="break-all font-semibold text-[#141414] hover:text-[#f26322]"
                 >
                   {settings.email || hospital.email}
                 </a>

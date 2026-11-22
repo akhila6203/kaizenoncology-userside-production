@@ -101,7 +101,7 @@ export default function HomeWhy() {
               </h3>
 
               {/* DESCRIPTION */}
-              <p className="mt-3 flex-1 text-[16px] leading-7 text-[#536458] sm:text-[18px]">
+              <p className="mt-3 flex-1 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                 {text}
               </p>
 

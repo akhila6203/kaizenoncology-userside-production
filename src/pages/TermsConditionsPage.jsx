@@ -172,7 +172,7 @@ export default function TermsConditionsPage() {
     [&_strong]:font-bold
     [&_strong]:text-[#304b3c]
 
-    [&_a]:text-[#476b55]
+    [&_a]:text-[#1d1d1d]
     [&_a]:underline [&_a]:underline-offset-4
     [&_a]:[overflow-wrap:anywhere]
     [&_a]:[word-break:normal]

@@ -52,23 +52,7 @@ export default function HealthLibraryPage() {
     </ol>
   </div>
 </nav>
-      {/* <section className="border-b border-[#D4E0D6] bg-[#F6F9F6]">
-        <div className="page-container px-5 py-4 sm:px-8 lg:px-12">
-          <nav
-            aria-label="Breadcrumb"
-            className="flex flex-wrap items-center gap-2 text-sm"
-          >
-            <Link to="/" className="font-medium text-slate-500 transition hover:text-[#E87744]">
-              Home
-            </Link>
-            <span className="text-[#4a4a4a]">/</span>
-            <span className="font-bold text-[#4F7359]">
-              Health Library
-            </span>
-          </nav>
-        </div>
-      </section> */}
-
+     
 
       {/* CANCER EDUCATION CATEGORIES */}
       <section className="bg-white px-5 py-6 sm:px-8 sm:py-14 lg:px-12">
@@ -86,7 +70,7 @@ export default function HealthLibraryPage() {
             Understand Cancer. Understand Your Options.
             </h2>
 
-            <p className="mt-5 text-base leading-7 text-[#4b4d4c]">
+            <p className="mt-5 text-base leading-7 text-[#3a3a3a]">
               Explore trusted information about cancer diagnosis, treatment options, prevention and supportive care to help patients and families make informed decisions throughout their cancer journey.
             </p>
           </div>
@@ -122,11 +106,11 @@ export default function HealthLibraryPage() {
                     {category.title}
                   </h3>
 
-                  <p className="mt-3 text-[20px] font-semibold leading-6 text-[#E87744]">
+                  <p className="mt-3 text-[20px] font-semibold leading-6 text-[#c7521b]">
                     {category.subtitle}
                   </p>
 
-                  <p className="mt-3 flex-1 text-[18px] leading-7 text-[#5c5b5b]">
+                  <p className="mt-3 flex-1 text-[18px] leading-7 text-[#141414]">
                     {category.description}
                   </p>
 

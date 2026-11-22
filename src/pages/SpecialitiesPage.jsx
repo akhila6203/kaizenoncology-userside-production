@@ -183,7 +183,7 @@ const mappedSpecialities = rows.map((item) => ({
           Expertise Across the Cancer Journey
         </h1>
 
-        <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-[#647368] sm:text-lg">
+        <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-[#333433] sm:text-lg">
           The specialty pages explain who provides care and what role each clinical discipline plays.
         </p>
 
@@ -252,7 +252,7 @@ const mappedSpecialities = rows.map((item) => ({
                     relative z-10
                     max-w-full font-display
                     text-base font-semibold
-                    leading-6 text-[#344638]
+                    leading-6 text-[#141414]
                     transition-colors duration-300
                     group-hover:text-[#4f7359]
                     sm:text-lg
@@ -347,9 +347,7 @@ const mappedSpecialities = rows.map((item) => ({
           whileHover={reduceMotion ? {} : { y: -3 }}
           className="relative w-full overflow-hidden border border-[#b8d2bd] bg-gradient-to-r from-[#2c4c30] via-[#365f38] to-[#4c714a] px-6 py-9 shadow-[0_12px_35px_rgba(48,91,58,0.12)] sm:rounded-[2rem] sm:px-12 sm:py-13 lg:px-24 lg:py-14"
         >
-          {/* Decorative background circles */}
-          {/* <div className="pointer-events-none absolute -right-12 -top-16 h-48 w-48 rounded-full bg-[#c9dfcb]/60" /> */}
-          {/* <div className="pointer-events-none absolute -bottom-20 right-[28%] h-48 w-48 rounded-full bg-white/40" /> */}
+          
 
           <div className="relative z-10 flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
 
@@ -362,7 +360,7 @@ const mappedSpecialities = rows.map((item) => ({
                 Need guidance choosing the right speciality?
               </h2>
 
-              <p className="mt-4 text-base leading-8 text-[#b9bdba] sm:text-lg">
+              <p className="mt-4 text-base leading-8 text-[#d9dcda] sm:text-lg">
                 Contact our team or request an appointment to discuss the next
                 steps in your care. Our team is here to help guide you through
                 your treatment journey.

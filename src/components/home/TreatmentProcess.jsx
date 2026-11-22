@@ -73,7 +73,7 @@ export default function TreatmentProcess() {
             A Structured &amp; Personalized Care Journey
           </h2>
 
-          <p className="mx-auto mt-3 max-w-[650px] text-sm leading-7 text-[#3D4A40] sm:text-base">
+          <p className="mx-auto mt-3 max-w-[650px] text-sm leading-7 text-[#494848] sm:text-base">
             From diagnosis to recovery, we guide you at every step with
             clarity and support.
           </p>

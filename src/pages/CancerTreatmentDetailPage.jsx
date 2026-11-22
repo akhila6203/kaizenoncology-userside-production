@@ -171,11 +171,11 @@ export default function CancerTreatmentDetailPage() {
               {service.title}
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#536357] sm:text-[19px] lg:mx-0 lg:text-left">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#141414] sm:text-[19px] lg:mx-0 lg:text-left">
               {service.cardDescription}
             </p>
 
-            <p className="mx-auto mt-4 max-w-2xl text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-[16px] leading-8 text-[#141414] sm:text-[18px] lg:mx-0 lg:text-left">
               {service.intro}
             </p>
 
@@ -263,7 +263,7 @@ export default function CancerTreatmentDetailPage() {
               Understanding {service.shortTitle}
             </h2>
 
-            <p className="mt-5 text-[17px] leading-8 text-[#464a47]">
+            <p className="mt-5 text-[17px] leading-8 text-[#141414]">
               {service.overview}
             </p>
           </section>
@@ -292,7 +292,7 @@ export default function CancerTreatmentDetailPage() {
                     (paragraph, pIndex) => (
                       <p
                         key={pIndex}
-                        className="mt-4 text-[16px] leading-7 text-[#373938] sm:text-[18px]"
+                        className="mt-4 text-[16px] leading-7 text-[#141414] sm:text-[18px]"
                       >
                         {paragraph}
                       </p>
@@ -304,7 +304,7 @@ export default function CancerTreatmentDetailPage() {
                       {section.points.map((point) => (
                         <li
                           key={point}
-                          className="flex items-start gap-3 rounded-xl bg-[#F4F7F2] p-4 text-[16px] leading-7 text-[#4a544c] sm:text-[18px]"
+                          className="flex items-start gap-3 rounded-xl bg-[#F4F7F2] p-4 text-[16px] leading-7 text-[#141414] sm:text-[18px]"
                         >
                           <CheckCircle2
                             size={19}
@@ -376,7 +376,7 @@ export default function CancerTreatmentDetailPage() {
                   A note about your care
                 </h2>
 
-                <p className="mt-3 text-[16px] leading-7 text-[#2d2e2d] sm:text-[18px]">
+                <p className="mt-3 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                   Treatment availability and suitability depend on
                   clinical assessment, approved indications, local
                   regulatory requirements and the facilities available

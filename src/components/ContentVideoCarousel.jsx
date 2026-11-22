@@ -260,29 +260,18 @@ export default function ContentVideoCarousel({
                   <button
                     type="button"
                     onClick={() => setSelectedVideo(item)}
-                    aria-label={`Watch ${item.title || "video"}`}
+                    // aria-label={`Watch ${item.title || "video"}`}
+                    aria-label={item.title || "Play video"}
                     className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-line bg-white text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium"
                   >
-
-                  {/* <a
-                    href={item.href || "#"}
-                    target={item.href ? "_blank" : undefined}
-                    rel={item.href ? "noopener noreferrer" : undefined}
-                    onClick={
-                      !item.href
-                        ? (event) => event.preventDefault()
-                        : undefined
-                    }
-                    aria-label={`Watch ${item.title || "video"}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium"
-                  > */}
 
                     {/* Thumbnail */}
                     <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-ice">
                       {item.thumbnail ? (
                         <img
                           src={item.thumbnail}
-                          alt={item.title || "Video thumbnail"}
+                          // alt={item.title || ""}
+                          alt=""
                           loading="lazy"
                           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                         />

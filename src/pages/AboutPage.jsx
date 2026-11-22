@@ -254,7 +254,7 @@ export default function AboutPage() {
                   COMPASSIONATE, PATIENT-CENTRED CARE
                 </span>
 
-                <p className="mt-4 text-base leading-8 text-[#526357] sm:text-lg">
+                <p className="mt-4 text-base leading-8 text-[#141414] sm:text-lg">
                   At KIMS RENOVA Cancer Hospital, we are committed to providing
                   dedicated cancer care with compassion, clinical expertise
                   and a patient-centred approach. We recognise that every
@@ -262,14 +262,14 @@ export default function AboutPage() {
                   treated with dignity, understanding and respect.
                 </p>
 
-                <p className="mt-5 text-base leading-8 text-[#526357] sm:text-lg">
+                <p className="mt-5 text-base leading-8 text-[#141414] sm:text-lg">
                   Our approach brings together specialist assessment,
                   personalised treatment planning and coordinated care to
                   help patients and their families make informed decisions
                   throughout their cancer journey.
                 </p>
 
-                <p className="mt-5 text-base leading-8 text-[#526357] sm:text-lg">
+                <p className="mt-5 text-base leading-8 text-[#141414] sm:text-lg">
                   Cancer care is a journey that may involve assessment,
                   diagnosis, treatment, recovery and ongoing support.
                   Understanding each patient's needs at every stage helps
@@ -383,14 +383,14 @@ export default function AboutPage() {
                 Care That Goes Beyond Treatment
               </h2>
 
-              <p className="mt-5 text-base leading-8 text-[#526357] sm:text-lg">
+              <p className="mt-5 text-base leading-8 text-[#141414] sm:text-lg">
                 Cancer care involves more than a treatment plan. It requires
                 a thorough understanding of each patient's condition,
                 careful consideration of appropriate treatment options and
                 ongoing support throughout the care journey.
               </p>
 
-              <p className="mt-4 text-base leading-8 text-[#526357] sm:text-lg">
+              <p className="mt-4 text-base leading-8 text-[#141414] sm:text-lg">
                 Our approach focuses on individual needs, clear communication
                 and coordinated care so patients and families can take part
                 in informed discussions about their care.
@@ -401,7 +401,7 @@ export default function AboutPage() {
                   className="shrink-0 text-[#304b3c]"
                   size={28}
                 />
-                <p className="text-sm font-semibold leading-7 text-[#304b3c] sm:text-base">
+                <p className="text-sm font-semibold leading-7 text-[#141414] sm:text-base">
                   Every patient's journey is unique. Their care should
                   recognise that.
                 </p>
@@ -426,7 +426,7 @@ export default function AboutPage() {
                     {title}
                   </h3>
 
-                  <p className="mt-3 text-[16px] leading-7 text-[#647368] sm:text-[18px]">
+                  <p className="mt-3 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                     {description}
                   </p>
 
@@ -756,14 +756,14 @@ export default function AboutPage() {
               Quality and Safety Matter at Every Step
             </h2>
 
-            <p className="mt-6 text-base leading-8 text-[#526357] sm:text-lg">
+            <p className="mt-6 text-base leading-8 text-[#141414] sm:text-lg">
               Quality and patient safety are important considerations
               throughout the cancer care journey. Clear communication,
               careful clinical processes and attention to individual
               needs all contribute to a supportive care experience.
             </p>
 
-            <p className="mt-4 text-base leading-8 text-[#526357] sm:text-lg">
+            <p className="mt-4 text-base leading-8 text-[#141414] sm:text-lg">
               KIMS RENOVA's verified quality systems, accreditation,
               infection-control practices, medication safety,
               radiation safety, quality assurance and patient-safety

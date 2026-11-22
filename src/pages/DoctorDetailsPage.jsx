@@ -431,7 +431,7 @@ export default function DoctorDetailsPage() {
               </h1>
 
               {doctor.designation && (
-                <p className="mt-2 text-sm leading-6 text-[#647568] sm:text-base">
+                <p className="mt-2 text-sm leading-6 text-[#141414] sm:text-base">
                   {doctor.designation}
                 </p>
               )}
@@ -632,7 +632,7 @@ export default function DoctorDetailsPage() {
 
               <div
                 className="
-                  mt-4 break-words text-base leading-7 !text-black
+                  mt-4 break-words text-base leading-7 !text-[#141414]
                     sm:text-[17px] sm:leading-8 lg:text-lg
                     [&_p]:mb-4 [&_p:last-child]:mb-0
                     [&_ul]:mb-4 [&_ul]:ml-5 [&_ul]:list-disc

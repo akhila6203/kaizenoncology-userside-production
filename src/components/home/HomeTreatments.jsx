@@ -44,7 +44,7 @@ export default function HomeTreatments() {
           transition={{ duration: 0.65, ease: "easeOut" }}
           className="mx-auto mb-12 max-w-3xl text-center"
         >
-          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#E87744] sm:text-sm">
+          <p className="text-[13px] font-extrabold uppercase tracking-[0.18em] text-[#B94C1C] sm:text-sm">
             PERSONALISED TREATMENT
           </p>
 
@@ -52,7 +52,7 @@ export default function HomeTreatments() {
             Cancer Treatments
           </h2>
 
-          <p className="mt-4 text-[15px] leading-7 text-[#59695D] sm:text-base">
+          <p className="mt-4 text-[15px] leading-7 text-[#494848] sm:text-base">
             Explore different treatment approaches and understand how
             specialists plan care based on individual needs.
           </p>
@@ -125,7 +125,7 @@ export default function HomeTreatments() {
                     {service.title}
                   </h3>
 
-                  <p className="mt-3 min-h-[96px] flex-1 text-[17px] leading-7 text-[#59695D]">
+                  <p className="mt-3 min-h-[96px] flex-1 text-[17px] leading-7 text-[#141414]">
                     {service.cardDescription}
                   </p>
 

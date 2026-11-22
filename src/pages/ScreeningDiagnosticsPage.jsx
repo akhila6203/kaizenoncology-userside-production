@@ -92,7 +92,7 @@ export default function ScreeningDiagnosticsPage() {
             <h1 className="mt-5 text-center text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-left lg:text-[56px]">
               Screening & <span className="text-[#E87744]">Diagnostics</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#536357] sm:text-[19px] lg:mx-0 lg:text-left">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#141414] sm:text-[19px] lg:mx-0 lg:text-left">
               {screeningDiagnosticsOverview.description}
             </p>
             <div className="mt-8 flex flex-nowrap items-center justify-center gap-2 lg:justify-start lg:gap-3">
@@ -170,7 +170,7 @@ export default function ScreeningDiagnosticsPage() {
           <h2 className="mt-3 text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl">
             Explore each service
           </h2>
-          <p className="mt-4 text-[17px] leading-8 text-[#536357]">
+          <p className="mt-4 text-[17px] leading-8 text-[#3b3c3b]">
             Choose a service to understand why it may be recommended, what
             happens during the process and how results can guide the next
             conversation with your care team.
@@ -206,7 +206,7 @@ export default function ScreeningDiagnosticsPage() {
                   <h3 className="mt-2 text-xl font-bold leading-snug text-[#263C30]">
                     {service.title}
                   </h3>
-                  <p className="mt-3 flex-1 text-[16px] leading-7 text-[#59695D] sm:text-[18px]">
+                  <p className="mt-3 flex-1 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                     {service.cardDescription}
                   </p>
                   <Link
@@ -231,7 +231,7 @@ export default function ScreeningDiagnosticsPage() {
             <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl">
               Get guidance on the right test for your needs
             </h2>
-            <p className="mt-4 max-w-3xl text-[17px] leading-8 text-[#536357]">
+            <p className="mt-4 max-w-3xl text-[17px] leading-8 text-[#141414]">
               Screening and diagnostic decisions depend on your symptoms,
               personal history and clinical assessment. Speak with a qualified
               specialist to understand which investigations, if any, may be

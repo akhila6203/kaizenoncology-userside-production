@@ -23,8 +23,9 @@ import HomeSpecialities from "../components/home/HomeSpecialities";
 
 export default function HomePage() {
   return (
-    <>
+    <main id="main-content">
       <HeroSlider />
+
 
       <TrustStrip />
       <HomePathway />
@@ -48,6 +49,7 @@ export default function HomePage() {
       {/* <PhotoGallery/> */}
       <HomeBlogs />
       <HomeContactBanner />
-    </>
+      </main>
+  
   );
 }

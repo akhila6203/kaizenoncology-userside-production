@@ -65,7 +65,7 @@ export default function HomePatientCare() {
           className="mx-auto mb-10 w-full text-center"
         >
           {/* SECTION LABEL */}
-          <p className="mb-4 flex items-center justify-center gap-3 text-sm font-bold tracking-[0.2em] text-[#f26322]">
+          <p className="mb-4 flex items-center justify-center gap-3 text-sm font-bold tracking-[0.2em] text-[#B94C1C]">
             <span className="h-px w-10 bg-[#f26322]" />
             PATIENT CARE
             <span className="h-px w-10 bg-[#f26322]" />
@@ -77,7 +77,7 @@ export default function HomePatientCare() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="mx-auto mt-2 max-w-5xl text-center text-[16px] leading-7 text-[#526457]">
+          <p className="mx-auto mt-2 max-w-5xl text-center text-[16px] leading-7 text-[#494848]">
             At KIMS RENOVA Cancer Hospital, we understand that cancer care
             involves more than medical treatment. We support patients
             and their families with guidance, comfort and care throughout
@@ -129,7 +129,7 @@ export default function HomePatientCare() {
                       {title}
                     </h3>
 
-                    <p className="mt-1.5 text-[16px] leading-6 text-[#526457] sm:text-[18px]">
+                    <p className="mt-1.5 text-[16px] leading-6 text-[#2e2d2d] sm:text-[18px]">
                       {text}
                     </p>
                   </div>
@@ -197,7 +197,7 @@ export default function HomePatientCare() {
               transition={{ duration: 0.5, delay: 0.25 }}
               className="absolute -bottom-5 left-8 right-8 rounded-2xl border border-[#e5e9e3] bg-white p-4 shadow-lg sm:left-20 sm:right-40 sm:p-5"
             >
-              <p className="text-sm font-bold uppercase tracking-wider text-[#f26322]">
+              <p className="text-sm font-bold uppercase tracking-wider text-[#B94C1C]">
                 Care beyond treatment
               </p>
 

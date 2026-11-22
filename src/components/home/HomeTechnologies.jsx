@@ -17,7 +17,7 @@ export default function HomeTechnologies() {
       <div className="page-container px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#E87744] sm:text-sm">
+          <p className="text-[13px] font-extrabold uppercase tracking-[0.18em] text-[#B94C1C] sm:text-sm">
             ADVANCED CANCER CARE
           </p>
 
@@ -25,7 +25,7 @@ export default function HomeTechnologies() {
             Our Technology
           </h2>
 
-          <p className="mt-4 text-[15px] leading-7 text-[#59695D] sm:text-base">
+          <p className="mt-4 text-[15px] leading-7 text-[#494848] sm:text-base">
             Discover technologies that support cancer diagnosis, treatment
             planning and specialised care.
           </p>
@@ -62,7 +62,7 @@ export default function HomeTechnologies() {
                   {item.title}
                 </h3>
 
-                <p className="mt-3 flex-1 text-[17px] leading-7 text-[#59695D]">
+                <p className="mt-3 flex-1 text-[17px] leading-7 text-[#141414]">
                   {item.description}
                 </p>
 

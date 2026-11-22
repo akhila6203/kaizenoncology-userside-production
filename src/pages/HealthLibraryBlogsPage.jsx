@@ -174,36 +174,7 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
     </ol>
   </div>
 </nav>
-      {/* <section className="border-b border-[#D4E0D6] bg-[#F6F9F6]">
-        <div className="page-container px-5 py-4 sm:px-8 lg:px-12">
-          <nav
-            aria-label="Breadcrumb"
-            className="flex items-center gap-2 overflow-x-auto whitespace-nowrap text-sm"
-          >
-            <Link
-              to="/"
-              className="font-semibold text-[#3D4A40] transition hover:text-[#E87744]"
-            >
-              Home
-            </Link>
-
-            <span className="text-[#4c4b4a]">/</span>
-
-            <Link
-              to="/health-library"
-              className="font-semibold text-[#3D4A40] transition hover:text-[#E87744]"
-            >
-              Health Library
-            </Link>
-
-            <span className="text-[#484747]">/</span>
-
-            <span className="font-bold text-[#4F7359]">
-              Blogs
-            </span>
-          </nav>
-        </div>
-      </section> */}
+      
 
       {/* BLOGS MAIN CONTENT */}
       <section className="page-container px-5 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
@@ -225,7 +196,7 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
             Health & Wellness Blogs
           </h1>
 
-          <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-[#3D4A40] sm:text-lg">
+          <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-[#383938] sm:text-lg">
             Discover reliable information and helpful insights about
             cancer awareness, symptoms, diagnosis, treatments,
             prevention and survivorship.

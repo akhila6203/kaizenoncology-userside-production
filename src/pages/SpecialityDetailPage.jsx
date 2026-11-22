@@ -440,7 +440,7 @@ const renderTechnologyCard = (technology) => (
         {technology.title}
       </h3>
 
-      <p className="mt-2 flex-1 text-sm leading-6 text-[#59695D] sm:mt-3 sm:text-[15px] sm:leading-7">
+      <p className="mt-2 flex-1 text-sm leading-6 text-[#141414]sm:mt-3 sm:text-[17px] sm:leading-7">
         {technology.description}
       </p>
 
@@ -593,7 +593,7 @@ const testimonialVideos = patientStories.map((story) => ({
               {speciality.heading}
             </h2>
 
-            <p className="mt-6 text-base leading-8 text-[#526357] sm:text-lg sm:leading-9">
+            <p className="mt-6 text-base leading-8 text-[#141414] sm:text-lg sm:leading-9">
               {speciality.description}
             </p>
 
@@ -615,7 +615,7 @@ const testimonialVideos = patientStories.map((story) => ({
                   </h3>
                 </div>
 
-                <p className="mt-4 text-base leading-8 text-[#526357] sm:text-lg">
+                <p className="mt-4 text-base leading-8 text-[#141414] sm:text-lg">
                   {speciality.whenToConsult}
                 </p>
               </motion.div>
@@ -749,7 +749,7 @@ const testimonialVideos = patientStories.map((story) => ({
                     duration: reduceMotion ? 0 : 0.35,
                     delay: reduceMotion ? 0 : index * 0.035,
                   }}
-                  className="flex items-start gap-3 border-b border-[#e8ece6] pb-4 text-base leading-7 text-[#405247] sm:text-[17px]"
+                  className="flex items-start gap-3 border-b border-[#e8ece6] pb-4 text-base leading-7 text-[#141414] sm:text-[17px]"
                 >
                   <CheckCircle2
                     size={21}
@@ -847,7 +847,7 @@ const testimonialVideos = patientStories.map((story) => ({
           Technologies for {speciality.title}
         </h2>
 
-        <p className="mt-4 text-base leading-7 text-[#647368]">
+        <p className="mt-4 text-base leading-7 text-[#323232]">
           Explore the technologies associated with this speciality
           and learn how they support diagnosis and treatment.
         </p>
@@ -904,7 +904,7 @@ const testimonialVideos = patientStories.map((story) => ({
                 Need guidance about {speciality.title}?
               </h2>
 
-              <p className="mt-4 text-base leading-8 text-[#b9bdba] sm:text-lg">
+              <p className="mt-4 text-base leading-8 text-[#d4d7d5] sm:text-lg">
                 Contact our team or request an appointment to discuss the next
                 steps in your care. Our team is here to help guide you through
                 your treatment journey.
@@ -948,7 +948,7 @@ const testimonialVideos = patientStories.map((story) => ({
                 {speciality.title} Doctors
               </h2>
 
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#647368] sm:text-lg">
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#363737] sm:text-lg">
                 Meet the specialists for this department and explore their
                 profiles, experience and areas of expertise.
               </p>
@@ -1071,7 +1071,7 @@ const testimonialVideos = patientStories.map((story) => ({
                 Frequently Asked Questions
               </h2>
 
-              <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-[#647368]">
+              <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-[#3c3c3c]">
                 Find answers to common questions about {speciality.title},
                 diagnosis and treatment options.
               </p>
@@ -1120,7 +1120,7 @@ const testimonialVideos = patientStories.map((story) => ({
 
                     {isOpen && (
                       <div className="border-t border-line px-5 pb-5 pt-4 sm:px-6">
-                        <p className="pl-8 text-[15px] leading-7 text-[#59695D] sm:text-base">
+                        <p className="pl-8 text-[15px] leading-7 text-[#141414] sm:text-[18px]">
                           {faq.answer}
                         </p>
                       </div>

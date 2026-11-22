@@ -93,7 +93,7 @@ export default function HomePathway() {
               />
               
               {/* <p className="max-w-2xl text-[16px] leading-7 text-ink"> */}
-              <p className="mt-1 max-w-3xl text-[17px] leading-7 text-ink sm:text-[18px]">
+              <p className="mt-1 max-w-3xl text-[17px] leading-7 text-[#494848] sm:text-[18px]">
                 Every patient's cancer journey is unique. At KIMS RENOVA, our
                 multidisciplinary team focuses on understanding individual
                 needs and guiding patients through every stage of care.
@@ -119,11 +119,11 @@ export default function HomePathway() {
                   </span>
 
                   <div>
-                    <h3 className="text-lg font-bold text-[#304b3c]">
+                    <h3 className="text-lg font-bold text-[#191919]">
                       Compassionate care and guidance
                     </h3>
 
-                    <p className="mt-1 text-[16px] leading-6 text-[#304b3c]">
+                    <p className="mt-1 text-[16px] leading-6 text-[#232323]">
                       Understand assessments, discuss care options and
                       prepare for conversations with your healthcare team.
                     </p>
@@ -216,7 +216,7 @@ export default function HomePathway() {
             transition={{ duration: 0.55 }}
           >
             <SectionTitle
-              eyebrow="YOUR BREAST CARE JOURNEY"
+              eyebrow="YOUR CANCER CARE JOURNEY"
               title="One connected journey. Three focused pillars."
               description="Explore KIMS RENOVA's connected approach to breast cancer diagnosis, personalised treatment and rehabilitation."
             />
@@ -273,7 +273,7 @@ export default function HomePathway() {
                     {stage.heading}
                   </h3>
 
-                  <p className="mt-3 text-[16px] leading-7 text-ink sm:text-[18px]">
+                  <p className="mt-3 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                     {stage.text}
                   </p>
 
@@ -282,7 +282,7 @@ export default function HomePathway() {
                     {stage.points.map((point) => (
                       <li
                         key={point}
-                        className="flex items-start gap-3 text-[16px] leading-6 text-ink sm:text-[18px]"
+                        className="flex items-start gap-3 text-[16px] leading-6 text-[#232323] sm:text-[18px]"
                       >
                         <CheckCircle2
                           size={18}

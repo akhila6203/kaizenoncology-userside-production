@@ -77,7 +77,7 @@ function SectionHeading({
       </h2>
 
       {description && (
-        <p className="mx-auto mt-5 max-w-3xl text-[17px] leading-8 text-[#536357] sm:text-[18px]">
+        <p className="mx-auto mt-5 max-w-3xl text-[17px] leading-8 text-[#363636] sm:text-[18px]">
           {description}
         </p>
       )}
@@ -144,11 +144,11 @@ export default function CancerTypesPage() {
               Understanding the Condition
             </h3>
 
-            <p className="mt-5 text-[17px] leading-8 text-[#4a4d4b] sm:text-[18px]">
+            <p className="mt-5 text-[17px] leading-8 text-[#141414] sm:text-[18px]">
               {cancerOverview.description}
             </p>
 
-            <p className="mt-5 text-[17px] leading-8 text-[#4a4d4b] sm:text-[18px]">
+            <p className="mt-5 text-[17px] leading-8 text-[#141414] sm:text-[18px]">
               {cancerOverview.secondParagraph}
             </p>
 
@@ -160,7 +160,7 @@ export default function CancerTypesPage() {
                   Understand
                 </h3>
 
-                <p className="mt-2 text-base leading-7 text-[#343535]">
+                <p className="mt-2 text-base leading-7 text-[#141414]">
                   Learn about cancer types, symptoms and diagnosis.
                 </p>
               </div>
@@ -172,7 +172,7 @@ export default function CancerTypesPage() {
                   Make Informed Decisions
                 </h3>
 
-                <p className="mt-2 text-base leading-7 text-[#323232]">
+                <p className="mt-2 text-base leading-7 text-[#141414]">
                   Understand possible treatment and prevention options.
                 </p>
               </div>
@@ -260,7 +260,7 @@ export default function CancerTypesPage() {
           
 <div className="relative grid items-center gap-6 text-center lg:grid-cols-[1fr_auto] lg:gap-8 lg:text-left"> 
    <div className="flex flex-col items-center lg:items-start">
-    <p className="inline-block rounded-full bg-white/15 px-4 py-2 text-sm font-extrabold uppercase tracking-[0.18em] text-[#FFD0B3]">
+    <p className="inline-block rounded-full bg-white/15 px-4 py-2 text-sm font-extrabold uppercase tracking-[0.18em] text-[#da5f13]">
       Your Next Step
     </p>
 
@@ -268,7 +268,7 @@ export default function CancerTypesPage() {
       Every Cancer Journey Is Different
     </h2>
 
-    <p className="mt-5 max-w-2xl text-[16px] font-medium leading-7 text-white sm:text-[18px] sm:leading-8">
+    <p className="mt-5 max-w-2xl text-[16px] font-medium leading-7 text-white/80 sm:text-[18px] sm:leading-8">
       Understanding your condition and available treatment options
       is an important part of making informed healthcare decisions.
       Every patient's needs are different. Speak with a specialist

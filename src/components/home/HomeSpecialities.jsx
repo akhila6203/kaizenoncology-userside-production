@@ -86,7 +86,7 @@ const mappedSpecialities = rows.map((item) => ({
           transition={{ duration: 0.6 }}
           className="mx-auto mb-12 max-w-3xl text-center"
         >
-          <span className="text-sm font-bold tracking-[0.18em] text-[#E87744]">
+          <span className="text-sm font-bold tracking-[0.18em] text-[#B94C1C]">
             OUR SPECIALITIES
           </span>
 
@@ -94,7 +94,7 @@ const mappedSpecialities = rows.map((item) => ({
             Expertise Across the Cancer Journey
           </h2>
 
-          <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-[#647368]">
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-[#494848]">
             Our specialist departments bring together clinical expertise
             to support different aspects of cancer care.
           </p>
@@ -166,7 +166,7 @@ const mappedSpecialities = rows.map((item) => ({
                     className="
                       relative z-10 max-w-full
                       font-display text-base font-semibold
-                      leading-6 text-[#344638]
+                      leading-6 text-[#000000]
                       transition-colors duration-300
                       group-hover:text-[#4f7359]
                       sm:text-lg

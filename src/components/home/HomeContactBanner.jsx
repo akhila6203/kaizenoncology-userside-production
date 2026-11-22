@@ -8,7 +8,7 @@ export default function HomeContactBanner() {
 
         {/* Heading */}
         <div className="mx-auto max-w-4xl">
-          <p className="text-sm font-bold tracking-[0.2em] text-sky sm:text-[15px]">
+         <p className="text-sm font-bold tracking-[0.2em] text-white sm:text-[15px]"> 
             WE'RE HERE TO HELP
           </p>
 

@@ -99,7 +99,7 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
 
-        <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-[#647268] sm:text-base sm:leading-8">
+        <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-[#3f4040] sm:text-base sm:leading-8">
           Your privacy matters to us. Read how we collect, use and protect
           information when you visit our website or interact with our services.
         </p>
@@ -155,7 +155,7 @@ export default function PrivacyPolicyPage() {
 
     [&_h3]:mb-3 [&_h3]:mt-6
     [&_h3]:text-lg [&_h3]:font-semibold
-    [&_h3]:leading-snug [&_h3]:text-[#304b3c]
+    [&_h3]:leading-snug [&_h3]:text-[#313232]
 
     [&_ul]:mb-6 [&_ul]:list-disc
     [&_ul]:space-y-2 [&_ul]:pl-6
@@ -171,7 +171,7 @@ export default function PrivacyPolicyPage() {
     [&_strong]:font-bold
     [&_strong]:text-[#304b3c]
 
-    [&_a]:text-[#476b55]
+    [&_a]:text-[#222323]
     [&_a]:underline [&_a]:underline-offset-4
     [&_a]:[overflow-wrap:anywhere]
     [&_a]:[word-break:normal]
@@ -195,7 +195,7 @@ export default function PrivacyPolicyPage() {
     [&_th]:border [&_th]:border-[#e5ebe6]
     [&_th]:bg-[#f3f7f3]
     [&_th]:p-3 [&_th]:text-left
-    [&_th]:font-semibold [&_th]:text-[#304b3c]
+    [&_th]:font-semibold [&_th]:text-[#333434]
 
     [&_td]:min-w-[120px]
     [&_td]:border [&_td]:border-[#e5ebe6]

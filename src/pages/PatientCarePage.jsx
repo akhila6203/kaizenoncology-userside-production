@@ -365,7 +365,7 @@ export default function PatientCarePage() {
         Care Across Every Stage of Your Cancer Journey
       </h1>
 
-      <p className="mx-auto mt-3 max-w-4xl text-base leading-8 text-[#536458] sm:text-lg">
+      <p className="mx-auto mt-3 max-w-4xl text-base leading-8 text-[#363636] sm:text-lg">
         At KIMS RENOVA Cancer Hospital, we provide guidance and support throughout diagnosis, treatment, recovery and follow-up care, helping patients and their families navigate each stage with greater confidence.
       </p>
     </div>
@@ -381,18 +381,18 @@ export default function PatientCarePage() {
           Every Step of Your Journey Matters
         </h2>
 
-        <p className="mt-4 text-[16px] leading-6 text-[#3c3c3c] sm:text-[18px]">
+        <p className="mt-4 text-[16px] leading-6 text-[#141414] sm:text-[18px]">
         A cancer diagnosis can bring uncertainty and many questions. Having access to the right information,
          medical guidance and supportive
          care can help patients understand their options and make informed decisions.
         </p>
 
-        <p className="mt-4 text-[16px] leading-7 text-[#3c3c3c] sm:text-[18px] ">
+        <p className="mt-4 text-[16px] leading-7 text-[#141414] sm:text-[18px] ">
          At KIMS RENOVA, patient care goes beyond medical treatment. We recognise the importance of emotional support, 
          nutritional guidance, pain and symptom management, rehabilitation and ongoing care for patients and their families.
         </p>
 
-        <p className="mt-4 text-[16px] leading-7 text-[##3c3c3c] sm:text-[18px]">
+        <p className="mt-4 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
          Our approach focuses on understanding each patient's individual needs and providing appropriate 
          guidance and support throughout their cancer journey.
         </p>
@@ -446,7 +446,7 @@ export default function PatientCarePage() {
         Understanding Your Next Steps
       </h2>
 
-      <p className="mt-4 text-base leading-8 text-[#536458]">
+      <p className="mt-4 text-base leading-8 text-[#353635]">
         Every patient's cancer journey is different. Understanding your diagnosis, 
         treatment options and available support is an important first step towards 
         making informed decisions about your care.
@@ -460,7 +460,7 @@ export default function PatientCarePage() {
           Begin With Clarity, Care and Guidance
         </h3>
 
-        <p className="mt-3 text-[15px] leading-7 text-[#4b5d50] sm:text-[16px]">
+        <p className="mt-3 text-[15px] leading-7 text-[#141414] sm:text-[16px]">
           Following a diagnosis, discussions with your oncology team help you understand your condition,
            identify any further investigations needed and explore suitable treatment options
         </p>
@@ -478,7 +478,7 @@ export default function PatientCarePage() {
                 size={20}
                 className="mt-1 shrink-0 text-[#e87744]"
               />
-              <span className="text-[18px] leading-7 text-[#4b5d50]">
+              <span className="text-[18px] leading-7 text-[#141414]">
                 {item}
               </span>
             </li>
@@ -521,10 +521,10 @@ export default function PatientCarePage() {
                 <div className={`flex flex-col justify-center p-6 sm:p-8 lg:p-10 ${index % 2 ? "lg:order-1" : ""}`}>
                   <p className="text-sm font-extrabold tracking-[0.18em] text-[#e87744]">{stage.name}</p>
                   <h2 className="display-font mt-3 text-2xl font-bold leading-tight text-[#263c30] sm:text-3xl">{stage.title}</h2>
-                  <p className="mt-4 text-[16px] leading-7 text-[#4b5d50] sm:text-base">{stage.description}</p>
+                  <p className="mt-4 text-[16px] leading-7 text-[#141414] sm:text-base">{stage.description}</p>
                   <ul className="mt-5 space-y-3">
                     {stage.highlights.map((point) => (
-                      <li key={point} className="flex items-start gap-3 text-[17px] leading-6 text-[#304b3c]">
+                      <li key={point} className="flex items-start gap-3 text-[17px] leading-6 text-[#141414]">
                         <CheckCircle2 size={19} className="mt-0.5 shrink-0 text-[#e87744]" />
                         <span>{point}</span>
                       </li>
@@ -568,7 +568,7 @@ export default function PatientCarePage() {
         Information to Guide Your Care Journey
       </h2>
 
-      <p className="mt-4 text-base leading-8 text-[#536458]">
+      <p className="mt-4 text-base leading-8 text-[#343534]">
         Helpful information for patients and families to understand
         a diagnosis, prepare for consultations and take informed
         decisions throughout cancer care.
@@ -591,7 +591,7 @@ export default function PatientCarePage() {
               {section.title}
             </h3>
 
-            <p className="mt-4 text-[16px] leading-8 text-[#4b5d50] sm:text-base">
+            <p className="mt-4 text-[16px] leading-8 text-[#141414] sm:text-base">
               {section.description}
             </p>
 
@@ -606,7 +606,7 @@ export default function PatientCarePage() {
                     className="mt-1 shrink-0 text-[#e87744]"
                   />
 
-                  <span className="text-[15px] leading-7 text-[#435849] sm:text-[18px]">
+                  <span className="text-[15px] leading-7 text-[#141414] sm:text-[18px]">
                     {point}
                   </span>
                 </li>
@@ -647,7 +647,7 @@ export default function PatientCarePage() {
         Questions to Ask Your Oncologist
       </h2>
 
-      <p className="mt-4 text-base leading-8 text-[#536458]">
+      <p className="mt-4 text-base leading-8 text-[#3a3b3a]">
         Preparing questions before your appointment can help you
         understand your diagnosis, treatment choices and the next
         steps in your care.
@@ -669,7 +669,7 @@ export default function PatientCarePage() {
             A little preparation can help
           </h3>
 
-          <p className="mt-2 text-[17px] leading-7 text-[#4b5d50]">
+          <p className="mt-2 text-[17px] leading-7 text-[#141414]">
             Write down your questions, bring your reports and,
             if helpful, ask a family member or caregiver to
             accompany you.
@@ -693,7 +693,7 @@ export default function PatientCarePage() {
                 {String(index + 1).padStart(2, "0")}
               </span>
 
-              <p className="text-[16px] leading-6 text-[#435849] sm:text-[17px]">
+              <p className="text-[16px] leading-6 text-[#141414] sm:text-[17px]">
                 {question}
               </p>
             </div>
@@ -718,7 +718,7 @@ export default function PatientCarePage() {
         Support Beyond Treatment
       </h2>
 
-      <p className="mt-4 text-base leading-8 text-[#536458]">
+      <p className="mt-4 text-base leading-8 text-[#383939]">
         Supportive services can address the physical, emotional
         and practical needs of patients and their families.
       </p>
@@ -743,7 +743,7 @@ export default function PatientCarePage() {
             {item.title}
           </h3>
 
-          <p className="mt-3 text-[18px] leading-7 text-[#4b5d50]">
+          <p className="mt-3 text-[18px] leading-7 text-[#141414]">
             {item.text}
           </p>
         </article>
@@ -792,7 +792,7 @@ export default function PatientCarePage() {
         Have Questions About Your Care Journey?
       </h2>
 
-      <p className="mt-3 text-[16px] leading-7 text-[#4b5d50]">
+      <p className="mt-3 text-[16px] leading-7 text-[#141414]">
         Our team is here to help with appointment enquiries, information about available patient support services and guidance on preparing for your consultation.
       </p>
     </div>

@@ -198,7 +198,7 @@ function SectionHeading({ eyebrow, title, description, light = false }) {
       {description && (
         <p
           className={`mt-4 text-[15px] leading-8 sm:text-[17px] ${
-            light ? "text-white/80" : "text-[#536357]"
+            light ? "text-white/80" : "text-[#141414]"
           }`}
         >
           {description}
@@ -289,7 +289,7 @@ function SecondOpinionHero() {
             </span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
+          <p className="mx-auto mt-6 max-w-2xl text-center text-[16px] leading-8 text-[#202020] sm:text-[18px] lg:mx-0 lg:text-left">
             A second opinion can help you better understand your diagnosis
             and proposed treatment. Our review approach brings together
             available pathology, imaging, cancer stage, biomarkers,
@@ -350,7 +350,7 @@ function SecondOpinionHero() {
                   A Closer Look at Your Diagnosis
                 </h3>
 
-                <p className="mt-1 text-[13px] leading-6 text-[#647267] sm:text-sm">
+                <p className="mt-1 text-[13px] leading-6 text-[#2b2c2b] sm:text-sm">
                   Review the available information and understand possible
                   next steps.
                 </p>
@@ -387,7 +387,7 @@ function SecondOpinionIntroduction() {
               Understand Your Diagnosis
             </h3>
 
-            <p className="mt-3 text-[16px] leading-8 text-[#353735] sm:text-[18px]">
+            <p className="mt-3 text-[16px] leading-8 text-[#2c2c2c] sm:text-[18px]">
               Review the available findings from pathology, imaging,
               staging and relevant laboratory or molecular investigations
               to better understand the diagnosis.
@@ -403,7 +403,7 @@ function SecondOpinionIntroduction() {
               Discuss Treatment Choices
             </h3>
 
-            <p className="mt-3 text-[16px] leading-8 text-[#353735] sm:text-[18px] ">
+            <p className="mt-3 text-[16px] leading-8 text-[#323232] sm:text-[18px] ">
               Discuss the proposed treatment, its rationale and other
               clinically appropriate options that may be relevant to
               your individual situation.
@@ -450,7 +450,7 @@ function ReviewAreas() {
                   {item.title}
                 </h3>
 
-                <p className="mt-3 text-[16px] leading-7 text-[#353735] sm:text-[18px]">
+                <p className="mt-3 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                   {item.description}
                 </p>
               </motion.div>
@@ -491,7 +491,7 @@ function BreastCancerOpinion() {
               Breast Cancer Second Opinion
             </h2>
 
-            <p className="mt-5 text-[16px] leading-8 text-[#353735] sm:text-[18px]">
+            <p className="mt-5 text-[16px] leading-8 text-[#141414] sm:text-[18px]">
               Breast cancer care may involve several decisions about
               diagnosis, tumour characteristics and treatment. A specialist
               review can help bring together available breast imaging,
@@ -499,7 +499,7 @@ function BreastCancerOpinion() {
               treatment plan.
             </p>
 
-            <p className="mt-4 text-[16px] leading-8 text-[#353735] sm:text-[18px]">
+            <p className="mt-4 text-[16px] leading-8 text-[#141414] sm:text-[18px]">
             Every breast cancer diagnosis is different. A second opinion
             can help you better understand your cancer subtype, receptor
             status, available treatment choices and the potential benefits
@@ -532,7 +532,7 @@ function BreastCancerOpinion() {
                     className="mt-1 shrink-0 text-[#E87744]"
                   />
 
-                  <span className="text-[16px] leading-7 text-[#444945] sm:text-[18px]">
+                  <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                     {item}
                   </span>
                 </li>
@@ -582,7 +582,7 @@ function SecondOpinionProcess() {
                   {step.title}
                 </h3>
 
-                <p className="mt-3 text-[16px] leading-7 text-[#353735] sm:text-[18px]">
+                <p className="mt-3 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                   {step.description}
                 </p>
               </div>
@@ -615,7 +615,7 @@ function RequiredDocuments() {
             Reports and Documents to Share
           </h2>
 
-          <p className="mt-4 text-[16px] leading-8 text-[#536357] sm:text-[17px]">
+          <p className="mt-4 text-[16px] leading-8 text-[#383938] sm:text-[17px]">
             Sharing relevant medical records can help the specialist
             understand your diagnosis and the treatment decisions being
             considered. Start with the reports you already have.
@@ -640,7 +640,7 @@ function RequiredDocuments() {
                   className="mt-1 shrink-0 text-[#E87744]"
                 />
 
-                <span className="text-[16px] leading-7 text-[#3b3e3c] sm:text-[18px]">
+                <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                   {document}
                 </span>
               </li>
@@ -655,7 +655,7 @@ function RequiredDocuments() {
               className="mt-1 shrink-0 text-[#E87744]"
             />
 
-            <p className="text-[16px] leading-7 text-[#46584A] sm:text-[17px]">
+            <p className="text-[16px] leading-7 text-[#363736] sm:text-[17px]">
               Original pathology slides, tissue blocks or imaging files
               may be requested separately if needed for a more detailed
               review. You can initially share the reports that are
@@ -696,7 +696,7 @@ function TreatmentOptions() {
                 {category.title}
               </h3>
 
-              <p className="mt-4 text-[16px] leading-8 text-[#424543] sm:text-[18px]">
+              <p className="mt-4 text-[16px] leading-8 text-[#141414] sm:text-[18px]">
                 {category.description}
               </p>
 
@@ -708,7 +708,7 @@ function TreatmentOptions() {
                       className="mt-1 shrink-0 text-[#E87744]"
                     />
 
-                    <span className="text-[16px] leading-7 text-[#3e413e] sm:text-[18px]">
+                    <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                       {item}
                     </span>
                   </li>
@@ -726,11 +726,11 @@ function TreatmentOptions() {
             />
 
             <div>
-              <h3 className="font-bold text-[#704A32]">
+              <h3 className="font-bold text-[#414140]">
                 Important Information About Emerging Therapies
               </h3>
 
-              <p className="mt-2 text-[16px] leading-7 text-[#745E4D] sm:text-[18px]">
+              <p className="mt-2 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                 Availability, approved indications, regulatory status,
                 eligibility and access to newer therapies vary by country
                 and over time. Some approaches may remain investigational
@@ -773,7 +773,7 @@ function FrequentlyAskedQuestions() {
                 />
               </summary>
 
-              <p className="mt-4 pr-7 text-[16px] leading-8 text-[#536357] sm:text-[18px]">
+              <p className="mt-4 pr-7 text-[16px] leading-8 text-[#141414] sm:text-[18px]">
                 {faq.answer}
               </p>
             </details>

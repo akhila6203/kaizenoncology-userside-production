@@ -78,7 +78,7 @@ export default function HomeBrochures() {
             Knowledge and Support at Every Step of Your Cancer Journey
           </h2>
 
-          <p className="mt-4 text-[16px] leading-7 text-[#425b4c] sm:text-[17px]">
+          <p className="mt-4 text-[16px] leading-7 text-[#494848] sm:text-[17px]">
             Explore reliable information about cancer awareness, early
             detection, diagnosis, treatment and supportive care to make
             informed decisions about your health.
@@ -126,7 +126,7 @@ export default function HomeBrochures() {
                   {item.title}
                 </h3>
 
-                <p className="mt-3 flex-1 text-[16px] leading-7 text-[#304b3c] sm:text-[18px]">
+                <p className="mt-3 flex-1 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                   {item.description}
                 </p>
 
@@ -161,7 +161,7 @@ export default function HomeBrochures() {
             <ShieldCheck size={25} />
           </span>
 
-          <p className="flex-1 text-[15px] leading-7 text-[#304b3c] sm:text-[18px]">
+          <p className="flex-1 text-[15px] leading-7 text-[#141414] sm:text-[18px]">
             Cancer awareness and information can help you make informed
             health decisions. This content is for general awareness and
             does not replace professional medical advice. Always consult

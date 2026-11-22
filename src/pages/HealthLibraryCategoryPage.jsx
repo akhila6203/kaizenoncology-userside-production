@@ -88,29 +88,7 @@ export default function HealthLibraryCategoryPage() {
     </ol>
   </div>
 </nav>
-      {/* <section className="border-b border-[#D4E0D6] bg-[#F6F9F6]">
-        <div className="page-container px-5 py-4 sm:px-8 lg:px-12">
-          <nav
-            aria-label="Breadcrumb"
-            className="flex flex-wrap items-center gap-2 text-sm"
-          >
-            <Link to="/" className="font-medium text-slate-500 hover:text-[#E87744]">
-              Home
-            </Link>
-            <span className="text-[#464544]">/</span>
-            <Link
-              to="/health-library"
-              className="font-medium text-slate-500 hover:text-[#E87744]"
-            >
-              Health Library
-            </Link>
-            <span className="text-[#393838]">/</span>
-            <span className="font-bold text-[#4F7359]">
-              {category.title}
-            </span>
-          </nav>
-        </div>
-      </section> */}
+      
       
 
       {/* CATEGORY HERO */}
@@ -133,7 +111,7 @@ export default function HealthLibraryCategoryPage() {
               {category.subtitle}
             </p>
 
-            <p className="mx-auto mt-3 max-w-3xl text-base leading-6 text-[#3D4A40]">
+            <p className="mx-auto mt-3 max-w-3xl text-base leading-6 text-[#3b3c3b]">
               {category.description}
             </p>
           </div>
@@ -153,11 +131,11 @@ export default function HealthLibraryCategoryPage() {
                 What Is {category.title}?
               </h2>
 
-              <p className="mt-5 text-[17px] leading-8 text-[#3D4A40]">
+              <p className="mt-5 text-[17px] leading-8 text-[#141414]">
                 {category.introduction}
               </p>
 
-              <p className="mt-4 text-[17px] leading-8 text-[#3D4A40]">
+              <p className="mt-4 text-[17px] leading-8 text-[#141414]">
                 {category.whyItMatters}
               </p>
 
@@ -201,7 +179,7 @@ export default function HealthLibraryCategoryPage() {
               A Closer Look at {category.title}
             </h2>
 
-            <p className="mt-4 text-base leading-8 text-[#3D4A40]">
+            <p className="mt-4 text-base leading-8 text-[#393939]">
               Explore the important information, explanations and key points
               related to this topic.
             </p>
@@ -223,7 +201,7 @@ export default function HealthLibraryCategoryPage() {
                   </h3>
                 </div>
 
-                <p className="text-[16px] leading-8 text-[#3D4A40] sm:text-[18px]">
+                <p className="text-[16px] leading-8 text-[#141414] sm:text-[18px]">
                   {section.content}
                 </p>
               </article>

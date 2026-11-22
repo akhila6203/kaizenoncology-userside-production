@@ -181,7 +181,7 @@ export default function OurVisionMissionPage() {
                 Our Vision &amp; Mission
               </h1>
               {/* <div className="mx-auto mt-6 h-1.5 w-20 rounded-full bg-[#f26322]" /> */}
-              <p className="mt-3 text-base leading-7 text-[#526357] sm:text-lg">
+              <p className="mt-3 text-base leading-7 text-[#494848] sm:text-lg">
                 Our mission and vision guide our commitment to clinical
                 excellence, innovation and compassionate cancer care.
               </p>
@@ -232,7 +232,7 @@ export default function OurVisionMissionPage() {
                     A Trusted Leader in Cancer Care
                   </h2>
 
-                  <p className="mt-5 text-base leading-8 text-[#526357] sm:text-lg">
+                  <p className="mt-5 text-base leading-8 text-[#141414] sm:text-lg">
                     To be a trusted leader in cancer care, advancing
                     clinical excellence, innovation and compassionate
                     treatment.
@@ -276,7 +276,7 @@ export default function OurVisionMissionPage() {
                     Advancing Care Through Expertise
                   </h2>
 
-                  <p className="mt-3 text-base leading-8 text-[#526357] sm:text-lg">
+                  <p className="mt-3 text-base leading-8 text-[#141414] sm:text-lg">
                     To advance cancer care through clinical expertise,
                     evidence-based treatment and compassionate support
                     for every patient.
@@ -324,7 +324,7 @@ export default function OurVisionMissionPage() {
                     {title}
                   </h3>
 
-                  <p className="mt-3 text-[16px] leading-7 text-[#647368] sm:text-[18px]">
+                  <p className="mt-3 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                     {description}
                   </p>
                 </motion.article>
@@ -362,7 +362,7 @@ export default function OurVisionMissionPage() {
                     <p className="font-bold text-[#304b3c]">
                       Every Voice Matters
                     </p>
-                    <p className="text-sm text-[#647368]">
+                    <p className="text-sm text-[#141414]">
                       Respect. Understanding. Inclusion.
                     </p>
                   </div>
@@ -385,14 +385,14 @@ export default function OurVisionMissionPage() {
               </span>
             </h2>
 
-            <p className="mt-6 text-base leading-8 text-[#526357] sm:text-lg">
+            <p className="mt-6 text-base leading-8 text-[#141414] sm:text-lg">
               At KIMS RENOVA Cancer Hospital, we believe that excellence in
               cancer care comes from respecting individual differences,
               valuing diverse perspectives and working together towards
               a shared goal.
             </p>
 
-            <p className="mt-4 text-base leading-8 text-[#526357] sm:text-lg">
+            <p className="mt-4 text-base leading-8 text-[#141414] sm:text-lg">
               We strive to create a supportive environment where every
               patient and family feels heard, respected and included
               throughout their cancer care journey.
@@ -501,7 +501,7 @@ export default function OurVisionMissionPage() {
               Supporting Progress in Cancer Care
             </h2>
 
-            <p className="mt-6 text-base leading-8 text-[#526357] sm:text-lg">
+            <p className="mt-6 text-base leading-8 text-[#141414] sm:text-lg">
               Technology and innovation continue to shape cancer
               diagnosis and treatment. Appropriate diagnostic tools,
               treatment technologies and clinical developments can
@@ -509,7 +509,7 @@ export default function OurVisionMissionPage() {
               needs and discussing suitable care options.
             </p>
 
-            <p className="mt-4 text-base leading-8 text-[#526357] sm:text-lg">
+            <p className="mt-4 text-base leading-8 text-[#141414] sm:text-lg">
               KIMS RENOVA's verified technology portfolio can be introduced
               here at a high level, with detailed information about
               available equipment and services presented in the

@@ -131,7 +131,7 @@ function SectionHeading({ eyebrow, title, description }) {
       </h2>
 
       {description && (
-        <p className="mt-4 text-[16px] leading-8 text-[#434644] sm:text-[18px]">
+        <p className="mt-4 text-[16px] leading-8 text-[#313131] sm:text-[18px]">
           {description}
         </p>
       )}
@@ -174,7 +174,7 @@ function TechnologySection({ section, index }) {
           {section.paragraphs?.map((paragraph, paragraphIndex) => (
             <p
               key={paragraphIndex}
-              className="mb-4 text-[16px] leading-8 text-[#333433] last:mb-0 sm:text-[18px]"
+              className="mb-4 text-[16px] leading-8 text-[#141414] last:mb-0 sm:text-[18px]"
             >
               {paragraph}
             </p>
@@ -192,7 +192,7 @@ function TechnologySection({ section, index }) {
                     className="mt-1 shrink-0 text-[#E87744]"
                   />
 
-                  <span className="text-[16px] leading-7 text-[#414441] sm:text-[18px]">
+                  <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                     {point}
                   </span>
                 </li>
@@ -259,7 +259,7 @@ function RelatedSpecialities({
                   <Icon size={27} strokeWidth={1.7} />
                 </span>
 
-                <h3 className="text-base font-semibold leading-snug text-[#304b3c] md:text-lg">
+                <h3 className="text-base font-semibold leading-snug text-[#141414] md:text-lg">
                   {/* {speciality.title} */}
                   {speciality.name}
                 </h3>
@@ -280,7 +280,97 @@ function RelatedSpecialities({
   );
 }
 
+/* --------------------------------------------------
+   RELATED TECHNOLOGIES
+-------------------------------------------------- */
 
+function RelatedTechnologies({ technology, allItems = [] }) {
+  if (!technology) return null;
+
+  const relatedItems = allItems
+    .filter((item) => item.slug !== technology.slug)
+    .filter((item) => {
+      const currentSpecialities = technology.specialities || [];
+      const itemSpecialities = item.specialities || [];
+
+      return currentSpecialities.some((speciality =>
+        itemSpecialities.includes(speciality)
+      ));
+    })
+    .slice(0, 3);
+
+  // Fallback: show other technologies if no speciality matches
+  const displayItems =
+    relatedItems.length > 0
+      ? relatedItems
+      : allItems
+          .filter((item) => item.slug !== technology.slug)
+          .slice(0, 3);
+
+  if (!displayItems.length) return null;
+
+  return (
+    <section className="py-12 sm:py-14">
+      <SectionHeading
+        eyebrow="EXPLORE MORE"
+        title="Explore Related Technologies"
+        description="Discover other advanced technologies that support diagnosis, treatment planning and personalised cancer care."
+      />
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {displayItems.map((item, index) => (
+          <motion.article
+            key={item.slug}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.12 }}
+            transition={{ duration: 0.4, delay: index * 0.08 }}
+            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#E3EAE0] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            {/* IMAGE */}
+            <div className="relative h-[210px] overflow-hidden">
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.imageAlt || item.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+              )}
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#263C30]/50 via-transparent to-transparent" />
+
+              {item.category && (
+                <span className="absolute bottom-4 left-4 rounded-full bg-white px-3 py-1.5 text-[11px] font-bold tracking-wide text-[#476B55]">
+                  {item.category}
+                </span>
+              )}
+            </div>
+
+            {/* CONTENT */}
+            <div className="flex flex-1 flex-col p-5 sm:p-6">
+              <h3 className="text-lg font-bold leading-snug text-[#263C30] sm:text-xl">
+                {item.title}
+              </h3>
+
+              <p className="mt-3 flex-1 text-[15px] leading-7 text-[#141414] sm:text-[18px]">
+                {item.description}
+              </p>
+
+              <Link
+                to={`/technology/${item.slug}`}
+                className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#E87744]"
+              >
+                Know More
+                <ArrowRight size={17} />
+              </Link>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 /* --------------------------------------------------
    FAQ
@@ -312,7 +402,7 @@ function FrequentlyAskedQuestions({ faqs }) {
               />
             </summary>
 
-            <p className="mt-4 pr-6 text-[16px] leading-8 text-[#536357] sm:text-[18px]">
+            <p className="mt-4 pr-6 text-[16px] leading-8 text-[#141414] sm:text-[18px]">
               {faq.answer}
             </p>
           </details>
@@ -460,10 +550,10 @@ export default function TechnologyDetailPage() {
               {technology.title}
             </h1>
 
-           <p className="mx-auto mt-5 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
+           <p className="mx-auto mt-5 text-center text-[16px] leading-8 text-[#141414] sm:text-[18px] lg:mx-0 lg:text-left">
               {technology.description}
             </p>
-            <p className="mx-auto mt-5 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
+            <p className="mx-auto mt-5 text-center text-[16px] leading-8 text-[#141414] sm:text-[18px] lg:mx-0 lg:text-left">
             {technology.detailIntro}
           </p>
 
@@ -525,8 +615,16 @@ export default function TechnologyDetailPage() {
           specialitiesList={specialitiesList}
         />
 
+        
+
         {/* FAQ */}
         <FrequentlyAskedQuestions faqs={technology.faqs} />
+
+        {/* RELATED TECHNOLOGIES */}
+<RelatedTechnologies
+  technology={technology}
+  allItems={allTechnologyItems}
+/>
 
       {/* <ContactActions /> */}
         <ContactActions />

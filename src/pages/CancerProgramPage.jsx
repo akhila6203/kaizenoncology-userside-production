@@ -90,7 +90,7 @@ function SectionHeading({ eyebrow, title, description }) {
       </h2>
 
       {description && (
-        <p className="mt-4 text-left text-[18px] leading-8 text-[#46574B] sm:text-[19px]">
+        <p className="mt-4 text-left text-[18px] leading-8 text-[#313231] sm:text-[19px]">
           {description}
         </p>
       )}
@@ -115,7 +115,7 @@ function BulletList({ items = [], orange = false }) {
             }`}
           />
 
-          <span className="text-[17px] leading-8 text-[#46574B] sm:text-[18px]">
+          <span className="text-[17px] leading-8 text-[#141414] sm:text-[18px]">
             {item}
           </span>
         </li>
@@ -192,7 +192,7 @@ function CancerFAQ({ faqs = [] }) {
                   transition={{ duration: 0.25 }}
                   className="overflow-hidden"
                 >
-                  <p className="border-t border-[#E9EEE7] px-5 py-5 text-[17px] leading-8 text-[#46574B] sm:px-7 sm:text-[18px]">
+                  <p className="border-t border-[#E9EEE7] px-5 py-5 text-[17px] leading-8 text-[#141414] sm:px-7 sm:text-[18px]">
                     {faq.answer}
                   </p>
                 </motion.div>
@@ -326,11 +326,11 @@ export default function CancerProgramPage() {
             </h1>
 
             {/* Intro description directly below heading */}
-           <p className="mx-auto mt-6 max-w-2xl text-center text-[18px] leading-8 text-[#46574B] sm:text-[19px] lg:mx-0 lg:text-left">
+           <p className="mx-auto mt-6 max-w-2xl text-center text-[18px] leading-8 text-[#141414] sm:text-[19px] lg:mx-0 lg:text-left">
               {cancer.cardDescription}
             </p>
 
-            <p className="mx-auto mt-4 max-w-2xl text-center text-[18px] leading-8 text-[#46574B] sm:text-[19px] lg:mx-0 lg:text-left">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-[18px] leading-8 text-[#141414] sm:text-[19px] lg:mx-0 lg:text-left">
             {cancer.overviewSecond}
             </p>
 
@@ -520,18 +520,18 @@ export default function CancerProgramPage() {
             />
 
             <ContentCard>
-              <p className="text-[18px] leading-8 text-[#46574B] sm:text-[19px]">
+              <p className="text-[18px] leading-8 text-[#141414] sm:text-[19px]">
                 {cancer.overview}
               </p>
 
               {cancer.overviewSecond && (
-                <p className="mt-5 text-[18px] leading-8 text-[#46574B] sm:text-[19px]">
+                <p className="mt-5 text-[18px] leading-8 text-[#141414] sm:text-[19px]">
                   {cancer.overviewSecond}
                 </p>
               )}
 
               {cancer.overviewThird && (
-                <p className="mt-5 text-[18px] leading-8 text-[#46574B] sm:text-[19px]">
+                <p className="mt-5 text-[18px] leading-8 text-[#141414] sm:text-[19px]">
                   {cancer.overviewThird}
                 </p>
               )}
@@ -555,12 +555,12 @@ export default function CancerProgramPage() {
             />
 
             <ContentCard>
-              <p className="text-[18px] leading-8 text-[#46574B] sm:text-[19px]">
+              <p className="text-[18px] leading-8 text-[#141414] sm:text-[19px]">
                 {cancer.whatIs}
               </p>
 
               {cancer.types?.length > 0 && (
-                <div className="mt-7">
+                <div className="mt-7 ">
                   <h3 className="mb-5 text-left text-xl font-bold text-[#304B3C]">
                     {cancer.typesHeading ||
                       `Common Types of ${cancer.title}`}
@@ -571,7 +571,7 @@ export default function CancerProgramPage() {
               )}
 
               {cancer.whatIsClosing && (
-                <p className="mt-6 text-[18px] leading-8 text-[#46574B]">
+                <p className="mt-6 text-[18px] leading-8 text-[#141414]">
                   {cancer.whatIsClosing}
                 </p>
               )}
@@ -599,7 +599,7 @@ export default function CancerProgramPage() {
               <BulletList items={cancer.symptoms} orange />
 
               {cancer.symptomsClosing && (
-                <p className="mt-6 border-t border-[#E8EDE6] pt-5 text-[18px] leading-8 text-[#46574B]">
+                <p className="mt-6 border-t border-[#E8EDE6] pt-5 text-[18px] leading-8 text-[#141414]">
                   {cancer.symptomsClosing}
                 </p>
               )}
@@ -636,7 +636,7 @@ export default function CancerProgramPage() {
                         {step.title}
                       </h3>
 
-                      <p className="mt-3 text-[18px] leading-8 text-[#46574B]">
+                      <p className="mt-3 text-[18px] leading-8 text-[#141414]">
                         {step.description}
                       </p>
 
@@ -664,7 +664,7 @@ export default function CancerProgramPage() {
                       Understanding Your Diagnosis
                     </h3>
 
-                    <p className="mt-2 text-[18px] leading-8 text-[#46574B]">
+                    <p className="mt-2 text-[18px] leading-8 text-[#141414]">
                       {cancer.diagnosisClosing}
                     </p>
                   </div>
@@ -693,7 +693,7 @@ export default function CancerProgramPage() {
         Technologies Related to {cancer.title}
       </h2>
 
-      <p className="mt-4 max-w-3xl text-[17px] leading-8 text-[#46574B]">
+      <p className="mt-4 max-w-3xl text-[17px] leading-8 text-[#333434]">
         Explore technologies and specialised care approaches that may
         be considered as part of an individual treatment plan.
       </p>
@@ -715,14 +715,14 @@ export default function CancerProgramPage() {
 
           <div className="p-6">
             <p className="text-xs font-bold uppercase tracking-wider text-[#E87744]">
-              {technology.speciality || "ADVANCED TECHNOLOGY"}
+              {technology.speciality || ""}
             </p>
 
             <h3 className="mt-2 text-xl font-bold text-[#263C30]">
               {technology.title || technology.name}
             </h3>
 
-            <p className="mt-3 text-[16px] leading-7 text-[#536357]">
+            <p className="mt-3 text-[16px] leading-7 text-[#141414]">
               {technology.cardDescription ||
                 technology.shortDescription ||
                 technology.description}
@@ -777,7 +777,7 @@ export default function CancerProgramPage() {
                     </h3>
                   </div>
 
-                  <p className="text-[18px] leading-8 text-[#46574B]">
+                  <p className="text-[18px] leading-8 text-[#141414]">
                     {treatment.description}
                   </p>
 
@@ -796,14 +796,14 @@ export default function CancerProgramPage() {
                   Choosing the Right Treatment
                 </h3>
 
-                <p className="mb-5 text-[18px] leading-8 text-[#46574B]">
+                <p className="mb-5 text-[18px] leading-8 text-[#2e2e2e]">
                   The treatment approach depends on several factors:
                 </p>
 
                 <BulletList items={cancer.treatmentFactors} />
 
                 {cancer.treatmentClosing && (
-                  <p className="mt-5 border-t border-[#DFE8DD] pt-5 text-[18px] leading-8 text-[#46574B]">
+                  <p className="mt-5 border-t border-[#DFE8DD] pt-5 text-[18px] leading-8 text-[#141414]">
                     {cancer.treatmentClosing}
                   </p>
                 )}
@@ -832,7 +832,7 @@ export default function CancerProgramPage() {
               <BulletList items={cancer.riskFactors} orange />
 
               {cancer.riskClosing && (
-                <p className="mt-6 border-t border-[#E8EDE6] pt-5 text-[18px] leading-8 text-[#46574B]">
+                <p className="mt-6 border-t border-[#E8EDE6] pt-5 text-[18px] leading-8 text-[#141414]">
                   {cancer.riskClosing}
                 </p>
               )}
@@ -856,7 +856,7 @@ export default function CancerProgramPage() {
             />
 
             <ContentCard className="border-l-4 border-l-[#52775C]">
-              <p className="text-[18px] leading-8 text-[#46574B] sm:text-[19px]">
+              <p className="text-[18px] leading-8 text-[#141414] sm:text-[19px]">
                 {cancer.prevention}
               </p>
 
@@ -903,7 +903,7 @@ export default function CancerProgramPage() {
                   {cancer.careJourneyTitle || "Your Cancer Care Journey"}
                 </h2>
 
-                <p className="mt-4 text-center text-[18px] leading-8 text-[#46574B] lg:text-left">
+                <p className="mt-4 text-center text-[18px] leading-8 text-[#141414] lg:text-left">
                   {cancer.closing ||
                     "Understanding your condition and available treatment options is an important step towards informed care decisions. At KIMS RENOVA Cancer Hospital, our aim is to support patients with clear guidance, personalised care planning and compassionate support throughout their cancer journey."}
                 </p>

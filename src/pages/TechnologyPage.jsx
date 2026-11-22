@@ -153,7 +153,7 @@ function TechnologyCard({ item, index }) {
           {item.title}
         </h3>
 
-        <p className="mt-3 flex-1 text-[16px] leading-7 text-[#59695D] sm:text-[17px]">
+        <p className="mt-3 flex-1 text-[16px] leading-7 text-[#141414] sm:text-[17px]">
           {item.description}
         </p>
 
@@ -348,16 +348,16 @@ export default function TechnologyPage() {
           </span>
         </h1>
 
-        <p className="mx-auto mt-6 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
+        <p className="mx-auto mt-6 text-center text-[16px] leading-8 text-[#141414] sm:text-[18px] lg:mx-0 lg:text-left">
          At KIMS RENOVA Cancer Hospital, advanced technology plays an important role in cancer diagnosis, treatment planning and patient care.
           We combine specialised clinical expertise with modern treatment technologies to support personalised cancer care.
         </p>
 
-        <p className="mx-auto mt-4 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
+        <p className="mx-auto mt-4 text-center text-[16px] leading-8 text-[#141414] sm:text-[18px] lg:mx-0 lg:text-left">
          From precision radiotherapy and molecular oncology to robotic surgery and specialised cancer procedures, our technologies 
          support clinicians in evaluating individual patient needs and planning appropriate treatment approaches.
         </p>
-        <p className="mx-auto mt-6 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
+        <p className="mx-auto mt-6 text-center text-[16px] leading-8 text-[#141414] sm:text-[18px] lg:mx-0 lg:text-left">
           The choice of technology depends on the cancer type, stage, diagnostic findings and overall health of each patient.
         </p>
 
@@ -372,7 +372,7 @@ export default function TechnologyPage() {
               <h3 className="text-[15px] font-bold text-[#304B3C]">
                 Advanced Diagnosis
               </h3>
-              <p className="mt-1 text-[13px] leading-6 text-[#647267]">
+              <p className="mt-1 text-[14px] leading-6 text-[#141414]">
                 Imaging and diagnostic technologies that support clinical evaluation.
               </p>
             </div>
@@ -386,7 +386,7 @@ export default function TechnologyPage() {
               <h3 className="text-[15px] font-bold text-[#304B3C]">
                 Precision Treatment
               </h3>
-              <p className="mt-1 text-[13px] leading-6 text-[#647267]">
+              <p className="mt-1 text-[14px] leading-6 text-[#141414]">
                 Technology supporting individualised treatment planning.
               </p>
             </div>
@@ -486,7 +486,7 @@ export default function TechnologyPage() {
            Advanced Technologies for Precision Cancer Care
           </h2>
 
-          <p className="mt-4 text-[16px] leading-7 text-[#536357]">
+          <p className="mt-4 text-[16px] leading-7 text-[#2c2d2c]">
             Explore the advanced technologies used in cancer diagnosis, treatment planning and specialised cancer care at KIMS RENOVA.
           </p>
         </div>
@@ -520,7 +520,7 @@ export default function TechnologyPage() {
                     setSearchTerm(event.target.value)
                   }
                   placeholder="Search by technology name..."
-                  className="w-full bg-transparent text-[15px] text-[#263C30] outline-none placeholder:text-[#89958A] focus:outline-none focus:ring-0"
+                  className="w-full bg-transparent text-[15px] text-[#3b3c3c] outline-none placeholder:text-[#89958A] focus:outline-none focus:ring-0"
                 />
               </div>
             </div>
@@ -678,7 +678,7 @@ export default function TechnologyPage() {
               {Icon && <Icon size={42} strokeWidth={1.6} />}
             </span>
 
-            <h3 className="min-h-[48px] text-base font-bold leading-6 text-[#263c30]">
+            <h3 className="min-h-[48px] text-base font-bold leading-6 text-[#141414]">
               {item.title}
             </h3>
 

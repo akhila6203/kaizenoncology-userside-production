@@ -111,7 +111,7 @@ export default function CancerTreatmentsPage() {
               </span>
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#536357] sm:text-[19px] lg:mx-0 lg:text-left">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#141414] sm:text-[19px] lg:mx-0 lg:text-left">
               {treatmentOverview.description}
             </p>
 
@@ -177,7 +177,7 @@ export default function CancerTreatmentsPage() {
                     Personalised care decisions
                   </p>
 
-                  <p className="mt-1 text-[14px] leading-5 text-[#657368]">
+                  <p className="mt-1 text-[14px] leading-5 text-[#333433]">
                     Options depend on diagnosis and clinical assessment
                   </p>
                 </div>
@@ -202,7 +202,7 @@ export default function CancerTreatmentsPage() {
             Explore treatment options
           </h2>
 
-          <p className="mt-4 text-[17px] leading-8 text-[#536357]">
+          <p className="mt-4 text-[17px] leading-8 text-[#313231]">
             Learn what each treatment approach involves, when it may be
             considered and how it can fit into an individual care plan.
           </p>
@@ -247,7 +247,7 @@ export default function CancerTreatmentsPage() {
                     {service.title}
                   </h3>
 
-                  <p className="mt-3 flex-1 text-[16px] leading-7 text-[#59695D] sm:text-[18px]">
+                  <p className="mt-3 flex-1 text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                     {service.cardDescription}
                   </p>
 
@@ -281,7 +281,7 @@ export default function CancerTreatmentsPage() {
               Modern & Emerging Cancer Treatments
             </h2>
 
-            <p className="mt-4 text-[16px] leading-8 text-[#536357]">
+            <p className="mt-4 text-[16px] leading-8 text-[#353535]">
               Established treatments and newer approaches are presented
               separately. Approved indications, regulatory status and
               availability vary by country and change over time.
@@ -302,7 +302,7 @@ export default function CancerTreatmentsPage() {
                   {item.title}
                 </h3>
 
-                <p className="mt-2 text-[17px] leading-6 text-[#59695D]">
+                <p className="mt-2 text-[17px] leading-6 text-[#141414]">
                   {item.text}
                 </p>
               </article>
@@ -314,7 +314,7 @@ export default function CancerTreatmentsPage() {
               Important treatment availability note
             </p>
 
-            <p className="mt-2 text-[16px] leading-7 text-[#705B4E]">
+            <p className="mt-2 text-[16px] leading-7 text-[#141414]">
               The therapies described are educational information. A
               treatment should be presented as available at KIMS RENOVA only
               after the hospital confirms that it is approved, staffed,
@@ -355,7 +355,7 @@ export default function CancerTreatmentsPage() {
         </div>
       </section>
 
-      <p className="page-container px-4 py-7 text-[18px] leading-6 text-[#68766B] sm:px-6 lg:px-8">
+      <p className="page-container px-4 py-7 text-[18px] leading-6 text-[#141414] sm:px-6 lg:px-8">
         This content is for general education and does not replace medical
         advice. Treatment decisions are individualised by qualified
         clinicians using current evidence, regulatory guidance and the

@@ -472,47 +472,7 @@ function PageBreadcrumb({ name }) {
     </ol>
   </div>
 </nav>
-    // <nav
-    //   aria-label="Breadcrumb"
-    //   className="w-full border-b border-[#e4e9e2] bg-[#f7f9f6]"
-    // >
-    //   <div className="page-container w-full px-5 py-3 sm:px-8 lg:px-12">
-    //     <ol className="flex w-full flex-wrap items-center gap-2 text-sm">
-    //       <li>
-    //         <Link
-    //           to="/"
-    //           className="font-semibold text-[#476b55] transition-colors hover:text-[#e87744]"
-    //         >
-    //           Home
-    //         </Link>
-    //       </li>
 
-    //       <li aria-hidden="true" className="text-[#9aa89c]">
-    //         /
-    //       </li>
-
-    //       <li>
-    //         <Link
-    //           to="/patient-care"
-    //           className="font-semibold text-[#476b55] transition-colors hover:text-[#e87744]"
-    //         >
-    //           Patient Support
-    //         </Link>
-    //       </li>
-
-    //       <li aria-hidden="true" className="text-[#9aa89c]">
-    //         /
-    //       </li>
-
-    //       <li
-    //         aria-current="page"
-    //         className="font-semibold text-[#263c30]"
-    //       >
-    //         {name}
-    //       </li>
-    //     </ol>
-    //   </div>
-    // </nav>
   );
 }
 
@@ -533,7 +493,7 @@ function ProgrammeHero({ item }) {
               {item.title}
             </h1>
 
-            <p className="mt-5 text-base leading-8 text-[#536458] sm:text-lg">
+            <p className="mt-5 text-base leading-8 text-[#141414] sm:text-lg">
               {item.description}
             </p>
 
@@ -545,7 +505,7 @@ function ProgrammeHero({ item }) {
                     className="mt-1 shrink-0 text-[#e87744]"
                   />
 
-                  <p className="text-[15px] leading-7 text-[#405747] sm:text-[18px]">
+                  <p className="text-[15px] leading-7 text-[#141414] sm:text-[18px]">
                     {point}
                   </p>
                 </div>
@@ -635,7 +595,7 @@ function ProgrammeSection({ section, index }) {
           </div>
         </div>
 
-        <p className="mt-5 text-[15px] leading-8 text-[#536458] sm:text-[16px]">
+        <p className="mt-5 text-[15px] leading-8 text-[#141414] sm:text-[16px]">
           {section.text}
         </p>
 
@@ -649,7 +609,7 @@ function ProgrammeSection({ section, index }) {
                 className="mt-1 shrink-0 text-[#e87744]"
               />
 
-              <span className="text-[16px] leading-7 text-[#405747] sm:text-[18px]">
+              <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
                 {bullet}
               </span>
             </li>
@@ -677,7 +637,7 @@ export default function PatientCareDetailPage() {
             Programme Not Found
           </h1>
 
-          <p className="mt-3 text-[15px] leading-7 text-[#536458]">
+          <p className="mt-3 text-[15px] leading-7 text-[#404040]">
             The requested patient support programme could not be found.
             Please return to Patient Support and select a programme.
           </p>
@@ -717,7 +677,7 @@ export default function PatientCareDetailPage() {
               Explore Our {item.label.toLowerCase()}
             </h2>
 
-            <p className="mt-4 text-[15px] leading-8 text-[#536458] sm:text-base">
+            <p className="mt-4 text-[15px] leading-8 text-[#353635] sm:text-base">
               Learn more about the services and support available through
               this programme. Each patient's care plan is based on individual
               clinical requirements.
