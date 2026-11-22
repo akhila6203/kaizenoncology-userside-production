@@ -33,7 +33,7 @@ function Breadcrumb() {
           <li>
             <Link
               to="/"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Home
             </Link>
@@ -46,7 +46,7 @@ function Breadcrumb() {
           <li>
             <Link
               to="/services"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Services
             </Link>
@@ -90,7 +90,7 @@ export default function ScreeningDiagnosticsPage() {
               KIMS RENOVA CANCER CARE
             </span>
             <h1 className="mt-5 text-center text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-left lg:text-[56px]">
-              Screening & <span className="text-[#E87744]">Diagnostics</span>
+              Screening & <span className="text-[#A34116]">Diagnostics</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#141414] sm:text-[19px] lg:mx-0 lg:text-left">
               {screeningDiagnosticsOverview.description}
@@ -120,7 +120,7 @@ export default function ScreeningDiagnosticsPage() {
                 >
                   <CheckCircle2
                     size={19}
-                    className="mt-0.5 shrink-0 text-[#E87744]"
+                    className="mt-0.5 shrink-0 text-[#A34116]"
                   />
                   {item}
                 </div>
@@ -133,7 +133,7 @@ export default function ScreeningDiagnosticsPage() {
             transition={{ duration: 0.7 }}
             className="relative mx-auto w-full max-w-[620px]"
           >
-            <div className="absolute -left-5 -top-5 h-32 w-32 rounded-full bg-[#E87744]/15 blur-2xl" />
+            <div className="absolute -left-5 -top-5 h-32 w-32 rounded-full bg-[#963D16]/15 blur-2xl" />
             <img
              src={molecularImage}
               // src={screeningDiagnosticServices[0].image}
@@ -164,7 +164,7 @@ export default function ScreeningDiagnosticsPage() {
         className="scroll-mt-28 page-container px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
       >
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#E87744]">
+          <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#A34116]">
             OUR SCREENING & DIAGNOSTIC SERVICES
           </p>
           <h2 className="mt-3 text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl">
@@ -200,7 +200,7 @@ export default function ScreeningDiagnosticsPage() {
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="text-[12px] font-extrabold uppercase tracking-[.14em] text-[#E87744]">
+                  <p className="text-[12px] font-extrabold uppercase tracking-[.14em] text-[#A34116]">
                     0{index + 1} / SCREENING
                   </p>
                   <h3 className="mt-2 text-xl font-bold leading-snug text-[#263C30]">
@@ -211,7 +211,7 @@ export default function ScreeningDiagnosticsPage() {
                   </p>
                   <Link
                     to={`/services/screening-diagnostics/${service.slug}`}
-                    className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2 text-[15px] font-bold text-white transition hover:bg-[#E87744]"
+                    className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2 text-[15px] font-bold text-white transition hover:bg-[#963D16]"
                   >
                     Know More <ArrowRight size={17} />
                   </Link>
@@ -225,7 +225,7 @@ export default function ScreeningDiagnosticsPage() {
       <section className="bg-[#F3F7F1] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="page-container grid items-center gap-8 text-center lg:grid-cols-[1fr_auto] lg:text-left">
           <div>
-            <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#E87744]">
+            <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#A34116]">
               YOUR NEXT STEP
             </p>
             <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl">
@@ -240,7 +240,7 @@ export default function ScreeningDiagnosticsPage() {
           </div>
           <Link
   to="/appointments"
-  className="mx-auto inline-flex min-h-11 w-full max-w-[280px] items-center justify-center gap-2 rounded-full bg-[#E87744] px-5 py-3 text-[14px] font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#d76535] sm:min-h-12 sm:max-w-[300px] sm:px-7 sm:text-[16px] lg:mx-0"
+  className="mx-auto inline-flex min-h-11 w-full max-w-[280px] items-center justify-center gap-2 rounded-full bg-[#963D16] px-5 py-3 text-[14px] font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#d76535] sm:min-h-12 sm:max-w-[300px] sm:px-7 sm:text-[16px] lg:mx-0"
 >
             Book an appointment <ArrowRight size={18} />
           </Link>

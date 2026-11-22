@@ -203,7 +203,7 @@ export default function HealthLibraryArticlePage() {
 
           <Link
             to="/health-library/blogs"
-            className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#4F7359] px-7 py-3 text-base font-bold text-white transition hover:bg-[#E87744]"
+            className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#4F7359] px-7 py-3 text-base font-bold text-white transition hover:bg-[#963D16]"
           >
             <ArrowLeft size={18} />
             View All Blogs
@@ -229,7 +229,7 @@ export default function HealthLibraryArticlePage() {
             <li>
               <Link
                 to="/"
-                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
               >
                 Home
               </Link>
@@ -242,7 +242,7 @@ export default function HealthLibraryArticlePage() {
             <li>
               <Link
                 to="/health-library"
-                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
               >
                 Health Library
               </Link>
@@ -255,7 +255,7 @@ export default function HealthLibraryArticlePage() {
             <li>
               <Link
                 to="/health-library/blogs"
-                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
               >
                 Blogs
               </Link>
@@ -285,7 +285,7 @@ export default function HealthLibraryArticlePage() {
           <div className="mb-8">
             <Link
               to="/health-library/blogs"
-              className="inline-flex items-center gap-2 text-base font-bold text-[#4F7359] transition hover:text-[#E87744]"
+              className="inline-flex items-center gap-2 text-base font-bold text-[#4F7359] transition hover:text-[#A34116]"
             >
               <ArrowLeft size={19} />
               Back to All Blogs
@@ -308,7 +308,7 @@ export default function HealthLibraryArticlePage() {
   {/* READ TIME */}
   {blog.readTime && (
     <span className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-semibold text-[#3D4A40]">
-      <Clock3 size={17} className="shrink-0 text-[#E87744]" />
+      <Clock3 size={17} className="shrink-0 text-[#A34116]" />
       {blog.readTime}
     </span>
   )}
@@ -316,7 +316,7 @@ export default function HealthLibraryArticlePage() {
   {/* ARTICLE ADDED DATE & TIME */}
   {blog.createdAt && (
     <span className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-medium text-[#68766B]">
-      <CalendarDays size={17} className="shrink-0 text-[#E87744]" />
+      <CalendarDays size={17} className="shrink-0 text-[#A34116]" />
       Added on {formatAddedDate(blog.createdAt)}
     </span>
   )}
@@ -329,7 +329,7 @@ export default function HealthLibraryArticlePage() {
   </h1>
 
   {/* ORANGE UNDERLINE */}
-  <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-[#E87744]" />
+  <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-[#963D16]" />
 
 </header>
 
@@ -369,7 +369,7 @@ export default function HealthLibraryArticlePage() {
             />
 
             {/* MEDICAL DISCLAIMER */}
-            <div className="mt-14 rounded-2xl border-l-4 border-[#E87744] bg-[#F6F9F6] p-6 sm:p-9">
+            <div className="mt-14 rounded-2xl border-l-4 border-[#963D16] bg-[#F6F9F6] p-6 sm:p-9">
 
               <div className="flex items-center gap-3">
                 <BookOpen
@@ -396,7 +396,7 @@ export default function HealthLibraryArticlePage() {
             <div className="mt-12 border-t border-[#D4E0D6] pt-9 text-center">
               <Link
                 to="/health-library/blogs"
-                className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-8 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#E87744] hover:shadow-lg"
+                className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-8 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#963D16] hover:shadow-lg"
               >
                 <ArrowLeft size={19} />
                 Back to All Blogs
@@ -413,7 +413,7 @@ export default function HealthLibraryArticlePage() {
           <section className="rounded-xl border border-[#DCE5DA] bg-[#F6F9F6] p-4 sm:p-5">
 
             <div className="mb-4 flex items-center gap-2">
-              <BookOpen size={20} className="shrink-0 text-[#E87744]" />
+              <BookOpen size={20} className="shrink-0 text-[#A34116]" />
 
               <h2 className="font-display text-lg font-bold text-[#304B3C]">
                 Recent Blogs
@@ -450,7 +450,7 @@ export default function HealthLibraryArticlePage() {
 
                     {/* BLOG TITLE */}
                     <div className="min-w-0 flex-1">
-                      <h3 className="line-clamp-2 break-words text-sm font-semibold leading-5 text-[#304B3C] transition group-hover:text-[#E87744]">
+                      <h3 className="line-clamp-2 break-words text-sm font-semibold leading-5 text-[#304B3C] transition group-hover:text-[#A34116]">
                         {item.title}
                       </h3>
 
@@ -479,7 +479,7 @@ export default function HealthLibraryArticlePage() {
   <div className="mb-4 flex items-center gap-2">
     <Stethoscope
       size={20}
-      className="shrink-0 text-[#E87744]"
+      className="shrink-0 text-[#A34116]"
     />
 
     <h2 className="font-display text-lg font-bold text-[#304B3C]">
@@ -497,12 +497,12 @@ export default function HealthLibraryArticlePage() {
           <Link
             key={speciality.id}
             to={`/specialities/${speciality.slug}`}
-            className="group flex min-h-10 items-center gap-3 rounded-lg px-2 py-2 text-sm font-medium text-[#414B43] transition hover:bg-white hover:text-[#E87744]"
+            className="group flex min-h-10 items-center gap-3 rounded-lg px-2 py-2 text-sm font-medium text-[#414B43] transition hover:bg-white hover:text-[#A34116]"
           >
             {/* BACKEND SPECIALITY ICON */}
             <Icon
               size={17}
-              className="shrink-0 text-[#4F7355] transition group-hover:text-[#E87744]"
+              className="shrink-0 text-[#4F7355] transition group-hover:text-[#A34116]"
             />
 
             {/* SPECIALITY NAME */}
@@ -513,7 +513,7 @@ export default function HealthLibraryArticlePage() {
             {/* ARROW */}
             <ArrowRight
               size={14}
-              className="shrink-0 text-[#9AA89C] opacity-0 transition group-hover:translate-x-1 group-hover:text-[#E87744] group-hover:opacity-100"
+              className="shrink-0 text-[#9AA89C] opacity-0 transition group-hover:translate-x-1 group-hover:text-[#A34116] group-hover:opacity-100"
             />
           </Link>
         );
@@ -721,7 +721,7 @@ export default function HealthLibraryArticlePage() {
 
 //           <Link
 //             to="/health-library/blogs"
-//             className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#4F7359] px-7 py-3 text-base font-bold text-white transition hover:bg-[#E87744]"
+//             className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#4F7359] px-7 py-3 text-base font-bold text-white transition hover:bg-[#963D16]"
 //           >
 //             <ArrowLeft size={18} />
 //             View All Blogs
@@ -748,7 +748,7 @@ export default function HealthLibraryArticlePage() {
 //       <li>
 //         <Link
 //           to="/"
-//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
 //         >
 //           Home
 //         </Link>
@@ -761,7 +761,7 @@ export default function HealthLibraryArticlePage() {
 //       <li>
 //         <Link
 //           to="/health-library"
-//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
 //         >
 //           Health Library
 //         </Link>
@@ -774,7 +774,7 @@ export default function HealthLibraryArticlePage() {
 //       <li>
 //         <Link
 //           to="/health-library/blogs"
-//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
 //         >
 //           Blogs
 //         </Link>
@@ -804,7 +804,7 @@ export default function HealthLibraryArticlePage() {
 //         <div className="mb-10">
 //           <Link
 //             to="/health-library/blogs"
-//             className="inline-flex items-center gap-2 text-base font-bold text-[#4F7359] transition hover:text-[#E87744]"
+//             className="inline-flex items-center gap-2 text-base font-bold text-[#4F7359] transition hover:text-[#A34116]"
 //           >
 //             <ArrowLeft size={19} />
 //             Back to All Blogs
@@ -828,7 +828,7 @@ export default function HealthLibraryArticlePage() {
   // {/* READ TIME */}
   // {blog.readTime && (
   //   <span className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-semibold text-[#3D4A40]">
-  //     <Clock3 size={17} className="shrink-0 text-[#E87744]" />
+  //     <Clock3 size={17} className="shrink-0 text-[#A34116]" />
   //     {blog.readTime}
   //   </span>
   // )}
@@ -836,7 +836,7 @@ export default function HealthLibraryArticlePage() {
   // {/* ARTICLE ADDED DATE & TIME */}
   // {blog.createdAt && (
   //   <span className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-medium text-[#68766B]">
-  //     <CalendarDays size={17} className="shrink-0 text-[#E87744]" />
+  //     <CalendarDays size={17} className="shrink-0 text-[#A34116]" />
   //     Added on {formatAddedDate(blog.createdAt)}
   //   </span>
   // )}
@@ -856,7 +856,7 @@ export default function HealthLibraryArticlePage() {
 //             </p>
 //           )}
 
-//           <div className="mx-auto mt-8 h-1 w-20 rounded-full bg-[#E87744]" />
+//           <div className="mx-auto mt-8 h-1 w-20 rounded-full bg-[#963D16]" />
 
 //         </header>
 
@@ -896,7 +896,7 @@ export default function HealthLibraryArticlePage() {
 // />
 
 //           {/* MEDICAL DISCLAIMER */}
-//           <div className="mt-16 rounded-2xl border-l-4 border-[#E87744] bg-[#F6F9F6] p-6 sm:p-9">
+//           <div className="mt-16 rounded-2xl border-l-4 border-[#963D16] bg-[#F6F9F6] p-6 sm:p-9">
 
 //             <div className="flex items-center gap-3">
 //               <BookOpen
@@ -924,7 +924,7 @@ export default function HealthLibraryArticlePage() {
 
 //             <Link
 //               to="/health-library/blogs"
-//               className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-8 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#E87744] hover:shadow-lg"
+//               className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-8 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#963D16] hover:shadow-lg"
 //             >
 //               <ArrowLeft size={19} />
 //               Back to All Blogs
@@ -946,7 +946,7 @@ export default function HealthLibraryArticlePage() {
 //         <section className="rounded-xl border border-[#DCE5DA] bg-[#F6F9F6] p-4 sm:p-5">
 
 //           <div className="mb-4 flex items-center gap-2">
-//             <BookOpen size={20} className="shrink-0 text-[#E87744]" />
+//             <BookOpen size={20} className="shrink-0 text-[#A34116]" />
 
 //             <h2 className="font-display text-lg font-bold text-[#304B3C]">
 //               Recent Blogs
@@ -988,7 +988,7 @@ export default function HealthLibraryArticlePage() {
 
 //                   <div className="min-w-0 flex-1">
 
-//                     <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-[#304B3C] transition group-hover:text-[#E87744]">
+//                     <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-[#304B3C] transition group-hover:text-[#A34116]">
 //                       {item.title}
 //                     </h3>
 
@@ -1020,7 +1020,7 @@ export default function HealthLibraryArticlePage() {
 
 //             <Stethoscope
 //               size={20}
-//               className="shrink-0 text-[#E87744]"
+//               className="shrink-0 text-[#A34116]"
 //             />
 
 //             <h2 className="font-display text-lg font-bold text-[#304B3C]">

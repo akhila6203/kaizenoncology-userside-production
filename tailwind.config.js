@@ -12,11 +12,11 @@ export default {
         ink: "#3D4A40",
         heading: "#243528",
         line: "#D4E0D6",
-        sky: "#E87744",
+        sky: "#963D16",
         rosebrand: "#4F7359",
         plum: "#2F4638",
         blush: "#F6F9F6",
-        tealcare: "#E87744",
+        tealcare: "#963D16",
       },
       fontFamily: {
         sans: ['"Source Sans 3"', "system-ui", "sans-serif"],

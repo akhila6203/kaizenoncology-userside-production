@@ -10,7 +10,10 @@ export default function HomeAboutTeaser() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="section-padding bg-[#f7f9f6]">
+    <section
+  aria-labelledby="home-about-heading"
+  className="section-padding bg-[#f7f9f6]"
+>
       <div className="page-container grid items-center gap-7 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
 
         {/* LEFT IMAGE */}
@@ -45,7 +48,10 @@ export default function HomeAboutTeaser() {
             </div>
           </div>
 
-          <div className="absolute -bottom-7 -left-2 h-16 w-16 rounded-full bg-[#f26322]/10 sm:-left-5" />
+          <div
+  aria-hidden="true"
+  className="absolute -bottom-7 -left-2 h-16 w-16 rounded-full bg-[#f26322]/10 sm:-left-5"
+/>
         </motion.div>
 
         {/* RIGHT CONTENT */}
@@ -60,7 +66,10 @@ export default function HomeAboutTeaser() {
             WHO WE ARE
           </p>
 
-          <h2 className="max-w-2xl text-3xl font-bold leading-tight text-[#304b3c] sm:text-4xl">
+          <h2
+              id="home-about-heading"
+              className="max-w-2xl text-3xl font-bold leading-tight text-[#304b3c] sm:text-4xl"
+            >
             Comprehensive Cancer Care, with People at the Heart of Every Step
           </h2>
 
@@ -79,7 +88,8 @@ export default function HomeAboutTeaser() {
 
           <div className="mt-4 flex items-start gap-3">
             <ShieldCheck
-              className="mt-1 shrink-0 text-[#f26322]"
+              aria-hidden="true"
+              className="mt-1 shrink-0 text-[#A34116]"
               size={23}
             />
 
@@ -97,6 +107,7 @@ export default function HomeAboutTeaser() {
             More About Us
 
             <ArrowUpRight
+              aria-hidden="true"
               size={18}
               className="transition-transform duration-300 group-hover:translate-x-1"
             />

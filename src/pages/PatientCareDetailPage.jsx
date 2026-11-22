@@ -440,7 +440,7 @@ function PageBreadcrumb({ name }) {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -453,7 +453,7 @@ function PageBreadcrumb({ name }) {
       <li>
         <Link
           to="/patient-care"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Patient Support
         </Link>
@@ -485,7 +485,7 @@ function ProgrammeHero({ item }) {
 
           {/* LEFT CONTENT */}
           <div>
-            <span className="inline-flex items-center rounded-full border border-[#dce7dc] bg-white px-4 py-2 text-xs font-bold tracking-[0.15em] text-[#e87744]">
+            <span className="inline-flex items-center rounded-full border border-[#dce7dc] bg-white px-4 py-2 text-xs font-bold tracking-[0.15em] text-[#A34116]">
               {item.label}
             </span>
 
@@ -502,7 +502,7 @@ function ProgrammeHero({ item }) {
                 <div key={point} className="flex items-start gap-3">
                   <CheckCircle2
                     size={19}
-                    className="mt-1 shrink-0 text-[#e87744]"
+                    className="mt-1 shrink-0 text-[#A34116]"
                   />
 
                   <p className="text-[15px] leading-7 text-[#141414] sm:text-[18px]">
@@ -523,7 +523,7 @@ function ProgrammeHero({ item }) {
 
           {/* RIGHT IMAGE */}
           <div className="relative">
-            <div className="absolute -right-3 -top-3 h-20 w-20 rounded-full bg-[#e87744]/15 sm:-right-4 sm:-top-4 sm:h-24 sm:w-24" />
+            <div className="absolute -right-3 -top-3 h-20 w-20 rounded-full bg-[#963D16]/15 sm:-right-4 sm:-top-4 sm:h-24 sm:w-24" />
 
             <img
               src={item.image}
@@ -532,7 +532,7 @@ function ProgrammeHero({ item }) {
             />
 
             <div className="absolute -bottom-4 left-4 right-4 rounded-xl border border-[#e5ebe4] bg-white p-4 shadow-md sm:left-8 sm:right-8 sm:p-5">
-              <p className="text-xs font-bold tracking-[0.16em] text-[#e87744]">
+              <p className="text-xs font-bold tracking-[0.16em] text-[#A34116]">
                 {/*KIMS RENOVA BREAST HEALTH INITIATIVE */}
                 KIMS RENOVA CANCER CARE
               </p>
@@ -585,7 +585,7 @@ function ProgrammeSection({ section, index }) {
           </div>
 
           <div>
-            <p className="text-xs font-bold tracking-[0.16em] text-[#e87744]">
+            <p className="text-xs font-bold tracking-[0.16em] text-[#A34116]">
               PATIENT CARE SERVICES
             </p>
 
@@ -606,7 +606,7 @@ function ProgrammeSection({ section, index }) {
             <li key={bullet} className="flex items-start gap-3">
               <CheckCircle2
                 size={18}
-                className="mt-1 shrink-0 text-[#e87744]"
+                className="mt-1 shrink-0 text-[#A34116]"
               />
 
               <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
@@ -669,7 +669,7 @@ export default function PatientCareDetailPage() {
 
           {/* SECTION HEADING */}
           <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
-            <span className="inline-block rounded-full bg-[#edf3ed] px-4 py-2 text-xs font-bold tracking-[0.16em] text-[#e87744]">
+            <span className="inline-block rounded-full bg-[#edf3ed] px-4 py-2 text-xs font-bold tracking-[0.16em] text-[#A34116]">
               {item.name} PROGRAMME
             </span>
 
@@ -683,7 +683,7 @@ export default function PatientCareDetailPage() {
               clinical requirements.
             </p>
 
-            <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-[#e87744]" />
+            <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-[#963D16]" />
           </div>
 
           {/* ALTERNATING IMAGE AND CONTENT - NO CARDS */}
@@ -722,7 +722,7 @@ export default function PatientCareDetailPage() {
 
             <Link
               to="/contact"
-              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#e87744] px-5 py-2 font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#d86635] hover:shadow-lg"
+              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#963D16] px-5 py-2 font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#d86635] hover:shadow-lg"
             >
               Contact Us
               <ArrowRight size={19} />

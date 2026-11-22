@@ -152,7 +152,7 @@ const mappedSpecialities = rows.map((item) => ({
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -175,7 +175,7 @@ const mappedSpecialities = rows.map((item) => ({
       {/* Centered heading */}
       <section className="page-container px-5 pb-5 pt-10 text-center sm:px-8 sm:pt-14 lg:px-12">
 
-        <span className="text-sm font-bold tracking-[0.18em] text-[#e87744]">
+        <span className="text-sm font-bold tracking-[0.18em] text-[#A34116]">
           OUR SPECIALITIES
         </span>
 
@@ -187,7 +187,7 @@ const mappedSpecialities = rows.map((item) => ({
           The specialty pages explain who provides care and what role each clinical discipline plays.
         </p>
 
-        <div className="mx-auto mt-5 h-1 w-28 rounded-full bg-[#e87744]" />
+        <div className="mx-auto mt-5 h-1 w-28 rounded-full bg-[#963D16]" />
 
       </section>
 
@@ -228,7 +228,7 @@ const mappedSpecialities = rows.map((item) => ({
                     grid h-20 w-20 place-items-center
                     rounded-xl
                     bg-[#edf4ec]
-                    text-[#e87744]
+                    text-[#A34116]
                     transition-all duration-300
                     group-hover:-translate-y-1
                     group-hover:bg-[#fff1e9]
@@ -239,7 +239,7 @@ const mappedSpecialities = rows.map((item) => ({
   size={48}
   strokeWidth={1.6}
   className="
-    text-[#e87744]
+    text-[#A34116]
     transition-colors duration-300
     group-hover:text-[#4f7359]
   "
@@ -266,7 +266,7 @@ const mappedSpecialities = rows.map((item) => ({
                   className="
                     relative z-10 mt-2
                     flex h-7 items-center gap-2
-                    text-sm font-semibold text-[#e87744]
+                    text-sm font-semibold text-[#A34116]
                     opacity-0 translate-y-1
                     transition-all duration-300
                     group-hover:translate-y-0

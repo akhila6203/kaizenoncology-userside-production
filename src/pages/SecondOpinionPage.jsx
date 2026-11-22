@@ -182,7 +182,7 @@ function SectionHeading({ eyebrow, title, description, light = false }) {
   return (
     <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
       {eyebrow && (
-        <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#E87744] sm:text-sm">
+        <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#A34116] sm:text-sm">
           {eyebrow}
         </p>
       )}
@@ -226,7 +226,7 @@ function Breadcrumb() {
           <li>
             <Link
               to="/"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Home
             </Link>
@@ -239,7 +239,7 @@ function Breadcrumb() {
           <li>
             <Link
               to="/services"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Services
             </Link>
@@ -278,13 +278,13 @@ function SecondOpinionHero() {
   className="text-center lg:text-left"
 >
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[12px] font-bold uppercase tracking-wider text-[#476B55] shadow-sm">
-            <ShieldCheck size={16} className="text-[#E87744]" />
+            <ShieldCheck size={16} className="text-[#A34116]" />
             Informed Cancer Care
           </span>
 
          <h1 className="mt-6 text-center text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl lg:text-left lg:text-5xl">
             Cancer Second Opinion
-            <span className="mt-2 block text-[#E87744]">
+            <span className="mt-2 block text-[#A34116]">
               Clarity for Your Next Step
             </span>
           </h1>
@@ -300,7 +300,7 @@ function SecondOpinionHero() {
          <div className="mt-8 flex flex-row items-center justify-center gap-2 lg:justify-start lg:gap-3">
             <Link
               to="/appointments"
-             className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#304B3C] px-3 py-2 text-[12px] font-bold text-white transition hover:bg-[#E87744] sm:min-h-12 sm:gap-2 sm:px-7 sm:py-3 sm:text-[15px]"
+             className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#304B3C] px-3 py-2 text-[12px] font-bold text-white transition hover:bg-[#963D16] sm:min-h-12 sm:gap-2 sm:px-7 sm:py-3 sm:text-[15px]"
             >
               Request a Second Opinion
               <ArrowRight size={18} />
@@ -316,12 +316,12 @@ function SecondOpinionHero() {
 
           <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-semibold text-[#476B55] lg:justify-start">
             <span className="flex items-center gap-2">
-              <CheckCircle2 size={17} className="text-[#E87744]" />
+              <CheckCircle2 size={17} className="text-[#A34116]" />
               Diagnosis Review
             </span>
 
             <span className="flex items-center gap-2">
-              <CheckCircle2 size={17} className="text-[#E87744]" />
+              <CheckCircle2 size={17} className="text-[#A34116]" />
               Treatment Discussion
             </span>
           </div>
@@ -395,7 +395,7 @@ function SecondOpinionIntroduction() {
           </div>
 
           <div className="rounded-2xl border border-[#E1E9DF] bg-[#F8FAF7] p-6 sm:p-8">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FCEDE5] text-[#E87744]">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FCEDE5] text-[#A34116]">
               <HeartPulse size={25} />
             </span>
 
@@ -483,7 +483,7 @@ function BreastCancerOpinion() {
       <div className="page-container px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
-            <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#E87744]">
+            <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#A34116]">
               BREAST CANCER CARE
             </p>
 
@@ -512,7 +512,7 @@ function BreastCancerOpinion() {
             {/* UPDATED BREAST CANCER BUTTON */}
             <Link
               to="/services/cancer/breast-cancer"
-              className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#E87744] px-7 py-3 text-[15px] font-bold text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-[#D96535] hover:shadow-md"
+              className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#963D16] px-7 py-3 text-[15px] font-bold text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-[#D96535] hover:shadow-md"
             >
               Explore Breast Cancer Care
               <ArrowRight size={18} />
@@ -529,7 +529,7 @@ function BreastCancerOpinion() {
                 <li key={item} className="flex items-start gap-3">
                   <CheckCircle2
                     size={19}
-                    className="mt-1 shrink-0 text-[#E87744]"
+                    className="mt-1 shrink-0 text-[#A34116]"
                   />
 
                   <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
@@ -607,7 +607,7 @@ function RequiredDocuments() {
         {/* CENTERED SECTION HEADING */}
 
         <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
-          <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#E87744] sm:text-sm">
+          <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#A34116] sm:text-sm">
             BEFORE YOUR CONSULTATION
           </p>
 
@@ -637,7 +637,7 @@ function RequiredDocuments() {
               >
                 <CheckCircle2
                   size={19}
-                  className="mt-1 shrink-0 text-[#E87744]"
+                  className="mt-1 shrink-0 text-[#A34116]"
                 />
 
                 <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
@@ -649,10 +649,10 @@ function RequiredDocuments() {
 
           {/* SIMPLE INFORMATION NOTE - NO BOX */}
 
-          <div className="mt-8 flex items-start gap-3 border-l-[3px] border-[#E87744] bg-[#FAF8F4] px-4 py-4 sm:px-6">
+          <div className="mt-8 flex items-start gap-3 border-l-[3px] border-[#963D16] bg-[#FAF8F4] px-4 py-4 sm:px-6">
             <FileText
               size={22}
-              className="mt-1 shrink-0 text-[#E87744]"
+              className="mt-1 shrink-0 text-[#A34116]"
             />
 
             <p className="text-[16px] leading-7 text-[#363736] sm:text-[17px]">
@@ -705,7 +705,7 @@ function TreatmentOptions() {
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle2
                       size={18}
-                      className="mt-1 shrink-0 text-[#E87744]"
+                      className="mt-1 shrink-0 text-[#A34116]"
                     />
 
                     <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
@@ -769,7 +769,7 @@ function FrequentlyAskedQuestions() {
 
                 <ChevronRight
                   size={20}
-                  className="mt-1 shrink-0 text-[#E87744] transition-transform group-open:rotate-90"
+                  className="mt-1 shrink-0 text-[#A34116] transition-transform group-open:rotate-90"
                 />
               </summary>
 
@@ -825,7 +825,7 @@ function SecondOpinionCTA() {
 
             <Link
               to="/appointments"
-              className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#E87744] px-3 py-2 text-[12px] font-bold text-white transition duration-300 hover:bg-[#D96535] sm:min-h-12 sm:gap-2 sm:px-7 sm:py-3 sm:text-[15px]"
+              className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#963D16] px-3 py-2 text-[12px] font-bold text-white transition duration-300 hover:bg-[#D96535] sm:min-h-12 sm:gap-2 sm:px-7 sm:py-3 sm:text-[15px]"
             >
               Book an Appointment
               <CalendarDays size={17} />

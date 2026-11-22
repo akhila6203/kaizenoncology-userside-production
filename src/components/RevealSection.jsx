@@ -12,12 +12,12 @@ export default function RevealSection({
 
   return (
     <Component
-      initial={{ opacity: 0, y: reduceMotion ? 0 : y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : delay }}
-      className={className}
-    >
+  initial={{ opacity: 0, y: reduceMotion ? 0 : y }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.15 }}
+  transition={{ duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : delay }}
+  className={className}
+>
       {children}
     </Component>
   );

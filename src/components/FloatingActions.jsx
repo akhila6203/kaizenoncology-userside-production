@@ -74,32 +74,40 @@ export default function FloatingActions() {
  return (
   <>
     {/* MOBILE AND TABLET: Keep the original bottom navigation */}
-    <div className="fixed bottom-0 left-0 right-0 z-40 grid grid-cols-3 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_25px_rgba(20,38,74,0.08)] backdrop-blur lg:hidden">
+    {/* <div className="fixed bottom-0 left-0 right-0 z-40 grid grid-cols-3 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_25px_rgba(20,38,74,0.08)] backdrop-blur lg:hidden"> */}
+     <nav
+  aria-label="Mobile quick actions"
+  className="fixed bottom-0 left-0 right-0 z-40 grid grid-cols-3 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_25px_rgba(20,38,74,0.08)] backdrop-blur lg:hidden"
+>
       {actions.map(({ label, path, Icon, isCall }) =>
   isCall ? (
     <a
       key={label}
       href={callHref}
-      className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy transition hover:bg-ice"
+      className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy transition hover:bg-ice focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[#963D16]"
     >
-      <Icon size={22} />
+      <Icon size={22} aria-hidden="true"/>
       <span className="text-[15px] font-semibold">{label}</span>
     </a>
   ) : (
     <Link
       key={label}
       to={path}
-      className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy transition hover:bg-ice"
+     className="flex min-h-[64px] flex-col items-center justify-center gap-1 text-navy transition hover:bg-ice focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[#963D16]"
     >
-      <Icon size={22} />
+      <Icon size={22} aria-hidden="true"/>
       <span className="text-[15px] font-semibold">{label}</span>
     </Link>
   )
 )}
-    </div>
+    </nav>
 
     {/* WINDOWS / DESKTOP: Three icons vertically above WhatsApp */}
-    <div className="fixed bottom-[88px] right-6 z-40 hidden flex-col gap-3 lg:flex">
+    {/* <div className="fixed bottom-[88px] right-6 z-40 hidden flex-col gap-3 lg:flex"> */}
+    <nav
+  aria-label="Desktop quick actions"
+  className="fixed bottom-[88px] right-6 z-40 hidden flex-col gap-3 lg:flex"
+>
       
       {actions.map(({ label, path, Icon, isCall }) =>
   isCall ? (
@@ -108,7 +116,7 @@ export default function FloatingActions() {
       href={callHref}
       title={label}
       aria-label={label}
-      className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep"
+     className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
     >
       <Icon size={20} />
     </a>
@@ -118,15 +126,16 @@ export default function FloatingActions() {
       to={path}
       title={label}
       aria-label={label}
-      className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep"
+      className="flex h-12 w-12 items-center justify-center rounded-full bg-royal text-white shadow-premium transition hover:bg-royaldeep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
     >
       <Icon size={20} />
     </Link>
   )
 )}
-    </div>
+    </nav>
 
     {/* WHATSAPP: Original position on desktop and above mobile navigation */}
+    <nav aria-label="WhatsApp contact">
     <a
       href={whatsappHref}
       target="_blank"
@@ -137,6 +146,7 @@ export default function FloatingActions() {
     >
       <WhatsAppIcon />
     </a>
+    </nav>
   </>
 );
 }

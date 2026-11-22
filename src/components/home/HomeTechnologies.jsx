@@ -13,7 +13,10 @@ export default function HomeTechnologies() {
 //   const technologies = [...technologyItems, mammographyTechnology];
 
   return (
-    <section className="section-padding bg-white">
+    <section
+  aria-labelledby="home-technologies-heading"
+  className="section-padding bg-white"
+>
       <div className="page-container px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="mx-auto mb-12 max-w-3xl text-center">
@@ -21,10 +24,12 @@ export default function HomeTechnologies() {
             ADVANCED CANCER CARE
           </p>
 
-          <h2 className="display-font mt-3 text-3xl font-bold text-[#263C30] sm:text-4xl">
+          <h2
+            id="home-technologies-heading"
+            className="display-font mt-3 text-3xl font-bold text-[#263C30] sm:text-4xl"
+          >
             Our Technology
           </h2>
-
           <p className="mt-4 text-[15px] leading-7 text-[#494848] sm:text-base">
             Discover technologies that support cancer diagnosis, treatment
             planning and specialised care.
@@ -58,7 +63,7 @@ export default function HomeTechnologies() {
               </div>
 
               <div className="flex flex-1 flex-col p-5">
-                <h3 className="text-lg font-bold text-[#263C30] transition-colors group-hover:text-[#E87744]">
+                <h3 className="text-lg font-bold text-[#263C30] transition-colors group-hover:text-[#A34116]">
                   {item.title}
                 </h3>
 
@@ -68,10 +73,10 @@ export default function HomeTechnologies() {
 
                 <Link
                   to={item.path || `/technology/${item.slug}`}
-                  className="mt-5 inline-flex min-h-10 items-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2 text-sm font-semibold text-white transition duration-300 hover:bg-[#E87744]"
+                  className="mt-5 inline-flex min-h-10 items-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2 text-sm font-semibold text-white transition duration-300 hover:bg-[#963D16] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
                 >
                   Know More
-                  <ArrowRight size={16} />
+                  <ArrowRight aria-hidden="true" size={16} />
                 </Link>
               </div>
             </motion.article>
@@ -82,10 +87,10 @@ export default function HomeTechnologies() {
         <div className="mt-10 text-center">
           <Link
             to="/technology"
-            className="inline-flex items-center gap-2 rounded-full border border-[#476B55] px-7 py-3 text-sm font-bold text-[#476B55] transition duration-300 hover:border-[#E87744] hover:bg-[#E87744] hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full border border-[#476B55] px-7 py-3 text-sm font-bold text-[#476B55] transition duration-300 hover:border-[#963D16] hover:bg-[#963D16] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
           >
             Explore All Technologies
-            <ArrowRight size={17} />
+            <ArrowRight aria-hidden="true" size={17} />
           </Link>
         </div>
       </div>

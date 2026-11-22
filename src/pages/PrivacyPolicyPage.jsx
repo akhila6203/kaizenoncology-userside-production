@@ -178,7 +178,7 @@ export default function PrivacyPolicyPage() {
 
     [&_blockquote]:my-6
     [&_blockquote]:border-l-4
-    [&_blockquote]:border-[#e87744]
+    [&_blockquote]:border-[#963D16]
     [&_blockquote]:bg-[#f6f9f6]
     [&_blockquote]:px-4 [&_blockquote]:py-4
     sm:[&_blockquote]:px-6

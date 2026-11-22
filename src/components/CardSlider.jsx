@@ -56,20 +56,23 @@ export default function CardSlider({
       : 0;
 
   // Three copies prevent empty space during continuous looping.
-  const trackItems = [
-    ...items.map((item, i) => ({
-      item,
-      key: `before-${i}-${item.slug || item.id || i}`,
-    })),
-    ...items.map((item, i) => ({
-      item,
-      key: `original-${i}-${item.slug || item.id || i}`,
-    })),
-    ...items.map((item, i) => ({
-      item,
-      key: `after-${i}-${item.slug || item.id || i}`,
-    })),
-  ];
+const trackItems = [
+  ...items.map((item, i) => ({
+    item,
+    isClone: true,
+    key: `before-${i}-${item.slug || item.id || i}`,
+  })),
+  ...items.map((item, i) => ({
+    item,
+    isClone: false,
+    key: `original-${i}-${item.slug || item.id || i}`,
+  })),
+  ...items.map((item, i) => ({
+    item,
+    isClone: true,
+    key: `after-${i}-${item.slug || item.id || i}`,
+  })),
+];
 
   useLayoutEffect(() => {
     const node = viewportRef.current;
@@ -177,13 +180,16 @@ const handleAnimationComplete = () => {
       : 0;
 
   const buttonClass = dark
-    ? "flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-navy text-white hover:bg-white/20"
-    : "flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-navy shadow-sm hover:bg-ice";
+  ? "flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-navy text-white hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+  : "flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-navy shadow-sm hover:bg-ice focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]";
+
 
   if (!items.length) return null;
 
   return (
     <div
+      role="region"
+      aria-roledescription="carousel"
       aria-label={ariaLabel}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -202,10 +208,12 @@ const handleAnimationComplete = () => {
             }}
             onAnimationComplete={handleAnimationComplete}
           >
-            {trackItems.map(({ item, key }, itemIndex) => (
+            {trackItems.map(({ item, key, isClone }, itemIndex) => (
               <div
                 key={key}
                 className="shrink-0"
+                aria-hidden={isClone ? "true" : undefined}
+                inert={isClone ? true : undefined}
                 style={{ width: cardWidth || "100%" }}
               >
                 {renderItem(item, itemIndex)}
@@ -220,7 +228,7 @@ const handleAnimationComplete = () => {
           aria-label="Previous slide"
           className={`absolute left-0 top-1/2 z-10 -translate-y-1/2 ${buttonClass}`}
         >
-          <ArrowLeft size={18} />
+          <ArrowLeft size={18} aria-hidden="true" />
         </button>
 
         <button
@@ -229,21 +237,20 @@ const handleAnimationComplete = () => {
           aria-label="Next slide"
           className={`absolute right-0 top-1/2 z-10 -translate-y-1/2 ${buttonClass}`}
         >
-          <ArrowRight size={18} />
+          <ArrowRight size={18} aria-hidden="true" />
         </button>
       </div>
 
       <div
         className="mt-6 flex justify-center gap-2"
-        role="tablist"
-        aria-label={`${ariaLabel} pages`}
+        aria-label={`${ariaLabel} navigation`}
       >
         {items.map((_, dotIndex) => (
           <button
             key={dotIndex}
             type="button"
-            role="tab"
-            aria-selected={dotIndex === activeDot}
+            // role="tab"
+            // aria-selected={dotIndex === activeDot}
             aria-label={`Go to slide ${dotIndex + 1}`}
             onClick={() => {
               if (isAnimating.current) return;

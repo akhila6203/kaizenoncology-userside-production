@@ -7,9 +7,13 @@ export default function PhotoGallery({ slider = true }) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="section-padding bg-white">
+   <section
+  className="section-padding bg-white"
+  aria-labelledby="photo-gallery-heading"
+>
       <div className="page-container">
         <SectionTitle
+        id="photo-gallery-heading"
           eyebrow="OUR ENVIRONMENT"
           title="A closer look at our care"
           description="Use genuine, approved hospital photographs here to help patients understand your facilities."

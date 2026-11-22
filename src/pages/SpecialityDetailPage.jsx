@@ -436,7 +436,7 @@ const renderTechnologyCard = (technology) => (
 
     {/* TECHNOLOGY CONTENT */}
     <div className="flex flex-1 flex-col p-3 sm:p-5">
-     <h3 className="text-base font-bold leading-snug text-[#263C30] transition-colors group-hover:text-[#E87744] sm:text-lg">
+     <h3 className="text-base font-bold leading-snug text-[#263C30] transition-colors group-hover:text-[#A34116] sm:text-lg">
         {technology.title}
       </h3>
 
@@ -444,7 +444,7 @@ const renderTechnologyCard = (technology) => (
         {technology.description}
       </p>
 
-      <span className="mt-5 inline-flex min-h-10 items-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2 text-sm font-semibold text-white transition-colors group-hover:bg-[#E87744]">
+      <span className="mt-5 inline-flex min-h-10 items-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2 text-sm font-semibold text-white transition-colors group-hover:bg-[#963D16]">
         Know More
         <ArrowRight size={16} />
       </span>
@@ -519,7 +519,7 @@ const testimonialVideos = patientStories.map((story) => ({
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -532,7 +532,7 @@ const testimonialVideos = patientStories.map((story) => ({
       <li>
         <Link
           to="/specialities"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Specialities
         </Link>
@@ -577,7 +577,7 @@ const testimonialVideos = patientStories.map((story) => ({
             {speciality.title}
           </h1>
 
-          <div className="mx-auto mt-5 h-1 w-24 rounded-full bg-[#e87744]" />
+          <div className="mx-auto mt-5 h-1 w-24 rounded-full bg-[#963D16]" />
         </motion.div>
 
         {/* Left content and right image */}

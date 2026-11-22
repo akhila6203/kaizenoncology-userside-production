@@ -377,7 +377,7 @@ export default function DoctorDetailsPage() {
             <li>
               <Link
                 to="/"
-                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
               >
                 Home
               </Link>
@@ -390,7 +390,7 @@ export default function DoctorDetailsPage() {
             <li>
               <Link
                 to="/doctors"
-                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+                className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
               >
                 Doctors
               </Link>
@@ -440,7 +440,7 @@ export default function DoctorDetailsPage() {
 
               <div className="mt-6">
                 <div className="mb-3 flex items-center gap-2 border-b border-[#C8D9CB] pb-2">
-                  <Stethoscope size={18} className="shrink-0 text-[#E87744]" />
+                  <Stethoscope size={18} className="shrink-0 text-[#A34116]" />
 
                   <h2 className="font-display text-base font-bold uppercase tracking-wide text-[#304B3C]">
                     Specialities
@@ -456,7 +456,7 @@ export default function DoctorDetailsPage() {
                       key={`speciality-${index}`}
                       className="flex items-start gap-2 text-sm leading-6 text-black sm:text-base"
                     >
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E87744]" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#963D16]" />
 
                       <span className="min-w-0 flex-1 break-words">
                         {speciality}
@@ -470,7 +470,7 @@ export default function DoctorDetailsPage() {
 
               <div className="mt-6">
                 <div className="mb-3 flex items-center gap-2 border-b border-[#C8D9CB] pb-2">
-                  <MapPin size={18} className="shrink-0 text-[#E87744]" />
+                  <MapPin size={18} className="shrink-0 text-[#A34116]" />
 
                   <h2 className="font-display text-base font-bold uppercase tracking-wide text-[#304B3C]">
                     Professional Details
@@ -536,7 +536,7 @@ export default function DoctorDetailsPage() {
               {doctor.qualifications?.length > 0 && (
                 <div className="mt-6">
                   <div className="mb-3 flex items-center gap-2 border-b border-[#C8D9CB] pb-2">
-                    <GraduationCap size={19} className="shrink-0 text-[#E87744]" />
+                    <GraduationCap size={19} className="shrink-0 text-[#A34116]" />
 
                     <h2 className="font-display text-base font-bold uppercase tracking-wide text-[#304B3C]">
                       Education & Training
@@ -549,7 +549,7 @@ export default function DoctorDetailsPage() {
                         key={`qualification-${index}`}
                         className="flex items-start gap-2 text-sm leading-6 text-black sm:text-base"
                       >
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E87744]" />
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#963D16]" />
 
                         <span className="min-w-0 flex-1 break-words">
                           {qualification}
@@ -565,7 +565,7 @@ export default function DoctorDetailsPage() {
               {doctor.languages?.length > 0 && (
                 <div className="mt-6">
                   <div className="mb-3 flex items-center gap-2 border-b border-[#C8D9CB] pb-2">
-                    <Languages size={18} className="shrink-0 text-[#E87744]" />
+                    <Languages size={18} className="shrink-0 text-[#A34116]" />
 
                     <h2 className="font-display text-base font-bold uppercase tracking-wide text-[#304B3C]">
                       Languages
@@ -578,7 +578,7 @@ export default function DoctorDetailsPage() {
                         key={`language-${index}`}
                         className="flex items-start gap-2 text-sm leading-6 text-black sm:text-base"
                       >
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E87744]" />
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#963D16]" />
 
                         <span className="min-w-0 flex-1 break-words">
                           {language}
@@ -623,7 +623,7 @@ export default function DoctorDetailsPage() {
 
             <section className="pb-7 sm:pb-8">
               <div className="flex items-center gap-3 border-b border-[#C8D9CB] pb-3">
-                <UserRound size={19} className="shrink-0 text-[#E87744]" />
+                <UserRound size={19} className="shrink-0 text-[#A34116]" />
 
                 <h2 className="font-display text-lg font-bold uppercase tracking-wide text-[#304B3C] sm:text-xl">
                   Profile
@@ -669,7 +669,7 @@ export default function DoctorDetailsPage() {
                     {/* SECTION HEADING */}
 
                     <div className="flex items-center gap-3 border-b border-[#C8D9CB] pb-3">
-                      <Icon size={19} className="shrink-0 text-[#E87744]" />
+                      <Icon size={19} className="shrink-0 text-[#A34116]" />
 
                       <h2 className="font-display text-lg font-bold uppercase tracking-wide text-[#304B3C] sm:text-xl">
                         {tab.label}
@@ -684,7 +684,7 @@ export default function DoctorDetailsPage() {
                           key={`${tab.id}-${itemIndex}`}
                           className="flex items-start gap-3 text-base leading-7 text-black sm:text-[17px] sm:leading-8 lg:text-lg"
                         >
-                          <span className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#E87744]" />
+                          <span className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#963D16]" />
 
                           <span className="min-w-0 flex-1 break-words">
                             {item}
@@ -1144,7 +1144,7 @@ export default function DoctorDetailsPage() {
 //       <li>
 //         <Link
 //           to="/"
-//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
 //         >
 //           Home
 //         </Link>
@@ -1157,7 +1157,7 @@ export default function DoctorDetailsPage() {
 //       <li>
 //         <Link
 //           to="/doctors"
-//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
 //         >
 //           Doctors
 //         </Link>
@@ -1232,7 +1232,7 @@ export default function DoctorDetailsPage() {
 //                   key={`qualification-${index}`}
 //                   className="flex items-start gap-2 text-sm leading-6 text-[#414B43] sm:text-base"
 //                 >
-//                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E87744]" />
+//                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#963D16]" />
 
 //                   <span className="min-w-0 flex-1 break-words">
 //                     {qualification}
@@ -1286,7 +1286,7 @@ export default function DoctorDetailsPage() {
 //                     key={`language-${index}`}
 //                     className="flex items-start gap-2 text-sm leading-6 text-[#414B43] sm:text-base"
 //                   >
-//                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E87744]" />
+//                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#963D16]" />
 //                     <span className="min-w-0 flex-1 break-words">
 //                       {language}
 //                     </span>
@@ -1409,7 +1409,7 @@ export default function DoctorDetailsPage() {
 //                     key={`${tab.id}-${itemIndex}`}
 //                     className="flex items-start gap-3 text-base leading-7 text-[#414B43] sm:text-[17px] sm:leading-8 lg:text-lg"
 //                   >
-//                     <span className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#E87744]" />
+//                     <span className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#963D16]" />
 
 //                     <span className="min-w-0 flex-1 break-words">
 //                       {item}
@@ -1871,7 +1871,7 @@ export default function DoctorDetailsPage() {
 //       <li>
 //         <Link
 //           to="/"
-//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
 //         >
 //           Home
 //         </Link>
@@ -1884,7 +1884,7 @@ export default function DoctorDetailsPage() {
 //       <li>
 //         <Link
 //           to="/doctors"
-//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+//           className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
 //         >
 //           Doctors
 //         </Link>

@@ -79,7 +79,7 @@ function ServiceCard({
 
       {/* CONTENT */}
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <h3 className="text-[19px] font-bold leading-snug text-[#263c30] transition-colors group-hover:text-[#e87744] sm:text-xl">
+        <h3 className="text-[19px] font-bold leading-snug text-[#263c30] transition-colors group-hover:text-[#A34116] sm:text-xl">
           {item.title}
         </h3>
 
@@ -90,7 +90,7 @@ function ServiceCard({
         {/* GREEN KNOW MORE BUTTON */}
         <Link
           to={link}
-          className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-[#304b3c] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#e87744]"
+          className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-[#304b3c] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#963D16]"
         >
           Know More
           <ArrowRight
@@ -130,7 +130,7 @@ function SectionHeading({
         </p>
       )}
 
-      <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-[#e87744]" />
+      <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-[#963D16]" />
     </div>
   );
 }
@@ -144,7 +144,7 @@ function SectionKnowMore({ to, label = "Know More" }) {
     <div className="mt-9 flex justify-center">
       <Link
         to={to}
-        className="inline-flex items-center gap-2 rounded-full bg-[#304b3c] px-7 py-3 text-sm font-bold text-white shadow-sm transition duration-300 hover:bg-[#e87744] hover:shadow-md"
+        className="inline-flex items-center gap-2 rounded-full bg-[#304b3c] px-7 py-3 text-sm font-bold text-white shadow-sm transition duration-300 hover:bg-[#963D16] hover:shadow-md"
       >
         {label}
         <ArrowRight size={17} />
@@ -235,7 +235,7 @@ export default function ServicesHubPage() {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -352,7 +352,7 @@ export default function ServicesHubPage() {
               </div>
 
               <div className="flex flex-col justify-center p-6 sm:p-9">
-                <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#e87744]">
+                <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#A34116]">
                   Expert Medical Guidance
                 </span>
 
@@ -368,7 +368,7 @@ export default function ServicesHubPage() {
 
                 <Link
                   to="/services/second-opinion"
-                  className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-[#304b3c] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#e87744]"
+                  className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-[#304b3c] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#963D16]"
                 >
                   Know More
                   <ArrowRight size={17} />
@@ -395,7 +395,7 @@ export default function ServicesHubPage() {
 
           <Link
             to="/appointments"
-            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#e87744] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#d96836]"
+            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#963D16] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#d96836]"
           >
             Book an Appointment
             <ArrowRight size={18} />

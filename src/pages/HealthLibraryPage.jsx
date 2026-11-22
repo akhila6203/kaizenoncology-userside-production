@@ -30,7 +30,7 @@ export default function HealthLibraryPage() {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -59,11 +59,11 @@ export default function HealthLibraryPage() {
         <div className="page-container">
           <div className="mx-auto mb-12 max-w-3xl text-center">
             <div className="mb-3 flex items-center justify-center gap-2">
-              <span className="h-[3px] w-8 rounded-full bg-[#E87744]" />
+              <span className="h-[3px] w-8 rounded-full bg-[#963D16]" />
               <span className="text-xs font-bold uppercase tracking-[2px] text-[#4F7359]">
                 EXPLORE & UNDERSTAND
               </span>
-              <span className="h-[3px] w-8 rounded-full bg-[#E87744]" />
+              <span className="h-[3px] w-8 rounded-full bg-[#963D16]" />
             </div>
 
             <h2 className="display-font text-3xl font-extrabold text-[#243528] sm:text-4xl">
@@ -79,7 +79,7 @@ export default function HealthLibraryPage() {
             {healthCategories.map((category, index) => (
               <article
                 key={category.slug}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#D4E0D6] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#E87744]/60 hover:shadow-xl"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#D4E0D6] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#963D16]/60 hover:shadow-xl"
               >
                 <Link
                   to={`/health-library/${category.slug}`}
@@ -116,7 +116,7 @@ export default function HealthLibraryPage() {
 
                   <Link
                     to={`/health-library/${category.slug}`}
-                    className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#4F7359] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#E87744]"
+                    className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#4F7359] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#963D16]"
                   >
                     Know More
                     <ArrowRight size={17} />

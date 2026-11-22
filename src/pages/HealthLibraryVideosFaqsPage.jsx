@@ -199,7 +199,7 @@ const getVideoThumbnail = (video) => {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -212,7 +212,7 @@ const getVideoThumbnail = (video) => {
       <li>
         <Link
           to="/health-library"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Health Library
         </Link>
@@ -239,7 +239,7 @@ const getVideoThumbnail = (video) => {
           >
             <Link
               to="/"
-              className="font-semibold text-[#3D4A40] transition hover:text-[#E87744]"
+              className="font-semibold text-[#3D4A40] transition hover:text-[#A34116]"
             >
               Home
             </Link>
@@ -248,7 +248,7 @@ const getVideoThumbnail = (video) => {
 
             <Link
               to="/health-library"
-              className="font-semibold text-[#3D4A40] transition hover:text-[#E87744]"
+              className="font-semibold text-[#3D4A40] transition hover:text-[#A34116]"
             >
               Health Library
             </Link>
@@ -358,7 +358,7 @@ const getVideoThumbnail = (video) => {
                     type="button"
                     onClick={() => setSelectedVideo(video)}
                     aria-label={`Play ${video.title}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#D4E0D6] bg-white text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#E87744]/60 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4F7359]"
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#D4E0D6] bg-white text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#963D16]/60 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4F7359]"
                   >
                     {/* VIDEO THUMBNAIL */}
                     {/* VIDEO THUMBNAIL */}
@@ -386,7 +386,7 @@ const getVideoThumbnail = (video) => {
   {/* PLAY BUTTON */}
   <div className="absolute inset-0 flex items-center justify-center bg-[#243528]/10 transition duration-300 group-hover:bg-[#243528]/30">
 
-    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-[#4F7359] shadow-lg transition duration-300 group-hover:scale-110 group-hover:bg-[#E87744] group-hover:text-white">
+    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-[#4F7359] shadow-lg transition duration-300 group-hover:scale-110 group-hover:bg-[#963D16] group-hover:text-white">
       <PlayCircle size={32} />
     </span>
 
@@ -444,7 +444,7 @@ const getVideoThumbnail = (video) => {
                 <button
                   type="button"
                   onClick={handleLoadMoreVideos}
-                  className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-9 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#E87744] hover:shadow-lg"
+                  className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-9 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#963D16] hover:shadow-lg"
                 >
                   Load More Videos
                   <ArrowRight size={19} />
@@ -471,13 +471,13 @@ const getVideoThumbnail = (video) => {
             <div className="mb-8 text-center">
 
               <div className="mb-4 flex items-center justify-center gap-3">
-                <span className="h-[2px] w-9 rounded-full bg-[#E87744]" />
+                <span className="h-[2px] w-9 rounded-full bg-[#963D16]" />
 
                 <span className="text-xs font-bold uppercase tracking-[2px] text-[#4F7359]">
                   PATIENT INFORMATION
                 </span>
 
-                <span className="h-[2px] w-9 rounded-full bg-[#E87744]" />
+                <span className="h-[2px] w-9 rounded-full bg-[#963D16]" />
               </div>
 
               <h2 className="display-font text-2xl font-extrabold text-[#243528] sm:text-3xl">
@@ -593,7 +593,7 @@ const getVideoThumbnail = (video) => {
                 <button
                   type="button"
                   onClick={handleLoadMoreFaqs}
-                  className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-9 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#E87744] hover:shadow-lg"
+                  className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-9 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#963D16] hover:shadow-lg"
                 >
                   Load More FAQs
                   <ArrowRight size={19} />

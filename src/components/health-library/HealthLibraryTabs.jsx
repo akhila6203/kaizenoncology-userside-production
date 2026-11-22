@@ -138,11 +138,11 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
       {/* CENTER HEADING */}
       <div className="mx-auto mb-9 max-w-3xl text-center">
         <div className="mb-3 flex items-center justify-center gap-2">
-          <span className="h-[3px] w-8 rounded-full bg-[#E87744]" />
+          <span className="h-[3px] w-8 rounded-full bg-[#963D16]" />
           <span className="text-xs font-bold uppercase tracking-[2px] text-[#4F7359]">
             KIMS RENOVA HEALTH LIBRARY
           </span>
-          <span className="h-[3px] w-8 rounded-full bg-[#E87744]" />
+          <span className="h-[3px] w-8 rounded-full bg-[#963D16]" />
         </div>
 
         <h2 className="display-font text-3xl font-extrabold text-[#243528] sm:text-4xl">
@@ -173,7 +173,7 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
           ${
             isActive
               ? "border-[#4F7359] bg-[#4F7359] text-white shadow-md"
-              : "border-[#D4E0D6] bg-white text-[#4F7359] hover:border-[#E87744] hover:bg-[#FFF5EF] hover:text-[#E87744]"
+              : "border-[#D4E0D6] bg-white text-[#4F7359] hover:border-[#963D16] hover:bg-[#FFF5EF] hover:text-[#A34116]"
           }`}
       >
         <Icon
@@ -200,7 +200,7 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
               className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border px-7 py-3 text-sm font-bold transition duration-300 ${
                 isActive
                   ? "border-[#4F7359] bg-[#4F7359] text-white shadow-md"
-                  : "border-[#D4E0D6] bg-white text-[#4F7359] hover:border-[#E87744] hover:bg-[#FFF5EF] hover:text-[#E87744]"
+                  : "border-[#D4E0D6] bg-white text-[#4F7359] hover:border-[#963D16] hover:bg-[#FFF5EF] hover:text-[#A34116]"
               }`}
             >
               <Icon size={18} />
@@ -233,7 +233,7 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
           <div className="mt-9 text-center">
             <Link
               to="/health-library/blogs"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4F7359] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#E87744]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4F7359] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#963D16]"
             >
               View All Blogs
               <ArrowRight size={17} />
@@ -285,7 +285,7 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
 
                     {video.youtubeId && (
                       <span className="absolute inset-0 flex items-center justify-center bg-black/10 transition group-hover:bg-black/30">
-                        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#E87744] text-white shadow-lg transition group-hover:scale-110">
+                        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#963D16] text-white shadow-lg transition group-hover:scale-110">
                           <PlayCircle size={30} />
                         </span>
                       </span>
@@ -305,7 +305,7 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
                       <button
                         type="button"
                         onClick={() => setSelectedVideo(video)}
-                        className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#4F7359] transition hover:text-[#E87744]"
+                        className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#4F7359] transition hover:text-[#A34116]"
                       >
                         Watch Video
                         <Maximize2 size={15} />
@@ -324,7 +324,7 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
           <div className="mt-9 text-center">
             <Link
               to="/health-library/videos-faqs"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4F7359] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#E87744]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4F7359] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#963D16]"
             >
               View All Videos
               <ArrowRight size={17} />
@@ -351,7 +351,7 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
           <div className="mt-9 text-center">
             <Link
               to="/health-library/videos-faqs?tab=faqs"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4F7359] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#E87744]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4F7359] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#963D16]"
             >
               View All FAQs
               <ArrowRight size={17} />

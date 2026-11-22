@@ -28,7 +28,7 @@ function Breadcrumb({ title }) {
           <li>
             <Link
               to="/"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Home
             </Link>
@@ -41,7 +41,7 @@ function Breadcrumb({ title }) {
           <li>
             <Link
               to="/services"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Services
             </Link>
@@ -54,7 +54,7 @@ function Breadcrumb({ title }) {
           <li>
             <Link
               to="/services/treatments"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Cancer Treatments
             </Link>
@@ -220,7 +220,7 @@ export default function CancerTreatmentDetailPage() {
         <aside className="hidden lg:block">
           <div className="sticky top-28 max-h-[calc(100vh-130px)] overflow-y-auto rounded-2xl border border-[#E1E9DF] bg-white p-5 shadow-sm">
 
-            <p className="mb-4 text-[13px] font-extrabold uppercase tracking-[.15em] text-[#E87744]">
+            <p className="mb-4 text-[13px] font-extrabold uppercase tracking-[.15em] text-[#A34116]">
               ON THIS PAGE
             </p>
 
@@ -235,8 +235,8 @@ export default function CancerTreatmentDetailPage() {
                   onClick={() => setActiveSection(item.id)}
                   className={`block rounded-xl border-l-4 px-3 py-3 text-[14px] font-bold leading-5 transition-all duration-200 ${
                     activeSection === item.id
-                      ? "border-[#E87744] bg-[#304B3C] text-white shadow-sm"
-                      : "border-transparent text-[#536357] hover:border-[#E87744] hover:bg-[#F1F6F0] hover:text-[#304B3C]"
+                      ? "border-[#963D16] bg-[#304B3C] text-white shadow-sm"
+                      : "border-transparent text-[#536357] hover:border-[#963D16] hover:bg-[#F1F6F0] hover:text-[#304B3C]"
                   }`}
                 >
                   {item.label}
@@ -255,7 +255,7 @@ export default function CancerTreatmentDetailPage() {
             id="overview"
             className="scroll-mt-28"
           >
-            <p className="text-[13px] font-extrabold uppercase tracking-[.17em] text-[#E87744]">
+            <p className="text-[13px] font-extrabold uppercase tracking-[.17em] text-[#A34116]">
               OVERVIEW
             </p>
 
@@ -308,7 +308,7 @@ export default function CancerTreatmentDetailPage() {
                         >
                           <CheckCircle2
                             size={19}
-                            className="mt-1 shrink-0 text-[#E87744]"
+                            className="mt-1 shrink-0 text-[#A34116]"
                           />
                           {point}
                         </li>
@@ -326,7 +326,7 @@ export default function CancerTreatmentDetailPage() {
             id="treatment-faq"
             className="scroll-mt-28 pt-8"
           >
-            <p className="text-[13px] font-extrabold uppercase tracking-[.17em] text-[#E87744]">
+            <p className="text-[13px] font-extrabold uppercase tracking-[.17em] text-[#A34116]">
               COMMON QUESTION
             </p>
 
@@ -348,7 +348,7 @@ export default function CancerTreatmentDetailPage() {
 
                 <ChevronDown
                   size={20}
-                  className={`shrink-0 text-[#E87744] transition ${
+                  className={`shrink-0 text-[#A34116] transition ${
                     faqOpen ? "rotate-180" : ""
                   }`}
                 />
@@ -367,7 +367,7 @@ export default function CancerTreatmentDetailPage() {
           <div className="mt-12 rounded-2xl border border-[#E4EAE0] bg-[#F4F7F2] p-6 sm:p-8">
             <div className="flex items-start gap-3">
               <ClipboardCheck
-                className="mt-1 shrink-0 text-[#E87744]"
+                className="mt-1 shrink-0 text-[#A34116]"
                 size={25}
               />
 
@@ -411,7 +411,7 @@ export default function CancerTreatmentDetailPage() {
 
           <Link
             to="/appointments"
-            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#E87744] px-6 py-2 text-[15px] font-bold text-white transition hover:bg-[#d76535]"
+            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#963D16] px-6 py-2 text-[15px] font-bold text-white transition hover:bg-[#d76535]"
           >
             Book an appointment
             <ArrowRight size={18} />
@@ -424,7 +424,7 @@ export default function CancerTreatmentDetailPage() {
       {/* <div className="page-container flex flex-wrap items-center justify-between gap-4 px-4 py-7 sm:px-6 lg:px-8">
         <Link
           to="/services/treatments"
-          className="inline-flex items-center gap-2 font-bold text-[#476B55] hover:text-[#E87744]"
+          className="inline-flex items-center gap-2 font-bold text-[#476B55] hover:text-[#A34116]"
         >
           ← Back to Cancer Treatments
         </Link>

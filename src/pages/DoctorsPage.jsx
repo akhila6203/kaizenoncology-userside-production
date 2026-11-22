@@ -221,7 +221,7 @@ export default function DoctorsPage() {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -348,7 +348,7 @@ export default function DoctorsPage() {
             <button
               type="button"
               onClick={clearFilters}
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-[#e87744] bg-white px-4 py-2 text-sm font-semibold text-sky transition hover:bg-sky hover:text-white"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-[#963D16] bg-white px-4 py-2 text-sm font-semibold text-sky transition hover:bg-sky hover:text-white"
             >
               <X size={16} />
               Clear Filters

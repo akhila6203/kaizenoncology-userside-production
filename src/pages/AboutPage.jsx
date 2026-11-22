@@ -186,7 +186,7 @@ export default function AboutPage() {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#963D16]"
         >
           Home
         </Link>
@@ -211,8 +211,9 @@ export default function AboutPage() {
           IMAGE RIGHT
       -------------------------------------------------- */}
 
-      <section
-        id="about-KIMS RENOVA"
+     <section
+        id="about-kims-renova"
+        aria-labelledby="about-page-heading"
         className="relative scroll-mt-10 overflow-hidden bg-[#fffdf9] px-5 pb-16 pt-4 sm:px-8 sm:pb-20 sm:pt-4 lg:px-12 lg:pb-24 lg:pt-6"
       >
         {/* Soft decorative curves */}
@@ -226,18 +227,25 @@ export default function AboutPage() {
             <div className="mx-auto mb-8 max-w-4xl text-center sm:mb-12">
 
               <span className="inline-flex items-center gap-2 rounded-full border border-[#dce6dc] bg-[#f1f5f0] px-5 py-2 text-xs font-bold tracking-[0.18em] text-[#304b3c] sm:text-sm">
-                <HeartHandshake size={17} className="text-[#f26322]" />
+                <HeartHandshake
+                size={17}
+                aria-hidden="true"
+                className="text-[#a04115]"
+              />
                 ABOUT KIMS RENOVA
               </span>
 
-              <h1 className="display-font mt-2 text-2xl font-bold leading-tight text-[#304b3c] sm:text-3xl lg:text-6xl">
+                <h1
+                  id="about-page-heading"
+                  className="display-font mt-2 text-2xl font-bold leading-tight text-[#304b3c] sm:text-3xl lg:text-6xl"
+                >
                 Dedicated Cancer Care,
-                <span className="mt-2 block text-[#f26322]">
+                <span className="mt-2 block text-[#be501d]">
                   Guided by Compassion
                 </span>
               </h1>
 
-              <div className="mx-auto mt-6 h-1.5 w-20 rounded-full bg-[#f26322]" />
+              <div className="mx-auto mt-6 h-1.5 w-20 rounded-full bg-[#b64d1d]" />
 
             </div>
           </Reveal>
@@ -250,7 +258,7 @@ export default function AboutPage() {
             <Reveal direction="left">
               <div className="relative">
 
-                <span className="text-[16px] font-bold tracking-[0.16em] text-[#f26322] sm:text-[19px]">
+                <span className="text-[16px] font-bold tracking-[0.16em] text-[#b14b1c] sm:text-[19px]">
                   COMPASSIONATE, PATIENT-CENTRED CARE
                 </span>
 
@@ -280,7 +288,7 @@ export default function AboutPage() {
                 <div className="mt-4 flex flex-row flex-nowrap items-center gap-2 sm:gap-3">
                   <a
                     href="#our-approach"
-                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f26322] px-7 py-3 text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#df551a] hover:shadow-lg sm:text-base"
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#b34b1b] px-7 py-3 text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#df551a] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#963D16] sm:text-base"
                   >
                     Explore Our Approach
                     {/* <ArrowRight size={18} /> */}
@@ -288,7 +296,7 @@ export default function AboutPage() {
 
                   <Link
                     to="/contact"
-                    className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[#304b3c]/30 bg-white px-7 py-3 text-sm font-bold text-[#304b3c] transition duration-300 hover:-translate-y-1 hover:border-[#304b3c] hover:bg-[#304b3c] hover:text-white sm:text-base"
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[#304b3c]/30 bg-white px-7 py-3 text-sm font-bold text-[#304b3c] transition duration-300 hover:-translate-y-1 hover:border-[#304b3c] hover:bg-[#304b3c] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#963D16] sm:text-base"
                   >
                     Contact Us
                     {/* <ArrowUpRight size={17} /> */}
@@ -311,12 +319,17 @@ export default function AboutPage() {
                     // className="h-[300px] w-full object-cover sm:h-[400px] lg:h-[470px]"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#243c30]/30 via-transparent to-transparent" />
+                  <div aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-[#243c30]/30 via-transparent to-transparent" />
                 </div>
 
                 <div className="absolute -bottom-6 -left-2 flex max-w-[270px] items-center gap-3 rounded-2xl border border-[#e3e9df] bg-white p-4 shadow-xl sm:-left-7 sm:p-5">
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#e7eee7] text-[#304b3c]">
-                    <HeartHandshake size={26} />
+                   <HeartHandshake
+                      aria-hidden="true"
+                      className="shrink-0 text-[#304b3c]"
+                      size={28}
+                    />
                   </span>
 
                   <div>
@@ -344,6 +357,7 @@ export default function AboutPage() {
 
       <section
         id="our-approach"
+        aria-labelledby="our-approach-heading"
         className="scroll-mt-24 px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
       >
         <div className="page-container">
@@ -375,11 +389,12 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal direction="right">
-              <span className="text-sm font-bold tracking-[0.17em] text-[#f26322]">
+              <span className="text-sm font-bold tracking-[0.17em] text-[#b24817]">
                 OUR APPROACH TO CANCER CARE
               </span>
 
-              <h2 className="display-font mt-3 text-3xl font-bold leading-tight text-[#304b3c] sm:text-4xl lg:text-5xl">
+              <h2 id="our-approach-heading"
+              className="display-font mt-3 text-3xl font-bold leading-tight text-[#304b3c] sm:text-4xl lg:text-5xl">
                 Care That Goes Beyond Treatment
               </h2>
 
@@ -419,7 +434,7 @@ export default function AboutPage() {
                   className="group h-full rounded-3xl border border-[#dfe8de] bg-white p-6 shadow-[0_5px_20px_rgba(48,75,60,0.05)] transition-all duration-300 hover:border-[#f26322]/60 hover:shadow-[0_15px_35px_rgba(48,75,60,0.12)] sm:p-7"
                 >
                   <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#e7eee7] text-[#304b3c] transition-all duration-300 group-hover:rotate-[-5deg] group-hover:bg-[#304b3c] group-hover:text-white">
-                    <Icon size={27} />
+                    <Icon size={27} aria-hidden="true" />
                   </span>
 
                   <h3 className="display-font mt-5 text-xl font-bold leading-snug text-[#304b3c]">
@@ -742,13 +757,16 @@ export default function AboutPage() {
 
       <section
         id="quality-safety"
+        aria-labelledby="quality-safety-heading"
         className="scroll-mt-24 bg-[#f1f5f0] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
       >
         <div className="page-container grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
 
           <Reveal direction="left">
 
-            <span className="text-sm font-bold tracking-[0.17em] text-[#f26322]">
+            <span 
+            id="quality-safety-heading"
+            className="text-sm font-bold tracking-[0.17em] text-[#a94415]">
               QUALITY & PATIENT SAFETY
             </span>
 
@@ -774,7 +792,8 @@ export default function AboutPage() {
             <div className="mt-7 rounded-2xl border border-[#dce6dc] bg-white p-5">
               <div className="flex items-center gap-3">
                 <ShieldCheck
-                  className="shrink-0 text-[#f26322]"
+                  aria-hidden="true"
+                  className="shrink-0 text-[#c24f1a]"
                   size={27}
                 />
                 <p className="font-semibold leading-7 text-[#304b3c]">
@@ -799,7 +818,7 @@ export default function AboutPage() {
               <div className="absolute -bottom-5 -left-3 rounded-2xl border border-[#dce6dc] bg-white p-5 shadow-lg sm:-left-6">
                 <div className="flex items-center gap-3">
                   <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#e7eee7] text-[#304b3c]">
-                    <ClipboardCheck size={25} />
+                    <ClipboardCheck size={25} aria-hidden="true" />
                   </span>
 
                   <div>
@@ -886,7 +905,9 @@ export default function AboutPage() {
           BOTTOM CTA
       -------------------------------------------------- */}
 
-      <section className="px-5 pb-16 pt-8 sm:px-8 sm:pb-20 lg:px-12">
+      <section 
+      aria-labelledby="about-bottom-cta-heading"
+      className="px-5 pb-16 pt-8 sm:px-8 sm:pb-20 lg:px-12">
         <div className="page-container">
 
           <Reveal>
@@ -895,7 +916,8 @@ export default function AboutPage() {
               <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full border-[28px] border-white/[0.06]" />
               <div className="pointer-events-none absolute -bottom-20 -left-16 h-48 w-48 rounded-full bg-[#f26322]/15 blur-2xl" /> */}
 
-              <h2 className="display-font relative text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
+              <h2  id="about-bottom-cta-heading"
+              className="display-font relative text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
                 Your Care Journey Matters
               </h2>
 
@@ -906,10 +928,10 @@ export default function AboutPage() {
 
               <Link
                 to="/appointments"
-                className="relative mt-7 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f26322] px-8 py-3 font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-[#df551a] hover:shadow-lg"
+                className="relative mt-7 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#ad4515] px-8 py-3 font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-[#df551a] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#963D16]"
               >
                 Book an Appointment
-                <ArrowRight size={18} />
+                <ArrowRight size={18} aria-hidden="true" />
               </Link>
 
             </div>

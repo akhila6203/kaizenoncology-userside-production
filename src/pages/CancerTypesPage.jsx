@@ -32,7 +32,7 @@ function Breadcrumb() {
           <li>
             <Link
               to="/"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Home
             </Link>
@@ -67,7 +67,7 @@ function SectionHeading({
       }`}
     >
       {eyebrow && (
-        <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-[#E87744]">
+        <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-[#A34116]">
           {eyebrow}
         </p>
       )}
@@ -121,7 +121,7 @@ export default function CancerTypesPage() {
 
             <div className="absolute -bottom-5 left-5 rounded-2xl bg-white p-4 shadow-lg sm:left-8">
               <div className="flex items-center gap-3">
-                <HeartPulse size={28} className="text-[#E87744]" />
+                <HeartPulse size={28} className="text-[#A34116]" />
                 <div>
                   <p className="font-bold text-[#263C30]">
                     Knowledge matters
@@ -166,7 +166,7 @@ export default function CancerTypesPage() {
               </div>
 
               <div className="rounded-2xl border border-[#F3E5DA] bg-[#FFF8F2] p-5">
-                <ShieldCheck className="mb-3 text-[#E87744]" size={28} />
+                <ShieldCheck className="mb-3 text-[#A34116]" size={28} />
 
                 <h3 className="text-lg font-bold text-[#263C30]">
                   Make Informed Decisions
@@ -233,7 +233,7 @@ export default function CancerTypesPage() {
                   <div className="mt-7 flex justify-center">
                     <Link
                       to={`/services/cancer/${cancer.slug}`}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#304B3C] px-5 py-2 text-base font-bold text-white shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-[#E87744] hover:shadow-md"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#304B3C] px-5 py-2 text-base font-bold text-white shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-[#963D16] hover:shadow-md"
                     >
                       Know More
                       <ArrowRight size={18} />
@@ -279,7 +279,7 @@ export default function CancerTypesPage() {
   <div className="flex justify-center lg:justify-end">
     <Link
       to="/appointments"
-      className="inline-flex min-h-10 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#E87744] px-4 py-2.5 text-[13px] font-bold text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#D96835] sm:min-h-[54px] sm:gap-3 sm:px-7 sm:py-4 sm:text-base"
+      className="inline-flex min-h-10 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#963D16] px-4 py-2.5 text-[13px] font-bold text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#D96835] sm:min-h-[54px] sm:gap-3 sm:px-7 sm:py-4 sm:text-base"
     >
       <Stethoscope size={17} className="shrink-0 sm:h-5 sm:w-5" />
       <span className="whitespace-nowrap">Book an Appointment</span>

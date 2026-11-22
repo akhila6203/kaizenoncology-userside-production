@@ -35,6 +35,8 @@ const getYouTubeVideoId = (value = "") => {
 
 export default function VideoPlayerModal({ video, onClose }) {
   const playerRef = useRef(null);
+const closeButtonRef = useRef(null);
+const previousFocusRef = useRef(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const videoId = getYouTubeVideoId(
@@ -44,13 +46,44 @@ export default function VideoPlayerModal({ video, onClose }) {
   useEffect(() => {
     if (!video) return;
 
+    previousFocusRef.current = document.activeElement;
+
+    const focusFrame = requestAnimationFrame(() => {
+  closeButtonRef.current?.focus();
+});
+
     const handleKeyDown = (event) => {
-      // If browser fullscreen is active, first Escape exits fullscreen.
-      // A second Escape closes the popup.
-      if (event.key === "Escape" && !document.fullscreenElement) {
-        onClose();
-      }
-    };
+  if (event.key === "Escape" && !document.fullscreenElement) {
+    onClose();
+    return;
+  }
+
+  if (event.key === "Tab" && playerRef.current) {
+    const focusableElements = playerRef.current.querySelectorAll(
+      'button:not([disabled]), iframe, [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+
+    const focusable = Array.from(focusableElements).filter(
+      (element) => element.offsetParent !== null
+    );
+
+    if (!focusable.length) return;
+
+    const firstElement = focusable[0];
+    const lastElement = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (
+      !event.shiftKey &&
+      document.activeElement === lastElement
+    ) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  }
+};
 
     const handleFullscreenChange = () => {
       setIsFullscreen(Boolean(document.fullscreenElement));
@@ -61,6 +94,10 @@ export default function VideoPlayerModal({ video, onClose }) {
     document.body.style.overflow = "hidden";
 
     return () => {
+      cancelAnimationFrame(focusFrame);
+      if (previousFocusRef.current instanceof HTMLElement) {
+        previousFocusRef.current.focus();
+      }
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
       document.body.style.overflow = "";
@@ -102,19 +139,24 @@ export default function VideoPlayerModal({ video, onClose }) {
             onClick={toggleFullscreen}
             aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
             title={isFullscreen ? "Exit fullscreen" : "Full screen"}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-black/70 text-white transition hover:bg-[#E87744]"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-black/70 text-white transition hover:bg-[#963D16] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
+           {isFullscreen ? (
+              <Minimize2 size={20} aria-hidden="true" />
+            ) : (
+              <Maximize2 size={20} aria-hidden="true" />
+            )}
           </button>
 
           <button
+           ref={closeButtonRef}
             type="button"
             onClick={onClose}
             aria-label="Close video"
             title="Close video"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-black/70 text-white transition hover:bg-[#E87744]"
+           className="flex h-10 w-10 items-center justify-center rounded-full bg-black/70 text-white transition hover:bg-[#963D16] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            <X size={22} />
+           <X size={22} aria-hidden="true" />
           </button>
         </div>
 
@@ -131,7 +173,8 @@ export default function VideoPlayerModal({ video, onClose }) {
             />
           </div>
         ) : (
-          <div className="flex aspect-video w-full items-center justify-center text-white">
+          <div role="status"
+          className="flex aspect-video w-full items-center justify-center text-white">
             Video is not available.
           </div>
         )}

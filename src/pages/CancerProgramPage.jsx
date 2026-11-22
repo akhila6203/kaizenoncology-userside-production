@@ -59,7 +59,7 @@ function Breadcrumb({ items }) {
                 ) : (
                   <Link
                     to={item.path}
-                    className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+                    className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
                   >
                     {item.label}
                   </Link>
@@ -80,7 +80,7 @@ function SectionHeading({ eyebrow, title, description }) {
   return (
     <div className="mb-8 max-w-4xl text-left">
       {eyebrow && (
-        <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-[#E87744]">
+        <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-[#A34116]">
           {eyebrow}
         </p>
       )}
@@ -111,7 +111,7 @@ function BulletList({ items = [], orange = false }) {
           <CheckCircle2
             size={20}
             className={`mt-1 shrink-0 ${
-              orange ? "text-[#E87744]" : "text-[#52775C]"
+              orange ? "text-[#A34116]" : "text-[#52775C]"
             }`}
           />
 
@@ -155,7 +155,7 @@ function CancerFAQ({ faqs = [] }) {
             key={index}
             className={`overflow-hidden rounded-2xl border bg-white transition ${
               isOpen
-                ? "border-[#E87744]/50 shadow-md"
+                ? "border-[#963D16]/50 shadow-md"
                 : "border-[#E5EBE3]"
             }`}
           >
@@ -167,7 +167,7 @@ function CancerFAQ({ faqs = [] }) {
             >
               <span
                 className={`text-left text-[16px] font-bold leading-7 sm:text-[18px] ${
-                  isOpen ? "text-[#E87744]" : "text-[#263C30]"
+                  isOpen ? "text-[#A34116]" : "text-[#263C30]"
                 }`}
               >
                 {faq.question}
@@ -177,7 +177,7 @@ function CancerFAQ({ faqs = [] }) {
                 size={21}
                 className={`shrink-0 transition-transform ${
                   isOpen
-                    ? "rotate-180 text-[#E87744]"
+                    ? "rotate-180 text-[#A34116]"
                     : "text-[#476B55]"
                 }`}
               />
@@ -489,7 +489,7 @@ export default function CancerProgramPage() {
 
       <Link
         to="/appointments"
-        className="mt-3 inline-flex items-center gap-2 text-[15px] font-bold text-[#E87744] transition hover:gap-3"
+        className="mt-3 inline-flex items-center gap-2 text-[15px] font-bold text-[#A34116] transition hover:gap-3"
       >
         Book Appointment
         <ArrowRight size={17} />
@@ -595,7 +595,7 @@ export default function CancerProgramPage() {
               description={cancer.symptomsIntro}
             />
 
-            <ContentCard className="border-l-4 border-l-[#E87744]">
+            <ContentCard className="border-l-4 border-l-[#963D16]">
               <BulletList items={cancer.symptoms} orange />
 
               {cancer.symptomsClosing && (
@@ -685,7 +685,7 @@ export default function CancerProgramPage() {
     className="scroll-mt-28"
   >
     <div className="mb-8">
-      <p className="text-sm font-bold uppercase tracking-[.18em] text-[#E87744]">
+      <p className="text-sm font-bold uppercase tracking-[.18em] text-[#A34116]">
         ADVANCED CANCER CARE
       </p>
 
@@ -714,7 +714,7 @@ export default function CancerProgramPage() {
           )}
 
           <div className="p-6">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#E87744]">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#A34116]">
               {technology.speciality || ""}
             </p>
 
@@ -733,7 +733,7 @@ export default function CancerProgramPage() {
                 technology.path ||
                 `/technology/${technology.slug}`
               }
-              className="mt-5 inline-flex items-center gap-2 font-bold text-[#476B55] transition hover:text-[#E87744]"
+              className="mt-5 inline-flex items-center gap-2 font-bold text-[#476B55] transition hover:text-[#A34116]"
             >
               Explore Technology
               <ArrowRight size={18} />
@@ -768,7 +768,7 @@ export default function CancerProgramPage() {
               {cancer.treatments?.map((treatment, index) => (
                 <ContentCard key={index}>
                   <div className="mb-4 flex items-center gap-3">
-                    <div className="rounded-xl bg-[#FFF2E9] p-3 text-[#E87744]">
+                    <div className="rounded-xl bg-[#FFF2E9] p-3 text-[#A34116]">
                       <HeartPulse size={23} />
                     </div>
 
@@ -928,7 +928,7 @@ export default function CancerProgramPage() {
           <div className="flex flex-col justify-between gap-5 border-t border-[#E5EBE3] pt-8 sm:flex-row sm:items-center">
             <Link
               to="/services#cancer-types"
-              className="inline-flex items-center gap-2 text-[16px] font-bold text-[#476B55] transition hover:text-[#E87744]"
+              className="inline-flex items-center gap-2 text-[16px] font-bold text-[#476B55] transition hover:text-[#A34116]"
             >
               <ChevronRight className="rotate-180" size={19} />
               Explore All Cancer Types
@@ -936,7 +936,7 @@ export default function CancerProgramPage() {
 
             <Link
               to="/appointments"
-              className="inline-flex items-center gap-2 text-[16px] font-bold text-[#E87744] transition hover:gap-3"
+              className="inline-flex items-center gap-2 text-[16px] font-bold text-[#A34116] transition hover:gap-3"
             >
               Talk to Our Team
               <ArrowRight size={19} />

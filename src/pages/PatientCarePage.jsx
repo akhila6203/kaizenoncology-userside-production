@@ -214,7 +214,7 @@ function Breadcrumbs() {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -236,7 +236,7 @@ function Breadcrumbs() {
     // <nav aria-label="Breadcrumb" className="border-b border-[#e4e9e2] bg-[#f7f9f6]">
     //   <div className="page-container px-5 py-3 sm:px-8 lg:px-12">
     //     <ol className="flex items-center gap-2 text-sm">
-    //       <li><Link to="/" className="font-semibold text-[#476b55] hover:text-[#e87744]">Home</Link></li>
+    //       <li><Link to="/" className="font-semibold text-[#476b55] hover:text-[#A34116]">Home</Link></li>
     //       <li aria-hidden="true" className="text-[#9aa89c]">/</li>
     //       <li aria-current="page" className="font-semibold text-[#263c30]">Patient Support</li>
     //     </ol>
@@ -357,7 +357,7 @@ export default function PatientCarePage() {
   <div className="page-container px-5 sm:px-8 lg:px-12">
 
     <div className="mx-auto mb-6 max-w-4xl text-center sm:mb-12">
-      <p className="text-sm font-bold tracking-[0.2em] text-[#e87744]">
+      <p className="text-sm font-bold tracking-[0.2em] text-[#A34116]">
        ABOUT PATIENT CARE
       </p>
 
@@ -373,7 +373,7 @@ export default function PatientCarePage() {
     <div className="grid items-center gap-9 lg:grid-cols-2 lg:gap-14">
 
       <div>
-        <span className="text-sm font-bold tracking-wider text-[#e87744]">
+        <span className="text-sm font-bold tracking-wider text-[#A34116]">
           KIMS RENOVA PATIENT CARE
         </span>
 
@@ -407,7 +407,7 @@ export default function PatientCarePage() {
       </div>
 
       <div className="relative">
-        <div className="absolute -right-3 -top-3 h-24 w-24 rounded-full bg-[#e87744]/15 sm:-right-5 sm:-top-5" />
+        <div className="absolute -right-3 -top-3 h-24 w-24 rounded-full bg-[#963D16]/15 sm:-right-5 sm:-top-5" />
 
         <img
           src={patientCareImage}
@@ -416,13 +416,13 @@ export default function PatientCarePage() {
         />
 
         <div className="absolute -bottom-5 left-6 right-8 rounded-xl border border-[#e4e9e2] bg-white p-10 shadow-md sm:left-16 sm:right-40 sm:p-5">
-          <p className="text-xs font-bold tracking-wider text-[#e87744]">
+          <p className="text-xs font-bold tracking-wider text-[#A34116]">
             OUR THREE CONNECTED PILLARS
           </p>
 
           <p className="mt-2 text-base font-bold text-[#304b3c] sm:text-lg">
-            B-READY <span className="text-[#e87744]">·</span>
-            B-AHEAD <span className="text-[#e87744]">·</span>
+            B-READY <span className="text-[#A34116]">·</span>
+            B-AHEAD <span className="text-[#A34116]">·</span>
             B-YOU
           </p>
         </div>
@@ -438,7 +438,7 @@ export default function PatientCarePage() {
   <div className="page-container px-5 sm:px-8 lg:px-12">
 
     <div className="mx-auto mb-10 max-w-3xl text-center">
-      <p className="text-sm font-bold tracking-[0.2em] text-[#e87744]">
+      <p className="text-sm font-bold tracking-[0.2em] text-[#A34116]">
         YOUR CARE JOURNEY
       </p>
 
@@ -476,7 +476,7 @@ export default function PatientCarePage() {
             <li key={item} className="flex items-start gap-3">
               <CheckCircle2
                 size={20}
-                className="mt-1 shrink-0 text-[#e87744]"
+                className="mt-1 shrink-0 text-[#A34116]"
               />
               <span className="text-[18px] leading-7 text-[#141414]">
                 {item}
@@ -519,13 +519,13 @@ export default function PatientCarePage() {
                   <span className="absolute bottom-5 left-5 text-5xl font-black text-white/90">{stage.number}</span>
                 </div>
                 <div className={`flex flex-col justify-center p-6 sm:p-8 lg:p-10 ${index % 2 ? "lg:order-1" : ""}`}>
-                  <p className="text-sm font-extrabold tracking-[0.18em] text-[#e87744]">{stage.name}</p>
+                  <p className="text-sm font-extrabold tracking-[0.18em] text-[#A34116]">{stage.name}</p>
                   <h2 className="display-font mt-3 text-2xl font-bold leading-tight text-[#263c30] sm:text-3xl">{stage.title}</h2>
                   <p className="mt-4 text-[16px] leading-7 text-[#141414] sm:text-base">{stage.description}</p>
                   <ul className="mt-5 space-y-3">
                     {stage.highlights.map((point) => (
                       <li key={point} className="flex items-start gap-3 text-[17px] leading-6 text-[#141414]">
-                        <CheckCircle2 size={19} className="mt-0.5 shrink-0 text-[#e87744]" />
+                        <CheckCircle2 size={19} className="mt-0.5 shrink-0 text-[#A34116]" />
                         <span>{point}</span>
                       </li>
                     ))}
@@ -560,7 +560,7 @@ export default function PatientCarePage() {
   <div className="page-container px-5 sm:px-8 lg:px-12">
 
     <div className="mx-auto mb-12 max-w-3xl text-center">
-      <p className="text-sm font-bold tracking-[0.2em] text-[#e87744]">
+      <p className="text-sm font-bold tracking-[0.2em] text-[#A34116]">
         PATIENT RESOURCES
       </p>
 
@@ -603,7 +603,7 @@ export default function PatientCarePage() {
                 >
                   <CheckCircle2
                     size={19}
-                    className="mt-1 shrink-0 text-[#e87744]"
+                    className="mt-1 shrink-0 text-[#A34116]"
                   />
 
                   <span className="text-[15px] leading-7 text-[#141414] sm:text-[18px]">
@@ -639,7 +639,7 @@ export default function PatientCarePage() {
   <div className="page-container px-5 sm:px-8 lg:px-12">
 
     <div className="mx-auto mb-10 max-w-3xl text-center">
-      <p className="text-sm font-bold tracking-[0.2em] text-[#e87744]">
+      <p className="text-sm font-bold tracking-[0.2em] text-[#A34116]">
         YOUR CONSULTATION CHECKLIST
       </p>
 
@@ -710,7 +710,7 @@ export default function PatientCarePage() {
   <div className="page-container px-5 sm:px-8 lg:px-12">
 
     <div className="mx-auto mb-10 max-w-3xl text-center">
-      <p className="text-sm font-bold tracking-[0.2em] text-[#e87744]">
+      <p className="text-sm font-bold tracking-[0.2em] text-[#A34116]">
         CONTINUED SUPPORT
       </p>
 
@@ -784,7 +784,7 @@ export default function PatientCarePage() {
   <div className="page-container flex flex-col justify-between gap-7 md:flex-row md:items-center">
 
     <div className="max-w-2xl">
-      <p className="text-xs font-bold tracking-[0.2em] text-[#e87744]">
+      <p className="text-xs font-bold tracking-[0.2em] text-[#A34116]">
         WE ARE HERE TO HELP
       </p>
 

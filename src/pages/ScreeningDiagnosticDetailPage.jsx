@@ -27,7 +27,7 @@ function Breadcrumb({ title }) {
           <li>
             <Link
               to="/"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Home
             </Link>
@@ -40,7 +40,7 @@ function Breadcrumb({ title }) {
           <li>
             <Link
               to="/services"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Services
             </Link>
@@ -53,7 +53,7 @@ function Breadcrumb({ title }) {
           <li>
             <Link
               to="/services/screening-diagnostics"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Screening &amp; Diagnostics
             </Link>
@@ -174,11 +174,11 @@ export default function ScreeningDiagnosticDetailPage() {
       </section>
 
       <div className="page-container grid gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[270px_minmax(0,1fr)] lg:gap-14 lg:px-8 lg:py-20">
-        {/* <aside className="hidden lg:block"><div className="sticky top-28 rounded-2xl border border-[#E1E9DF] bg-white p-5 shadow-sm"><p className="mb-4 text-[13px] font-extrabold uppercase tracking-[.15em] text-[#E87744]">ON THIS PAGE</p><nav className="space-y-1" aria-label="On this page">{navItems.map((item) => <a key={item.id} href={`#${item.id}`} className={`block rounded-xl border-l-[3px] px-3 py-3 text-[14px] font-semibold leading-5 transition ${activeSection === item.id ? "border-[#E87744] bg-[#304B3C] text-white" : "border-transparent text-[#536357] hover:bg-[#F1F6F0] hover:text-[#304B3C]"}`}>{item.label}</a>)}</nav></div></aside> */}
+        {/* <aside className="hidden lg:block"><div className="sticky top-28 rounded-2xl border border-[#E1E9DF] bg-white p-5 shadow-sm"><p className="mb-4 text-[13px] font-extrabold uppercase tracking-[.15em] text-[#A34116]">ON THIS PAGE</p><nav className="space-y-1" aria-label="On this page">{navItems.map((item) => <a key={item.id} href={`#${item.id}`} className={`block rounded-xl border-l-[3px] px-3 py-3 text-[14px] font-semibold leading-5 transition ${activeSection === item.id ? "border-[#963D16] bg-[#304B3C] text-white" : "border-transparent text-[#536357] hover:bg-[#F1F6F0] hover:text-[#304B3C]"}`}>{item.label}</a>)}</nav></div></aside> */}
 
         <aside className="hidden lg:block">
           <div className="sticky top-28 max-h-[calc(100vh-130px)] overflow-y-auto rounded-2xl border border-[#E1E9DF] bg-white p-5 shadow-sm">
-            <p className="mb-4 text-[13px] font-extrabold uppercase tracking-[.15em] text-[#E87744]">
+            <p className="mb-4 text-[13px] font-extrabold uppercase tracking-[.15em] text-[#A34116]">
               ON THIS PAGE
             </p>
 
@@ -191,7 +191,7 @@ export default function ScreeningDiagnosticDetailPage() {
                   className={`block rounded-xl border-l-4 px-3 py-3 text-[14px] font-bold leading-5 transition-all duration-200 ${
                     activeSection === item.id
                       ? " bg-[#304B3C] text-white shadow-sm"
-                      : "border-transparent text-[#536357] hover:border-[#E87744] hover:bg-[#F1F6F0] hover:text-[#304B3C]"
+                      : "border-transparent text-[#536357] hover:border-[#963D16] hover:bg-[#F1F6F0] hover:text-[#304B3C]"
                   }`}
                 >
                   {item.label}
@@ -203,7 +203,7 @@ export default function ScreeningDiagnosticDetailPage() {
 
         <div className="min-w-0">
           <section id="overview" className="scroll-mt-28">
-            <p className="text-[13px] font-extrabold uppercase tracking-[.17em] text-[#E87744]">
+            <p className="text-[13px] font-extrabold uppercase tracking-[.17em] text-[#A34116]">
               OVERVIEW
             </p>
             <h2 className="mt-2 text-3xl font-bold text-[#263C30] sm:text-4xl">
@@ -246,7 +246,7 @@ export default function ScreeningDiagnosticDetailPage() {
                         >
                           <CheckCircle2
                             size={19}
-                            className="mt-1 shrink-0 text-[#E87744]"
+                            className="mt-1 shrink-0 text-[#A34116]"
                           />
                           {point}
                         </li>
@@ -259,7 +259,7 @@ export default function ScreeningDiagnosticDetailPage() {
           ))}
 
           <section id="faqs" className="scroll-mt-28 pt-8">
-            <p className="text-[13px] font-extrabold uppercase tracking-[.17em] text-[#E87744]">
+            <p className="text-[13px] font-extrabold uppercase tracking-[.17em] text-[#A34116]">
               COMMON QUESTIONS
             </p>
             <h2 className="mt-2 text-3xl font-bold text-[#263C30] sm:text-4xl">
@@ -282,7 +282,7 @@ export default function ScreeningDiagnosticDetailPage() {
                     </span>
                     <ChevronDown
                       size={20}
-                      className={`shrink-0 text-[#E87744] transition ${openFaq === index ? "rotate-180" : ""}`}
+                      className={`shrink-0 text-[#A34116] transition ${openFaq === index ? "rotate-180" : ""}`}
                     />
                   </button>
                   {openFaq === index && (
@@ -298,7 +298,7 @@ export default function ScreeningDiagnosticDetailPage() {
           <div className="mt-12 rounded-2xl border border-[#E4EAE0] bg-[#F4F7F2] p-6 sm:p-8">
             <div className="flex items-start gap-3">
               <ClipboardCheck
-                className="mt-1 shrink-0 text-[#E87744]"
+                className="mt-1 shrink-0 text-[#A34116]"
                 size={25}
               />
               <div>
@@ -330,13 +330,13 @@ export default function ScreeningDiagnosticDetailPage() {
           </div>
           <Link
             to="/appointments"
-            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#E87744] px-6 py-2 text-[16px] font-bold text-white transition hover:bg-[#d76535]"
+            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#963D16] px-6 py-2 text-[16px] font-bold text-white transition hover:bg-[#d76535]"
           >
             Book an appointment <ArrowRight size={18} />
           </Link>
         </div>
       </section>
-      {/* <div className="page-container flex flex-wrap items-center justify-between gap-4 px-4 py-7 sm:px-6 lg:px-8"><Link to="/services/screening-diagnostics" className="inline-flex items-center gap-2 font-bold text-[#476B55] hover:text-[#E87744]">← Back to Screening & Diagnostics</Link><p className="max-w-2xl text-[13px] leading-6 text-[#68766B]">This information is educational and does not replace medical advice. Tests and screening intervals are selected according to individual circumstances and current clinical guidance.</p></div> */}
+      {/* <div className="page-container flex flex-wrap items-center justify-between gap-4 px-4 py-7 sm:px-6 lg:px-8"><Link to="/services/screening-diagnostics" className="inline-flex items-center gap-2 font-bold text-[#476B55] hover:text-[#A34116]">← Back to Screening & Diagnostics</Link><p className="max-w-2xl text-[13px] leading-6 text-[#68766B]">This information is educational and does not replace medical advice. Tests and screening intervals are selected according to individual circumstances and current clinical guidance.</p></div> */}
     </main>
   );
 }

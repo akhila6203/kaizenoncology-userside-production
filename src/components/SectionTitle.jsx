@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 export default function SectionTitle({
+  id,
   eyebrow,
   title,
   description,
@@ -27,6 +28,7 @@ export default function SectionTitle({
         </p>
       )}
       <h2
+        id={id}
         className={`display-font text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl ${
           light ? "text-white" : "text-heading"
         }`}

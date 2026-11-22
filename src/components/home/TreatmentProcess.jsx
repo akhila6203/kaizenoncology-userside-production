@@ -55,21 +55,25 @@ const treatmentSteps = [
 
 export default function TreatmentProcess() {
   return (
-    <section
-      id="treatment-process"
-      className="w-full overflow-hidden bg-[#E8F0EA] py-12 sm:py-14 lg:py-16"
-    >
+<section
+  id="treatment-process"
+  aria-labelledby="treatment-process-heading"
+  className="w-full overflow-hidden bg-[#E8F0EA] py-12 sm:py-14 lg:py-16"
+>
       <div className="mx-auto w-full max-w-[1450px] px-4 sm:px-6 lg:px-10">
 
         {/* Heading */}
         <div className="mx-auto mb-10 max-w-[850px] text-center sm:mb-14">
-          <p className="mb-3 flex items-center justify-center gap-3 text-xs font-extrabold tracking-[1.8px] text-[#E87744] sm:text-sm">
-            <span className="h-[2px] w-8 bg-[#E87744]" />
+          <p className="mb-3 flex items-center justify-center gap-3 text-xs font-extrabold tracking-[1.8px] text-[#A34116] sm:text-sm">
+            <span className="h-[2px] w-8 bg-[#963D16]" />
             TREATMENT PROCESS
-            <span className="h-[2px] w-8 bg-[#E87744]" />
+            <span className="h-[2px] w-8 bg-[#963D16]" />
           </p>
 
-          <h2 className="text-2xl font-extrabold leading-tight text-[#4F7359] sm:text-3xl lg:text-[37px]">
+          <h2
+            id="treatment-process-heading"
+            className="text-2xl font-extrabold leading-tight text-[#4F7359] sm:text-3xl lg:text-[37px]"
+          >
             A Structured &amp; Personalized Care Journey
           </h2>
 
@@ -116,7 +120,7 @@ export default function TreatmentProcess() {
               {/* Desktop Arrow */}
               {index !== treatmentSteps.length - 1 && (
                 <span
-                  className="absolute -right-[22px] top-1/2 hidden -translate-y-1/2 text-3xl font-normal text-[#E87744] lg:block"
+                  className="absolute -right-[22px] top-1/2 hidden -translate-y-1/2 text-3xl font-normal text-[#A34116] lg:block"
                   aria-hidden="true"
                 >
                   ➜

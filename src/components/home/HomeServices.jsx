@@ -6,18 +6,23 @@ import { cancerTypes } from "../../data/cancerTypeContent";
 
 export default function HomeServices() {
   return (
-    <section className="section-padding bg-mist">
+    <section
+        aria-labelledby="home-services-heading"
+        className="section-padding bg-mist"
+      >
       <div className="page-container px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="text-[13px] font-extrabold uppercase tracking-[0.18em] text-[#B94C1C] sm:text-sm">
-          {/* <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#E87744] sm:text-sm"> */}
+          <p className="text-[13px] font-extrabold uppercase tracking-[0.18em] text-[#A34116] sm:text-sm">
             OUR SERVICES
           </p>
 
-          <h2 className="display-font mt-3 text-3xl font-bold text-[#263C30] sm:text-4xl">
-           Find Care by Cancer Type
-          </h2>
+          <h2
+  id="home-services-heading"
+  className="display-font mt-3 text-3xl font-bold text-[#263C30] sm:text-4xl"
+>
+  Find Care by Cancer Type
+</h2>
 
           <p className="mt-4 text-[15px] leading-7 text-[#343434] sm:text-[17px]">
             Learn about different cancer types, their symptoms, diagnosis and
@@ -52,7 +57,7 @@ export default function HomeServices() {
               </div>
 
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-bold text-[#263C30] transition-colors group-hover:text-[#E87744]">
+                <h3 className="text-xl font-bold text-[#263C30] transition-colors group-hover:text-[#A34116]">
                   {cancer.title}
                 </h3>
 
@@ -62,10 +67,10 @@ export default function HomeServices() {
 
                 <Link
                   to={`/services/cancer/${cancer.slug}`}
-                  className="mt-6 inline-flex min-h-10 items-center gap-2 self-start rounded-full bg-[#304B3C] px-4 py-2 text-sm font-semibold text-white transition duration-300 hover:bg-[#E87744]"
+                  className="mt-6 inline-flex min-h-10 items-center gap-2 self-start rounded-full bg-[#304B3C] px-4 py-2 text-sm font-semibold text-white transition duration-300 hover:bg-[#963D16]"
                 >
                   Know More
-                  <ArrowRight size={16} />
+                  <ArrowRight aria-hidden="true" size={16} />
                 </Link>
               </div>
             </motion.article>
@@ -76,10 +81,10 @@ export default function HomeServices() {
         <div className="mt-8 text-center">
           <Link
             to="/services/cancer-types"
-            className="inline-flex items-center gap-2 rounded-full border border-[#476B55] px-4 py-2 text-sm font-bold text-[#476B55] transition duration-300 hover:border-[#E87744] hover:bg-[#E87744] hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full border border-[#476B55] px-4 py-2 text-sm font-bold text-[#476B55] transition duration-300 hover:border-[#963D16] hover:bg-[#963D16] hover:text-white"
           >
             Explore All Cancer Types
-            <ArrowRight size={17} />
+            <ArrowRight aria-hidden="true" size={17} />
           </Link>
         </div>
       </div>

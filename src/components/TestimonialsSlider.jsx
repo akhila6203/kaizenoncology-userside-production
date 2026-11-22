@@ -5,9 +5,13 @@ import { testimonials } from "../data/siteData";
 
 export default function TestimonialsSlider() {
   return (
-    <section className="section-padding bg-white">
+    <section
+      className="section-padding bg-white"
+      aria-labelledby="testimonials-heading"
+    >
       <div className="page-container">
         <SectionTitle
+         id="testimonials-heading"
           eyebrow="PATIENT VOICES"
           title="Stories of care and support"
           description="Share approved patient feedback with permission and appropriate privacy safeguards."
@@ -17,7 +21,8 @@ export default function TestimonialsSlider() {
           ariaLabel="Patient testimonials"
           renderItem={(item) => (
             <article className="flex h-full min-h-[260px] flex-col rounded-[28px] border border-line bg-mist p-6 text-center sm:p-7">
-              <Quote className="mx-auto mb-4 text-royal" size={32} />
+              <Quote aria-hidden="true"
+              className="mx-auto mb-4 text-royal" size={32} />
               <p className="display-font text-lg leading-relaxed text-heading sm:text-xl">
                 “{item.quote}”
               </p>

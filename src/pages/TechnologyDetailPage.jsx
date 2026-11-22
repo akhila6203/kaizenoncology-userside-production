@@ -78,7 +78,7 @@ function Breadcrumb({ title }) {
           <li>
             <Link
               to="/"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Home
             </Link>
@@ -91,7 +91,7 @@ function Breadcrumb({ title }) {
           <li>
             <Link
               to="/technology"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Our Technology
             </Link>
@@ -121,7 +121,7 @@ function SectionHeading({ eyebrow, title, description }) {
   return (
     <div className="mx-auto mb-8 max-w-4xl text-center sm:mb-10">
       {eyebrow && (
-        <p className="text-[15px] font-extrabold uppercase tracking-[.18em] text-[#E87744] sm:text-[16px]">
+        <p className="text-[15px] font-extrabold uppercase tracking-[.18em] text-[#A34116] sm:text-[16px]">
           {eyebrow}
         </p>
       )}
@@ -189,7 +189,7 @@ function TechnologySection({ section, index }) {
                 >
                   <CheckCircle2
                     size={20}
-                    className="mt-1 shrink-0 text-[#E87744]"
+                    className="mt-1 shrink-0 text-[#A34116]"
                   />
 
                   <span className="text-[16px] leading-7 text-[#141414] sm:text-[18px]">
@@ -264,7 +264,7 @@ function RelatedSpecialities({
                   {speciality.name}
                 </h3>
 
-                <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#e87744]">
+                <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#A34116]">
                   Explore Speciality
                   <ArrowRight
                     size={15}
@@ -359,7 +359,7 @@ function RelatedTechnologies({ technology, allItems = [] }) {
 
               <Link
                 to={`/technology/${item.slug}`}
-                className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#E87744]"
+                className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#963D16]"
               >
                 Know More
                 <ArrowRight size={17} />
@@ -398,7 +398,7 @@ function FrequentlyAskedQuestions({ faqs }) {
 
               <ChevronRight
                 size={19}
-                className="mt-1 shrink-0 text-[#E87744] transition-transform group-open:rotate-90"
+                className="mt-1 shrink-0 text-[#A34116] transition-transform group-open:rotate-90"
               />
             </summary>
 
@@ -447,7 +447,7 @@ function ContactActions() {
 
           <Link
             to="/appointments"
-            className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full bg-[#E87744] px-2 py-3 text-[12px] font-bold text-white transition hover:bg-[#D96535] sm:flex-none sm:gap-2 sm:px-7 sm:py-3 sm:text-[15px]"
+            className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full bg-[#963D16] px-2 py-3 text-[12px] font-bold text-white transition hover:bg-[#D96535] sm:flex-none sm:gap-2 sm:px-7 sm:py-3 sm:text-[15px]"
           >
             Book an Appointment
             <ArrowRight size={17} />
@@ -559,7 +559,7 @@ export default function TechnologyDetailPage() {
 
             <Link
               to="/appointments"
-             className="mx-auto mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#304B3C] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#E87744] sm:text-[18px] lg:mx-0"
+             className="mx-auto mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#304B3C] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#963D16] sm:text-[18px] lg:mx-0"
             >
               Book an Appointment
               <ArrowRight size={18} />

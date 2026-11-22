@@ -27,7 +27,10 @@ export default function HomeBlogs() {
   }, []);
 
   return (
-    <section className="section-padding bg-mist">
+    <section
+  aria-label="Health library articles"
+  className="section-padding bg-mist"
+>
       <div className="page-container">
         <SectionTitle
           eyebrow="HEALTH LIBRARY"
@@ -45,7 +48,7 @@ export default function HomeBlogs() {
         <div className="mt-8 flex justify-center">
           <Link
             to="/health-library/blogs"
-            className="inline-flex items-center justify-center rounded-full bg-royal px-7 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#E87744] hover:shadow-lg"
+            className="inline-flex items-center justify-center rounded-full bg-royal px-7 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#963D16] hover:shadow-lg"
           >
             View All Blogs
             <span className="ml-2" aria-hidden="true">→</span>

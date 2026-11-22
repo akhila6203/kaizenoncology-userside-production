@@ -55,7 +55,10 @@ export default function HomeWhy() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="section-padding overflow-hidden bg-[#f6f9f6]">
+    <section
+  aria-label="Why choose KIMS RENOVA Cancer Hospital"
+  className="section-padding overflow-hidden bg-[#f6f9f6]"
+>
       <div className="page-container px-5 sm:px-8 lg:px-12">
 
         {/* SECTION HEADING */}
@@ -82,17 +85,20 @@ export default function HomeWhy() {
                 delay: reduceMotion ? 0 : index * 0.1,
               }}
               whileHover={reduceMotion ? {} : { y: -5 }}
-              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#dce6dc] bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#e87744]/60 hover:shadow-lg sm:p-7"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#dce6dc] bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#963D16]/60 hover:shadow-lg sm:p-7"
             >
 
               {/* CARD NUMBER */}
-              <span className="absolute right-6 top-5 text-5xl font-extrabold text-[#476b55]/[0.08] transition-colors duration-300 group-hover:text-[#e87744]/15">
+              <span
+                aria-hidden="true"
+                className="absolute right-6 top-5 text-5xl font-extrabold text-[#476b55]/[0.08] transition-colors duration-300 group-hover:text-[#A34116]/15"
+              >
                 {number}
               </span>
 
               {/* ICON */}
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e8f0ea] text-[#476b55] transition-all duration-300 group-hover:bg-[#476b55] group-hover:text-white">
-                <Icon size={27} strokeWidth={1.8} />
+             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e8f0ea] text-[#476b55] transition-all duration-300 group-hover:bg-[#476b55] group-hover:text-white">
+                <Icon aria-hidden="true" size={27} strokeWidth={1.8} />
               </div>
 
               {/* TITLE */}
@@ -105,9 +111,7 @@ export default function HomeWhy() {
                 {text}
               </p>
 
-              {/* BOTTOM ACCENT */}
-              {/* <div className="mt-6 h-1 w-12 rounded-full bg-[#e87744] transition-all duration-300 group-hover:w-20" /> */}
-
+              
             </motion.article>
           ))}
 
@@ -126,11 +130,13 @@ export default function HomeWhy() {
         >
           <Link
             to="/about"
-            className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-[#476b55] px-7 py-3 text-[15px] font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#e87744] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#476b55] focus:ring-offset-2"
+            className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-[#476b55] px-7 py-3 text-[15px] font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#963D16] hover:shadow-lg
+             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
           >
             Discover Our Approach
 
-            <ArrowUpRight
+           <ArrowUpRight
+              aria-hidden="true"
               size={19}
               className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
             />

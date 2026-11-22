@@ -26,7 +26,7 @@ export default function HealthLibraryCategoryPage() {
           </h1>
           <Link
             to="/health-library"
-            className="mt-6 inline-flex items-center gap-2 font-bold text-[#4F7359] hover:text-[#E87744]"
+            className="mt-6 inline-flex items-center gap-2 font-bold text-[#4F7359] hover:text-[#A34116]"
           >
             <ArrowLeft size={17} />
             Back to Health Library
@@ -56,7 +56,7 @@ export default function HealthLibraryCategoryPage() {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -69,7 +69,7 @@ export default function HealthLibraryCategoryPage() {
       <li>
         <Link
           to="/health-library"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Health Library
         </Link>
@@ -96,18 +96,18 @@ export default function HealthLibraryCategoryPage() {
         <div className="page-container">
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-2 flex items-center justify-center gap-2">
-              <span className="h-[3px] w-8 rounded-full bg-[#E87744]" />
+              <span className="h-[3px] w-8 rounded-full bg-[#963D16]" />
               <span className="text-xs font-bold uppercase tracking-[2px] text-[#4F7359]">
                 KIMS RENOVA HEALTH LIBRARY
               </span>
-              <span className="h-[3px] w-8 rounded-full bg-[#E87744]" />
+              <span className="h-[3px] w-8 rounded-full bg-[#963D16]" />
             </div>
 
             <h1 className="display-font text-3xl font-extrabold text-[#243528] sm:text-4xl lg:text-5xl">
               {category.title}
             </h1>
 
-            <p className="mt-3 text-base font-semibold leading-7 text-[#E87744] sm:text-lg">
+            <p className="mt-3 text-base font-semibold leading-7 text-[#A34116] sm:text-lg">
               {category.subtitle}
             </p>
 
@@ -141,7 +141,7 @@ export default function HealthLibraryCategoryPage() {
 
               <Link
                 to="/health-library"
-                className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#4F7359] transition hover:text-[#E87744]"
+                className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#4F7359] transition hover:text-[#A34116]"
               >
                 <ArrowLeft size={17} />
                 Back to Health Library
@@ -232,14 +232,14 @@ export default function HealthLibraryCategoryPage() {
             {(category.topics || []).map((topic, index) => (
               <div
                 key={topic}
-                className="flex items-start gap-3 rounded-xl border border-[#D4E0D6] bg-white p-5 transition hover:border-[#E87744]/60 hover:shadow-md"
+                className="flex items-start gap-3 rounded-xl border border-[#D4E0D6] bg-white p-5 transition hover:border-[#963D16]/60 hover:shadow-md"
               >
                 <CheckCircle2
                   size={20}
                   className="mt-0.5 shrink-0 text-[#4F7359]"
                 />
                 <div>
-                  <span className="text-xs font-bold text-[#E87744]">
+                  <span className="text-xs font-bold text-[#A34116]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <p className="mt-1 text-[16px] font-semibold leading-6 text-[#243528] sm:text-[18px]">
@@ -279,7 +279,7 @@ export default function HealthLibraryCategoryPage() {
             <div className="mt-9 text-center">
               <Link
                 to="/health-library/blogs"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4F7359] px-7 py-3 text-sm font-bold text-white transition hover:bg-[#E87744]"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#4F7359] px-7 py-3 text-sm font-bold text-white transition hover:bg-[#963D16]"
               >
                 View All Blogs
                 <ArrowRight size={17} />

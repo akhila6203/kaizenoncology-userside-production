@@ -69,7 +69,10 @@ export default function HomePathway() {
   return (
     <>
       {/* BREAST CANCER CARE INTRODUCTION */}
-      <section className="relative overflow-hidden bg-white">
+      <section
+        aria-label="Introduction to personalised cancer care"
+        className="relative overflow-hidden bg-white"
+      >
         <div className="section-padding">
           <div className="page-container grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
 
@@ -115,7 +118,7 @@ export default function HomePathway() {
               >
                 <div className="flex items-start gap-3 sm:gap-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#e7eee7] text-[#304b3c]">
-                    <Users size={25} />
+                    <Users aria-hidden="true" size={25} />
                   </span>
 
                   <div>
@@ -141,8 +144,9 @@ export default function HomePathway() {
                       className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#304b3c]"
                     >
                       <CheckCircle2
-                        size={17}
-                        className="shrink-0 text-[#3D8065]"
+                      aria-hidden="true"
+                      size={17}
+                      className="shrink-0 text-[#3D8065]"
                       />
                       {item}
                     </span>
@@ -157,7 +161,7 @@ export default function HomePathway() {
                   className="btn-primary inline-flex w-auto items-center justify-center gap-1.5 !px-3 !py-1.5 text-[14px] sm:!px-5 sm:!py-2 sm:text-base"
                 >
                   Book an Appointment
-                  <ArrowUpRight size={18} />
+                  <ArrowUpRight aria-hidden="true" size={18} />
                 </Link>
 
                 <Link
@@ -203,7 +207,10 @@ export default function HomePathway() {
       <WaveDivider from="#FFFFFF" to="#F6F9F6" />
 
       {/* BREAST CARE JOURNEY - THREE PROGRAMME PILLARS */}
-      <section className="section-padding bg-mist">
+      <section
+          aria-label="Cancer care journey: diagnosis, treatment and recovery"
+          className="section-padding bg-mist"
+        >
         <div className="page-container">
 
           <motion.div
@@ -260,7 +267,7 @@ export default function HomePathway() {
                   </span>
 
                   {/* SERVICE LABEL */}
-                  <span className="absolute bottom-5 left-5 rounded-full bg-[#e87744] px-3 py-1.5 text-xs font-bold tracking-wider text-white shadow-md">
+                  <span className="absolute bottom-5 left-5 rounded-full bg-[#963D16] px-3 py-1.5 text-xs font-bold tracking-wider text-white shadow-md">
                     {stage.label}
                   </span>
 
@@ -284,9 +291,10 @@ export default function HomePathway() {
                         key={point}
                         className="flex items-start gap-3 text-[16px] leading-6 text-[#232323] sm:text-[18px]"
                       >
-                        <CheckCircle2
+                       <CheckCircle2
+                          aria-hidden="true"
                           size={18}
-                          className="mt-1 shrink-0 text-sky"
+                          className="mt-1 shrink-0 text-[#A34116]"
                         />
                         <span>{point}</span>
                       </li>
@@ -296,11 +304,12 @@ export default function HomePathway() {
                   {/* KNOW MORE BUTTON */}
                   <Link
                     to="/patient-care"
-                    className="group/button mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-royal px-4 py-2 text-[18px] font-bold text-white transition-all duration-300 hover:bg-sky"
+                    className="group/button mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#304B3C] px-4 py-2 text-[18px] font-bold text-white transition-all duration-300 hover:bg-[#963D16] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
                   >
                     Know More About
 
                     <ArrowUpRight
+                      aria-hidden="true"
                       size={18}
                       className="transition-transform duration-300 group-hover/button:translate-x-1 group-hover/button:-translate-y-1"
                     />

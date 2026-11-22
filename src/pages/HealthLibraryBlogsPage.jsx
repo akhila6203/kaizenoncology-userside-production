@@ -142,7 +142,7 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -155,7 +155,7 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
       <li>
         <Link
           to="/health-library"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Health Library
         </Link>
@@ -183,13 +183,13 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
         <div className="mx-auto mb-12 max-w-3xl text-center">
 
           <div className="mb-5 flex items-center justify-center gap-3">
-            <span className="h-[2px] w-10 rounded-full bg-[#E87744]" />
+            <span className="h-[2px] w-10 rounded-full bg-[#963D16]" />
 
             <span className="text-xs font-bold uppercase tracking-[3px] text-[#4F7359]">
               KIMS RENOVA HEALTH LIBRARY
             </span>
 
-            <span className="h-[2px] w-10 rounded-full bg-[#E87744]" />
+            <span className="h-[2px] w-10 rounded-full bg-[#963D16]" />
           </div>
 
           <h1 className="display-font text-3xl font-extrabold text-[#243528] sm:text-4xl lg:text-5xl">
@@ -202,7 +202,6 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
             prevention and survivorship.
           </p>
 
-          {/* <div className="mx-auto mt-6 h-1 w-16 rounded-full bg-[#E87744]" /> */}
         </div>
 
         {/* SEARCH AND FILTER */}
@@ -287,7 +286,7 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
             <button
               type="button"
               onClick={clearFilters}
-              className="text-sm font-bold text-[#E87744] transition hover:text-[#4F7359]"
+              className="text-sm font-bold text-[#A34116] transition hover:text-[#4F7359]"
             >
               Clear Filters
             </button>
@@ -333,7 +332,7 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
             <button
               type="button"
               onClick={clearFilters}
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-[#4F7359] px-7 py-3 text-sm font-bold text-white transition hover:bg-[#E87744]"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-[#4F7359] px-7 py-3 text-sm font-bold text-white transition hover:bg-[#963D16]"
             >
               View All Blogs
             </button>
@@ -349,7 +348,7 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
             <button
               type="button"
               onClick={handleLoadMore}
-              className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-9 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#E87744] hover:shadow-lg"
+              className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-[#4F7359] px-9 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#963D16] hover:shadow-lg"
             >
               Load More Blogs
 

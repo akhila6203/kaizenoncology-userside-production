@@ -48,7 +48,7 @@ function Breadcrumb() {
           <li>
             <Link
               to="/"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Home
             </Link>
@@ -61,7 +61,7 @@ function Breadcrumb() {
           <li>
             <Link
               to="/services"
-              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+              className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
             >
               Services
             </Link>
@@ -106,7 +106,7 @@ export default function CancerTreatmentsPage() {
 
            <h1 className="mt-2 text-center text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-left lg:text-[56px]">
               Cancer{" "}
-              <span className="text-[#E87744]">
+              <span className="text-[#A34116]">
                 Treatments
               </span>
             </h1>
@@ -144,7 +144,7 @@ export default function CancerTreatmentsPage() {
                 >
                   <CheckCircle2
                     size={19}
-                    className="mt-0.5 shrink-0 text-[#E87744]"
+                    className="mt-0.5 shrink-0 text-[#A34116]"
                   />
                   {item}
                 </div>
@@ -158,7 +158,7 @@ export default function CancerTreatmentsPage() {
             transition={{ duration: 0.65 }}
             className="relative"
           >
-            <div className="absolute -left-5 -top-5 h-32 w-32 rounded-full bg-[#E87744]/15 blur-2xl" />
+            <div className="absolute -left-5 -top-5 h-32 w-32 rounded-full bg-[#963D16]/15 blur-2xl" />
 
             <img
               src={treatmentOverview.image}
@@ -194,7 +194,7 @@ export default function CancerTreatmentsPage() {
         className="scroll-mt-28 page-container px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-12"
       >
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#E87744]">
+          <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#A34116]">
             CANCER CARE & TREATMENT SERVICES
           </p>
 
@@ -239,7 +239,7 @@ export default function CancerTreatmentsPage() {
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="text-[11px] font-extrabold uppercase tracking-[.13em] text-[#E87744]">
+                  <p className="text-[11px] font-extrabold uppercase tracking-[.13em] text-[#A34116]">
                     0{index + 1} / TREATMENT
                   </p>
 
@@ -253,7 +253,7 @@ export default function CancerTreatmentsPage() {
 
                   <Link
                     to={`/services/treatments/${service.slug}`}
-                    className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-[14px] font-bold text-white transition hover:bg-[#E87744]"
+                    className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-[14px] font-bold text-white transition hover:bg-[#963D16]"
                   >
                     Know More
                     <ArrowRight size={17} />
@@ -273,7 +273,7 @@ export default function CancerTreatmentsPage() {
         <div className="page-container">
 
           <div className="mx-auto mb-10 max-w-3xl text-center">
-            <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#E87744]">
+            <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#A34116]">
               INNOVATION IN ONCOLOGY
             </p>
 
@@ -294,7 +294,7 @@ export default function CancerTreatmentsPage() {
                 key={item.title}
                 className="rounded-2xl border border-[#E0E9DE] bg-white p-5 shadow-sm"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#F1F6F0] text-[14px] font-extrabold text-[#E87744]">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#F1F6F0] text-[14px] font-extrabold text-[#A34116]">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
@@ -347,7 +347,7 @@ export default function CancerTreatmentsPage() {
 
           <Link
             to="/appointments"
-            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#E87744] px-6 py-2 text-[15px] font-bold text-white transition hover:bg-[#d76535]"
+            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#963D16] px-6 py-2 text-[15px] font-bold text-white transition hover:bg-[#a1461e]"
           >
             Book an appointment
             <ArrowRight size={18} />

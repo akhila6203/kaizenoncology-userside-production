@@ -43,7 +43,9 @@ export default function HeroSlider() {
 
   return (
     <section
-      className="hero-slider relative isolate overflow-hidden bg-[#2F4638]"
+  aria-label="Featured hospital information"
+  aria-roledescription="carousel"
+  className="hero-slider relative isolate overflow-hidden bg-[#2F4638]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -71,13 +73,15 @@ export default function HeroSlider() {
           style={{
             backgroundImage: `url("${slide.image}")`,
           }}
-          role="img"
-          aria-label="KIMS RENOVA breast care"
+          aria-hidden="true"
         />
       </AnimatePresence>
 
       {/* Green Brand Overlay */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#243528]/95 via-[#3D5A47]/75 to-[#4F7359]/25" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-[#243528]/95 via-[#3D5A47]/75 to-[#4F7359]/25"
+      />
 
       {/* Hero Content */}
       <div className="page-container relative flex min-h-[400px] items-center px-6 py-12 sm:min-h-[460px] sm:px-12 sm:py-14 lg:min-h-[520px] lg:px-16 lg:py-14">
@@ -103,7 +107,10 @@ export default function HeroSlider() {
           >
             {/* Eyebrow */}
             <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-bold tracking-[0.14em] backdrop-blur-sm sm:text-sm">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#B94C1C]" />
+              <span
+                aria-hidden="true"
+                className="h-2.5 w-2.5 rounded-full bg-[#B94C1C]"
+              />
               {slide.eyebrow}
             </span>
 
@@ -122,8 +129,7 @@ export default function HeroSlider() {
             {/* <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:gap-4"> */}
               <Link
                 to={slide.primaryPath}
-                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 rounded-full bg-[#E87744] px-4 py-2 text-xs font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#963D16] hover:shadow-lg sm:min-h-[42px] sm:px-5 sm:py-2 sm:text-sm"
-                // className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-[#E87744] px-7 py-3 text-sm font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#d86635] hover:shadow-lg sm:text-base"
+                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 rounded-full bg-[#963D16] px-4 py-2 text-xs font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#963D16] hover:shadow-lg sm:min-h-[42px] sm:px-5 sm:py-2 sm:text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 {slide.primary}
                 <ChevronRight size={19} />
@@ -131,8 +137,7 @@ export default function HeroSlider() {
 
               <Link
                 to={slide.secondaryPath}
-                className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-white/70 bg-white/10 px-4 py-2 text-xs font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#3D5A47] sm:min-h-[48px] sm:px-4 sm:py-2 sm:text-[17px]"
-                // className="inline-flex min-h-[46px] items-center justify-center rounded-full border border-white/70 bg-white/10 px-7 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#3D5A47] sm:text-base"
+                className="inline-flex min-h-[38px] items-center justify-center rounded-full border border-white/70 bg-white/10 px-4 py-2 text-xs font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#3D5A47] sm:min-h-[48px] sm:px-4 sm:py-2 sm:text-[17px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 {slide.secondary}
               </Link>
@@ -146,7 +151,7 @@ export default function HeroSlider() {
         type="button"
         onClick={previous}
         aria-label="Previous slide"
-        className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/50 bg-[#243528]/50 p-2.5 text-white transition hover:border-[#E87744] hover:bg-[#E87744] sm:left-6 sm:p-3"
+        className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/50 bg-[#243528]/50 p-2.5 text-white transition hover:border-[#963D16] hover:bg-[#963D16] sm:left-6 sm:p-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
       >
         <ArrowLeft size={19} aria-hidden="true" />
       </button>
@@ -156,7 +161,7 @@ export default function HeroSlider() {
         type="button"
         onClick={next}
         aria-label="Next slide"
-        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/50 bg-[#243528]/50 p-2.5 text-white transition hover:border-[#E87744] hover:bg-[#E87744] sm:right-6 sm:p-3"
+        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/50 bg-[#243528]/50 p-2.5 text-white transition hover:border-[#963D16] hover:bg-[#963D16] sm:right-6 sm:p-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
       >
         <ArrowRight size={19} aria-hidden="true" />
       </button>
@@ -174,9 +179,9 @@ export default function HeroSlider() {
             aria-pressed={index === active}
             aria-label={`Show slide ${index + 1}`}
             onClick={() => setActive(index)}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
+            className={`h-2.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${
               index === active
-                ? "w-8 bg-[#E87744]"
+                ? "w-8 bg-[#963D16]"
                 : "w-2.5 bg-white/60 hover:bg-white"
             }`}
           />

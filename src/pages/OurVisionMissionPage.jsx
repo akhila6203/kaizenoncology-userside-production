@@ -134,7 +134,7 @@ export default function OurVisionMissionPage() {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#963D16]"
         >
           Home
         </Link>
@@ -147,7 +147,7 @@ export default function OurVisionMissionPage() {
       <li>
         <Link
           to="/about"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#963D16]"
         >
           About Us
         </Link>
@@ -173,7 +173,7 @@ export default function OurVisionMissionPage() {
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
               <span className="inline-flex items-center gap-2 rounded-full border border-[#dce6dc] bg-[#f1f5f0] px-5 py-2 text-xs font-bold tracking-[0.18em] text-[#304b3c] sm:text-sm">
-                <HeartHandshake size={17} className="text-[#f26322]" />
+                <HeartHandshake size={17} aria-hidden="true" className="text-[#c0501c]" />
                 OUR PURPOSE
               </span>
 
@@ -193,6 +193,7 @@ export default function OurVisionMissionPage() {
       {/* MISSION & VISION - TWO IMAGE TOP CARDS */}
       <section
         id="mission-vision"
+        aria-label="Our vision and mission"
         className="scroll-mt-24 px-5 py-4 sm:px-8 sm:py-6 lg:px-12 lg:py-10"
       >
         <div className="page-container">
@@ -211,7 +212,10 @@ export default function OurVisionMissionPage() {
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#243c30]/50 to-transparent" />
+                 <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-[#243c30]/50 to-transparent"
+                  />
 
                   <span className="absolute bottom-6 left-6 rounded-full bg-white/95 px-5 py-2 text-sm font-bold tracking-wider text-[#304b3c] shadow-lg">
                     OUR VISION
@@ -224,7 +228,7 @@ export default function OurVisionMissionPage() {
                     <Eye size={32} />
                   </span> */}
 
-                  <p className="mt-6 text-sm font-bold tracking-[0.18em] text-[#f26322]">
+                  <p className="mt-6 text-sm font-bold tracking-[0.18em] text-[#b74d1c]">
                     OUR VISION
                   </p>
 
@@ -268,7 +272,7 @@ export default function OurVisionMissionPage() {
                     <Target size={32} />
                   </span> */}
 
-                  <p className="mt-3 text-sm font-bold tracking-[0.18em] text-[#f26322]">
+                  <p className="mt-3 text-sm font-bold tracking-[0.18em] text-[#b04d1f]">
                     OUR MISSION
                   </p>
 
@@ -293,11 +297,13 @@ export default function OurVisionMissionPage() {
       {/* CORE VALUES */}
       <section
         id="core-values"
+        aria-labelledby="core-values-heading"
         className="scroll-mt-24 px-5 py-6 sm:px-8 sm:py-10 lg:px-12 lg:py-14"
       >
         <div className="page-container">
 
           <SectionTitle
+          id="core-values-heading"
             eyebrow="WHAT GUIDES US"
             title="Our Core Values"
             description="The principles that shape how we communicate, collaborate and support patients and their families."
@@ -312,10 +318,10 @@ export default function OurVisionMissionPage() {
                 >
                   <div className="flex items-center justify-between">
                     <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#e7eee7] text-[#304b3c] transition-all duration-300 group-hover:bg-[#304b3c] group-hover:text-white">
-                      <Icon size={23} />
+                      <Icon size={23} aria-hidden="true" />
                     </span>
 
-                    <span className="text-3xl font-bold text-[#304b3c]/10">
+                    <span aria-hidden="true" className="text-3xl font-bold text-[#304b3c]/10">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -338,6 +344,7 @@ export default function OurVisionMissionPage() {
       {/* EXCELLENCE THROUGH INCLUSION */}
       <section
         id="inclusion"
+         aria-labelledby="inclusion-heading"
         className="scroll-mt-24 overflow-hidden bg-[#f1f5f0] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
       >
         <div className="page-container grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -354,8 +361,8 @@ export default function OurVisionMissionPage() {
 
               <div className="absolute -bottom-5 -right-3 rounded-2xl bg-white p-4 shadow-xl sm:-right-5 sm:p-5">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#fff0e8] text-[#f26322]">
-                    <Users size={24} />
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#fff0e8] text-[#bb4d19]">
+                    <Users size={24} aria-hidden="true" />
                   </span>
 
                   <div>
@@ -374,13 +381,16 @@ export default function OurVisionMissionPage() {
 
           <Reveal direction="right">
 
-            <span className="text-sm font-bold tracking-[0.17em] text-[#f26322]">
+            <span className="text-sm font-bold tracking-[0.17em] text-[#c1511e]">
               EXCELLENCE THROUGH INCLUSION
             </span>
 
-            <h2 className="display-font mt-3 text-3xl font-bold leading-tight text-[#304b3c] sm:text-4xl lg:text-5xl">
+            <h2
+              id="inclusion-heading"
+              className="display-font mt-3 text-3xl font-bold leading-tight text-[#304b3c] sm:text-4xl lg:text-5xl"
+            >
               Different Perspectives,
-              <span className="block text-[#f26322]">
+              <span className="block text-[#c0511e]">
                 One Shared Goal
               </span>
             </h2>
@@ -408,7 +418,8 @@ export default function OurVisionMissionPage() {
                 <div key={item} className="flex items-start gap-3">
                   <CheckCircle2
                     size={21}
-                    className="mt-1 shrink-0 text-[#f26322]"
+                    aria-hidden="true"
+                    className="mt-1 shrink-0 text-[#b84d1b]"
                   />
                   <p className="text-base font-semibold text-[#304b3c]">
                     {item}
@@ -423,7 +434,8 @@ export default function OurVisionMissionPage() {
 
       {/* ONE KIMS RENOVA */}
       <section
-        id="one-KIMS RENOVA"
+        id="one-kims-renova"
+        aria-labelledby="one-kims-renova-heading"
         className="scroll-mt-24 w-full overflow-hidden"
       >
         <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#243c30] via-[#304b3c] to-[#496c54] px-5 py-16 sm:px-8 sm:py-20 lg:px-16 lg:py-24">
@@ -432,15 +444,16 @@ export default function OurVisionMissionPage() {
             <div className="relative mx-auto max-w-5xl text-center">
 
               <span className="inline-flex items-center gap-2 text-sm font-bold tracking-[0.2em] text-[#ffb38d]">
-                <Handshake size={20} />
+                 <Handshake size={20} aria-hidden="true" />
                 ONE KIMS RENOVA
               </span>
 
-              <h2 className="display-font mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+              <h2 id="vision-mission-heading"
+              className="display-font mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
                 Working Together to Advance Cancer Care
               </h2>
 
-              <div className="mx-auto mt-6 h-1.5 w-20 rounded-full bg-[#f26322]" />
+              <div className="mx-auto mt-6 h-1.5 w-20 rounded-full bg-[#b94c19]" />
 
               <p className="mx-auto mt-7 max-w-4xl text-base leading-8 text-white/85 sm:text-lg">
                 Meaningful progress in cancer care comes through
@@ -459,7 +472,7 @@ export default function OurVisionMissionPage() {
 
               <Link
                 to="/contact"
-                className="mt-9 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f26322] px-8 py-3 font-bold text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#df551a] hover:shadow-xl"
+                className="mt-9 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#bd5220] px-8 py-3 font-bold text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#df551a] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#963D16]"
               >
                 Connect With Our Team
                 <ArrowRight size={18} />
@@ -493,11 +506,12 @@ export default function OurVisionMissionPage() {
 
           <Reveal direction="right">
 
-            <span className="text-sm font-bold tracking-[0.17em] text-[#f26322]">
+            <span className="text-sm font-bold tracking-[0.17em] text-[#bd5221]">
               TECHNOLOGY &amp; INNOVATION
             </span>
 
-            <h2 className="display-font mt-3 text-3xl font-bold leading-tight text-[#304b3c] sm:text-4xl lg:text-5xl">
+            <h2 id="technology-heading"
+            className="display-font mt-3 text-3xl font-bold leading-tight text-[#304b3c] sm:text-4xl lg:text-5xl">
               Supporting Progress in Cancer Care
             </h2>
 
@@ -518,7 +532,7 @@ export default function OurVisionMissionPage() {
 
             <Link
               to="/patient-care"
-              className="group mt-7 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#304b3c] px-7 py-3 font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-[#3d5a47] hover:shadow-lg"
+              className="group mt-7 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#304b3c] px-7 py-3 font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-[#3d5a47] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#963D16]"
             >
               Explore Cancer Care Services
               <ArrowRight

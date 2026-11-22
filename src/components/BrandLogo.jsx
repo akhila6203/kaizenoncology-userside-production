@@ -10,7 +10,8 @@ export default function BrandLogo({
   return (
     <Link
       to="/"
-      className="flex min-w-0 shrink-0 items-center gap-2.5"
+      aria-label={`${hospital.name} ${hospital.nameLine2} - Home`}
+      className="flex min-w-0 shrink-0 items-center gap-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
       onClick={onClick}
     >
       <img

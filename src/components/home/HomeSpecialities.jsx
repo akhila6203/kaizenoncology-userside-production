@@ -75,7 +75,10 @@ const mappedSpecialities = rows.map((item) => ({
 
     return (
     homeSpecialities.length > 0 && (
-    <section className="section-padding overflow-hidden bg-white">
+    <section
+  aria-labelledby="home-specialities-heading"
+  className="section-padding overflow-hidden bg-white"
+>
       <div className="page-container px-4 sm:px-6 lg:px-8">
 
         {/* Section Heading */}
@@ -90,7 +93,10 @@ const mappedSpecialities = rows.map((item) => ({
             OUR SPECIALITIES
           </span>
 
-          <h2 className="display-font mt-3 text-3xl font-bold text-[#344638] sm:text-4xl lg:text-[42px]">
+          <h2
+  id="home-specialities-heading"
+  className="display-font mt-3 text-3xl font-bold text-[#344638] sm:text-4xl lg:text-[42px]"
+>
             Expertise Across the Cancer Journey
           </h2>
 
@@ -99,7 +105,7 @@ const mappedSpecialities = rows.map((item) => ({
             to support different aspects of cancer care.
           </p>
 
-          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-[#E87744]" />
+          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-[#963D16]" />
         </motion.div>
 
         {/* Speciality Cards */}
@@ -141,7 +147,7 @@ const mappedSpecialities = rows.map((item) => ({
                     className="
                       relative z-10 mb-4 grid h-16 w-16
                       place-items-center rounded-xl
-                      bg-[#edf4ec] text-[#e87744]
+                      bg-[#edf4ec] text-[#A34116]
                       transition-all duration-300
                       group-hover:-translate-y-1
                       group-hover:bg-[#fff1e9]
@@ -149,15 +155,16 @@ const mappedSpecialities = rows.map((item) => ({
                     "
                   >
                     {Icon && (
-                      <Icon
-                        size={42}
-                        strokeWidth={1.6}
-                        className="
-                          text-[#e87744]
-                          transition-colors duration-300
-                          group-hover:text-[#4f7359]
-                        "
-                      />
+                    <Icon
+                      aria-hidden="true"
+                      size={42}
+                      strokeWidth={1.6}
+                      className="
+                        text-[#A34116]
+                        transition-colors duration-300
+                        group-hover:text-[#4f7359]
+                      "
+                    />
                     )}
                   </span>
 
@@ -176,18 +183,20 @@ const mappedSpecialities = rows.map((item) => ({
                   </h3>
 
                   {/* Explore - Visible Only on Hover */}
-                  <span
-                    className="
-                      relative z-10 mt-2 flex h-7 items-center gap-2
-                      translate-y-1 text-sm font-semibold
-                      text-[#e87744] opacity-0
-                      transition-all duration-300
-                      group-hover:translate-y-0
-                      group-hover:opacity-100
-                    "
-                  >
+                    <span
+                      aria-hidden="true"
+                      className="
+                        relative z-10 mt-2 flex h-7 items-center gap-2
+                        translate-y-1 text-sm font-semibold
+                        text-[#A34116] opacity-0
+                        transition-all duration-300
+                        group-hover:translate-y-0
+                        group-hover:opacity-100
+                      "
+                    >
                     Explore Speciality
                     <ArrowRight
+                      aria-hidden="true"
                       size={16}
                       className="transition-transform duration-300 group-hover:translate-x-1"
                     />
@@ -210,11 +219,11 @@ const mappedSpecialities = rows.map((item) => ({
               text-sm font-bold text-white
               shadow-sm transition-all duration-300
               hover:-translate-y-0.5
-              hover:bg-[#e87744] hover:shadow-md
+              hover:bg-[#963D16] hover:shadow-md
             "
           >
             View All Specialities
-            <ArrowRight size={17} />
+            <ArrowRight aria-hidden="true" size={17} />
           </Link>
         </div>
 

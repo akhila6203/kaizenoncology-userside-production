@@ -81,7 +81,10 @@ export default function HomeDoctors() {
   }
 
   return (
-    <section className="section-padding bg-mist">
+    <section
+  aria-labelledby="home-doctors-heading"
+  className="section-padding bg-mist"
+>
       <div className="page-container">
 
         {/* Heading */}
@@ -90,7 +93,10 @@ export default function HomeDoctors() {
             OUR SPECIALISTS
           </span>
 
-          <h2 className="mt-3 font-display text-3xl font-bold text-navy sm:text-4xl">
+          <h2
+  id="home-doctors-heading"
+  className="mt-3 font-display text-3xl font-bold text-navy sm:text-4xl"
+>
             Meet the Experts Behind Your Care
           </h2>
 
@@ -150,6 +156,7 @@ export default function HomeDoctors() {
                 <div className="mt-3 space-y-2 text-base text-[#647368]">
                   <p className="flex items-start gap-2">
                     <BriefcaseMedical
+                      aria-hidden="true"
                       size={16}
                       className="mt-1 shrink-0 text-royal"
                     />
@@ -158,6 +165,7 @@ export default function HomeDoctors() {
 
                   <p className="flex items-start gap-2">
                     <MapPin
+                      aria-hidden="true"
                       size={16}
                       className="mt-1 shrink-0 text-royal"
                     />
@@ -172,7 +180,7 @@ export default function HomeDoctors() {
                     className="inline-flex min-h-10 items-center justify-center gap-1 rounded-full border border-royal px-2 py-2 text-center text-sm font-bold text-royal transition hover:bg-royal hover:text-white"
                   >
                     View Profile
-                    <ArrowRight size={13} />
+                    <ArrowRight aria-hidden="true" size={13} />
                   </Link>
 
                   <Link
@@ -194,7 +202,7 @@ export default function HomeDoctors() {
             className="btn-secondary inline-flex items-center gap-2"
           >
             View All Specialists
-            <ArrowRight size={16} />
+            <ArrowRight aria-hidden="true" size={16} />
           </Link>
         </div>
 

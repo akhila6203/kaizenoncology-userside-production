@@ -185,14 +185,18 @@ export default function ContentVideoCarousel({
     background === "white" ? "bg-white" : "bg-mist";
 
   return (
-    <section
-      className={`overflow-hidden px-5 py-12 sm:px-8 sm:py-16 lg:px-12 ${sectionBackground} ${className}`}
-    >
+   
+      <section
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={title || "Videos"}
+        className={`overflow-hidden px-5 py-12 sm:px-8 sm:py-16 lg:px-12 ${sectionBackground} ${className}`}
+      >
       <div className="page-container">
         {/* Heading */}
         <div className="mb-9 text-center sm:mb-11">
           {eyebrow && (
-            <span className="text-sm font-bold tracking-[0.16em] text-sky">
+            <span className="text-sm font-bold tracking-[0.16em] text-[#A34116]">
               {eyebrow}
             </span>
           )}
@@ -218,7 +222,7 @@ export default function ContentVideoCarousel({
               type="button"
               onClick={goPrevious}
               aria-label="Previous videos"
-              className="absolute left-0 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-royal bg-white text-royal shadow-md transition hover:bg-royal hover:text-white sm:h-11 sm:w-11"
+              className="absolute left-0 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-royal bg-white text-royal shadow-md transition hover:bg-royal hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16] sm:h-11 sm:w-11"
             >
               <ChevronLeft size={23} />
             </button>
@@ -230,7 +234,7 @@ export default function ContentVideoCarousel({
               type="button"
               onClick={goNext}
               aria-label="Next videos"
-              className="absolute right-0 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-royal bg-white text-royal shadow-md transition hover:bg-royal hover:text-white sm:h-11 sm:w-11"
+              className="absolute right-0 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-royal bg-white text-royal shadow-md transition hover:bg-royal hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16] sm:h-11 sm:w-11"
             >
               <ChevronRight size={23} />
             </button>
@@ -260,9 +264,7 @@ export default function ContentVideoCarousel({
                   <button
                     type="button"
                     onClick={() => setSelectedVideo(item)}
-                    // aria-label={`Watch ${item.title || "video"}`}
-                    aria-label={item.title || "Play video"}
-                    className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-line bg-white text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium"
+                    className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-line bg-white text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
                   >
 
                     {/* Thumbnail */}
@@ -281,7 +283,9 @@ export default function ContentVideoCarousel({
                         </div>
                       )}
 
-                      <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-royal text-white shadow-lg transition group-hover:scale-110 group-hover:bg-sky">
+                      <span 
+                      aria-hidden="true"
+                      className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-royal text-white shadow-lg transition group-hover:scale-110 group-hover:bg-sky">
                         <Play size={21} fill="currentColor" />
                       </span>
                     </div>
@@ -289,7 +293,7 @@ export default function ContentVideoCarousel({
                     {/* Card content */}
                     <div className="flex flex-1 flex-col p-3 sm:p-4">
   {(item.specialityName || item.category) && (
-    <span className="text-xs font-bold uppercase tracking-wider text-sky">
+    <span className="text-xs font-bold uppercase tracking-wider text-[#A34116]">
       {item.specialityName || item.category}
     </span>
   )}

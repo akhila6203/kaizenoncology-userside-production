@@ -33,7 +33,10 @@ export default function HomeTreatments() {
   const displayedTreatments = treatmentServices.slice(0, 4);
 
   return (
-    <section className="section-padding overflow-hidden bg-mist">
+    <section
+  aria-label="Cancer treatment options"
+  className="section-padding overflow-hidden bg-mist"
+>
       <div className="page-container px-4 sm:px-6 lg:px-8">
 
         {/* Section Heading */}
@@ -107,7 +110,8 @@ export default function HomeTreatments() {
 
                   {/* Treatment Icon */}
                   <motion.span
-                    className="absolute bottom-4 left-4 grid h-12 w-12 place-items-center rounded-xl bg-white text-[#476B55] shadow-md transition-colors duration-300 group-hover:text-[#E87744]"
+                   aria-hidden="true"
+                    className="absolute bottom-4 left-4 grid h-12 w-12 place-items-center rounded-xl bg-white text-[#476B55] shadow-md transition-colors duration-300 group-hover:text-[#A34116]"
                     whileHover={
                       shouldReduceMotion
                         ? {}
@@ -121,7 +125,7 @@ export default function HomeTreatments() {
 
                 {/* Card Content */}
                 <div className="flex flex-1 flex-col p-5">
-                  <h3 className="text-lg font-bold text-[#263C30] transition-colors group-hover:text-[#E87744]">
+                  <h3 className="text-lg font-bold text-[#263C30] transition-colors group-hover:text-[#A34116]">
                     {service.title}
                   </h3>
 
@@ -132,7 +136,7 @@ export default function HomeTreatments() {
                   {/* Know More Button */}
                   <Link
                     to={`/services/treatments/${service.slug}`}
-                    className="mt-5 inline-flex min-h-10 items-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#E87744] hover:shadow-md"
+                     className="mt-5 inline-flex min-h-10 items-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#963D16] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
                   >
                     Know More
                     <motion.span
@@ -142,7 +146,7 @@ export default function HomeTreatments() {
                       }
                       transition={{ duration: 0.2 }}
                     >
-                      <ArrowRight size={16} />
+                      <ArrowRight aria-hidden="true" size={16} />
                     </motion.span>
                   </Link>
                 </div>
@@ -162,11 +166,12 @@ export default function HomeTreatments() {
         >
           <Link
             to="/services/treatments"
-            className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#476B55] px-7 py-3 text-sm font-bold text-[#476B55] transition-all duration-300 hover:border-[#E87744] hover:bg-[#E87744] hover:text-white hover:shadow-lg"
+            className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#476B55] px-7 py-3 text-sm font-bold text-[#476B55] transition-all duration-300 hover:border-[#963D16] hover:bg-[#963D16] hover:text-white hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963D16]"
           >
             Explore All Treatments
 
             <ArrowRight
+              aria-hidden="true"
               size={17}
               className="transition-transform duration-300 group-hover:translate-x-1"
             />

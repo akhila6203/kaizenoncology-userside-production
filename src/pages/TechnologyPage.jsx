@@ -98,7 +98,7 @@ function Breadcrumb() {
       <li>
         <Link
           to="/"
-          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#E87744]"
+          className="font-semibold text-white drop-shadow-md transition-colors hover:text-[#A34116]"
         >
           Home
         </Link>
@@ -159,7 +159,7 @@ function TechnologyCard({ item, index }) {
 
         <Link
           to={item.path || `/technology/${item.slug}`}
-          className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-[14px] font-bold text-white transition hover:bg-[#E87744]"
+          className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-[14px] font-bold text-white transition hover:bg-[#963D16]"
         >
           Know More
           <ArrowRight size={17} />
@@ -342,7 +342,7 @@ export default function TechnologyPage() {
 
       <h1 className="mt-6 text-center text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl lg:text-left lg:text-[46px]">
           Advanced Technology for 
-          <span className="block text-[#E87744]">
+          <span className="block text-[#A34116]">
             Precision Cancer Care
            
           </span>
@@ -365,7 +365,7 @@ export default function TechnologyPage() {
         <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
 
           <div className="flex items-start gap-3 rounded-xl border border-[#E5EAE2] bg-white p-4">
-            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EDF4EC] text-[#E87744]">
+            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EDF4EC] text-[#A34116]">
               <Search size={19} />
             </span>
             <div>
@@ -379,7 +379,7 @@ export default function TechnologyPage() {
           </div>
 
           <div className="flex items-start gap-3 rounded-xl border border-[#E5EAE2] bg-white p-4">
-            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EDF4EC] text-[#E87744]">
+            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EDF4EC] text-[#A34116]">
               <Cpu size={19} />
             </span>
             <div>
@@ -396,7 +396,7 @@ export default function TechnologyPage() {
 
         <Link
           to="#technology-list"
-          className="mx-auto mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#304B3C] px-6 py-2 text-[15px] font-bold text-white transition hover:bg-[#E87744] lg:mx-0"
+          className="mx-auto mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#304B3C] px-6 py-2 text-[15px] font-bold text-white transition hover:bg-[#963D16] lg:mx-0"
         >
           Explore Our Technologies
           <ArrowRight size={18} />
@@ -478,7 +478,7 @@ export default function TechnologyPage() {
         className="page-container scroll-mt-24 px-4 py-4 sm:px-6 sm:py-6 lg:px-8"
       >
         <div className="mx-auto mb-9 max-w-3xl text-center">
-          <p className="text-[12px] font-extrabold uppercase tracking-[.18em] text-[#E87744]">
+          <p className="text-[12px] font-extrabold uppercase tracking-[.18em] text-[#A34116]">
            EXPLORE OUR TECHNOLOGY
           </p>
 
@@ -597,7 +597,7 @@ export default function TechnologyPage() {
               <button
                 type="button"
                 onClick={resetFilters}
-                className="text-[13px] font-bold text-[#E87744] transition hover:text-[#304B3C]"
+                className="text-[13px] font-bold text-[#A34116] transition hover:text-[#304B3C]"
               >
                 Reset Filters
               </button>
@@ -634,7 +634,7 @@ export default function TechnologyPage() {
             <button
               type="button"
               onClick={resetFilters}
-              className="mt-5 rounded-full bg-[#304B3C] px-5 py-2.5 text-[14px] font-bold text-white transition hover:bg-[#E87744]"
+              className="mt-5 rounded-full bg-[#304B3C] px-5 py-2.5 text-[14px] font-bold text-white transition hover:bg-[#963D16]"
             >
               Clear Filters
             </button>
@@ -649,7 +649,7 @@ export default function TechnologyPage() {
 <section className="bg-[#f4f7f2] py-14 md:py-16">
   <div className="page-container px-4 sm:px-6 lg:px-8">
     <div className="mb-8 text-center">
-      <span className="text-sm font-semibold uppercase tracking-[0.16em] text-[#e87744]">
+      <span className="text-sm font-semibold uppercase tracking-[0.16em] text-[#A34116]">
         Our Expertise
       </span>
 
@@ -672,9 +672,9 @@ export default function TechnologyPage() {
           <Link
             key={item.id || item.slug}
             to={`/specialities/${item.slug}`}
-            className="group flex flex-col items-center rounded-2xl border border-[#e1e9df] bg-white px-3 py-6 text-center transition duration-300 hover:-translate-y-1 hover:border-[#e87744] hover:shadow-lg md:px-5"
+            className="group flex flex-col items-center rounded-2xl border border-[#e1e9df] bg-white px-3 py-6 text-center transition duration-300 hover:-translate-y-1 hover:border-[#963D16] hover:shadow-lg md:px-5"
           >
-            <span className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-[#edf4ec] text-[#e87744] transition group-hover:bg-[#304b3c] group-hover:text-white">
+            <span className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-[#edf4ec] text-[#A34116] transition group-hover:bg-[#304b3c] group-hover:text-white">
               {Icon && <Icon size={42} strokeWidth={1.6} />}
             </span>
 
@@ -682,7 +682,7 @@ export default function TechnologyPage() {
               {item.title}
             </h3>
 
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#e87744]">
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#A34116]">
               Explore Speciality
               <ArrowRight size={16} />
             </span>
@@ -736,7 +736,7 @@ export default function TechnologyPage() {
 
   <Link
     to="/appointment"
-    className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full bg-[#e87744] px-2 py-3 text-[12px] font-semibold text-white transition hover:bg-[#d96837] sm:flex-none sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
+    className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full bg-[#963D16] px-2 py-3 text-[12px] font-semibold text-white transition hover:bg-[#d96837] sm:flex-none sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
   >
     Book an Appointment <ArrowRight size={15} className="shrink-0 sm:h-[18px] sm:w-[18px]" />
   </Link>
