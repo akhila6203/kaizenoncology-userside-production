@@ -574,7 +574,7 @@ toast.success(
 //     address:
 //       "Old Mumbai Hwy, near Cyberabad Police Commissionerate, Jayabheri Pine Valley, HITEC City, Hyderabad, Telangana 500032",
 //     phone: "+91 915 414 3858/59/60",
-//     email: "support@kaizenoncology.com",
+//     email: "support@kimsrenova.com",
 //     mapUrl:
 //       "https://www.google.com/maps?q=CARE+Hospitals+Hi-Tech+City+Hyderabad&output=embed",
 //     directionsUrl:
@@ -585,7 +585,7 @@ toast.success(
 //     address:
 //       "Road Number 1, Prem Nagar, Banjara Hills, Hyderabad, Telangana 500034",
 //     phone: "+91 915 414 3858/59/60",
-//     email: "support@kaizenoncology.com",
+//     email: "support@kimsrenova.com",
 //     mapUrl:
 //       "https://www.google.com/maps?q=CARE+Hospitals+Banjara+Hills+Hyderabad&output=embed",
 //     directionsUrl:

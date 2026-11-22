@@ -83,7 +83,7 @@ function ServiceCard({
           {item.title}
         </h3>
 
-        <p className="mt-3 flex-1 text-[15px] leading-7 text-[#526257]">
+        <p className="mt-3 flex-1 text-[16px] leading-7 text-[#526257] sm:text-[18px]">
           {description}
         </p>
 
@@ -125,7 +125,7 @@ function SectionHeading({
       </h2>
 
       {description && (
-        <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-7 text-[#526257] sm:text-base">
+        <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-7 text-[#526257] sm:text-[18px]">
           {description}
         </p>
       )}
@@ -360,7 +360,7 @@ export default function ServicesHubPage() {
                   Get a Second Opinion
                 </h3>
 
-                <p className="mt-3 text-[15px] leading-7 text-[#526257]">
+                <p className="mt-3 text-[16px] leading-7 text-[#526257] sm:text-[18px]">
                   Discuss your diagnosis, medical reports and proposed
                   treatment plan with our cancer care specialists.
                   Get further clarity and guidance for your next steps.
@@ -387,7 +387,7 @@ export default function ServicesHubPage() {
               Need Help Choosing the Right Care?
             </h2>
 
-            <p className="mt-3 max-w-2xl text-[15px] leading-7 text-white/80">
+            <p className="mt-3 max-w-4xl text-[16px] leading-7 text-white/80 sm:text-[18px]">
               Connect with our team to learn more about our services
               and find the right next step for your care.
             </p>

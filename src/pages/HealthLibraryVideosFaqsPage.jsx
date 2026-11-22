@@ -432,7 +432,7 @@ const getVideoThumbnail = (video) => {
                 </h2>
 
                 <p className="mt-3 text-base text-[#3D4A40]">
-                  Kaizen Oncology educational videos will be available here soon.
+                  KIMS RENOVA educational videos will be available here soon.
                 </p>
               </div>
             )}

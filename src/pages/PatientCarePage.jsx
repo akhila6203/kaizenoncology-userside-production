@@ -366,7 +366,7 @@ export default function PatientCarePage() {
       </h1>
 
       <p className="mx-auto mt-3 max-w-4xl text-base leading-8 text-[#536458] sm:text-lg">
-        At Kaizen Oncology Cancer Hospital, we provide guidance and support throughout diagnosis, treatment, recovery and follow-up care, helping patients and their families navigate each stage with greater confidence.
+        At KIMS RENOVA Cancer Hospital, we provide guidance and support throughout diagnosis, treatment, recovery and follow-up care, helping patients and their families navigate each stage with greater confidence.
       </p>
     </div>
 
@@ -374,25 +374,25 @@ export default function PatientCarePage() {
 
       <div>
         <span className="text-sm font-bold tracking-wider text-[#e87744]">
-          Kaizen Oncology PATIENT CARE
+          KIMS RENOVA PATIENT CARE
         </span>
 
         <h2 className="display-font mt-1 text-2xl font-bold leading-snug text-[#263c30] sm:text-3xl">
           Every Step of Your Journey Matters
         </h2>
 
-        <p className="mt-4 text-[16px] leading-6 text-[#4b5d50] sm:text-[18px]">
+        <p className="mt-4 text-[16px] leading-6 text-[#3c3c3c] sm:text-[18px]">
         A cancer diagnosis can bring uncertainty and many questions. Having access to the right information,
          medical guidance and supportive
          care can help patients understand their options and make informed decisions.
         </p>
 
-        <p className="mt-4 text-[16px] leading-7 text-[#4b5d50] sm:text-[18px] ">
-         At Kaizen Oncology, patient care goes beyond medical treatment. We recognise the importance of emotional support, 
+        <p className="mt-4 text-[16px] leading-7 text-[#3c3c3c] sm:text-[18px] ">
+         At KIMS RENOVA, patient care goes beyond medical treatment. We recognise the importance of emotional support, 
          nutritional guidance, pain and symptom management, rehabilitation and ongoing care for patients and their families.
         </p>
 
-        <p className="mt-4 text-[16px] leading-7 text-[#4b5d50] sm:text-[18px]">
+        <p className="mt-4 text-[16px] leading-7 text-[##3c3c3c] sm:text-[18px]">
          Our approach focuses on understanding each patient's individual needs and providing appropriate 
          guidance and support throughout their cancer journey.
         </p>
@@ -506,7 +506,7 @@ export default function PatientCarePage() {
           <SectionTitle
             eyebrow="SUPPORT THROUGHOUT YOUR CARE JOURNEY"
             title="Connected Care. Support at Every Step."
-            description="Every patient's cancer journey is different. At Kaizen Oncology, we recognise the importance of appropriate 
+            description="Every patient's cancer journey is different. At KIMS RENOVA, we recognise the importance of appropriate 
                           guidance and support from diagnosis and treatment through recovery and follow-up care."
           />
           <div className="space-y-8 lg:space-y-10">
@@ -530,9 +530,20 @@ export default function PatientCarePage() {
                       </li>
                     ))}
                   </ul>
-                  <Link to={stage.path} className="mt-7 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-[#476b55] px-6 py-3 font-semibold text-white transition hover:bg-[#304b3c]">
+                  {/* <Link to={stage.path} className="mt-7 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-[#476b55] px-6 py-3 font-semibold text-white transition hover:bg-[#304b3c]">
                     Explore {stage.name} <ArrowRight size={18} />
-                  </Link>
+                  </Link> */}
+
+<Link
+  to={stage.path}
+  className="mt-7 inline-flex min-h-10 w-fit max-w-full flex-nowrap items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#476b55] px-3 py-2 text-[12px] font-semibold text-white transition hover:bg-[#304b3c] sm:min-h-11 sm:gap-2 sm:px-6 sm:py-3 sm:text-base"
+>
+  <span className="whitespace-nowrap">
+    Explore {stage.name}
+  </span>
+  <ArrowRight size={16} className="shrink-0 sm:h-[18px] sm:w-[18px]" />
+</Link>
+
                 </div>
               </article>
             ))}
@@ -740,7 +751,7 @@ export default function PatientCarePage() {
     </div>
 
     {/* <p className="mt-7 text-sm leading-6 text-[#657468]">
-      Please contact Kaizen Oncology to confirm the availability of individual
+      Please contact KIMS RENOVA to confirm the availability of individual
       services, international patient assistance and insurance support.
     </p> */}
 
@@ -757,7 +768,7 @@ export default function PatientCarePage() {
     eyebrow="PATIENT STORIES"
     title="Stories of Strength and Support"
     subtitle="Explore genuine patient experiences and educational
-        videos shared by Kaizen Oncology, helping patients and families
+        videos shared by KIMS RENOVA, helping patients and families
         understand different aspects of cancer care."
     items={patientTestimonialItems}
     slidesPerView={4}
@@ -786,7 +797,26 @@ export default function PatientCarePage() {
       </p>
     </div>
 
-    <div className="flex flex-wrap gap-3">
+
+<div className="flex flex-wrap items-center gap-2 sm:gap-3">
+  <Link
+    to="/contact"
+    className="inline-flex min-h-10 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-[#476b55] px-3 py-2 text-[12px] font-semibold text-[#304b3c] transition hover:bg-white sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3 sm:text-base"
+  >
+    <span className="whitespace-nowrap">Contact Us</span>
+    <MessageCircleHeart size={16} className="shrink-0 sm:h-[18px] sm:w-[18px]" />
+  </Link>
+
+  <Link
+    to="/appointments"
+    className="inline-flex min-h-10 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#476b55] px-3 py-2 text-[12px] font-semibold text-white transition hover:bg-[#304b3c] sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3 sm:text-base"
+  >
+    <span className="whitespace-nowrap">Book an Appointment</span>
+    <CalendarDays size={16} className="shrink-0 sm:h-[18px] sm:w-[18px]" />
+  </Link>
+</div>
+
+    {/* <div className="flex flex-wrap gap-3">
       <Link
         to="/contact"
         className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[#476b55] px-6 py-3 font-semibold text-[#304b3c] transition hover:bg-white"
@@ -802,7 +832,7 @@ export default function PatientCarePage() {
         Book an Appointment
         <CalendarDays size={18} />
       </Link>
-    </div>
+    </div> */}
 
   </div>
 </section>

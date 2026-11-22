@@ -24,9 +24,6 @@ import appointmentsWave from "../assets/appointments-wave.jpg";
 /* ---------------------------------------------
    BREADCRUMB
 --------------------------------------------- */
-/* ---------------------------------------------
-   BREADCRUMB
---------------------------------------------- */
 function Breadcrumb({ items }) {
   return (
     <nav
@@ -232,6 +229,7 @@ export default function CancerProgramPage() {
   );
 
   const [activeSection, setActiveSection] = useState("overview");
+  const [isSectionDropdownOpen, setIsSectionDropdownOpen] = useState(false);
 
 
   const sections = [
@@ -316,30 +314,31 @@ export default function CancerProgramPage() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
-            className="text-left"
+           className="text-center lg:text-left"
           >
             <span className="inline-flex rounded-full bg-white px-3 py-1.5 text-sm font-bold uppercase tracking-wider text-[#476B55] shadow-sm">
               {cancer.category || "CANCER TYPE"}
             </span>
 
             {/* Main cancer heading */}
-            <h1 className="mt-6 text-left text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-[54px]">
+           <h1 className="mt-6 text-center text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-left lg:text-[54px]">
               {cancer.title}
             </h1>
 
             {/* Intro description directly below heading */}
-            <p className="mt-6 max-w-2xl text-left text-[18px] leading-8 text-[#46574B] sm:text-[19px]">
+           <p className="mx-auto mt-6 max-w-2xl text-center text-[18px] leading-8 text-[#46574B] sm:text-[19px] lg:mx-0 lg:text-left">
               {cancer.cardDescription}
             </p>
 
-            <p className="mt-4 max-w-2xl text-left text-[18px] leading-8 text-[#46574B] sm:text-[19px]">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-[18px] leading-8 text-[#46574B] sm:text-[19px] lg:mx-0 lg:text-left">
             {cancer.overviewSecond}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            {/* <div className="mt-8 flex flex-wrap gap-4"> */}
+            <div className="mt-8 flex flex-nowrap items-center justify-center gap-2 sm:gap-4 lg:justify-start">
               <a
                 href="#overview"
-                className="inline-flex items-center gap-2 rounded-full bg-[#304B3C] px-3 py-2 text-[16px] font-bold text-white transition hover:-translate-y-1 hover:bg-[#263C30]"
+                className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-[#304B3C] px-3 py-2 text-[14px] font-semibold text-white transition hover:-translate-y-1 hover:bg-[#263C30] sm:gap-2 sm:text-[16px]"
               >
                 Read Overview
                 <ArrowRight size={19} />
@@ -347,7 +346,7 @@ export default function CancerProgramPage() {
 
               <Link
                 to="/appointments"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-[#476B55] px-3 py-2 text-[16px] font-bold text-[#304B3C] transition hover:bg-[#304B3C] hover:text-white"
+               className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border-2 border-[#476B55] px-3 py-2 text-[12px] font-bold text-[#304B3C] transition hover:bg-[#304B3C] hover:text-white sm:gap-2 sm:text-[16px]"
               >
                 <CalendarDays size={18} />
                 Book Appointment
@@ -395,54 +394,110 @@ export default function CancerProgramPage() {
         {/* ---------------------------------------
             LEFT STICKY NAVIGATION
         --------------------------------------- */}
-        <aside className="h-fit self-start lg:sticky lg:top-28">
-          <div className="rounded-[22px] border border-[#E5EBE3] bg-white p-5 shadow-sm lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
-            <h2 className="mb-4 text-lg font-bold text-[#263C30]">
-              On This Page
-            </h2>
+       
+{/* ---------------------------------------
+    RESPONSIVE PAGE NAVIGATION
+--------------------------------------- */}
+<aside className="h-fit self-start lg:sticky lg:top-28">
+  {/* MOBILE AND TABLET DROPDOWN */}
+  <div className="relative lg:hidden">
+    <button
+      type="button"
+      onClick={() =>
+        setIsSectionDropdownOpen((prev) => !prev)
+      }
+      aria-expanded={isSectionDropdownOpen}
+      className="flex w-full items-center justify-between gap-3 rounded-2xl border border-[#E5EBE3] bg-white px-5 py-4 text-left font-bold text-[#263C30] shadow-sm"
+    >
+      <span>
+        {sections.find((section) => section.id === activeSection)?.label ||
+          "On This Page"}
+      </span>
 
-            <nav className="space-y-1">
-              {sections.map((section) => {
-                const isActive = activeSection === section.id;
+      <ChevronDown
+        size={21}
+        className={`shrink-0 transition-transform ${
+          isSectionDropdownOpen ? "rotate-180" : ""
+        }`}
+      />
+    </button>
 
-                return (
-                  <a
-                    key={section.id}
-                    href={`#${section.id}`}
-                    onClick={() => setActiveSection(section.id)}
-                    aria-current={isActive ? "location" : undefined}
-                    className={`relative block rounded-xl px-4 py-3 pl-5 text-[15px] font-semibold transition-all duration-200 ${
-                      isActive
-                        ? "bg-[#304B3C] text-white shadow-sm"
-                        : "text-[#536357] hover:bg-[#F4F7F2] hover:text-[#304B3C]"
-                    }`}
-                  >
-                    {/* Active orange indicator */}
-                    {isActive && (
-                      <span className="absolute bottom-2 left-0 top-2 w-[4px] rounded-r-full " />
-                    )}
+    {isSectionDropdownOpen && (
+      <div className="absolute left-0 right-0 top-full z-30 mt-2 max-h-72 overflow-y-auto rounded-2xl border border-[#E5EBE3] bg-white p-2 shadow-xl">
+        {sections.map((section) => {
+          const isActive = activeSection === section.id;
 
-                    {section.label}
-                  </a>
-                );
-              })}
-            </nav>
+          return (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              onClick={() => {
+                setActiveSection(section.id);
+                setIsSectionDropdownOpen(false);
+              }}
+              aria-current={isActive ? "location" : undefined}
+              className={`block rounded-xl px-4 py-3 text-[15px] font-semibold transition ${
+                isActive
+                  ? "bg-[#304B3C] text-white"
+                  : "text-[#536357] hover:bg-[#F4F7F2] hover:text-[#304B3C]"
+              }`}
+            >
+              {section.label}
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
 
-            <div className="mt-5 rounded-2xl bg-[#F4F7F2] p-4">
-              <p className="text-sm font-bold text-[#304B3C]">
-                Need specialist guidance?
-              </p>
+  {/* DESKTOP SIDEBAR - EXISTING STYLE */}
+  <div className="hidden rounded-[22px] border border-[#E5EBE3] bg-white p-4 shadow-sm lg:block lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+    <h2 className="mb-4 text-lg font-bold text-[#263C30]">
+      On This Page
+    </h2>
 
-              <Link
-                to="/appointments"
-                className="mt-3 inline-flex items-center gap-2 text-[15px] font-bold text-[#E87744] transition hover:gap-3"
-              >
-                Book Appointment
-                <ArrowRight size={17} />
-              </Link>
-            </div>
-          </div>
-        </aside>
+    <nav className="space-y-1">
+      {sections.map((section) => {
+        const isActive = activeSection === section.id;
+
+        return (
+          <a
+            key={section.id}
+            href={`#${section.id}`}
+            onClick={() => setActiveSection(section.id)}
+            aria-current={isActive ? "location" : undefined}
+            className={`relative block rounded-xl px-4 py-3 pl-5 text-[15px] font-semibold transition-all duration-200 ${
+              isActive
+                ? "bg-[#304B3C] text-white shadow-sm"
+                : "text-[#536357] hover:bg-[#F4F7F2] hover:text-[#304B3C]"
+            }`}
+          >
+            {isActive && (
+              <span className="absolute bottom-2 left-0 top-2 w-[4px] rounded-r-full" />
+            )}
+
+            {section.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <div className="mt-5 rounded-2xl bg-[#F4F7F2] p-4">
+      <p className="text-sm font-bold text-[#304B3C]">
+        Need specialist guidance?
+      </p>
+
+      <Link
+        to="/appointments"
+        className="mt-3 inline-flex items-center gap-2 text-[15px] font-bold text-[#E87744] transition hover:gap-3"
+      >
+        Book Appointment
+        <ArrowRight size={17} />
+      </Link>
+    </div>
+  </div>
+</aside>
+
 
         {/* ---------------------------------------
             MAIN CANCER CONTENT
@@ -837,31 +892,34 @@ export default function CancerProgramPage() {
               CANCER CARE JOURNEY
           --------------------------------------- */}
           <section className="rounded-[26px] bg-[#F4F7F2] p-6 sm:p-9">
-            <div className="flex items-start gap-4">
+            {/* <div className="flex items-start gap-4"> */}
+            <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:items-start lg:text-left">
               <div className="rounded-2xl bg-white p-3 text-[#476B55] shadow-sm">
                 <Stethoscope size={27} />
               </div>
 
-              <div>
-                <h2 className="text-left text-2xl font-bold text-[#263C30]">
+              <div className="flex flex-col items-center lg:items-start">
+                <h2 className="text-center text-2xl font-bold text-[#263C30] lg:text-left">
                   {cancer.careJourneyTitle || "Your Cancer Care Journey"}
                 </h2>
 
-                <p className="mt-4 text-[18px] leading-8 text-[#46574B]">
+                <p className="mt-4 text-center text-[18px] leading-8 text-[#46574B] lg:text-left">
                   {cancer.closing ||
-                    "Understanding your condition and available treatment options is an important step towards informed care decisions. At Kaizen Oncology Cancer Hospital, our aim is to support patients with clear guidance, personalised care planning and compassionate support throughout their cancer journey."}
+                    "Understanding your condition and available treatment options is an important step towards informed care decisions. At KIMS RENOVA Cancer Hospital, our aim is to support patients with clear guidance, personalised care planning and compassionate support throughout their cancer journey."}
                 </p>
               </div>
             </div>
 
+           <div className="flex justify-center lg:justify-start">
             <Link
               to="/appointments"
-              className="mt-7 inline-flex items-center gap-3 rounded-full bg-[#304B3C] px-7 py-4 text-[16px] font-bold text-white transition hover:-translate-y-1 hover:bg-[#263C30]"
+              className="mt-7 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#304B3C] px-4 py-2 text-[14px] font-bold text-white transition hover:-translate-y-1 hover:bg-[#263C30] sm:px-6 sm:py-3 sm:text-[16px]"
             >
               <CalendarDays size={19} />
               Book an Appointment
               <ArrowRight size={18} />
             </Link>
+          </div>
           </section>
 
           {/* ---------------------------------------

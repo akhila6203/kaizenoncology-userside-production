@@ -131,7 +131,7 @@ function SectionHeading({ eyebrow, title, description }) {
       </h2>
 
       {description && (
-        <p className="mt-4 text-[16px] leading-8 text-[#536357] sm:text-[18px]">
+        <p className="mt-4 text-[16px] leading-8 text-[#434644] sm:text-[18px]">
           {description}
         </p>
       )}
@@ -174,7 +174,7 @@ function TechnologySection({ section, index }) {
           {section.paragraphs?.map((paragraph, paragraphIndex) => (
             <p
               key={paragraphIndex}
-              className="mb-4 text-[16px] leading-8 text-[#536357] last:mb-0 sm:text-[17px]"
+              className="mb-4 text-[16px] leading-8 text-[#333433] last:mb-0 sm:text-[18px]"
             >
               {paragraph}
             </p>
@@ -192,7 +192,7 @@ function TechnologySection({ section, index }) {
                     className="mt-1 shrink-0 text-[#E87744]"
                   />
 
-                  <span className="text-[16px] leading-7 text-[#46584A] sm:text-[18px]">
+                  <span className="text-[16px] leading-7 text-[#414441] sm:text-[18px]">
                     {point}
                   </span>
                 </li>
@@ -312,7 +312,7 @@ function FrequentlyAskedQuestions({ faqs }) {
               />
             </summary>
 
-            <p className="mt-4 pr-6 text-[15px] leading-8 text-[#536357] sm:text-[17px]">
+            <p className="mt-4 pr-6 text-[16px] leading-8 text-[#536357] sm:text-[18px]">
               {faq.answer}
             </p>
           </details>
@@ -346,10 +346,10 @@ function ContactActions() {
           </p>
         </div>
 
-        <div className="flex w-full shrink-0 flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+        <div className="flex w-full shrink-0 flex-row items-center justify-center gap-2 sm:w-auto sm:gap-3">
           <Link
             to="/contact"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white bg-transparent px-7 py-3 text-[15px] font-bold text-white transition hover:bg-white hover:text-[#304B3C]"
+            className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-white bg-transparent px-2 py-3 text-[12px] font-bold text-white transition hover:bg-white hover:text-[#304B3C] sm:flex-none sm:gap-2 sm:px-7 sm:py-3 sm:text-[15px]"
           >
             Contact Us
             <ArrowRight size={17} />
@@ -357,7 +357,7 @@ function ContactActions() {
 
           <Link
             to="/appointments"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#E87744] px-7 py-3 text-[15px] font-bold text-white transition hover:bg-[#D96535]"
+            className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full bg-[#E87744] px-2 py-3 text-[12px] font-bold text-white transition hover:bg-[#D96535] sm:flex-none sm:gap-2 sm:px-7 sm:py-3 sm:text-[15px]"
           >
             Book an Appointment
             <ArrowRight size={17} />
@@ -446,29 +446,30 @@ export default function TechnologyDetailPage() {
       <section className="bg-[#fdfefd]">
         <div className="page-container grid items-center gap-9 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_.95fr] lg:gap-14 lg:px-8 lg:py-20">
 
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-          >
+         <motion.div
+  initial={{ opacity: 0, y: 22 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.55 }}
+  className="text-center lg:text-left"
+>
             <span className="inline-flex rounded-full bg-white px-4 py-2 text-[11px] font-extrabold tracking-[.15em] text-[#476B55] shadow-sm sm:text-[12px]">
               {technology.category}
             </span>
 
-            <h1 className="mt-5 text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl lg:text-5xl">
+           <h1 className="mt-5 text-center text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl lg:text-left lg:text-5xl">
               {technology.title}
             </h1>
 
-            <p className="mt-5 text-[16px] leading-8 text-[#536357] sm:text-[18px]">
+           <p className="mx-auto mt-5 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
               {technology.description}
             </p>
-             <p className="mt-5 text-[16px] leading-8 text-[#536357] sm:text-[18px]">
+            <p className="mx-auto mt-5 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
             {technology.detailIntro}
           </p>
 
             <Link
               to="/appointments"
-              className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#304B3C] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#E87744] sm:text-[18px]"
+             className="mx-auto mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#304B3C] px-4 py-2 text-[16px] font-bold text-white transition hover:bg-[#E87744] sm:text-[18px] lg:mx-0"
             >
               Book an Appointment
               <ArrowRight size={18} />

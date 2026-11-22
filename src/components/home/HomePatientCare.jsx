@@ -78,7 +78,7 @@ export default function HomePatientCare() {
 
           {/* DESCRIPTION */}
           <p className="mx-auto mt-2 max-w-5xl text-center text-[16px] leading-7 text-[#526457]">
-            At Kaizen Oncology Cancer Hospital, we understand that cancer care
+            At KIMS RENOVA Cancer Hospital, we understand that cancer care
             involves more than medical treatment. We support patients
             and their families with guidance, comfort and care throughout
             every stage of their cancer journey.
@@ -125,11 +125,11 @@ export default function HomePatientCare() {
                   </div>
 
                   <div className="min-w-0">
-                    <h3 className="text-[16px] font-bold leading-5 text-[#304b3c] sm:text-base">
+                    <h3 className="text-[16px] font-bold leading-5 text-[#304b3c] sm:text-[19px]">
                       {title}
                     </h3>
 
-                    <p className="mt-1.5 text-[16px] leading-6 text-[#526457]">
+                    <p className="mt-1.5 text-[16px] leading-6 text-[#526457] sm:text-[18px]">
                       {text}
                     </p>
                   </div>

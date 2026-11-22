@@ -92,86 +92,6 @@ export default function CancerTypesPage() {
       {/* BREADCRUMB */}
       <Breadcrumb />
 
-      {/* HERO */}
-      {/* <section className="relative bg-[#F1F6F0]">
-        <div className="page-container grid items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-2 lg:gap-14 lg:px-8">
-
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-flex rounded-full bg-white px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#476B55] shadow-sm">
-              Kaizen Oncology CANCER HOSPITAL
-            </span>
-
-            <h1 className="mt-6 text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-[54px]">
-              Understand Cancer.
-              <span className="mt-2 block text-[#E87744]">
-                Explore Your Care Options.
-              </span>
-            </h1>
-
-            <p className="mt-6 max-w-xl text-[17px] leading-8 text-[#536357] sm:text-[19px]">
-              Cancer is not one disease. Different cancers can behave
-              differently and may require different specialists, tests and
-              treatment approaches. Explore our cancer information to
-              understand the condition, recognise possible symptoms and
-              learn about available care options.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#cancer-types"
-                className="inline-flex items-center gap-2 rounded-full bg-[#304B3C] px-7 py-4 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#263C30]"
-              >
-                Explore Cancer Types
-                <ArrowRight size={19} />
-              </a>
-
-              <Link
-                to="/appointments"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-[#476B55] px-7 py-4 text-base font-bold text-[#304B3C] transition duration-300 hover:bg-[#304B3C] hover:text-white"
-              >
-                <CalendarDays size={18} />
-                Book Appointment
-              </Link>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-            className="relative"
-          >
-            <div className="absolute -bottom-5 -left-5 h-32 w-32 rounded-full bg-[#E87744]/15 blur-2xl" />
-
-            <img
-              src={cancerOverview.image}
-              alt={cancerOverview.imageAlt}
-              className="relative h-[300px] w-full rounded-[28px] object-cover shadow-xl sm:h-[420px]"
-            />
-
-            <div className="absolute -bottom-5 right-4 max-w-[270px] rounded-2xl bg-white p-5 shadow-xl sm:right-8">
-              <div className="flex items-center gap-3">
-                <div className="rounded-xl bg-[#F1F6F0] p-3 text-[#476B55]">
-                  <HeartPulse size={25} />
-                </div>
-
-                <div>
-                  <p className="font-bold text-[#263C30]">
-                    Patient-centred care
-                  </p>
-                  <p className="mt-1 text-sm text-[#536357]">
-                    Guidance throughout your journey
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section> */}
 
       {/* WHAT IS CANCER */}
       <section className="page-container px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -224,11 +144,11 @@ export default function CancerTypesPage() {
               Understanding the Condition
             </h3>
 
-            <p className="mt-5 text-[17px] leading-8 text-[#536357] sm:text-[18px]">
+            <p className="mt-5 text-[17px] leading-8 text-[#4a4d4b] sm:text-[18px]">
               {cancerOverview.description}
             </p>
 
-            <p className="mt-5 text-[17px] leading-8 text-[#536357] sm:text-[18px]">
+            <p className="mt-5 text-[17px] leading-8 text-[#4a4d4b] sm:text-[18px]">
               {cancerOverview.secondParagraph}
             </p>
 
@@ -240,7 +160,7 @@ export default function CancerTypesPage() {
                   Understand
                 </h3>
 
-                <p className="mt-2 text-base leading-7 text-[#536357]">
+                <p className="mt-2 text-base leading-7 text-[#343535]">
                   Learn about cancer types, symptoms and diagnosis.
                 </p>
               </div>
@@ -252,7 +172,7 @@ export default function CancerTypesPage() {
                   Make Informed Decisions
                 </h3>
 
-                <p className="mt-2 text-base leading-7 text-[#536357]">
+                <p className="mt-2 text-base leading-7 text-[#323232]">
                   Understand possible treatment and prevention options.
                 </p>
               </div>
@@ -300,20 +220,20 @@ export default function CancerTypesPage() {
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col p-6 sm:p-7">
+                <div className="flex flex-1 flex-col p-2 sm:p-3">
 
                   <h3 className="text-center text-[23px] font-bold leading-snug text-[#263C30]">
                     {cancer.title}
                   </h3>
 
-                  <p className="mt-4 flex-1 text-center text-[16px] leading-7 text-[#536357]">
+                  <p className="mt-4 flex-1 text-center text-[16px] leading-7 text-[#536357] sm:text-[18px]">
                     {cancer.cardDescription}
                   </p>
 
                   <div className="mt-7 flex justify-center">
                     <Link
                       to={`/services/cancer/${cancer.slug}`}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#304B3C] px-7 py-3.5 text-base font-bold text-white shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-[#E87744] hover:shadow-md"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#304B3C] px-5 py-2 text-base font-bold text-white shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-[#E87744] hover:shadow-md"
                     >
                       Know More
                       <ArrowRight size={18} />
@@ -337,33 +257,37 @@ export default function CancerTypesPage() {
         >
           <div className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
 
-          <div className="relative grid items-center gap-8 md:grid-cols-[1fr_auto]">
-            <div>
-              <p className="inline-block rounded-full bg-white/15 px-4 py-2 text-sm font-extrabold uppercase tracking-[0.18em] text-[#FFD0B3]">
-                Your Next Step
-              </p>
+          
+<div className="relative grid items-center gap-6 text-center lg:grid-cols-[1fr_auto] lg:gap-8 lg:text-left"> 
+   <div className="flex flex-col items-center lg:items-start">
+    <p className="inline-block rounded-full bg-white/15 px-4 py-2 text-sm font-extrabold uppercase tracking-[0.18em] text-[#FFD0B3]">
+      Your Next Step
+    </p>
 
-              <h2 className="mt-5 text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-[42px]">
-                Every Cancer Journey Is Different
-              </h2>
+    <h2 className="mt-5 text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-[42px]">
+      Every Cancer Journey Is Different
+    </h2>
 
-              <p className="mt-5 max-w-2xl text-[17px] font-medium leading-8 text-white sm:text-[18px]">
-                Understanding your condition and available treatment options
-                is an important part of making informed healthcare decisions.
-                Every patient's needs are different. Speak with a specialist
-                to discuss your diagnosis, concerns and possible next steps.
-              </p>
-            </div>
+    <p className="mt-5 max-w-2xl text-[16px] font-medium leading-7 text-white sm:text-[18px] sm:leading-8">
+      Understanding your condition and available treatment options
+      is an important part of making informed healthcare decisions.
+      Every patient's needs are different. Speak with a specialist
+      to discuss your diagnosis, concerns and possible next steps.
+    </p>
+  </div>
 
-            <Link
-              to="/appointments"
-              className="inline-flex min-h-[54px] items-center justify-center gap-3 rounded-full bg-[#E87744] px-7 py-4 text-base font-bold text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#D96835]"
-            >
-              <Stethoscope size={20} />
-              Book an Appointment
-              <ArrowRight size={19} />
-            </Link>
-          </div>
+  <div className="flex justify-center lg:justify-end">
+    <Link
+      to="/appointments"
+      className="inline-flex min-h-10 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#E87744] px-4 py-2.5 text-[13px] font-bold text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#D96835] sm:min-h-[54px] sm:gap-3 sm:px-7 sm:py-4 sm:text-base"
+    >
+      <Stethoscope size={17} className="shrink-0 sm:h-5 sm:w-5" />
+      <span className="whitespace-nowrap">Book an Appointment</span>
+      <ArrowRight size={17} className="shrink-0 sm:h-[19px] sm:w-[19px]" />
+    </Link>
+  </div>
+</div>
+
         </motion.div>
       </section>
 

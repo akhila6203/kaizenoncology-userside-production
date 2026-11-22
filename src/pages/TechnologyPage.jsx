@@ -333,14 +333,14 @@ export default function TechnologyPage() {
     <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
 
       {/* LEFT CONTENT */}
-      <div className="order-2 lg:order-1">
+      <div className="order-1 text-center lg:order-1 lg:text-left">
 
         <span className="inline-flex items-center gap-2 rounded-full bg-[#EDF4EC] px-4 py-2 text-[12px] font-extrabold uppercase tracking-[.15em] text-[#476B55]">
           <Cpu size={16} />
           Advanced Cancer Care
         </span>
 
-        <h1 className="mt-6 text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl lg:text-[46px]">
+      <h1 className="mt-6 text-center text-3xl font-bold leading-tight text-[#263C30] sm:text-4xl lg:text-left lg:text-[46px]">
           Advanced Technology for 
           <span className="block text-[#E87744]">
             Precision Cancer Care
@@ -348,16 +348,16 @@ export default function TechnologyPage() {
           </span>
         </h1>
 
-        <p className="mt-6 text-[16px] leading-8 text-[#536357] sm:text-[17px]">
-         At Kaizen Oncology Cancer Hospital, advanced technology plays an important role in cancer diagnosis, treatment planning and patient care.
+        <p className="mx-auto mt-6 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
+         At KIMS RENOVA Cancer Hospital, advanced technology plays an important role in cancer diagnosis, treatment planning and patient care.
           We combine specialised clinical expertise with modern treatment technologies to support personalised cancer care.
         </p>
 
-        <p className="mt-4 text-[16px] leading-8 text-[#536357] sm:text-[17px]">
+        <p className="mx-auto mt-4 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
          From precision radiotherapy and molecular oncology to robotic surgery and specialised cancer procedures, our technologies 
          support clinicians in evaluating individual patient needs and planning appropriate treatment approaches.
         </p>
-        <p className="mt-4 text-[16px] leading-8 text-[#536357] sm:text-[17px]">
+        <p className="mx-auto mt-6 text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
           The choice of technology depends on the cancer type, stage, diagnostic findings and overall health of each patient.
         </p>
 
@@ -396,7 +396,7 @@ export default function TechnologyPage() {
 
         <Link
           to="#technology-list"
-          className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#304B3C] px-7 py-3 text-[15px] font-bold text-white transition hover:bg-[#E87744]"
+          className="mx-auto mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#304B3C] px-6 py-2 text-[15px] font-bold text-white transition hover:bg-[#E87744] lg:mx-0"
         >
           Explore Our Technologies
           <ArrowRight size={18} />
@@ -405,7 +405,7 @@ export default function TechnologyPage() {
       </div>
 
       {/* RIGHT IMAGE COLLAGE */}
-      <div className="order-1 lg:order-2">
+      <div className="order-2 lg:order-2">
 
         <div className="relative mx-auto max-w-[560px]">
 
@@ -487,7 +487,7 @@ export default function TechnologyPage() {
           </h2>
 
           <p className="mt-4 text-[16px] leading-7 text-[#536357]">
-            Explore the advanced technologies used in cancer diagnosis, treatment planning and specialised cancer care at Kaizen Oncology.
+            Explore the advanced technologies used in cancer diagnosis, treatment planning and specialised cancer care at KIMS RENOVA.
           </p>
         </div>
 
@@ -647,7 +647,7 @@ export default function TechnologyPage() {
 {/* OUR SPECIALITIES - BACKEND API DATA */}
 
 <section className="bg-[#f4f7f2] py-14 md:py-16">
-  <div className="page-container">
+  <div className="page-container px-4 sm:px-6 lg:px-8">
     <div className="mb-8 text-center">
       <span className="text-sm font-semibold uppercase tracking-[0.16em] text-[#e87744]">
         Our Expertise
@@ -672,7 +672,7 @@ export default function TechnologyPage() {
           <Link
             key={item.id || item.slug}
             to={`/specialities/${item.slug}`}
-            className="group flex flex-col items-center rounded-2xl border border-[#e1e9df] bg-white px-4 py-7 text-center transition duration-300 hover:-translate-y-1 hover:border-[#e87744] hover:shadow-lg md:px-5"
+            className="group flex flex-col items-center rounded-2xl border border-[#e1e9df] bg-white px-3 py-6 text-center transition duration-300 hover:-translate-y-1 hover:border-[#e87744] hover:shadow-lg md:px-5"
           >
             <span className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-[#edf4ec] text-[#e87744] transition group-hover:bg-[#304b3c] group-hover:text-white">
               {Icon && <Icon size={42} strokeWidth={1.6} />}
@@ -696,7 +696,7 @@ export default function TechnologyPage() {
     <div className="mt-7 text-center">
       <Link
         to="/specialities"
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#304b3c] px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-[#476b55]"
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#304b3c] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#476b55]"
       >
         Know More
         <ArrowRight size={18} />
@@ -711,7 +711,7 @@ export default function TechnologyPage() {
       
 {/* Contact and Appointment CTA */}
 <section className="py-14 md:py-16">
-  <div className="page-container">
+ <div className="page-container px-2 sm:px-4 lg:px-6">
     <div className="rounded-3xl bg-[#304b3c] px-6 py-10 text-center md:px-12 md:py-14">
       <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-[0.18em] text-[#e9b77c]">
         We Are Here To Help
@@ -726,21 +726,21 @@ export default function TechnologyPage() {
         Connect with us to understand your options and receive the right support.
       </p>
 
-      <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-        <Link
-          to="/contact"
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-white px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white hover:text-[#304b3c]"
-        >
-          Contact Us <ArrowRight size={18} />
-        </Link>
+    <div className="mt-8 flex w-full flex-row flex-nowrap items-center justify-center gap-2 sm:gap-4">
+  <Link
+    to="/contact"
+    className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-white px-2 py-3 text-[12px] font-semibold text-white transition hover:bg-white hover:text-[#304b3c] sm:flex-none sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
+  >
+    Contact Us <ArrowRight size={15} className="shrink-0 sm:h-[18px] sm:w-[18px]" />
+  </Link>
 
-        <Link
-          to="/appointment"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-[#e87744] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#d96837]"
-        >
-          Book an Appointment <ArrowRight size={18} />
-        </Link>
-      </div>
+  <Link
+    to="/appointment"
+    className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full bg-[#e87744] px-2 py-3 text-[12px] font-semibold text-white transition hover:bg-[#d96837] sm:flex-none sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
+  >
+    Book an Appointment <ArrowRight size={15} className="shrink-0 sm:h-[18px] sm:w-[18px]" />
+  </Link>
+</div>
     </div>
   </div>
 </section>

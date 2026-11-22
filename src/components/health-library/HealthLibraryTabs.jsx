@@ -140,7 +140,7 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
         <div className="mb-3 flex items-center justify-center gap-2">
           <span className="h-[3px] w-8 rounded-full bg-[#E87744]" />
           <span className="text-xs font-bold uppercase tracking-[2px] text-[#4F7359]">
-            Kaizen Oncology HEALTH LIBRARY
+            KIMS RENOVA HEALTH LIBRARY
           </span>
           <span className="h-[3px] w-8 rounded-full bg-[#E87744]" />
         </div>
@@ -149,14 +149,45 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
           Explore Our Resources
         </h2>
 
-        <p className="mt-4 text-base leading-8 text-[#3D4A40]">
+        <p className="mt-4 text-base leading-6 text-[#3D4A40]">
           Read informative articles, watch educational videos and find
           answers to common questions about cancer care.
         </p>
       </div>
 
-      {/* CENTER TABS */}
-      <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
+
+
+{/* CENTER TABS */}
+<div className="mb-10 flex w-full flex-nowrap items-center justify-center gap-2 sm:flex-wrap sm:gap-3">
+  {RESOURCE_TABS.map(({ id, label, Icon }) => {
+    const isActive = activeTab === id;
+
+    return (
+      <button
+        key={id}
+        type="button"
+        onClick={() => setActiveTab(id)}
+        aria-pressed={isActive}
+        className={`inline-flex min-w-0 flex-1 items-center justify-center gap-1.5 rounded-full border px-2 py-2 text-[12px] font-bold transition duration-300
+          sm:min-h-12 sm:flex-none sm:gap-2 sm:px-7 sm:py-3 sm:text-sm
+          ${
+            isActive
+              ? "border-[#4F7359] bg-[#4F7359] text-white shadow-md"
+              : "border-[#D4E0D6] bg-white text-[#4F7359] hover:border-[#E87744] hover:bg-[#FFF5EF] hover:text-[#E87744]"
+          }`}
+      >
+        <Icon
+          size={16}
+          className="shrink-0 sm:h-[18px] sm:w-[18px]"
+        />
+        <span className="whitespace-nowrap">{label}</span>
+      </button>
+    );
+  })}
+</div>
+
+
+      {/* <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
         {RESOURCE_TABS.map(({ id, label, Icon }) => {
           const isActive = activeTab === id;
 
@@ -177,7 +208,7 @@ const visibleFaqs = faqsFromApi.slice(0, 5);
             </button>
           );
         })}
-      </div>
+      </div> */}
 
       {/* BLOGS */}
       {activeTab === "blogs" && (

@@ -94,30 +94,31 @@ export default function CancerTreatmentsPage() {
 
         <div className="page-container grid items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_.95fr] lg:gap-14 lg:px-8 lg:py-20">
 
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-          >
-            <span className="inline-flex rounded-full bg-white px-4 py-2 text-[12px] font-extrabold tracking-[.16em] text-[#476B55] shadow-sm">
-             Kaizen Oncology CANCER CARE
+         <motion.div
+  initial={{ opacity: 0, y: 22 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.55 }}
+  className="text-center lg:text-left"
+>
+            <span className="inline-flex rounded-full bg-white px-4 py-2 text-[14px] font-extrabold tracking-[.16em] text-[#476B55] shadow-sm">
+             KIMS RENOVA CANCER CARE
             </span>
 
-            <h1 className="mt-5 text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-[56px]">
+           <h1 className="mt-2 text-center text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-left lg:text-[56px]">
               Cancer{" "}
               <span className="text-[#E87744]">
                 Treatments
               </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#536357] sm:text-[19px]">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#536357] sm:text-[19px] lg:mx-0 lg:text-left">
               {treatmentOverview.description}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-nowrap items-center justify-center gap-2 lg:justify-start lg:gap-3">
               <a
                 href="#treatment-options"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#304B3C] px-6 py-3 text-[15px] font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#263C30]"
+                className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#304B3C] px-3 py-2 text-[12px] font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#263C30] sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3 sm:text-[15px]"
               >
                 Explore treatments
                 <ArrowRight size={18} />
@@ -125,14 +126,14 @@ export default function CancerTreatmentsPage() {
 
               <Link
                 to="/appointments"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#476B55] px-6 py-3 text-[15px] font-bold text-[#304B3C] transition hover:bg-[#304B3C] hover:text-white"
+                className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border-2 border-[#476B55] px-3 py-2 text-[12px] font-bold text-[#304B3C] transition hover:bg-[#304B3C] hover:text-white sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3 sm:text-[15px]"
               >
                 <CalendarDays size={18} />
                 Book an appointment
               </Link>
             </div>
 
-            <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-2">
+            <div className="mx-auto mt-8 grid max-w-xl gap-3 text-left sm:grid-cols-2 lg:mx-0">
               {[
                 "Treatment planning based on individual needs",
                 "Options reviewed by relevant specialists",
@@ -246,7 +247,7 @@ export default function CancerTreatmentsPage() {
                     {service.title}
                   </h3>
 
-                  <p className="mt-3 flex-1 text-[15px] leading-7 text-[#59695D]">
+                  <p className="mt-3 flex-1 text-[16px] leading-7 text-[#59695D] sm:text-[18px]">
                     {service.cardDescription}
                   </p>
 
@@ -315,7 +316,7 @@ export default function CancerTreatmentsPage() {
 
             <p className="mt-2 text-[16px] leading-7 text-[#705B4E]">
               The therapies described are educational information. A
-              treatment should be presented as available at Kaizen Oncology only
+              treatment should be presented as available at KIMS RENOVA only
               after the hospital confirms that it is approved, staffed,
               equipped and clinically provided at the relevant location.
               Suitability must be determined by the treating specialist.
@@ -346,7 +347,7 @@ export default function CancerTreatmentsPage() {
 
           <Link
             to="/appointments"
-            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#E87744] px-7 py-3 text-[15px] font-bold text-white transition hover:bg-[#d76535]"
+            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#E87744] px-6 py-2 text-[15px] font-bold text-white transition hover:bg-[#d76535]"
           >
             Book an appointment
             <ArrowRight size={18} />

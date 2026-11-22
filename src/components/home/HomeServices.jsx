@@ -18,7 +18,7 @@ export default function HomeServices() {
            Find Care by Cancer Type
           </h2>
 
-          <p className="mt-4 text-[15px] leading-7 text-[#59695D] sm:text-base">
+          <p className="mt-4 text-[15px] leading-7 text-[#59695D] sm:text-[17px]">
             Learn about different cancer types, their symptoms, diagnosis and
             possible treatment approaches.
           </p>

@@ -441,9 +441,9 @@ setSelectedDoctor("");
     className="mt-2 min-h-11 w-full rounded-xl border border-[#cfded0] bg-[#fffdf9] px-3 py-2.5 text-[15px] font-normal text-[#304b3c] outline-none transition focus:border-[#304b3c] focus:ring-2 focus:ring-[#304b3c]/10"
   />
 </label>
-{/* PREFERRED Kaizen Oncology LOCATION */}
+{/* PREFERRED KIMS RENOVA LOCATION */}
 <label className="block text-[15px] font-semibold text-[#304b3c]">
-  Preferred Kaizen Oncology Location
+  Preferred KIMS RENOVA Location
 
   <select
     name="preferredLocation"
@@ -455,7 +455,7 @@ setSelectedDoctor("");
     className="mt-2 min-h-11 w-full rounded-xl border border-[#cfded0] bg-[#fffdf9] px-3 py-2.5 text-[15px] font-normal text-[#304b3c] outline-none transition focus:border-[#304b3c] focus:ring-2 focus:ring-[#304b3c]/10"
   >
     <option value="">
-      {loading ? "Loading locations..." : "Choose a Kaizen Oncology location"}
+      {loading ? "Loading locations..." : "Choose a KIMS RENOVA location"}
     </option>
 
     {locations.map((location) => (

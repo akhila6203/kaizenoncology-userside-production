@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getSettingsApi } from "../api/settingsApi";
 import axiosClient from "../api/axiosClient";
 
+
 import {
   FaFacebookF,
   FaInstagram,
@@ -271,6 +272,7 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
 
   const headerRef = useRef(null);
   const closeRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
     const navigationItems = navigation.map((item) => {
     if (item.label === "Specialties") {
@@ -315,24 +317,46 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
 
   // Close dropdown when clicking anywhere outside the header.
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (
-        headerRef.current &&
-        !headerRef.current.contains(event.target)
-      ) {
-        setActiveDropdown(null);
-      }
-    };
+  const handleOutsideClick = (event) => {
+    const clickedInsideHeader =
+      headerRef.current?.contains(event.target);
 
-    document.addEventListener("pointerdown", handleOutsideClick);
+    const clickedInsideMobileMenu =
+      mobileMenuRef.current?.contains(event.target);
 
-    return () => {
-      document.removeEventListener(
-        "pointerdown",
-        handleOutsideClick
-      );
-    };
-  }, []);
+    if (!clickedInsideHeader && !clickedInsideMobileMenu) {
+      setActiveDropdown(null);
+    }
+  };
+
+  document.addEventListener("pointerdown", handleOutsideClick);
+
+  return () => {
+    document.removeEventListener(
+      "pointerdown",
+      handleOutsideClick
+    );
+  };
+}, []);
+  // useEffect(() => {
+  //   const handleOutsideClick = (event) => {
+  //     if (
+  //       headerRef.current &&
+  //       !headerRef.current.contains(event.target)
+  //     ) {
+  //       setActiveDropdown(null);
+  //     }
+  //   };
+
+  //   document.addEventListener("pointerdown", handleOutsideClick);
+
+  //   return () => {
+  //     document.removeEventListener(
+  //       "pointerdown",
+  //       handleOutsideClick
+  //     );
+  //   };
+  // }, []);
 
   // Close mobile menu on Escape.
   useEffect(() => {
@@ -366,7 +390,7 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
       <header
         ref={headerRef}
          onMouseLeave={() => setActiveDropdown(null)}
-  className="sticky top-0 z-[999] border-b border-line bg-white shadow-sm"
+        className="sticky top-0 z-[999] border-b border-line bg-white shadow-sm"
         // className="sticky top-0 z-50 border-b border-line bg-white shadow-sm"
       >
         {/* TOP INFORMATION STRIPn [#08614F] */}
@@ -404,20 +428,20 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
 
               <div className="flex items-center gap-4 text-white">
                {socials
-  .filter((social) => settings[social.key]?.trim())
-  .map(({ label, key, Icon }) => (
-    <a
-      key={label}
-      href={settings[key]}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      title={label}
-      className="transition hover:-translate-y-0.5 hover:text-[#F0B08A]"
-    >
-      <Icon size={18} />
-    </a>
-  ))}
+                .filter((social) => settings[social.key]?.trim())
+                .map(({ label, key, Icon }) => (
+                  <a
+                    key={label}
+                    href={settings[key]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    title={label}
+                    className="transition hover:-translate-y-0.5 hover:text-[#F0B08A]"
+                  >
+                    <Icon size={18} />
+                  </a>
+                ))}
               </div>
 
               <span className="h-5 w-px bg-white/40" />
@@ -440,14 +464,15 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
 
             {/* <BrandLogo onClick={closeAll} compact /> */}
             <BrandLogo
-  onClick={closeAll}
-  compact
-  logo={logoUrl}
-/>
+            onClick={closeAll}
+            compact
+            logo={logoUrl}
+          />
 
             {/* DESKTOP NAVIGATION */}
             <nav
-            className="ml-auto hidden items-center gap-4 min-[1300px]:flex xl:gap-5 2xl:gap-6"
+            // className="ml-auto hidden items-center gap-4 min-[1300px]:flex xl:gap-5 2xl:gap-6"
+             className="ml-auto hidden items-center gap-2 min-[1300px]:flex xl:gap-3 2xl:gap-4"
               aria-label="Main navigation"
             >
               {/* {navigation.map((item) => ( */}
@@ -621,6 +646,7 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
             />
 
             <motion.aside
+            ref={mobileMenuRef}
               id="mobile-navigation"
               role="dialog"
               aria-modal="true"
@@ -633,7 +659,7 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
             >
 
               {/* MOBILE HEADER */}
-              <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-4">
+              <div className="flex items-center justify-between gap-3  px-2 py-2">
 
                 {/* <BrandLogo onClick={closeAll} /> */}
                 <BrandLogo
@@ -654,7 +680,7 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
               </div>
 
               {/* MOBILE NAVIGATION ITEMS */}
-              <nav className="hide-scroll flex-1 overflow-y-auto px-5 py-3">
+              <nav className="hide-scroll flex-1 overflow-y-auto px-3 py-1">
 
                 {/* {navigation.map((item) => ( */}
                 {navigationItems.map((item) => (
@@ -668,7 +694,7 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
                         to={item.path}
                         end={item.path === "/"}
                         onClick={closeAll}
-                        className={`flex-1 py-4 text-[17px] font-semibold ${
+                        className={`flex-1 py-3 text-[17px] font-semibold ${
                           isMenuActive(item)
                             ? "text-[#E87744]"
                             : "text-heading hover:text-[#08614F]"
@@ -785,7 +811,7 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
               <div className="space-y-3 border-t border-line bg-mist px-5 py-5 text-[16px] text-ink">
 
                 <p className="font-bold text-navy">
-                  Contact Kaizen
+                  Contact KIMS RENOVA
                 </p>
 
                 <p className="flex gap-3">
@@ -1667,7 +1693,7 @@ const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURICompo
 //               <div className="space-y-3 border-t border-line bg-mist px-5 py-5 text-[16px] text-ink">
 
 //                 <p className="font-bold text-navy">
-//                   Contact Kaizen
+//                   Contact KIMS RENOVA
 //                 </p>
 
 //                 <p className="flex gap-3">

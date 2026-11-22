@@ -215,7 +215,7 @@ const displayedBlogs = blogs.slice(0, visibleBlogs);
             <span className="h-[2px] w-10 rounded-full bg-[#E87744]" />
 
             <span className="text-xs font-bold uppercase tracking-[3px] text-[#4F7359]">
-              Kaizen Oncology HEALTH LIBRARY
+              KIMS RENOVA HEALTH LIBRARY
             </span>
 
             <span className="h-[2px] w-10 rounded-full bg-[#E87744]" />

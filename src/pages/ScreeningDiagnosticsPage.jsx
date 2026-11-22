@@ -75,42 +75,48 @@ export default function ScreeningDiagnosticsPage() {
         <Breadcrumb />
 
         <div className="page-container grid items-center gap-10 px-4 pb-14 pt-7 sm:px-6 md:pb-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-14 lg:px-8 lg:pt-10">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-          >
+          > */}
+          <motion.div
+  initial={{ opacity: 0, y: 22 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  className="text-center lg:text-left"
+>
             <span className="inline-flex rounded-full bg-white px-4 py-2 text-[13px] font-bold uppercase tracking-[.16em] text-[#476B55] shadow-sm">
-              Kaizen Oncology CANCER CARE
+              KIMS RENOVA CANCER CARE
             </span>
-            <h1 className="mt-5 text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-[56px]">
+            <h1 className="mt-5 text-center text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-left lg:text-[56px]">
               Screening & <span className="text-[#E87744]">Diagnostics</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#536357] sm:text-[19px]">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#536357] sm:text-[19px] lg:mx-0 lg:text-left">
               {screeningDiagnosticsOverview.description}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-nowrap items-center justify-center gap-2 lg:justify-start lg:gap-3">
               <a
                 href="#screening-services"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#304B3C] px-6 py-3 text-[16px] font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#263C30]"
+               className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#304B3C] px-3 py-2 text-[12px] font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#263C30] sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3 sm:text-[16px]"
               >
                 Explore services <ArrowRight size={18} />
               </a>
               <Link
                 to="/appointments"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#476B55] px-6 py-3 text-[16px] font-bold text-[#304B3C] transition hover:bg-[#304B3C] hover:text-white"
+                className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border-2 border-[#476B55] px-3 py-2 text-[12px] font-bold text-[#304B3C] transition hover:bg-[#304B3C] hover:text-white sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3 sm:text-[16px]"
               >
                 <CalendarDays size={18} /> Book an appointment
               </Link>
             </div>
-            <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="mx-auto mt-8 grid w-full max-w-xl grid-cols-1 justify-items-center gap-3 text-center lg:mx-0 lg:justify-items-start lg:text-left sm:grid-cols-2">
               {[
                 "Understand your screening options",
                 "Know what diagnostic tests involve",
               ].map((item) => (
                 <div
                   key={item}
-                  className="flex items-start gap-2 text-[15px] font-semibold text-[#476B55]"
+                  className="flex items-start justify-center gap-2 text-center text-[15px] font-semibold text-[#476B55] lg:justify-start lg:text-left"
                 >
                   <CheckCircle2
                     size={19}
@@ -143,7 +149,7 @@ export default function ScreeningDiagnosticsPage() {
                   <p className="font-bold text-[#263C30]">
                     Informed clinical decisions
                   </p>
-                  <p className="mt-1 text-[14px] leading-5 text-[#657368]">
+                  <p className="mt-1 text-[14px] leading-5 text-[#657368] ">
                     Assessment guided by your individual needs
                   </p>
                 </div>
@@ -200,12 +206,12 @@ export default function ScreeningDiagnosticsPage() {
                   <h3 className="mt-2 text-xl font-bold leading-snug text-[#263C30]">
                     {service.title}
                   </h3>
-                  <p className="mt-3 flex-1 text-[16px] leading-7 text-[#59695D]">
+                  <p className="mt-3 flex-1 text-[16px] leading-7 text-[#59695D] sm:text-[18px]">
                     {service.cardDescription}
                   </p>
                   <Link
                     to={`/services/screening-diagnostics/${service.slug}`}
-                    className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-[15px] font-bold text-white transition hover:bg-[#E87744]"
+                    className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2 text-[15px] font-bold text-white transition hover:bg-[#E87744]"
                   >
                     Know More <ArrowRight size={17} />
                   </Link>
@@ -217,7 +223,7 @@ export default function ScreeningDiagnosticsPage() {
       </section>
 
       <section className="bg-[#F3F7F1] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="page-container grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+        <div className="page-container grid items-center gap-8 text-center lg:grid-cols-[1fr_auto] lg:text-left">
           <div>
             <p className="text-[13px] font-extrabold uppercase tracking-[.18em] text-[#E87744]">
               YOUR NEXT STEP
@@ -233,9 +239,9 @@ export default function ScreeningDiagnosticsPage() {
             </p>
           </div>
           <Link
-            to="/appointments"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#E87744] px-7 py-3 text-[16px] font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#d76535]"
-          >
+  to="/appointments"
+  className="mx-auto inline-flex min-h-11 w-full max-w-[280px] items-center justify-center gap-2 rounded-full bg-[#E87744] px-5 py-3 text-[14px] font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#d76535] sm:min-h-12 sm:max-w-[300px] sm:px-7 sm:text-[16px] lg:mx-0"
+>
             Book an appointment <ArrowRight size={18} />
           </Link>
         </div>

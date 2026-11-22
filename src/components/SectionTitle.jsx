@@ -34,7 +34,7 @@ export default function SectionTitle({
         {title}
       </h2>
       {description && (
-        <p className={`mt-4 text-[17px] leading-8 ${light ? "text-white/90" : "text-ink"}`}>
+        <p className={`mt-4 text-[17px] sm:text-[18px] leading-8 ${light ? "text-white/90" : "text-ink"}`}>
           {description}
         </p>
       )}

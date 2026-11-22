@@ -415,11 +415,11 @@ const specialityTechnologies = allTechnologyItems.filter((technology) =>
 const renderTechnologyCard = (technology) => (
   <Link
     to={`/technology/${technology.slug}`}
-    className="group flex h-full min-h-[410px] w-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-premium"
-    // className="group flex h-full min-h-[410px] w-full max-w-[420px] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-premium"
+    // className="group flex h-full min-h-[410px] w-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-premium"
+   className="group flex h-full min-h-[340px] w-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-premium sm:min-h-[380px]"
   >
     {/* TECHNOLOGY IMAGE */}
-    <div className="relative h-48 shrink-0 overflow-hidden">
+    <div className="relative h-36 shrink-0 overflow-hidden sm:h-44">
       <img
         src={technology.image}
         alt={technology.imageAlt || technology.title}
@@ -435,12 +435,12 @@ const renderTechnologyCard = (technology) => (
     </div>
 
     {/* TECHNOLOGY CONTENT */}
-    <div className="flex flex-1 flex-col p-5">
-      <h3 className="text-lg font-bold leading-snug text-[#263C30] transition-colors group-hover:text-[#E87744]">
+    <div className="flex flex-1 flex-col p-3 sm:p-5">
+     <h3 className="text-base font-bold leading-snug text-[#263C30] transition-colors group-hover:text-[#E87744] sm:text-lg">
         {technology.title}
       </h3>
 
-      <p className="mt-3 flex-1 text-[15px] leading-7 text-[#59695D]">
+      <p className="mt-2 flex-1 text-sm leading-6 text-[#59695D] sm:mt-3 sm:text-[15px] sm:leading-7">
         {technology.description}
       </p>
 
@@ -823,8 +823,10 @@ const testimonialVideos = patientStories.map((story) => ({
 
      {/* SPECIALITY RELATED TECHNOLOGIES */}
 {specialityTechnologies.length > 0 && (
-  <section className="section-padding overflow-hidden bg-mist">
-    <div className="page-container px-5 sm:px-8 lg:px-12">
+  // <section className="section-padding overflow-hidden bg-mist">
+  //   <div className="page-container px-5 sm:px-8 lg:px-12">
+  <section className="overflow-hidden bg-mist py-10 sm:py-14 lg:py-16">
+  <div className="mx-auto w-full max-w-[1500px] px-1 sm:px-5 lg:px-8">
 
       {/* SECTION HEADING */}
       <motion.div
@@ -864,7 +866,6 @@ const testimonialVideos = patientStories.map((story) => ({
     ))}
   </div>
 ) : (
-  /* 3 OR MORE TECHNOLOGIES - SLIDER */
   <CardSlider
     items={specialityTechnologies}
     ariaLabel={`${speciality.title} technologies`}
@@ -892,9 +893,9 @@ const testimonialVideos = patientStories.map((story) => ({
           // className="relative w-full overflow-hidden border border-[#b8d2bd] bg-gradient-to-r from-[#0f3013] via-[#162b17] to-[#052601] px-6 py-9 shadow-[0_12px_35px_rgba(48,91,58,0.12)] sm:px-12 sm:py-13 lg:px-24 lg:py-14"
         >
          
-          <div className="relative z-10 flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
+          <div className="relative z-10 flex flex-col items-center gap-7 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
 
-            <div className="max-w-1xl">
+           <div className="mx-auto w-full max-w-3xl lg:mx-0">
               <span className="text-sm font-bold tracking-[0.16em] text-[#df5f14] sm:text-base">
                 WE ARE HERE TO HELP
               </span>
@@ -910,10 +911,10 @@ const testimonialVideos = patientStories.map((story) => ({
               </p>
             </div>
 
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+           <div className="flex w-full shrink-0 flex-row items-center justify-center gap-2 sm:w-auto lg:justify-start lg:gap-3">
               <Link
                 to="/contact"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#477653] bg-white px-7 py-3 text-base font-bold text-[#477653] shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-[#477653] hover:text-white hover:shadow-lg"
+                className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-full border border-[#477653] bg-white px-2 py-3 text-[12px] font-bold text-[#477653] shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-[#477653] hover:text-white hover:shadow-lg sm:w-auto sm:flex-none sm:gap-2 sm:px-4 sm:text-sm lg:px-7 lg:text-base"
               >
                 <Phone size={18} />
                 Contact Us
@@ -921,7 +922,7 @@ const testimonialVideos = patientStories.map((story) => ({
 
               <Link
                 to="/appointments"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#477653] px-7 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#365e40] hover:shadow-lg"
+                className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-full bg-[#477653] px-2 py-3 text-[12px] font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#365e40] hover:shadow-lg sm:w-auto sm:flex-none sm:gap-2 sm:px-4 sm:text-sm lg:px-7 lg:text-base"
               >
                 <CalendarDays size={18} />
                 Book an Appointment

@@ -369,10 +369,10 @@ const mappedSpecialities = rows.map((item) => ({
               </p>
             </div>
 
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+            <div className="flex w-full shrink-0 flex-row items-center justify-center gap-2 sm:w-auto lg:justify-start lg:gap-3">
               <Link
                 to="/contact"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#477653] bg-white px-7 py-3 text-base font-bold text-[#477653] shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-[#477653] hover:text-white hover:shadow-lg"
+                className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-[#477653] bg-white px-2 py-2 text-[12px] font-bold text-[#477653] shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-[#477653] hover:text-white hover:shadow-lg sm:w-auto sm:flex-none sm:gap-2 sm:px-4 sm:text-sm lg:px-7 lg:text-base"
               >
                 <Phone size={18} />
                 Contact Us
@@ -380,10 +380,10 @@ const mappedSpecialities = rows.map((item) => ({
 
               <Link
                 to="/appointments"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#477653] px-7 py-3 text-base font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#365e40] hover:shadow-lg"
+                className="inline-flex min-w-0 flex-1 items-center justify-center gap-1 rounded-full bg-[#477653] px-2 py-2 text-[12px] font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#365e40] hover:shadow-lg sm:w-auto sm:flex-none sm:gap-2 sm:px-4 sm:text-sm lg:px-7 lg:text-base"
               >
                 <CalendarDays size={18} />
-                Book an Appointment
+                Appointment
                 <ArrowRight size={17} />
               </Link>
             </div>

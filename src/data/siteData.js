@@ -11,10 +11,10 @@ import radiationOncology from "../assets/home/radiation-oncology.jpg";
 import patientSupport from "../assets/home/patient-support.jpg";
 
 export const hospital = {
-  name: "Kaizen Oncology",
+  name: "KIMS RENOVA",
   nameLine2: "Hospitals",
   tagline: "Specialist Breast Care Programme",
-  email: "care@kaizenoncologyhospitals.com",
+  email: "care@kimsrenovahospitals.com",
   phoneDisplay: "+91 00000 00000",
   phoneHref: "tel:+910000000000",
   address: "Hi-tech City | Banjara Hills | Nampally | Masab Tank, Hyderabad.",
@@ -28,7 +28,7 @@ export const brochures = [
     tag: "B-READY · B-AHEAD · B-YOU",
     title: "Breast care pathway brochure",
     description:
-      "Overview of diagnostic assessment, treatment services and recovery support at Kaizen Oncology Hospitals. Add your verified 02.pdf to public/brochures/02.pdf.",
+      "Overview of diagnostic assessment, treatment services and recovery support at KIMS RENOVA Hospitals. Add your verified 02.pdf to public/brochures/02.pdf.",
     file: "/brochures/02.pdf",
   },
   {
@@ -119,7 +119,7 @@ export function getServiceBySlug(slug) {
 
 export const slides = [
   {
-    eyebrow: "Kaizen Oncology HOSPITALS",
+    eyebrow: "KIMS RENOVA HOSPITALS",
     title: "Comprehensive Cancer Care with Compassion and Expertise",
     description:
       "From first assessment to recovery, we help you understand the next step and feel supported while you take it.",

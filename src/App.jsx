@@ -47,6 +47,9 @@ import HealthLibraryVideosFaqsPage from "./pages/HealthLibraryVideosFaqsPage";
 
 import OurVisionMissionPage from "./pages/OurVisionMissionPage";
 
+import TermsConditionsPage from "./pages/TermsConditionsPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+
 function ScrollManager() {
   const { pathname, hash } = useLocation();
 
@@ -172,6 +175,16 @@ export default function App() {
         <Route path="/health-library/videos-faqs" element={<HealthLibraryVideosFaqsPage />} />
         <Route path="/health-library/:slug" element={<HealthLibraryCategoryPage />} />
         <Route path="/blogs" element={<HealthLibraryBlogsPage />} />
+
+        <Route
+  path="/terms-and-conditions"
+  element={<TermsConditionsPage />}
+/>
+
+<Route
+  path="/privacy-policy"
+  element={<PrivacyPolicyPage />}
+/>
 
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/appointments" element={<AppointmentsPage />} />

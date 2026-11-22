@@ -158,30 +158,31 @@ export default function CancerTreatmentDetailPage() {
         <div className="page-container grid items-center gap-9 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_.95fr] lg:gap-14 lg:px-8 lg:py-20">
 
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-          >
+  initial={{ opacity: 0, y: 22 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.55 }}
+  className="text-center lg:text-left"
+>
             <span className="inline-flex rounded-full bg-white px-4 py-2 text-[12px] font-extrabold tracking-[.16em] text-[#476B55] shadow-sm">
               {service.eyebrow}
             </span>
 
-            <h1 className="mt-5 text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-[52px]">
+            <h1 className="mt-5 text-center text-4xl font-bold leading-tight text-[#263C30] sm:text-5xl lg:text-left lg:text-[52px]">
               {service.title}
             </h1>
 
-            <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#536357] sm:text-[19px]">
+            <p className="mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-[#536357] sm:text-[19px] lg:mx-0 lg:text-left">
               {service.cardDescription}
             </p>
 
-            <p className="mt-4 max-w-2xl text-[16px] leading-8 text-[#536357] sm:text-[18px]">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-[16px] leading-8 text-[#536357] sm:text-[18px] lg:mx-0 lg:text-left">
               {service.intro}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+           <div className="mt-8 flex flex-nowrap items-center justify-center gap-2 lg:justify-start lg:gap-3">
               <a
                 href="#overview"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#304B3C] px-6 py-3 text-[15px] font-bold text-white transition hover:bg-[#263C30]"
+               className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-[#304B3C] px-3 py-2 text-[12px] font-bold text-white transition hover:bg-[#263C30] sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3 sm:text-[15px]"
               >
                 Read details
                 <ArrowRight size={18} />
@@ -189,7 +190,7 @@ export default function CancerTreatmentDetailPage() {
 
               <Link
                 to="/appointments"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#476B55] px-6 py-3 text-[15px] font-bold text-[#304B3C] transition hover:bg-[#304B3C] hover:text-white"
+                className="inline-flex min-h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border-2 border-[#476B55] px-3 py-2 text-[12px] font-bold text-[#304B3C] transition hover:bg-[#304B3C] hover:text-white sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3 sm:text-[15px]"
               >
                 <CalendarDays size={18} />
                 Book appointment
@@ -262,7 +263,7 @@ export default function CancerTreatmentDetailPage() {
               Understanding {service.shortTitle}
             </h2>
 
-            <p className="mt-5 text-[17px] leading-8 text-[#536357]">
+            <p className="mt-5 text-[17px] leading-8 text-[#464a47]">
               {service.overview}
             </p>
           </section>
@@ -291,7 +292,7 @@ export default function CancerTreatmentDetailPage() {
                     (paragraph, pIndex) => (
                       <p
                         key={pIndex}
-                        className="mt-4 text-[16px] leading-8 text-[#536357]"
+                        className="mt-4 text-[16px] leading-7 text-[#373938] sm:text-[18px]"
                       >
                         {paragraph}
                       </p>
@@ -303,7 +304,7 @@ export default function CancerTreatmentDetailPage() {
                       {section.points.map((point) => (
                         <li
                           key={point}
-                          className="flex items-start gap-3 rounded-xl bg-[#F4F7F2] p-4 text-[15px] leading-7 text-[#46584A]"
+                          className="flex items-start gap-3 rounded-xl bg-[#F4F7F2] p-4 text-[16px] leading-7 text-[#4a544c] sm:text-[18px]"
                         >
                           <CheckCircle2
                             size={19}
@@ -375,7 +376,7 @@ export default function CancerTreatmentDetailPage() {
                   A note about your care
                 </h2>
 
-                <p className="mt-3 text-[15px] leading-7 text-[#536357]">
+                <p className="mt-3 text-[16px] leading-7 text-[#2d2e2d] sm:text-[18px]">
                   Treatment availability and suitability depend on
                   clinical assessment, approved indications, local
                   regulatory requirements and the facilities available
@@ -410,7 +411,7 @@ export default function CancerTreatmentDetailPage() {
 
           <Link
             to="/appointments"
-            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#E87744] px-7 py-3 text-[15px] font-bold text-white transition hover:bg-[#d76535]"
+            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#E87744] px-6 py-2 text-[15px] font-bold text-white transition hover:bg-[#d76535]"
           >
             Book an appointment
             <ArrowRight size={18} />

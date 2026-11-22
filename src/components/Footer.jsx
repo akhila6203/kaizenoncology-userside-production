@@ -164,7 +164,7 @@ export default function Footer() {
             </Link>
 
             <p className="mt-5 max-w-sm text-[16px] leading-7 text-white sm:text-[17px]">
-              Kaizen Oncology is dedicated to comprehensive cancer care, bringing together specialist expertise,
+              KIMS RENOVA is dedicated to comprehensive cancer care, bringing together specialist expertise,
                advanced diagnostic and treatment approaches,
                personalised care planning and compassionate support throughout every stage of the cancer journey.
             </p>
@@ -370,6 +370,21 @@ export default function Footer() {
             {/* Educational information does not replace
             professional medical advice. */}
           </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] font-medium">
+  <Link
+    to="/terms-and-conditions"
+    className="text-white/90 transition hover:text-[#F0B08A]"
+  >
+    Terms & Conditions
+  </Link>
+
+  <Link
+    to="/privacy-policy"
+    className="text-white/90 transition hover:text-[#F0B08A]"
+  >
+    Privacy Policy
+  </Link>
+</div>
 
         </div>
 
@@ -392,14 +407,11 @@ export default function Footer() {
 
 
 
-
 // import {
 //   MapPin,
 //   Phone,
 //   Mail,
 //   Clock,
-//   // Kaizen Oncology 
-//   // RENOVA
 //   ArrowUpRight,
 // } from "lucide-react";
 
@@ -563,7 +575,7 @@ export default function Footer() {
 //             </Link>
 
 //             <p className="mt-5 max-w-sm text-[16px] leading-7 text-white sm:text-[17px]">
-//               Kaizen Oncology is dedicated to comprehensive cancer care, bringing together specialist expertise,
+//               KIMS RENOVA is dedicated to comprehensive cancer care, bringing together specialist expertise,
 //                advanced diagnostic and treatment approaches,
 //                personalised care planning and compassionate support throughout every stage of the cancer journey.
 //             </p>
