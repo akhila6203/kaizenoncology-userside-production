@@ -20,8 +20,7 @@ import axiosClient from "../api/axiosClient";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { hospital } from "../data/siteData";
-
-import logo from "../assets/logo3.jpg";
+import { useServicesWithContent } from "../api/services";
 
 const socials = [
   {
@@ -57,24 +56,6 @@ const quickLinks = [
   { label: "Contact Us", path: "/contact" },
 ];
 
-const serviceLinks = [
-  {
-    label: "Cancer Types",
-    path: "/services/cancer-types",
-  },
-  {
-    label: "Screening & Diagnostics",
-    path: "/services/screening-diagnostics",
-  },
-  {
-    label: "Cancer Treatments",
-    path: "/services/treatments",
-  },
-  {
-    label: "Second Opinion",
-    path: "/services/second-opinion",
-  },
-];
 
 const libraryLinks = [
   {
@@ -88,7 +69,7 @@ const libraryLinks = [
 ];
 
 const getImageUrl = (imagePath) => {
-  if (!imagePath) return logo;
+  if (!imagePath) return "";
 
   if (imagePath.startsWith("http")) {
     return imagePath;
@@ -101,6 +82,11 @@ const getImageUrl = (imagePath) => {
 };
 
 export default function Footer() {
+
+  const { services: footerServices = [], loading: servicesLoading } =
+  useServicesWithContent();
+
+const visibleFooterServices = footerServices.slice(0, 4);
   const [settings, setSettings] = useState({});
 
   useEffect(() => {
@@ -156,11 +142,18 @@ export default function Footer() {
               to="/"
               className="inline-flex items-center"
             >
-              <img
+              {/* <img
                 src={getImageUrl(settings.logo)}
                 alt={`${hospital.name} ${hospital.nameLine2}`}
                 className="h-16 w-auto object-contain"
-              />
+              /> */}
+              {settings.logo2 && (
+                <img
+                  src={getImageUrl(settings.logo2)}
+                  alt={`${hospital.name} ${hospital.nameLine2}`}
+                  className="h-16 w-auto object-contain"
+                />
+              )}
             </Link>
 
             <p className="mt-5 max-w-sm text-[16px] leading-7 text-white sm:text-[17px]">
@@ -222,7 +215,44 @@ export default function Footer() {
 <div className="min-w-0 xl:px-3">
 
   {/* SERVICES */}
-  <h3 className="mb-5 text-[20px] font-semibold text-white">
+{/* SERVICES */}
+<h3 className="mb-5 text-[20px] font-semibold text-white">
+  Services
+</h3>
+
+<ul className="space-y-3">
+  {!servicesLoading &&
+    visibleFooterServices.map((service, index) => {
+      const serviceName =
+        service.name ||
+        service.title ||
+        service.service_name ||
+        service.service_title;
+
+      const serviceSlug =
+        service.slug || service.service_slug;
+
+      if (!serviceName || !serviceSlug) return null;
+
+      return (
+        <li key={service.id || serviceSlug || index}>
+          <Link
+            to={`/services/${serviceSlug}`}
+            className="text-[17px] leading-7 text-white transition-colors duration-200 hover:text-[#F0B08A]"
+          >
+            {serviceName}
+          </Link>
+        </li>
+      );
+    })}
+
+  {!servicesLoading && visibleFooterServices.length === 0 && (
+    <li className="text-sm text-white/70">
+      No services available.
+    </li>
+  )}
+</ul>
+  {/* <h3 className="mb-5 text-[20px] font-semibold text-white">
     Services
   </h3>
 
@@ -237,7 +267,7 @@ export default function Footer() {
         </Link>
       </li>
     ))}
-  </ul>
+  </ul> */}
 
   {/* HEALTH LIBRARY */}
   <h3 className="mb-5 mt-8 text-[20px] font-semibold text-white">

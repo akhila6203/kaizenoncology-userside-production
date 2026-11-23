@@ -10,59 +10,15 @@ import {
 } from "lucide-react";
 
 import {
-  mammographyTechnology,
-  technologyItems,
-} from "../data/technologyData";
+  getTechnologies,
+  getTechnologyImage,
+} from "../api/technologyApi";
 
 import appointmentsWave from "../assets/appointments-wave.jpg";
 
 import * as LucideIcons from "lucide-react";
 import { getSpecialities } from "../api/specialitiesApi";
 
-// Editable display metadata.
-// Replace sample dates and views with actual CMS/analytics values later.
-const technologyMeta = {
-  "radixact-x9-synchrony": {
-    publishedAt: "2026-11-10",
-    views: 980,
-  },
-  "ai-adaptive-radiotherapy": {
-    publishedAt: "2026-11-08",
-    views: 1250,
-  },
-  "mr-guided-adaptive-brachytherapy": {
-    publishedAt: "2026-11-06",
-    views: 760,
-  },
-  "dibh-abc": {
-    publishedAt: "2026-11-04",
-    views: 640,
-  },
-  "versa-hd": {
-    publishedAt: "2026-11-02",
-    views: 1100,
-  },
-  "molecular-oncology": {
-    publishedAt: "2026-10-28",
-    views: 1450,
-  },
-  "robotic-surgery": {
-    publishedAt: "2026-10-25",
-    views: 1680,
-  },
-  "hipec-pipac": {
-    publishedAt: "2026-10-20",
-    views: 890,
-  },
-  "breast-health-initiative": {
-    publishedAt: "2026-10-15",
-    views: 720,
-  },
-  "3d-mammography": {
-    publishedAt: "2026-10-12",
-    views: 1320,
-  },
-};
 
 
 const getSpecialityIcon = (iconName) => {
@@ -134,36 +90,79 @@ function TechnologyCard({ item, index }) {
       className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#E3EAE0] bg-white shadow-[0_8px_26px_rgba(38,60,48,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       <div className="relative h-[220px] overflow-hidden">
-        <img
-          src={item.image}
-          alt={item.imageAlt || item.title}
-          loading="lazy"
-          className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-        />
+  <img
+    src={getTechnologyImage(item.thumbnail)}
+    alt={item.title}
+    loading="lazy"
+    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+  />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#263C30]/65 via-transparent to-transparent" />
+  <div className="absolute inset-0 bg-gradient-to-t from-[#263C30]/65 via-transparent to-transparent" />
 
-        <span className="absolute bottom-4 left-4 rounded-full bg-white px-3 py-1.5 text-[11px] font-extrabold tracking-wider text-[#476B55]">
-          {item.category}
-        </span>
+  {/* SPECIALITY BADGE - CATEGORY PLACE */}
+  {Array.isArray(item.specialities) &&
+    item.specialities.length > 0 && (
+      <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
+        {item.specialities.map((speciality, i) => (
+          <span
+            key={`${item.id || item.slug}-${i}`}
+            className="rounded-full bg-white px-3 py-1.5 text-[11px] font-extrabold tracking-wider text-[#476B55] shadow-sm"
+          >
+            {speciality}
+          </span>
+        ))}
       </div>
+  )}
+</div>
 
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
+      {/* <div className="flex flex-1 flex-col p-5 sm:p-6">
         <h3 className="text-xl font-bold leading-snug text-[#263C30]">
           {item.title}
-        </h3>
+        </h3> */}
+        <div className="flex flex-1 flex-col p-5 sm:p-6">
 
-        <p className="mt-3 flex-1 text-[16px] leading-7 text-[#141414] sm:text-[17px]">
-          {item.description}
-        </p>
+  {/* SPECIALITY BADGES - ABOVE TECHNOLOGY TITLE */}
+  {item.specialities?.length > 0 && (
+    <div className="mb-3 flex flex-wrap gap-2">
+      {item.specialities.map((speciality, i) => (
+        <span
+          key={`${item.id || item.slug}-${i}`}
+          className="inline-flex items-center rounded-full bg-[#EDF4EC] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#476B55]"
+        >
+          {speciality}
+        </span>
+      ))}
+    </div>
+  )}
+
+  {/* TECHNOLOGY TITLE */}
+  <h3 className="text-xl font-bold leading-snug text-[#263C30]">
+    {item.title}
+  </h3>
+
+        {/* <p className="mt-3 flex-1 text-[16px] leading-7 text-[#141414] sm:text-[17px]">
+           {item.short_description}
+        </p> */}
+        <p
+  className="mt-3 flex-1 overflow-hidden text-[16px] leading-7 text-[#141414] sm:text-[17px]"
+  style={{
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 3,
+    overflow: "hidden",
+  }}
+  title={item.short_description || ""}
+>
+  {item.short_description || ""}
+</p>
 
         <Link
-          to={item.path || `/technology/${item.slug}`}
-          className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-[14px] font-bold text-white transition hover:bg-[#963D16]"
-        >
-          Know More
-          <ArrowRight size={17} />
-        </Link>
+  to={`/technology/${item.slug}`}
+  className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2.5 text-[14px] font-bold text-white transition hover:bg-[#963D16]"
+>
+  Know More
+  <ArrowRight size={17} />
+</Link>
       </div>
     </motion.article>
   );
@@ -171,10 +170,35 @@ function TechnologyCard({ item, index }) {
 
 
 export default function TechnologyPage() {
-  const allItems = useMemo(
-    () => [...technologyItems, mammographyTechnology],
-    []
-  );
+  const [allItems, setAllItems] = useState([]);
+const [loadingTechnologies, setLoadingTechnologies] = useState(true);
+
+  // Images for the introduction collage from backend API
+  const introImages = allItems
+  .filter((item) => item.thumbnail)
+  .slice(0, 4);
+
+useEffect(() => {
+  let active = true;
+
+  getTechnologies()
+    .then((data) => {
+      if (active) {
+        setAllItems(data);
+      }
+    })
+    .catch((error) => {
+      console.error("Technology API error:", error);
+      if (active) setAllItems([]);
+    })
+    .finally(() => {
+      if (active) setLoadingTechnologies(false);
+    });
+
+  return () => {
+    active = false;
+  };
+}, []);
 
     const [specialityItems, setSpecialityItems] = useState([]);
 
@@ -238,74 +262,76 @@ export default function TechnologyPage() {
   const [sortBy, setSortBy] = useState("latest");
 
   const specialityOptions = useMemo(() => {
-    return [
-      ...new Set(
-        allItems.flatMap((item) => item.specialities || [])
-      ),
-    ].sort((a, b) => a.localeCompare(b));
-  }, [allItems]);
+  return [
+    ...new Set(
+      allItems.flatMap((item) => item.specialities || [])
+    ),
+  ].sort((a, b) => a.localeCompare(b));
+}, [allItems]);
 
-  const filteredItems = useMemo(() => {
-    let result = [...allItems];
+ const filteredItems = useMemo(() => {
+  let result = [...allItems];
 
-    const search = searchTerm.trim().toLowerCase();
+  const search = searchTerm.trim().toLowerCase();
 
-    if (search) {
-      result = result.filter((item) => {
-        return (
-          item.title.toLowerCase().includes(search) ||
-          item.description.toLowerCase().includes(search) ||
-          item.category.toLowerCase().includes(search)
-        );
-      });
-    }
+  // LOCAL SEARCH - NO API CALL
+  if (search) {
+    result = result.filter((item) => {
+      const title = (item.title || "").toLowerCase();
 
-    if (selectedSpeciality !== "all") {
-      result = result.filter((item) =>
-        item.specialities?.includes(selectedSpeciality)
+      const description = (
+        item.short_description ||
+        item.description ||
+        ""
+      ).toLowerCase();
+
+      const category = (item.category || "").toLowerCase();
+
+      const specialities = Array.isArray(item.specialities)
+        ? item.specialities.join(" ").toLowerCase()
+        : "";
+
+      return (
+        title.includes(search) ||
+        description.includes(search) ||
+        category.includes(search) ||
+        specialities.includes(search)
       );
-    }
-
-    result.sort((a, b) => {
-      const metaA = technologyMeta[a.slug] || {
-        views: 0,
-        publishedAt: "",
-      };
-
-      const metaB = technologyMeta[b.slug] || {
-        views: 0,
-        publishedAt: "",
-      };
-
-      switch (sortBy) {
-        case "most-viewed":
-          return metaB.views - metaA.views;
-
-        case "least-viewed":
-          return metaA.views - metaB.views;
-
-        case "a-z":
-          return a.title.localeCompare(b.title);
-
-        case "z-a":
-          return b.title.localeCompare(a.title);
-
-        case "latest":
-        default:
-          return (
-            new Date(metaB.publishedAt) -
-            new Date(metaA.publishedAt)
-          );
-      }
     });
+  }
 
-    return result;
-  }, [
-    allItems,
-    searchTerm,
-    selectedSpeciality,
-    sortBy,
-  ]);
+  // LOCAL SPECIALITY FILTER - NO API CALL
+  if (selectedSpeciality !== "all") {
+    result = result.filter((item) =>
+      Array.isArray(item.specialities) &&
+      item.specialities.includes(selectedSpeciality)
+    );
+  }
+
+  // LOCAL SORT - NO API CALL
+  result.sort((a, b) => {
+    switch (sortBy) {
+      case "a-z":
+        return (a.title || "").localeCompare(b.title || "");
+
+      case "z-a":
+        return (b.title || "").localeCompare(a.title || "");
+
+      case "most-viewed":
+      case "least-viewed":
+        return 0;
+
+      case "latest":
+      default:
+        return (
+          new Date(b.created_at || 0) -
+          new Date(a.created_at || 0)
+        );
+    }
+  });
+
+  return result;
+}, [allItems, searchTerm, selectedSpeciality, sortBy]);
 
   const resetFilters = () => {
     setSearchTerm("");
@@ -405,67 +431,66 @@ export default function TechnologyPage() {
       </div>
 
       {/* RIGHT IMAGE COLLAGE */}
-      <div className="order-2 lg:order-2">
-
-        <div className="relative mx-auto max-w-[560px]">
-
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-
-            <div className="overflow-hidden rounded-2xl rounded-tl-[55px] shadow-md">
-              <img
-                src={technologyItems[0].image}
-                alt="Advanced radiotherapy technology"
-                loading="lazy"
-                className="h-[190px] w-full object-cover transition duration-700 hover:scale-105 sm:h-[245px]"
-              />
-            </div>
-
-            <div className="mt-8 overflow-hidden rounded-2xl rounded-tr-[55px] shadow-md sm:mt-12">
-              <img
-                src={
-                  technologyItems.find(
-                    (item) => item.slug === "molecular-oncology"
-                  )?.image
-                }
-                alt="Molecular oncology technology"
-                loading="lazy"
-                className="h-[190px] w-full object-cover transition duration-700 hover:scale-105 sm:h-[245px]"
-              />
-            </div>
-
-            <div className="-mt-5 overflow-hidden rounded-2xl rounded-bl-[55px] shadow-md sm:-mt-8">
-              <img
-                src={
-                  technologyItems.find(
-                    (item) => item.slug === "robotic-surgery"
-                  )?.image
-                }
-                alt="Robotic-assisted surgery"
-                loading="lazy"
-                className="h-[190px] w-full object-cover transition duration-700 hover:scale-105 sm:h-[245px]"
-              />
-            </div>
-
-            <div className="overflow-hidden rounded-2xl rounded-br-[55px] shadow-md">
-              <img
-                src={mammographyTechnology.image}
-                alt="3D mammography imaging"
-                loading="lazy"
-                className="h-[190px] w-full object-cover transition duration-700 hover:scale-105 sm:h-[245px]"
-              />
-            </div>
-
-          </div>
-
-          <div className="absolute -bottom-4 left-1/2 w-[85%] -translate-x-1/2 rounded-xl border border-[#E5EAE2] bg-white px-4 py-3 text-center shadow-lg sm:bottom-3">
-            <p className="text-sm font-bold text-[#304B3C]">
-              Technology guided by clinical expertise
-            </p>
-          </div>
-
+      {/* RIGHT IMAGE COLLAGE */}
+<div className="order-2 lg:order-2">
+  {introImages.length > 0 && (
+    <div
+      className={`mx-auto grid max-w-[560px] gap-3 sm:gap-4 ${
+        introImages.length === 1
+          ? "grid-cols-1"
+          : "grid-cols-2"
+      }`}
+    >
+      {introImages.map((item, index) => (
+        <div
+          key={item.id || item.slug}
+          className={`overflow-hidden rounded-2xl shadow-md ${
+            introImages.length === 1
+              ? "rounded-tl-[55px]"
+              : introImages.length === 3 && index === 2
+                ? "col-span-2"
+                : index === 0
+                  ? "rounded-tl-[45px]"
+                  : index === 1
+                    ? "rounded-tr-[45px]"
+                    : index === 2
+                      ? "rounded-bl-[45px]"
+                      : "rounded-br-[45px]"
+          }`}
+        >
+          <img
+            src={getTechnologyImage(item.thumbnail)}
+            alt={item.title || "Cancer treatment technology"}
+            loading="lazy"
+            className={`w-full object-cover transition duration-700 hover:scale-105 ${
+              introImages.length === 1
+                ? "h-[300px] sm:h-[420px]"
+                : introImages.length === 2
+                  ? "h-[230px] sm:h-[300px]"
+                  : introImages.length === 3 && index === 2
+                    ? "h-[190px] sm:h-[230px]"
+                    : "h-[190px] sm:h-[230px]"
+            }`}
+          />
         </div>
+      ))}
+    </div>
+  )}
 
-      </div>
+  {introImages.length === 0 && (
+    <div className="flex h-[300px] items-center justify-center rounded-2xl bg-[#EDF4EC] text-[#476B55]">
+      <Cpu size={48} />
+    </div>
+  )}
+
+  {introImages.length > 0 && (
+    <div className="mx-auto mt-4 max-w-[500px] rounded-xl border border-[#E5EAE2] bg-white px-4 py-3 text-center shadow-md">
+      <p className="text-sm font-bold text-[#304B3C]">
+        Technology guided by clinical expertise
+      </p>
+    </div>
+  )}
+</div>
 
     </div>
   </div>
@@ -606,7 +631,15 @@ export default function TechnologyPage() {
         </div>
 
         {/* TECHNOLOGY CARDS */}
-        {filteredItems.length > 0 ? (
+        {/* TECHNOLOGY CARDS */}
+{loadingTechnologies ? (
+  <div className="py-16 text-center">
+    <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-[#E3EAE0] border-t-[#304B3C]" />
+    <p className="mt-4 text-sm font-medium text-[#59695D]">
+      Loading technologies...
+    </p>
+  </div>
+) : filteredItems.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {filteredItems.map((item, index) => (
               <TechnologyCard
@@ -749,7 +782,6 @@ export default function TechnologyPage() {
     </main>
   );
 }
-
 
 
 

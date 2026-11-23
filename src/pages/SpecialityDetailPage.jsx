@@ -12,7 +12,8 @@ import {
 } from "lucide-react";
 
 import CardSlider from "../components/CardSlider";
-import { allTechnologyItems } from "../data/technologyData";
+import { getTechnologies } from "../api/technologyApi";
+
 
 import {
   getSpecialityBySlug as getLocalSpecialityBySlug,
@@ -148,6 +149,10 @@ export default function SpecialityDetailPage() {
   const [doctors, setDoctors] = useState([]);
 const [doctorsLoading, setDoctorsLoading] = useState(true);
 
+// ADMIN-ADDED TECHNOLOGIES
+const [technologies, setTechnologies] = useState([]);
+const [technologiesLoading, setTechnologiesLoading] = useState(true);
+
   useEffect(() => {
     let active = true;
 
@@ -236,6 +241,51 @@ useEffect(() => {
     isActive = false;
   };
 }, []);
+
+
+// FETCH TECHNOLOGIES FROM BACKEND API
+useEffect(() => {
+  let isActive = true;
+
+  const fetchTechnologies = async () => {
+    try {
+      setTechnologiesLoading(true);
+
+      const response = await getTechnologies();
+
+      // Handle API response structures
+      const rows =
+        Array.isArray(response) ? response :
+        Array.isArray(response?.data) ? response.data :
+        Array.isArray(response?.data?.rows) ? response.data.rows :
+        Array.isArray(response?.data?.technologies) ? response.data.technologies :
+        Array.isArray(response?.rows) ? response.rows :
+        Array.isArray(response?.technologies) ? response.technologies :
+        [];
+
+      if (isActive) {
+        setTechnologies(rows);
+      }
+    } catch (error) {
+      console.error("Failed to load speciality technologies:", error);
+
+      if (isActive) {
+        setTechnologies([]);
+      }
+    } finally {
+      if (isActive) {
+        setTechnologiesLoading(false);
+      }
+    }
+  };
+
+  fetchTechnologies();
+
+  return () => {
+    isActive = false;
+  };
+}, []);
+
 
   const speciality = apiSpeciality
   ? {
@@ -407,10 +457,163 @@ const specialityDoctors = doctors.filter((doctor) => {
   );
 });
 
-  // Display only technologies related to the current speciality.
-const specialityTechnologies = allTechnologyItems.filter((technology) =>
-  technology.specialities?.includes(speciality.title)
+// =============================================
+// FILTER TECHNOLOGIES FOR CURRENT SPECIALITY
+// DATABASE / ADMIN TECHNOLOGIES
+// =============================================
+
+const normalizeSpecialityName = (value = "") =>
+  String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+
+const parseRelationArray = (value) => {
+  if (Array.isArray(value)) return value;
+
+  if (typeof value === "string") {
+    try {
+      const parsed = JSON.parse(value);
+
+      if (Array.isArray(parsed)) return parsed;
+    } catch {
+      return value
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean);
+    }
+  }
+
+  return [];
+};
+
+// CURRENT SPECIALITY ID / NAME / SLUG
+const currentSpecialityId = String(apiSpeciality?.id || "");
+
+const currentSpecialityName = normalizeSpecialityName(
+  speciality.title
 );
+
+const currentSpecialitySlug = normalizeSpecialityName(
+  slug
+);
+
+// GET TECHNOLOGY SPECIALITY RELATIONS
+const getTechnologySpecialities = (technology) => {
+  const relations =
+    technology.specialities ??
+    technology.speciality_names ??
+    technology.speciality_ids ??
+    technology.specialityIds ??
+    technology.speciality ??
+    [];
+
+  return parseRelationArray(relations);
+};
+
+// CHECK TECHNOLOGY MATCH
+const technologyMatchesSpeciality = (technology) => {
+  const relatedSpecialities =
+    getTechnologySpecialities(technology);
+
+  return relatedSpecialities.some((item) => {
+    // ID stored as number
+    if (typeof item === "number") {
+      return currentSpecialityId === String(item);
+    }
+
+    // ID / name / slug stored as string
+    if (typeof item === "string") {
+      const normalized = normalizeSpecialityName(item);
+
+      return (
+        normalized === currentSpecialityName ||
+        normalized === currentSpecialitySlug ||
+        (currentSpecialityId &&
+          normalized === normalizeSpecialityName(currentSpecialityId))
+      );
+    }
+
+    // ID / name / slug stored as object
+    if (item && typeof item === "object") {
+      const itemId = String(
+        item.id ??
+        item.speciality_id ??
+        item.specialityId ??
+        ""
+      );
+
+      const itemName = normalizeSpecialityName(
+        item.name ??
+        item.title ??
+        item.speciality_name ??
+        ""
+      );
+
+      const itemSlug = normalizeSpecialityName(
+        item.slug ??
+        item.speciality_slug ??
+        ""
+      );
+
+      return (
+        (currentSpecialityId && itemId === currentSpecialityId) ||
+        itemName === currentSpecialityName ||
+        itemSlug === currentSpecialitySlug
+      );
+    }
+
+    return false;
+  });
+};
+
+// FILTER + FORMAT ADMIN TECHNOLOGIES
+const specialityTechnologies = technologies
+  .filter(technologyMatchesSpeciality)
+  .map((technology) => ({
+    ...technology,
+
+    title:
+      technology.title ||
+      technology.name ||
+      technology.technology_name ||
+      "Technology",
+
+    slug:
+      technology.slug ||
+      technology.technology_slug ||
+      "",
+
+    category:
+      technology.category ||
+      technology.category_name ||
+      "Advanced Technology",
+
+    description:
+      technology.short_description ||
+      technology.description ||
+      "",
+
+    image: mediaUrl(
+      technology.thumbnail ||
+      technology.image ||
+      technology.image_path ||
+      technology.cover_image ||
+      ""
+    ),
+
+    imageAlt:
+      technology.image_alt ||
+      technology.title ||
+      technology.name ||
+      "Technology",
+  }))
+  .filter((technology) => technology.slug);
+
+  // Display only technologies related to the current speciality.
+// const specialityTechnologies = allTechnologyItems.filter((technology) =>
+//   technology.specialities?.includes(speciality.title)
+// );
 
 const renderTechnologyCard = (technology) => (
   <Link
@@ -440,9 +643,9 @@ const renderTechnologyCard = (technology) => (
         {technology.title}
       </h3>
 
-      <p className="mt-2 flex-1 text-sm leading-6 text-[#141414]sm:mt-3 sm:text-[17px] sm:leading-7">
-        {technology.description}
-      </p>
+      <p className="mt-2 flex-1 text-sm leading-6 text-[#141414] line-clamp-3 sm:mt-3 sm:text-[17px] sm:leading-7">
+  {technology.description}
+</p>
 
       <span className="mt-5 inline-flex min-h-10 items-center gap-2 self-start rounded-full bg-[#304B3C] px-5 py-2 text-sm font-semibold text-white transition-colors group-hover:bg-[#963D16]">
         Know More
@@ -822,7 +1025,7 @@ const testimonialVideos = patientStories.map((story) => ({
 
 
      {/* SPECIALITY RELATED TECHNOLOGIES */}
-{specialityTechnologies.length > 0 && (
+{(technologiesLoading || specialityTechnologies.length > 0) && (
   // <section className="section-padding overflow-hidden bg-mist">
   //   <div className="page-container px-5 sm:px-8 lg:px-12">
   <section className="overflow-hidden bg-mist py-10 sm:py-14 lg:py-16">
@@ -854,7 +1057,17 @@ const testimonialVideos = patientStories.map((story) => ({
       </motion.div>
 
       {/* 1 OR 2 TECHNOLOGIES - CENTERED CARDS */}
-{specialityTechnologies.length <= 2 ? (
+{technologiesLoading ? (
+  <div className="py-12 text-center text-[#476B55]">
+    <p className="text-base font-medium">
+      Loading technologies...
+    </p>
+  </div>
+) : specialityTechnologies.length === 0 ? (
+  <p className="py-8 text-center text-base text-[#647368]">
+    No technologies are currently available for this speciality.
+  </p>
+) : specialityTechnologies.length <= 2 ? (
   <div className="mx-auto flex flex-wrap justify-center gap-4">
     {specialityTechnologies.map((technology) => (
       <div

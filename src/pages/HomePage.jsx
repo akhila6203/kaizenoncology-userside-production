@@ -17,7 +17,7 @@ import TrustStrip from "../components/home/TrustStrip";
 import TreatmentProcess from "../components/home/TreatmentProcess";
 
 import HomeTechnologies from "../components/home/HomeTechnologies";
-import HomeTreatments from "../components/home/HomeTreatments";
+// import HomeTreatments from "../components/home/HomeTreatments";
 import HomeSpecialities from "../components/home/HomeSpecialities";
 
 
@@ -40,7 +40,7 @@ export default function HomePage() {
       {/* <HomeDoctors /> */}
       <HomeWhy />
         <HomeTechnologies />
-<HomeTreatments />
+{/* <HomeTreatments /> */}
       <TreatmentProcess />
 
       <HomePatientCare />

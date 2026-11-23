@@ -1,4 +1,5 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+
+import { Route, Routes, useLocation, Navigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 
@@ -29,15 +30,19 @@ import SpecialitiesPage from "./pages/SpecialitiesPage";
 import SpecialityDetailPage from "./pages/SpecialityDetailPage";
 
 import ServicesHubPage from "./pages/ServicesHubPage";
-import CancerTypesPage from "./pages/CancerTypesPage";
-import CancerProgramPage from "./pages/CancerProgramPage";
-import ScreeningDiagnosticsPage from "./pages/ScreeningDiagnosticsPage";
-import ScreeningDiagnosticDetailPage from "./pages/ScreeningDiagnosticDetailPage";
-import CancerTreatmentsPage from "./pages/CancerTreatmentsPage";
-import CancerTreatmentDetailPage from "./pages/CancerTreatmentDetailPage";
+import DynamicServiceLandingPage from "./pages/DynamicServiceLandingPage";
+import DynamicServiceDetailPage from "./pages/DynamicServiceDetailPage";
+
+
+// import CancerTypesPage from "./pages/CancerTypesPage";
+// import CancerProgramPage from "./pages/CancerProgramPage";
+// import ScreeningDiagnosticsPage from "./pages/ScreeningDiagnosticsPage";
+// import ScreeningDiagnosticDetailPage from "./pages/ScreeningDiagnosticDetailPage";
+// import CancerTreatmentsPage from "./pages/CancerTreatmentsPage";
+// import CancerTreatmentDetailPage from "./pages/CancerTreatmentDetailPage";
 import TechnologyPage from "./pages/TechnologyPage";
 import TechnologyDetailPage from "./pages/TechnologyDetailPage";
-import SecondOpinionPage from "./pages/SecondOpinionPage";
+// import SecondOpinionPage from "./pages/SecondOpinionPage";
 
 import HealthLibraryPage from "./pages/HealthLibraryPage";
 import HealthLibraryCategoryPage from "./pages/HealthLibraryCategoryPage";
@@ -69,6 +74,23 @@ function ScrollManager() {
 
   return null;
 }
+
+
+function LegacyServiceRedirect() {
+  const { serviceSlug, pageSlug } = useParams();
+
+  const newPath = pageSlug
+    ? `/services/${serviceSlug}/${pageSlug}`
+    : `/services/${serviceSlug}`;
+
+  return <Navigate to={newPath} replace />;
+}
+
+function LegacyCancerRedirect() {
+  const { pageSlug } = useParams();
+  return <Navigate to={`/services/cancer-types/${pageSlug}`} replace />;
+}
+
 
 export default function App() {
   return (
@@ -128,27 +150,27 @@ export default function App() {
         <Route path="/doctors/:slug" element={<DoctorDetailsPage />} />
 
         <Route path="/services" element={<ServicesHubPage />} />
-        <Route path="/services/cancer-types" element={<CancerTypesPage />} />
-        <Route
+        {/* <Route path="/services/cancer-types" element={<CancerTypesPage />} /> */}
+        {/* <Route
           path="/services/cancer/:slug"
           element={<CancerProgramPage />}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/services/screening-diagnostics"
           element={<ScreeningDiagnosticsPage />}
         />
         <Route
           path="/services/screening-diagnostics/:slug"
           element={<ScreeningDiagnosticDetailPage />}
-        />
-        <Route
+        /> */}
+        {/* <Route
         path="/services/treatments"
         element={<CancerTreatmentsPage />}
       />
       <Route
         path="/services/treatments/:slug"
         element={<CancerTreatmentDetailPage />}
-      />
+      /> */}
       <Route
         path="/services/treatments-technology"
         element={<TechnologyPage />}
@@ -163,10 +185,23 @@ export default function App() {
         path="/technology/:slug"
         element={<TechnologyDetailPage />}
       />
-      <Route
+      {/* <Route
         path="/services/second-opinion"
         element={<SecondOpinionPage />}
-      />
+      /> */}
+{/* old cancer URL -> new URL */}
+<Route path="/services/cancer/:pageSlug" element={<LegacyCancerRedirect />} />
+      {/* Dynamic service landing page */}
+<Route
+  path="/services/:serviceSlug"
+  element={<DynamicServiceLandingPage />}
+/>
+
+{/* Dynamic service detail page */}
+<Route
+  path="/services/:serviceSlug/:pageSlug"
+  element={<DynamicServiceDetailPage />}
+/>
 
 
 <Route path="/health-library" element={<HealthLibraryPage />} />
