@@ -1,7 +1,7 @@
 
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ArrowRight,
   CalendarDays,
@@ -153,7 +153,8 @@ function SectionSidebar({ items, activeSection, onSelect }) {
   };
 
   return (
-    <aside className="lg:sticky lg:top-24 lg:self-start">
+    // <aside className="lg:sticky lg:top-24 lg:self-start">
+    <aside className="lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)]">
       {/* MOBILE / TABLET DROPDOWN */}
       <div className="relative lg:hidden">
         <button
@@ -195,7 +196,8 @@ function SectionSidebar({ items, activeSection, onSelect }) {
       </div>
 
       {/* DESKTOP SIDEBAR */}
-      <div className="hidden rounded-[24px] border border-[#E3EAE2] bg-white p-5 shadow-sm lg:block xl:p-6">
+      <div className="hidden max-h-[calc(100vh-7rem)] overflow-y-auto rounded-[24px] border border-[#E3EAE2] bg-white p-5 shadow-sm lg:block xl:p-6">
+      {/* <div className="hidden rounded-[24px] border border-[#E3EAE2] bg-white p-5 shadow-sm lg:block xl:p-6"> */}
         <h3 className="mb-5 text-lg font-bold text-[#263C30]">
           On This Page
         </h3>
@@ -243,6 +245,48 @@ export default function DynamicServiceDetailPage() {
   const { service, loading, error } = useService(serviceSlug);
 
   const [activeSection, setActiveSection] = useState("overview");
+  useEffect(() => {
+  if (loading || !service) return;
+
+  const sectionIds = [
+    "overview",
+    ...Array.from(document.querySelectorAll('[id^="point-"]')).map(
+      (el) => el.id
+    ),
+    "related-services",
+    "appointment",
+  ];
+
+  const sections = sectionIds
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visibleSections = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort(
+          (a, b) =>
+            a.boundingClientRect.top - b.boundingClientRect.top
+        );
+
+      if (visibleSections.length > 0) {
+        setActiveSection(visibleSections[0].target.id);
+      }
+    },
+    {
+      root: null,
+      rootMargin: "-120px 0px -65% 0px",
+      threshold: 0,
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+
+  return () => observer.disconnect();
+}, [loading, service, pageSlug]);
 
   if (loading) {
     return (

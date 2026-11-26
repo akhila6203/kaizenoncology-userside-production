@@ -53,7 +53,8 @@ function ServiceCard({
         delay: (index % 2) * 0.06,
       }}
   
-      className={`group flex h-full overflow-hidden transition-all duration-300 ${
+      // className={`group flex h-full overflow-hidden transition-all duration-300 ${
+      className={`group flex h-full items-stretch overflow-hidden transition-all duration-300 ${
   horizontal
     ? imageRight
       ? "flex-row-reverse rounded-2xl"
@@ -68,22 +69,23 @@ function ServiceCard({
     >
   
       {/* IMAGE - RIGHT SIDE */}
-<Link
+{/* <Link
   to={link}
   className={`relative block shrink-0 overflow-hidden bg-[#edf3ed] ${
     horizontal
       ? "w-[150px] h-[150px] shrink-0 sm:w-[190px] sm:h-[170px] lg:w-[220px] lg:h-[180px] xl:w-[250px] xl:h-[190px]"
       : "h-[205px] w-full"
   }`}
+> */}
+<Link
+  to={link}
+  className={`relative block shrink-0 self-stretch overflow-hidden bg-[#edf3ed] ${
+    horizontal
+      ? "w-[120px] sm:w-[170px] lg:w-[210px] xl:w-[230px]"
+      : "h-[205px] w-full"
+  }`}
 >
-      {/* <Link
-        to={link}
-        className={`relative block shrink-0 overflow-hidden bg-[#edf3ed] ${
-          horizontal
-  ? "w-[150px] h-[150px] shrink-0 sm:w-[190px] sm:h-[170px] lg:w-[220px] lg:h-[180px] xl:w-[250px] xl:h-[190px]"
-  : "h-[205px] w-full"
-        }`}
-      > */}
+      
         {item.image ? (
           <img
             src={item.image}
@@ -266,27 +268,27 @@ function ServiceSection({
           icon={Icon}
         />
 
-        <div
+     <div
   className={`grid grid-cols-1 gap-5 sm:gap-6 ${
     horizontal
       ? "md:grid-cols-2"
       : `sm:grid-cols-2 ${columns}`
   }`}
 >
-          {visibleItems.map((item, index) => (
-            <ServiceCard
-              key={item.slug || item.title}
-              item={item}
-              index={index}
-              link={renderLink(item)}
-              fallbackIcon={fallbackIcon}
-              horizontal={horizontal}
-              transparentHorizontal={transparentHorizontal}
-              transparentVertical={transparentVertical}
-              imageRight={imageRight}
-            />
-          ))}
-        </div>
+  {visibleItems.map((item, index) => (
+    <ServiceCard
+      key={item.slug || item.title}
+      item={item}
+      index={index}
+      link={renderLink(item)}
+      fallbackIcon={fallbackIcon}
+      horizontal={horizontal}
+      transparentHorizontal={transparentHorizontal}
+      transparentVertical={transparentVertical}
+      imageRight={imageRight}
+    />
+  ))}
+</div>
 
         {sectionLink && (
           <SectionKnowMore
@@ -373,25 +375,49 @@ export default function ServicesHubPage() {
           );
         }
 
+        // return (
+        //   <ServiceSection
+        //     key={service.id}
+        //     id={service.slug}
+        //     eyebrow="Our Services"
+        //     title={service.name}
+        //     description={service.description}
+        //     items={items}
+        //     icon={Icon}
+        //     fallbackIcon={Icon}
+        //     renderLink={(item) => `/services/${service.slug}/${item.slug}`}
+        //     // renderLink={() => `/services/${service.slug}`}
+        //     background={i % 2 === 0 ? "mist" : "white"}
+        //     columns="lg:grid-cols-3"
+        //     limit={3}
+        //     sectionLink={items.length > 3 ? `/services/${service.slug}` : undefined}
+        //     sectionButtonLabel="View All"
+        //   />
+        // );
         return (
-          <ServiceSection
-            key={service.id}
-            id={service.slug}
-            eyebrow="Our Services"
-            title={service.name}
-            description={service.description}
-            items={items}
-            icon={Icon}
-            fallbackIcon={Icon}
-            renderLink={(item) => `/services/${service.slug}/${item.slug}`}
-            // renderLink={() => `/services/${service.slug}`}
-            background={i % 2 === 0 ? "mist" : "white"}
-            columns="lg:grid-cols-3"
-            limit={3}
-            sectionLink={items.length > 3 ? `/services/${service.slug}` : undefined}
-            sectionButtonLabel="View All"
-          />
-        );
+  <ServiceSection
+    key={service.id}
+    id={service.slug}
+    eyebrow="Our Services"
+    title={service.name}
+    description={service.description}
+    items={items}
+    icon={Icon}
+    fallbackIcon={Icon}
+    renderLink={(item) => `/services/${service.slug}/${item.slug}`}
+    background={i % 2 === 0 ? "mist" : "white"}
+    columns={i === 1 ? "lg:grid-cols-4" : "lg:grid-cols-3"}
+    limit={i === 0 ? 3 : i === 1 ? 4 : undefined}
+    sectionLink={items.length > (i === 0 ? 3 : i === 1 ? 4 : 0) ? `/services/${service.slug}` : undefined}
+    sectionButtonLabel="View All"
+    horizontal={i === 2}
+    // columns="lg:grid-cols-4"
+    // limit={4}
+    // sectionLink={items.length > 4 ? `/services/${service.slug}` : undefined}
+    // sectionButtonLabel="View All"
+    // horizontal={i === 2}
+  />
+);
       })}
 
       {/* FINAL APPOINTMENT CTA (unchanged) */}
